@@ -1,0 +1,383 @@
+
+
+.header-button > a {
+    background-color: #05c2f9;
+}
+.main-menu ul li ul.submenu-mainmenu {
+    border-top: 1px solid #05c2f9;
+}
+.main-menu ul li:hover a {
+    color: #05c2f9;
+}
+.main-menu ul li:hover ul li a:hover {
+    color: #05c2f9;
+}
+a.min1:hover {
+    border: 1px solid #05c2f9;
+    background-color: #05c2f9;
+}
+.what-bottom:hover .btn-icon {
+    background-color: #05c2f9;
+}
+.what-bottom:hover a,
+.what-bottom:hover h3 {
+    color: #05c2f9;
+}
+.what-bottom:hover h3::before {
+    background: #05c2f9 none repeat scroll 0 0;
+}
+.support-all a:hover {
+    border: 1px solid #05c2f9;
+    background-color: #05c2f9;
+}
+span.published i {
+    color: #05c2f9;
+}
+span.published {
+    color: #05c2f9;
+}
+.event-text > h3 a:hover {
+    color: #05c2f9;
+}
+.event-text > a:hover {
+    color: #05c2f9;
+}
+.event-icon > a:hover {
+    background-color: #05c2f9;
+}
+.meet-icon ul li a:hover {
+    background-color: #05c2f9;
+}
+.indicator-style.owl-theme .owl-controls .owl-buttons div:hover {
+    color: #05c2f9;
+    border: 1px solid #05c2f9;
+}
+.readmore > a::before {
+    background: #05c2f9 none repeat scroll 0 0;
+}
+.blog-container-inner:hover .blog-title a,
+.blog-container-inner:hover .readmore a {
+    color: #05c2f9;
+}
+.blog-container-inner:hover .post-format-area a.tb-publish,
+.blog-container-inner:hover .post-thumb a.tb-publish {
+    background-color: #05c2f9;
+}
+.all-contact-text .di-na input[type="submit"]:hover {
+    background-color: #05c2f9;
+}
+.footer-top-left > a:hover,
+.footer-middle-right a:hover,
+.footer-bottom-right a:hover {
+    color: #05c2f9;
+}
+.twitter-one a {
+    color: #05c2f9;
+}
+.img-one a::before {
+    background: #05c2f9 none repeat scroll 0 0;
+}
+.footer-menu a.active {
+    color: #05c2f9;
+}
+.footer-menu a:hover {
+    color: #05c2f9;
+}
+.sin-timeline:hover::before {
+    border: 1px solid #05c2f9;
+    background: #05c2f9;
+}
+.sin-timeline::after {
+    background: #05c2f9 none repeat scroll 0 0;
+}
+.sin-timeline:hover .timeline-date {
+    color: #05c2f9;
+}
+#toTop i:hover {
+    background-color: #05c2f9;
+}
+.home-2 .main-menu ul li:hover a {
+    color: #05c2f9;
+}
+.home-2 .main-menu ul li:hover ul li a:hover {
+    color: #05c2f9;
+}
+.skill .progress-bar {
+    background: #05c2f9 none repeat scroll 0 0;
+}
+a.video-popup:hover {
+    color: #05c2f9;
+}
+.nav.nav-tabs.three-tab > li.active > a img,
+.nav.nav-tabs.three-tab > li.active > a img:focus,
+.nav.nav-tabs.three-tab > li.active > a img:hover {
+    border: 8px solid #05c2f9;
+}
+.meet-area-two .meet-text > h3 {
+    color: #05c2f9;
+}
+.meet-area-two .meet-icon ul li a:hover {
+    color: #05c2f9;
+}
+.timer > div {
+    background-color: #05c2f9;
+}
+.upcoming-icon i {
+    background-color: #05c2f9;
+}
+.latest-news > a:hover {
+    color: #05c2f9;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #05c2f9;
+}
+button.submit {
+    background-color: #05c2f9;
+}
+.header-icon li a:hover {
+    color: #05c2f9;
+}
+.header-right-home-3 .search i:hover {
+    border: 1px solid #05c2f9;
+    color: #05c2f9;
+}
+.header-left-home-3 .header-button > a {
+    border: 1px solid #05c2f9;
+    color: #05c2f9;
+}
+.header-left-home-3 .header-button > a:hover {
+    background-color: #05c2f9;
+    border: 1px solid #05c2f9;
+}
+h1.title6.hm2 span {
+    color: #05c2f9;
+}
+.offer-icon i {
+    color: #05c2f9;
+}
+.event-area-three .published3 i,
+.event-area-three .published4 i {
+    color: #05c2f9;
+}
+.event-date {
+    background-color: #05c2f9;
+}
+.event-text-img:hover .visual-inner .blog-title > a,
+.event-text-img:hover .readmore > a {
+    color: #05c2f9;
+}
+.event-text-img:hover .post-format-area a.tb-publish,
+.blog-container-inner:hover .post-thumb a.tb-publish {
+    background-color: #05c2f9;
+}
+.home-4 h1.title6 span {
+    color: #05c2f9;
+}
+.home-4 .main-menu ul li:hover a {
+    color: #05c2f9;
+}
+.home-4 .main-menu ul li:hover ul li a:hover {
+    color: #05c2f9;
+}
+.about-one > a:hover {
+    background-color: #05c2f9;
+}
+.home-4 .then-icon > a {
+    color: #05c2f9;
+}
+.home-4 .counter-next h2 {
+    color: #05c2f9;
+}
+.reformation-text > a {
+    background-color: #05c2f9;
+}
+.home-4 a.video-popup:hover {
+    border: 1px solid #05c2f9;
+}
+.home-4 .blog-meta > span.published3 {
+    border-right: 2px solid #05c2f9;
+}
+.home-4 .published3,
+.home-4 .published4 {
+    color: #05c2f9;
+}
+.meet-icon-four > ul {
+    background-color: #05c2f9;
+}
+.meet-all-four:hover h3 {
+    color: #05c2f9;
+}
+.loadmore span {
+    background-color: #05c2f9;
+}
+.event-text-img-four:hover .event-img3 a.tb-publish {
+    background-color: #05c2f9;
+}
+.breadcrumbs > ul li a {
+    color: #05c2f9;
+}
+.breadcrumbs ul li a.active::after {
+    background: #05c2f9 none repeat scroll 0 0;
+}
+.product-tab-menu li a:hover {
+    color: #05c2f9;
+}
+.product-tab-menu li.active a {
+    color: #05c2f9;
+}
+.issues-categoris > h3 {
+    color: #05c2f9;
+}
+.cat-one a:hover {
+    color: #05c2f9;
+}
+.categori-list a:hover {
+    color: #05c2f9;
+}
+.cat-one li::after {
+    color: #05c2f9;
+}
+.categori-list a:hover {
+    border: 1px solid #05c2f9;
+    background-color: #05c2f9;
+}
+.pages li.current a,
+.pages a:hover {
+    background-color: #05c2f9;
+}
+.pages li.cut a:hover {
+    color: #05c2f9;
+}
+.issues-details-title > h3 {
+    color: #05c2f9;
+}
+.issues-bottom > h3 a:hover {
+    color: #05c2f9;
+}
+.chosen-container .chosen-drop ul li.highlighted {
+    background: #05c2f9;
+}
+.events-two-ara .published3 i,
+.events-two-ara .published4 i {
+    color: #05c2f9;
+}
+.timer.timer-details > div {
+    background-color: #05c2f9;
+}
+.event-list li i {
+    color: #05c2f9;
+}
+.event-list li a:hover {
+    color: #05c2f9;
+}
+.event-details-slider .owl-controls .owl-page.active span,
+.event-details-slider .owl-theme .owl-controls.clickable .owl-page:hover span {
+    background: #05c2f9 none repeat scroll 0 0;
+}
+.team-details-text > h3 {
+    color: #05c2f9;
+}
+.team-icon a:hover {
+    color: #05c2f9;
+}
+.blog-tag > p span.vidos2 {
+    color: #05c2f9;
+}
+.blog-share a:hover {
+    color: #05c2f9;
+}
+.blog-reply-all .blog-title > a,
+.blog-reply-all2 .blog-title > a {
+    color: #05c2f9;
+}
+.blog-reply-all .blog-title > a:hover,
+.blog-reply-all2 .blog-title > a:hover {
+    background-color: #05c2f9;
+}
+.blog-from input:focus,
+.blog-from textarea:focus {
+    border-color: #05c2f9;
+}
+.communication-icon i {
+    border: 1px solid #05c2f9;
+    color: #05c2f9;
+}
+.communication-text > h3 {
+    color: #05c2f9;
+}
+.communication-text > p a:hover {
+    color: #05c2f9;
+}
+.contact-heading > h3 {
+    color: #05c2f9;
+}
+.map-input-contact-area .contact-form input:focus,
+.map-input-contact-area .contact-form textarea:focus {
+    border-color: #05c2f9;
+}
+.donate-sidebar-top > h1,
+.donate-sidebar-bottom > h1 {
+    color: #05c2f9;
+}
+.donate-sidebar-top a:hover {
+    background-color: #05c2f9;
+}
+.donate-text > p span {
+    color: #05c2f9;
+}
+
+.calender-title h1 {
+    color: #05c2f9;
+}
+.calender-title > p span {
+    color: #05c2f9;
+}
+.fc-state-default.fc button {
+    background-color: #05c2f9;
+}
+.fc-state-default {
+    background-color: #05c2f9;
+}
+.timeline-text a.read-more:hover {
+    color: #05c2f9;
+}
+.timeline-text > h3 a:hover {
+  color: #05c2f9;
+}
+.read-icon > a:hover {
+  color: #05c2f9;
+}
+.blog-title-four > a:hover {
+  color: #05c2f9;
+}
+.readmore-four a:hover {
+  color: #05c2f9;
+}
+
+.elements-tab-area .tab-list li.active a {
+  background: #05c2f9 none repeat scroll 0 0;
+}
+
+.home-4 .blog-title > a:hover {
+    color: #05c2f9;
+}
+
+.what-bottom.what-hm-4:hover .then-icon > a,.what-bottom.only-color:hover .then-icon > a{
+   border: 1px solid #05c2f9;
+    background-color: #05c2f9;
+}
+.meet-icon-all-four {
+  background-color: #05c2f9;
+}
+.meet-icon-four a:hover{
+  color: #05c2f9;
+}
+.home-4 a.min1:hover {
+    border: 1px solid #05c2f9;
+}
+
+
+
+
+

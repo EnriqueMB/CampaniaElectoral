@@ -3,7 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CampaniaElectoral", "CampaniaElectoral\CampaniaElectoral.csproj", "{23BC3507-A417-47EB-BD79-07809E33B8E7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CampaniaElectoralColaboradores", "CampaniaElectoral\CampaniaElectoralColaboradores.csproj", "{23BC3507-A417-47EB-BD79-07809E33B8E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DllCampElectoral.Global", "DllCampElectoral.Global\DllCampElectoral.Global.csproj", "{7DF0AC62-466D-4C0B-AAF7-C45BEB593718}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DllCampElectoral.Datos", "DllCampElectoral.Datos\DllCampElectoral.Datos.csproj", "{2115EE42-7344-4884-B690-B5D8DC4D5226}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DllCampElectoral.Negocio", "DllCampElectoral.Negocio\DllCampElectoral.Negocio.csproj", "{E436CA30-402A-49F7-AE49-9AA4295C9344}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CampaniaElectoralEstadistica", "CampaniaElectoralEstadistica\CampaniaElectoralEstadistica.csproj", "{D1BD6AB7-E0D0-4438-B85A-7678F043A09D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CampaniaElectoralWeb", "CampaniaElectoralWeb\CampaniaElectoralWeb.csproj", "{69CCF5BC-83F3-41EB-BA43-1B722F3F1A5C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +25,26 @@ Global
 		{23BC3507-A417-47EB-BD79-07809E33B8E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23BC3507-A417-47EB-BD79-07809E33B8E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23BC3507-A417-47EB-BD79-07809E33B8E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DF0AC62-466D-4C0B-AAF7-C45BEB593718}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DF0AC62-466D-4C0B-AAF7-C45BEB593718}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DF0AC62-466D-4C0B-AAF7-C45BEB593718}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DF0AC62-466D-4C0B-AAF7-C45BEB593718}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2115EE42-7344-4884-B690-B5D8DC4D5226}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2115EE42-7344-4884-B690-B5D8DC4D5226}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2115EE42-7344-4884-B690-B5D8DC4D5226}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2115EE42-7344-4884-B690-B5D8DC4D5226}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E436CA30-402A-49F7-AE49-9AA4295C9344}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E436CA30-402A-49F7-AE49-9AA4295C9344}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E436CA30-402A-49F7-AE49-9AA4295C9344}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E436CA30-402A-49F7-AE49-9AA4295C9344}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1BD6AB7-E0D0-4438-B85A-7678F043A09D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1BD6AB7-E0D0-4438-B85A-7678F043A09D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1BD6AB7-E0D0-4438-B85A-7678F043A09D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1BD6AB7-E0D0-4438-B85A-7678F043A09D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69CCF5BC-83F3-41EB-BA43-1B722F3F1A5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69CCF5BC-83F3-41EB-BA43-1B722F3F1A5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69CCF5BC-83F3-41EB-BA43-1B722F3F1A5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69CCF5BC-83F3-41EB-BA43-1B722F3F1A5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7DF0AC62-466D-4C0B-AAF7-C45BEB593718}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DllCampElectoral.Global</RootNamespace>
+    <AssemblyName>DllCampElectoral.Global</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CH_Colaborador.cs" />
+    <Compile Include="CH_Contacto.cs" />
+    <Compile Include="CH_Conteo.cs" />
+    <Compile Include="CH_Encuesta.cs" />
+    <Compile Include="CH_Estados.cs" />
+    <Compile Include="CH_Evento.cs" />
+    <Compile Include="CH_EventoJSON.cs" />
+    <Compile Include="CH_Foto.cs" />
+    <Compile Include="CH_Genero.cs" />
+    <Compile Include="CH_GradoEstudio.cs" />
+    <Compile Include="CH_Municipio.cs" />
+    <Compile Include="CH_MunicipioJSON.cs" />
+    <Compile Include="CH_Notificacion.cs" />
+    <Compile Include="CH_PartidoPolitico.cs" />
+    <Compile Include="CH_Poligono.cs" />
+    <Compile Include="CH_PoligonoDetalleJSON.cs" />
+    <Compile Include="CH_PoligonoJSON.cs" />
+    <Compile Include="CH_ResultadoEncuestaJSON.cs" />
+    <Compile Include="CH_TipoRiesgo.cs" />
+    <Compile Include="CH_ZonaRiesgo.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="Comun.cs" />
+    <Compile Include="EC_ColaboradorJSON.cs" />
+    <Compile Include="EC_EquipoTrabajo.cs" />
+    <Compile Include="EC_EventoExtra.cs" />
+    <Compile Include="EC_TipoPregunta.cs" />
+    <Compile Include="EM_ActividadComercial.cs" />
+    <Compile Include="EM_CatColaborador.cs" />
+    <Compile Include="EM_Contacto.cs" />
+    <Compile Include="EM_Encuesta.cs" />
+    <Compile Include="EM_Gastos.cs" />
+    <Compile Include="EM_MisionVision.cs" />
+    <Compile Include="EM_Munucipios.cs" />
+    <Compile Include="EM_Notificacion.cs" />
+    <Compile Include="EM_PorcentajePregunta.cs" />
+    <Compile Include="EM_Preguntas.cs" />
+    <Compile Include="EM_RangoEdad.cs" />
+    <Compile Include="EM_StatusAfiliados.cs" />
+    <Compile Include="EM_StatusGeneralEvento.cs" />
+    <Compile Include="EM_TipoEventoCampania.cs" />
+    <Compile Include="EM_TipoImagenVideo.cs" />
+    <Compile Include="GM_Calendar.cs" />
+    <Compile Include="GM_CalendarJsn.cs" />
+    <Compile Include="GM_CarreraPolitica.cs" />
+    <Compile Include="GM_LoadBanner.cs" />
+    <Compile Include="GM_PlanCampania.cs" />
+    <Compile Include="GM_VideosLoad.cs" />
+    <Compile Include="JL_Suscripcion.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RR_Afiliados.cs" />
+    <Compile Include="RR_Blog.cs" />
+    <Compile Include="RR_CarreraPolitica.cs" />
+    <Compile Include="RR_DatosHome.cs" />
+    <Compile Include="RR_DatosRedesSociales.cs" />
+    <Compile Include="RR_Donate.cs" />
+    <Compile Include="RR_Fotos.cs" />
+    <Compile Include="RR_GradoEstudios.cs" />
+    <Compile Include="RR_IndicadorEncuestas.cs" />
+    <Compile Include="RR_InformacionCandidato.cs" />
+    <Compile Include="RR_MiembrosEquipoTrabajo.cs" />
+    <Compile Include="RR_ModuloXTipoUsuario.cs" />
+    <Compile Include="RR_NuevaActividad.cs" />
+    <Compile Include="RR_NuevaRespuesta.cs" />
+    <Compile Include="RR_PropuestaCamapaña.cs" />
+    <Compile Include="RR_StatusColaborador.cs" />
+    <Compile Include="RR_StatusEncuestas.cs" />
+    <Compile Include="RR_StatusEventos.cs" />
+    <Compile Include="RR_StatusProyecto.cs" />
+    <Compile Include="RR_TipoEventoAgenda.cs" />
+    <Compile Include="RR_TipoGastos.cs" />
+    <Compile Include="RR_TipoRiesgos.cs" />
+    <Compile Include="RR_TipoUsuarios.cs" />
+    <Compile Include="WN_Combos.cs" />
+    <Compile Include="WN_Configuracion.cs" />
+    <Compile Include="WN_Permisos.cs" />
+    <Compile Include="WN_Usuario.cs" />
+    <Compile Include="ZM_ConversionBS.cs" />
+    <Compile Include="ZM_ImagenesAfiliados.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

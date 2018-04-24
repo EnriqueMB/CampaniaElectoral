@@ -1,0 +1,379 @@
+
+
+.header-button > a {
+    background-color: #F44336;
+}
+.main-menu ul li ul.submenu-mainmenu {
+    border-top: 1px solid #F44336;
+}
+.main-menu ul li:hover a {
+    color: #F44336;
+}
+.main-menu ul li:hover ul li a:hover {
+    color: #F44336;
+}
+a.min1:hover {
+    border: 1px solid #F44336;
+    background-color: #F44336;
+}
+.what-bottom:hover .btn-icon {
+    background-color: #F44336;
+}
+.what-bottom:hover a,
+.what-bottom:hover h3 {
+    color: #F44336;
+}
+.what-bottom:hover h3::before {
+    background: #F44336 none repeat scroll 0 0;
+}
+.support-all a:hover {
+    border: 1px solid #F44336;
+    background-color: #F44336;
+}
+span.published i {
+    color: #F44336;
+}
+span.published {
+    color: #F44336;
+}
+.event-text > h3 a:hover {
+    color: #F44336;
+}
+.event-text > a:hover {
+    color: #F44336;
+}
+.event-icon > a:hover {
+    background-color: #F44336;
+}
+.meet-icon ul li a:hover {
+    background-color: #F44336;
+}
+.indicator-style.owl-theme .owl-controls .owl-buttons div:hover {
+    color: #F44336;
+    border: 1px solid #F44336;
+}
+.readmore > a::before {
+    background: #F44336 none repeat scroll 0 0;
+}
+.blog-container-inner:hover .blog-title a,
+.blog-container-inner:hover .readmore a {
+    color: #F44336;
+}
+.blog-container-inner:hover .post-format-area a.tb-publish,
+.blog-container-inner:hover .post-thumb a.tb-publish {
+    background-color: #F44336;
+}
+.all-contact-text .di-na input[type="submit"]:hover {
+    background-color: #F44336;
+}
+.footer-top-left > a:hover,
+.footer-middle-right a:hover,
+.footer-bottom-right a:hover {
+    color: #F44336;
+}
+.twitter-one a {
+    color: #F44336;
+}
+.img-one a::before {
+    background: #F44336 none repeat scroll 0 0;
+}
+.footer-menu a.active {
+    color: #F44336;
+}
+.footer-menu a:hover {
+    color: #F44336;
+}
+.sin-timeline:hover::before {
+    border: 1px solid #F44336;
+    background: #F44336;
+}
+.sin-timeline::after {
+    background: #F44336 none repeat scroll 0 0;
+}
+.sin-timeline:hover .timeline-date {
+    color: #F44336;
+}
+#toTop i:hover {
+    background-color: #F44336;
+}
+.home-2 .main-menu ul li:hover a {
+    color: #F44336;
+}
+.home-2 .main-menu ul li:hover ul li a:hover {
+    color: #F44336;
+}
+.skill .progress-bar {
+    background: #F44336 none repeat scroll 0 0;
+}
+a.video-popup:hover {
+    color: #F44336;
+}
+.nav.nav-tabs.three-tab > li.active > a img,
+.nav.nav-tabs.three-tab > li.active > a img:focus,
+.nav.nav-tabs.three-tab > li.active > a img:hover {
+    border: 8px solid #F44336;
+}
+.meet-area-two .meet-text > h3 {
+    color: #F44336;
+}
+.meet-area-two .meet-icon ul li a:hover {
+    color: #F44336;
+}
+.timer > div {
+    background-color: #F44336;
+}
+.upcoming-icon i {
+    background-color: #F44336;
+}
+.latest-news > a:hover {
+    color: #F44336;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #F44336;
+}
+button.submit {
+    background-color: #F44336;
+}
+.header-icon li a:hover {
+    color: #F44336;
+}
+.header-right-home-3 .search i:hover {
+    border: 1px solid #F44336;
+    color: #F44336;
+}
+.header-left-home-3 .header-button > a {
+    border: 1px solid #F44336;
+    color: #F44336;
+}
+.header-left-home-3 .header-button > a:hover {
+    background-color: #F44336;
+    border: 1px solid #F44336;
+}
+h1.title6.hm2 span {
+    color: #F44336;
+}
+.offer-icon i {
+    color: #F44336;
+}
+.event-area-three .published3 i,
+.event-area-three .published4 i {
+    color: #F44336;
+}
+.event-date {
+    background-color: #F44336;
+}
+.event-text-img:hover .visual-inner .blog-title > a,
+.event-text-img:hover .readmore > a {
+    color: #F44336;
+}
+.event-text-img:hover .post-format-area a.tb-publish,
+.blog-container-inner:hover .post-thumb a.tb-publish {
+    background-color: #F44336;
+}
+.home-4 h1.title6 span {
+    color: #F44336;
+}
+.home-4 .main-menu ul li:hover a {
+    color: #F44336;
+}
+.home-4 .main-menu ul li:hover ul li a:hover {
+    color: #F44336;
+}
+.about-one > a:hover {
+    background-color: #F44336;
+}
+.home-4 .then-icon > a {
+    color: #F44336;
+}
+.home-4 .counter-next h2 {
+    color: #F44336;
+}
+.reformation-text > a {
+    background-color: #F44336;
+}
+.home-4 a.video-popup:hover {
+    border: 1px solid #F44336;
+}
+.home-4 .blog-meta > span.published3 {
+    border-right: 2px solid #F44336;
+}
+.home-4 .published3,
+.home-4 .published4 {
+    color: #F44336;
+}
+.meet-icon-four > ul {
+    background-color: #F44336;
+}
+.meet-all-four:hover h3 {
+    color: #F44336;
+}
+.loadmore span {
+    background-color: #F44336;
+}
+.event-text-img-four:hover .event-img3 a.tb-publish {
+    background-color: #F44336;
+}
+.breadcrumbs > ul li a {
+    color: #F44336;
+}
+.breadcrumbs ul li a.active::after {
+    background: #F44336 none repeat scroll 0 0;
+}
+.product-tab-menu li a:hover {
+    color: #F44336;
+}
+.product-tab-menu li.active a {
+    color: #F44336;
+}
+.issues-categoris > h3 {
+    color: #F44336;
+}
+.cat-one a:hover {
+    color: #F44336;
+}
+.categori-list a:hover {
+    color: #F44336;
+}
+.cat-one li::after {
+    color: #F44336;
+}
+.categori-list a:hover {
+    border: 1px solid #F44336;
+    background-color: #F44336;
+}
+.pages li.current a,
+.pages a:hover {
+    background-color: #F44336;
+}
+.pages li.cut a:hover {
+    color: #F44336;
+}
+.issues-details-title > h3 {
+    color: #F44336;
+}
+.issues-bottom > h3 a:hover {
+    color: #F44336;
+}
+.chosen-container .chosen-drop ul li.highlighted {
+    background: #F44336;
+}
+.events-two-ara .published3 i,
+.events-two-ara .published4 i {
+    color: #F44336;
+}
+.timer.timer-details > div {
+    background-color: #F44336;
+}
+.event-list li i {
+    color: #F44336;
+}
+.event-list li a:hover {
+    color: #F44336;
+}
+.event-details-slider .owl-controls .owl-page.active span,
+.event-details-slider .owl-theme .owl-controls.clickable .owl-page:hover span {
+    background: #F44336 none repeat scroll 0 0;
+}
+.team-details-text > h3 {
+    color: #F44336;
+}
+.team-icon a:hover {
+    color: #F44336;
+}
+.blog-tag > p span.vidos2 {
+    color: #F44336;
+}
+.blog-share a:hover {
+    color: #F44336;
+}
+.blog-reply-all .blog-title > a,
+.blog-reply-all2 .blog-title > a {
+    color: #F44336;
+}
+.blog-reply-all .blog-title > a:hover,
+.blog-reply-all2 .blog-title > a:hover {
+    background-color: #F44336;
+}
+.blog-from input:focus,
+.blog-from textarea:focus {
+    border-color: #F44336;
+}
+.communication-icon i {
+    border: 1px solid #F44336;
+    color: #F44336;
+}
+.communication-text > h3 {
+    color: #F44336;
+}
+.communication-text > p a:hover {
+    color: #F44336;
+}
+.contact-heading > h3 {
+    color: #F44336;
+}
+.map-input-contact-area .contact-form input:focus,
+.map-input-contact-area .contact-form textarea:focus {
+    border-color: #F44336;
+}
+.donate-sidebar-top > h1,
+.donate-sidebar-bottom > h1 {
+    color: #F44336;
+}
+.donate-sidebar-top a:hover {
+    background-color: #F44336;
+}
+.donate-text > p span {
+    color: #F44336;
+}
+
+.calender-title h1 {
+    color: #F44336;
+}
+.calender-title > p span {
+    color: #F44336;
+}
+.fc-state-default.fc button {
+    background-color: #F44336;
+}
+.fc-state-default {
+    background-color: #F44336;
+}
+.timeline-text a.read-more:hover {
+    color: #F44336;
+}
+.timeline-text > h3 a:hover {
+  color: #F44336;
+}
+.read-icon > a:hover {
+  color: #F44336;
+}
+.blog-title-four > a:hover {
+  color: #F44336;
+}
+.readmore-four a:hover {
+  color: #F44336;
+}
+
+.elements-tab-area .tab-list li.active a {
+  background: #F44336 none repeat scroll 0 0;
+}
+.home-4 .blog-title > a:hover {
+    color: #F44336;
+}
+
+.what-bottom.what-hm-4:hover .then-icon > a,.what-bottom.only-color:hover .then-icon > a{
+   border: 1px solid #F44336;
+    background-color: #F44336;
+}
+.meet-icon-all-four {
+  background-color: #F44336;
+}
+.meet-icon-four a:hover{
+  color: #F44336;
+}
+
+
+.home-4 a.min1:hover {
+    border: 1px solid #F44336;
+}

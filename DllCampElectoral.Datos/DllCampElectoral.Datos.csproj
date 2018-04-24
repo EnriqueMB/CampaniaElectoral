@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2115EE42-7344-4884-B690-B5D8DC4D5226}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DllCampElectoral.Datos</RootNamespace>
+    <AssemblyName>DllCampElectoral.Datos</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ApplicationBlocks.Data">
+      <HintPath>..\..\..\..\..\..\..\dll\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CH_CatalogosDatos.cs" />
+    <Compile Include="CH_ContactoDatos.cs" />
+    <Compile Include="CH_ConteoDatos.cs" />
+    <Compile Include="CH_EncuestaDatos.cs" />
+    <Compile Include="CH_EventoDatos.cs" />
+    <Compile Include="CH_FotosDatos.cs" />
+    <Compile Include="CH_NotificacionDatos.cs" />
+    <Compile Include="CH_PoligonoDatos.cs" />
+    <Compile Include="CH_ZonaRiesgoDatos.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="DA_AutenticarDatos.cs" />
+    <Compile Include="EC_BlogDatos.cs" />
+    <Compile Include="EC_CatalogoDatos.cs" />
+    <Compile Include="EC_EquipoTrabajoDatos.cs" />
+    <Compile Include="EC_EventoExtraDatos.cs" />
+    <Compile Include="EC_TipoPreguntaDatos.cs" />
+    <Compile Include="EM_CatalogosDatos.cs" />
+    <Compile Include="EM_ContactoDatos.cs" />
+    <Compile Include="EM_EncuestaDatos.cs" />
+    <Compile Include="EM_EstadoDatos.cs" />
+    <Compile Include="EM_GastosDatos.cs" />
+    <Compile Include="EM_HistorialActividadDatos.cs" />
+    <Compile Include="EM_MisionVisionDatos.cs" />
+    <Compile Include="EM_MunicipioDatos.cs" />
+    <Compile Include="EM_NotificacionDatos.cs" />
+    <Compile Include="EM_PorcentajePreguntaDatos.cs" />
+    <Compile Include="EM_PreguntasDatos.cs" />
+    <Compile Include="EM_PreguntasRespuestaDatos.cs" />
+    <Compile Include="GM_CalendarDatos.cs" />
+    <Compile Include="GM_CarreraPoliticaDatos.cs" />
+    <Compile Include="GM_LoadBannerDatos.cs" />
+    <Compile Include="GM_PlanCampaniaDatos.cs" />
+    <Compile Include="GM_VideoDatos.cs" />
+    <Compile Include="JL_AfiliadosDatos.cs" />
+    <Compile Include="JL_ColaboradorDatos.cs" />
+    <Compile Include="JL_SuscripcionDatos.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RR_AdministradorWebDatos.cs" />
+    <Compile Include="RR_CatalogoDatos.cs" />
+    <Compile Include="WN_CombosDatos.cs" />
+    <Compile Include="ZM_CatalogosDatos.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DllCampElectoral.Global\DllCampElectoral.Global.csproj">
+      <Project>{7df0ac62-466d-4c0b-aaf7-c45beb593718}</Project>
+      <Name>DllCampElectoral.Global</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

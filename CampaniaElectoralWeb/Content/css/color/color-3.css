@@ -1,0 +1,385 @@
+
+
+.header-button > a {
+    background-color: #FF5D75;
+}
+.main-menu ul li ul.submenu-mainmenu {
+    border-top: 1px solid #FF5D75;
+}
+.main-menu ul li:hover a {
+    color: #FF5D75;
+}
+.main-menu ul li:hover ul li a:hover {
+    color: #FF5D75;
+}
+a.min1:hover {
+    border: 1px solid #FF5D75;
+    background-color: #FF5D75;
+}
+.what-bottom:hover .btn-icon {
+    background-color: #FF5D75;
+}
+.what-bottom:hover a,
+.what-bottom:hover h3 {
+    color: #FF5D75;
+}
+.what-bottom:hover h3::before {
+    background: #FF5D75 none repeat scroll 0 0;
+}
+.support-all a:hover {
+    border: 1px solid #FF5D75;
+    background-color: #FF5D75;
+}
+span.published i {
+    color: #FF5D75;
+}
+span.published {
+    color: #FF5D75;
+}
+.event-text > h3 a:hover {
+    color: #FF5D75;
+}
+.event-text > a:hover {
+    color: #FF5D75;
+}
+.event-icon > a:hover {
+    background-color: #FF5D75;
+}
+.meet-icon ul li a:hover {
+    background-color: #FF5D75;
+}
+.indicator-style.owl-theme .owl-controls .owl-buttons div:hover {
+    color: #FF5D75;
+    border: 1px solid #FF5D75;
+}
+.readmore > a::before {
+    background: #FF5D75 none repeat scroll 0 0;
+}
+.blog-container-inner:hover .blog-title a,
+.blog-container-inner:hover .readmore a {
+    color: #FF5D75;
+}
+.blog-container-inner:hover .post-format-area a.tb-publish,
+.blog-container-inner:hover .post-thumb a.tb-publish {
+    background-color: #FF5D75;
+}
+.all-contact-text .di-na input[type="submit"]:hover {
+    background-color: #FF5D75;
+}
+.footer-top-left > a:hover,
+.footer-middle-right a:hover,
+.footer-bottom-right a:hover {
+    color: #FF5D75;
+}
+.twitter-one a {
+    color: #FF5D75;
+}
+.img-one a::before {
+    background: #FF5D75 none repeat scroll 0 0;
+}
+.footer-menu a.active {
+    color: #FF5D75;
+}
+.footer-menu a:hover {
+    color: #FF5D75;
+}
+.sin-timeline:hover::before {
+    border: 1px solid #FF5D75;
+    background: #FF5D75;
+}
+.sin-timeline::after {
+    background: #FF5D75 none repeat scroll 0 0;
+}
+.sin-timeline:hover .timeline-date {
+    color: #FF5D75;
+}
+#toTop i:hover {
+    background-color: #FF5D75;
+}
+.home-2 .main-menu ul li:hover a {
+    color: #FF5D75;
+}
+.home-2 .main-menu ul li:hover ul li a:hover {
+    color: #FF5D75;
+}
+.skill .progress-bar {
+    background: #FF5D75 none repeat scroll 0 0;
+}
+a.video-popup:hover {
+    color: #FF5D75;
+}
+.nav.nav-tabs.three-tab > li.active > a img,
+.nav.nav-tabs.three-tab > li.active > a img:focus,
+.nav.nav-tabs.three-tab > li.active > a img:hover {
+    border: 8px solid #FF5D75;
+}
+.meet-area-two .meet-text > h3 {
+    color: #FF5D75;
+}
+.meet-area-two .meet-icon ul li a:hover {
+    color: #FF5D75;
+}
+.timer > div {
+    background-color: #FF5D75;
+}
+.upcoming-icon i {
+    background-color: #FF5D75;
+}
+.latest-news > a:hover {
+    color: #FF5D75;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #FF5D75;
+}
+button.submit {
+    background-color: #FF5D75;
+}
+.header-icon li a:hover {
+    color: #FF5D75;
+}
+.header-right-home-3 .search i:hover {
+    border: 1px solid #FF5D75;
+    color: #FF5D75;
+}
+.header-left-home-3 .header-button > a {
+    border: 1px solid #FF5D75;
+    color: #FF5D75;
+}
+.header-left-home-3 .header-button > a:hover {
+    background-color: #FF5D75;
+    border: 1px solid #FF5D75;
+}
+h1.title6.hm2 span {
+    color: #FF5D75;
+}
+.offer-icon i {
+    color: #FF5D75;
+}
+.event-area-three .published3 i,
+.event-area-three .published4 i {
+    color: #FF5D75;
+}
+.event-date {
+    background-color: #FF5D75;
+}
+.event-text-img:hover .visual-inner .blog-title > a,
+.event-text-img:hover .readmore > a {
+    color: #FF5D75;
+}
+.event-text-img:hover .post-format-area a.tb-publish,
+.blog-container-inner:hover .post-thumb a.tb-publish {
+    background-color: #FF5D75;
+}
+.home-4 h1.title6 span {
+    color: #FF5D75;
+}
+.home-4 .main-menu ul li:hover a {
+    color: #FF5D75;
+}
+.home-4 .main-menu ul li:hover ul li a:hover {
+    color: #FF5D75;
+}
+.about-one > a:hover {
+    background-color: #FF5D75;
+}
+.home-4 .then-icon > a {
+    color: #FF5D75;
+}
+.home-4 .counter-next h2 {
+    color: #FF5D75;
+}
+.reformation-text > a {
+    background-color: #FF5D75;
+}
+.home-4 a.video-popup:hover {
+    border: 1px solid #FF5D75;
+}
+.home-4 .blog-meta > span.published3 {
+    border-right: 2px solid #FF5D75;
+}
+.home-4 .published3,
+.home-4 .published4 {
+    color: #FF5D75;
+}
+.meet-icon-four > ul {
+    background-color: #FF5D75;
+}
+.meet-all-four:hover h3 {
+    color: #FF5D75;
+}
+.loadmore span {
+    background-color: #FF5D75;
+}
+.event-text-img-four:hover .event-img3 a.tb-publish {
+    background-color: #FF5D75;
+}
+.breadcrumbs > ul li a {
+    color: #FF5D75;
+}
+.breadcrumbs ul li a.active::after {
+    background: #FF5D75 none repeat scroll 0 0;
+}
+.product-tab-menu li a:hover {
+    color: #FF5D75;
+}
+.product-tab-menu li.active a {
+    color: #FF5D75;
+}
+.issues-categoris > h3 {
+    color: #FF5D75;
+}
+.cat-one a:hover {
+    color: #FF5D75;
+}
+.categori-list a:hover {
+    color: #FF5D75;
+}
+.cat-one li::after {
+    color: #FF5D75;
+}
+.categori-list a:hover {
+    border: 1px solid #FF5D75;
+    background-color: #FF5D75;
+}
+.pages li.current a,
+.pages a:hover {
+    background-color: #FF5D75;
+}
+.pages li.cut a:hover {
+    color: #FF5D75;
+}
+.issues-details-title > h3 {
+    color: #FF5D75;
+}
+.issues-bottom > h3 a:hover {
+    color: #FF5D75;
+}
+.chosen-container .chosen-drop ul li.highlighted {
+    background: #FF5D75;
+}
+.events-two-ara .published3 i,
+.events-two-ara .published4 i {
+    color: #FF5D75;
+}
+.timer.timer-details > div {
+    background-color: #FF5D75;
+}
+.event-list li i {
+    color: #FF5D75;
+}
+.event-list li a:hover {
+    color: #FF5D75;
+}
+.event-details-slider .owl-controls .owl-page.active span,
+.event-details-slider .owl-theme .owl-controls.clickable .owl-page:hover span {
+    background: #FF5D75 none repeat scroll 0 0;
+}
+.team-details-text > h3 {
+    color: #FF5D75;
+}
+.team-icon a:hover {
+    color: #FF5D75;
+}
+.blog-tag > p span.vidos2 {
+    color: #FF5D75;
+}
+.blog-share a:hover {
+    color: #FF5D75;
+}
+.blog-reply-all .blog-title > a,
+.blog-reply-all2 .blog-title > a {
+    color: #FF5D75;
+}
+.blog-reply-all .blog-title > a:hover,
+.blog-reply-all2 .blog-title > a:hover {
+    background-color: #FF5D75;
+}
+.blog-from input:focus,
+.blog-from textarea:focus {
+    border-color: #FF5D75;
+}
+.communication-icon i {
+    border: 1px solid #FF5D75;
+    color: #FF5D75;
+}
+.communication-text > h3 {
+    color: #FF5D75;
+}
+.communication-text > p a:hover {
+    color: #FF5D75;
+}
+.contact-heading > h3 {
+    color: #FF5D75;
+}
+.map-input-contact-area .contact-form input:focus,
+.map-input-contact-area .contact-form textarea:focus {
+    border-color: #FF5D75;
+}
+.donate-sidebar-top > h1,
+.donate-sidebar-bottom > h1 {
+    color: #FF5D75;
+}
+.donate-sidebar-top a:hover {
+    background-color: #FF5D75;
+}
+.donate-text > p span {
+    color: #FF5D75;
+}
+
+.calender-title h1 {
+    color: #FF5D75;
+}
+.calender-title > p span {
+    color: #FF5D75;
+}
+.fc-state-default.fc button {
+    background-color: #FF5D75;
+}
+.fc-state-default {
+    background-color: #FF5D75;
+}
+.timeline-text a.read-more:hover {
+    color: #FF5D75;
+}
+.timeline-text > h3 a:hover {
+  color: #FF5D75;
+}
+.read-icon > a:hover {
+  color: #FF5D75;
+}
+.blog-title-four > a:hover {
+  color: #FF5D75;
+}
+.readmore-four a:hover {
+  color: #FF5D75;
+}
+
+.elements-tab-area .tab-list li.active a {
+  background: #FF5D75 none repeat scroll 0 0;
+}
+
+.home-4 .blog-title > a:hover {
+    color: #FF5D75;
+}
+
+
+.what-bottom.what-hm-4:hover .then-icon > a,.what-bottom.only-color:hover .then-icon > a{
+   border: 1px solid #FF5D75;
+    background-color: #FF5D75;
+}
+.meet-icon-all-four {
+  background-color: #FF5D75;
+}
+.meet-icon-four a:hover{
+  color: #FF5D75;
+}
+.home-4 a.min1:hover {
+    border: 1px solid #FF5D75;
+}
+
+
+
+
+
+
