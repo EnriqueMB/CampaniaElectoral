@@ -421,6 +421,10 @@ var FormValidator = function () {
             },
             ignore: "",
             rules: {
+                ctl00$cph_MasterBody$txtClavElector: {
+                    required: true,
+                    minlength: 18
+                },
                 ctl00$cph_MasterBody$txtNombre: {
                     minlength: 2,
                     required: true
@@ -464,14 +468,29 @@ var FormValidator = function () {
                 ctl00$cph_MasterBody$txtCuidad: {
                     minlength: 1,
                     required: true
-                }//,
+                },
+                ctl00$cph_MasterBody$txtColonia: {
+                    required: true
+                },
                 //txtTipoUsuario: {
                 //    required: true
                 //}
                 //,
                 //ctl00$cph_MasterBody$imgLogo: "TieneImagen"
+                ctl00$cph_MasterBody$txtDireccion: {
+                    required: true,
+                    minlength: 5
+                },
+                txtGenero: {
+                    required: true,
+                    min: true
+                }
             },
             messages: {
+                ctl00$cph_MasterBody$txtClavElector: {
+                    required: "Por favor, ingrese la clave de elector",
+                    minlength: "La longitud debe ser m&iacute;nimo de 18 caracteres"
+                },
                 ctl00$cph_MasterBody$txtNombre: "Por favor, ingrese el nombre del colaborador",
                 ctl00$cph_MasterBody$txtApPaterno: "Por favor, ingrese el apellido paterno del colaborador",
                 ctl00$cph_MasterBody$txtApMaterno: "Por favor, ingrese el apellido materno del colaborador",
@@ -493,8 +512,15 @@ var FormValidator = function () {
                     },
                 ctl00$cph_MasterBody$txtFechaNac: "Por favor, selecciones un fecha de nacimiento",
                 ctl00$cph_MasterBody$txtCodigoPostal: "Por favor, ingrese su c&oacute;digo postal",
-                ctl00$cph_MasterBody$txtCuidad: "Por favor, ingrese su cuidad"//,
-                //txtTipoUsuario: "Por favor, selecciones un tipo de usuario"
+                ctl00$cph_MasterBody$txtCuidad: "Por favor, ingrese su cuidad",
+                ctl00$cph_MasterBody$txtDireccion: "Por favor, ingrese una direcci&oacute;n",
+                ctl00$cph_MasterBody$txtColonia: {
+                    required: "Por favor, ingrese una colonia"
+                },
+                txtGenero: {
+                    required: "Por favor, seleccion un g&eacute;nero",
+                    min: "Por favor, seleccion un g&eacute;nero"
+                }
             },
             invalidHandler: function (event, validator) { //display error alert on form submit
                 successHandler2.hide();
@@ -2006,6 +2032,14 @@ var FormValidator = function () {
                 },
                 ctl00$cph_MasterBody$txtNumeroInt: {
                     number: true
+                },
+                cmbSeccion: {
+                    required: true,
+                    min: 1 
+                },
+                cmbOperador: {
+                    required: true,
+                    min: 1
                 }
             },
             messages: {
@@ -2028,7 +2062,15 @@ var FormValidator = function () {
                 txtGenero: "Por favor, seleciones un g&eacute;nero",
                 ctl00$cph_MasterBody$txtCelular: "Por favor, ingrese un n&uacute;mero valido",
                 ctl00$cph_MasterBody$txtNumeroExt: "Por favor, ingrese un n&uacute;mero exterior valido",
-                ctl00$cph_MasterBody$txtNumeroInt: "Por favor, ingrese un n&uacute;mero interior valido"
+                ctl00$cph_MasterBody$txtNumeroInt: "Por favor, ingrese un n&uacute;mero interior valido",
+                cmbSeccion: {
+                    required: "Por favor, seleccione una secci&oacute;n.",
+                    min: "Por favor, seleccione una secci&oacute;n."
+                },
+                cmbOperador: {
+                    required: "Por favor, seleccione un operador.",
+                    min: "Por favor, seleccione un operador."
+                }
             },
             invalidHandler: function (event, validator) { //display error alert on form submit
                 successHandler2.hide();
@@ -2458,7 +2500,7 @@ var FormValidator = function () {
             submitHandler: function (form2) {
                 successHandler2.show();
                 errorHandler2.hide();
-                this.submit();
+                form.submit();
             }
         });
     };

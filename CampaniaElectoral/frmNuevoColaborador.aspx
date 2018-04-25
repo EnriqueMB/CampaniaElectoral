@@ -26,7 +26,7 @@
                                         Clave Elector <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input type="text" class="form-control tooltips" runat="server" id="txtClavElector" name="txtClavElector" placeholder="" minlength="18" data-original-title="Ingrese la clave de elector." data-rel="tooltip" title="" data-placement="top" />
+                                        <input type="text" class="form-control tooltips" runat="server" id="txtClavElector" name="txtClavElector" placeholder="" data-original-title="Ingrese la clave de elector." data-rel="tooltip" title="" data-placement="top" />
                                         <i class="fa fa-keyboard-o"></i>
                                     </span>
                                 </div>
@@ -290,7 +290,7 @@
                                     <input type="submit" formaction="frmNuevoColaborador.aspx" class="btn btn-green btn-block" name="btnGuardar" value="Guardar"/>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="frmColaboradores.aspx" class="btn btn-red btn-block" name="btnCancelar">Cancelar</a>
+                                    <a id="btnRegresar" href="#" class="btn btn-red btn-block" name="btnCancelar">Cancelar</a>
                                 </div>
                             </div>
                         </div>

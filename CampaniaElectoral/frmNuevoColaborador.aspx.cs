@@ -25,13 +25,17 @@ namespace CampaniaElectoral
         int tipoUsu;
         protected void Page_Load(object sender, EventArgs e)
         {
+            var op = Request.QueryString["op"];
 
-
+            string ScriptRegresar = @"
+                    $(document).ready(
+                        function() {   
+                        var regresar = document.getElementById('btnRegresar'); 
+                        regresar.setAttribute('href', 'frmColaboradores.aspx?op=" + op + @"');                    
+                    });";
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "popup", ScriptRegresar, true);
             if (!IsPostBack)
             { 
-
-                
-
             //Reglas de Operacion
             if (Request.QueryString["op"] != null)
             {
@@ -214,7 +218,7 @@ namespace CampaniaElectoral
 
                     //seccion y casilla se toma del padre
                     divSeccion.Visible = false;
-                    cmbSeccion.DataSource = false;
+                    cmbSeccion.DataSource = null;
 
                     divCasilla.Visible = false;
                     cmbCasilla.DataSource = null;
@@ -242,7 +246,7 @@ namespace CampaniaElectoral
 
                     //sin seccion y casilla
                     divSeccion.Visible = false;
-                    cmbSeccion.DataSource = false;
+                    cmbSeccion.DataSource = null;
 
                     divCasilla.Visible = false;
                     cmbCasilla.DataSource = null;
