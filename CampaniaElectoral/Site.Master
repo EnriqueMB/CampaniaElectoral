@@ -814,6 +814,12 @@
 		<!-- start: CORE JAVASCRIPTS  -->
 		<script src="assets/js/main.js"></script>
 		<!-- end: CORE JAVASCRIPTS  -->
+
+        <asp:ContentPlaceHolder ID="cphScripts" runat="server">
+
+        </asp:ContentPlaceHolder>
+
+
 		<script>
 			jQuery(document).ready(function() {
 			    Main.init();

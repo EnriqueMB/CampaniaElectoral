@@ -4389,6 +4389,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Code\QueryString.cs" />
     <Compile Include="ClasesAux\Autenticacion.cs" />
     <Compile Include="ClasesAux\Auth.cs" />
     <Compile Include="ClasesAux\BasicCrypto.cs" />
