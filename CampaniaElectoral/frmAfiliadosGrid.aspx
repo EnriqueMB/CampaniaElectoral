@@ -7,7 +7,7 @@
                 <div class="panel-heading">
                     <h4>Buscar Afiliados</h4>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body pbBusqueda">
                     <div class="row">
                         <div class="col-md-4">
                              <div class="form-group">
@@ -17,7 +17,7 @@
                                 <div class="input-group">
                                     <input type="text" id="txtBuscar" class="form-control tooltips" maxlength="200" data-original-title="Ingrese nombre" data-rel="tooltip"  title="" data-placement="top" />
                                     <span class="input-group-addon">
-                                       <a href="#" onclick="javascript:SubmitFrm()" style="color:white;text-decoration:none;"><i class="fa fa-search"></i></a>
+                                       <a href="frmAfiliadosGrid.aspx?op=8" id="atxtBuscar" <%--onclick="javascript:SubmitFrm()"--%> style="color:white;text-decoration:none;"><i class="fa fa-search"></i></a>
                                     </span>
                                 </div>
                             </div>
@@ -31,7 +31,7 @@
                                      <span class="input-group-addon"> <i class="fa fa-calendar"></i> </span>
                                     <input type="text" id="fecha" class="form-control date-range" readonly style="cursor:pointer;">
                                     <span class="input-group-addon">
-                                        <a href="#" onclick="javascript:SubminFecha()" style="color: white; text-decoration: none;"><i class="fa fa-search"></i></a>
+                                        <a href="frmAfiliadosGrid.aspx?op=10" id="afecha" style="color: white; text-decoration: none;"><i class="fa fa-search"></i></a>
                                     </span>
                                 </div>
                             </div>
@@ -46,7 +46,9 @@
                                         <option value="0">No Ratificado</option>
                                         <option value="1">Ratificado</option>
                                     </select>
-                                    <span class="input-group-addon"><a href="#" onclick="javascript:SubminSt()" style="color:white;text-decoration:none;"><i class="fa fa-search"></i></a></span>
+                                    <span class="input-group-addon">
+                                        <a href="frmAfiliadosGrid.aspx?op=9" id="aform-field-select-3" style="color:white;text-decoration:none;"><i class="fa fa-search"></i></a>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -60,7 +62,7 @@
                                 <div class="input-group">
                                     <input type="text" id="seccion" class="form-control tooltips" maxlength="200" data-original-title="Ingrese clave de seccion" data-rel="tooltip"  title="" data-placement="top" />
                                     <span class="input-group-addon">
-                                       <a href="#" onclick="javascript:SubmitSeccion()" style="color:white;text-decoration:none;"><i class="fa fa-search"></i></a>
+                                       <a href="frmAfiliadosGrid.aspx?op=11" id="aseccion" style="color:white;text-decoration:none;"><i class="fa fa-search"></i></a>
                                     </span>
                                 </div>
                             </div>
@@ -73,7 +75,7 @@
                                 <div class="input-group">
                                     <input type="text" id="clvElector" class="form-control tooltips" maxlength="200" data-original-title="Ingrese Clave de Elector" data-rel="tooltip"  title="" data-placement="top" />
                                     <span class="input-group-addon">
-                                       <a href="#" onclick="javascript:SubmitClv()" style="color:white;text-decoration:none;"><i class="fa fa-search"></i></a>
+                                       <a href="frmAfiliadosGrid.aspx?op=12" id="aclvElector" style="color:white;text-decoration:none;"><i class="fa fa-search"></i></a>
                                     </span>
                                 </div>
                             </div>
@@ -86,7 +88,7 @@
                                 <div class="input-group">
                                     <input type="text" id="operador" class="form-control tooltips" maxlength="200" data-original-title="Ingrese nombre de operador" data-rel="tooltip"  title="" data-placement="top" />
                                     <span class="input-group-addon">
-                                       <a href="#" onclick="javascript:SubmitOpe()" style="color:white;text-decoration:none;"><i class="fa fa-search"></i></a>
+                                       <a href="frmAfiliadosGrid.aspx?op=13" id="aoperador" style="color:white;text-decoration:none;"><i class="fa fa-search"></i></a>
                                     </span>
                                 </div>
                             </div>
@@ -233,41 +235,43 @@
         <% } %>
         </tbody>
     </table>
-     <script>
-         $("panel-body").on("click", "a", function (event) {
-             event.preventDefault();
-         });
+     
+</asp:Content>
 
-         $("frmMaster").on("a", function (event) {
-             event.preventDefault();
+<asp:Content ContentPlaceHolderID="cphScripts" runat="server">
+    <script>
+        $(document).ready(function () {
+            $(".pbBusqueda a").click(function () {
+             //$(".panel-body").on("click", "a", function (event) {
+                 event.preventDefault();
+                 var aux = $(this).attr('id');
+                 var url = $(this).attr('href');
+                 var Searchtxt = '';
+                 switch(aux)
+                 {
+                     case 'atxtBuscar':
+                         Searchtxt = document.getElementById("txtBuscar").value;
+                         break;
+                     case 'aform-field-select-3':
+                         Searchtxt = document.getElementById("form-field-select-3").value;
+                         break;
+                     case 'afecha':
+                         Searchtxt = document.getElementById("fecha").value;
+                         break;
+                     case 'aseccion':
+                         Searchtxt = document.getElementById("seccion").value;
+                         break;
+                     case 'aclvElector':
+                         Searchtxt = document.getElementById("clvElector").value;
+                         break;
+                     case 'aoperador':
+                         Searchtxt = document.getElementById("operador").value;
+                         break;
+                 }
+                 url = url + "&Buscar=" + Searchtxt
+                 console.log(url);
+                 //window.location = url;
+             });
          });
-    </script>
-   
-    <script type="text/javascript">
-        function SubmitFrm() {
-            var Searchtxt = document.getElementById("txtBuscar").value;
-            window.location = "frmAfiliadosGrid.aspx?op=8&Buscar=" + Searchtxt;
-        }
-
-        function SubminSt() {
-            var Searchtxt = document.getElementById("form-field-select-3").value;
-            window.location = "frmAfiliadosGrid.aspx?op=9&Buscar=" + Searchtxt;
-        }
-        function SubminFecha() {
-            var Searchtxt = document.getElementById("fecha").value;
-            window.location = "frmAfiliadosGrid.aspx?op=10&Buscar=" + Searchtxt;
-        }
-        function SubmitSeccion() {
-            var Searchtxt = document.getElementById("seccion").value;
-            window.location = "frmAfiliadosGrid.aspx?op=11&Buscar=" + Searchtxt;
-        }
-        function SubmitClv() {
-            var Searchtxt = document.getElementById("clvElector").value;
-            window.location = "frmAfiliadosGrid.aspx?op=12&Buscar=" + Searchtxt;
-        }
-        function SubmitOpe() {
-            var Searchtxt = document.getElementById("operador").value;
-            window.location = "frmAfiliadosGrid.aspx?op=13&Buscar=" + Searchtxt;
-        }
-    </script>
+    </script>   
 </asp:Content>
