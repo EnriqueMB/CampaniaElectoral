@@ -486,7 +486,7 @@ namespace CampaniaElectoral
         {
             try
             {
-                WN_Combos Datos = new WN_Combos { CadenaConexion = Comun.Conexion , Parametro01Int=tipoUsu};
+                WN_Combos Datos = new WN_Combos { CadenaConexion = Comun.Conexion , Parametro01Int=tipusu};
                 WN_CombosNegocio GN = new WN_CombosNegocio();
                 cmbAsignado.DataSource = GN.ObtenerComboPadre(Datos);
                 cmbAsignado.DataValueField = "ID";
