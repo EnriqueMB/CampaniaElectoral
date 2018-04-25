@@ -30,7 +30,7 @@
                                     <asp:DropDownList runat="server" ID="cmbSeccion" AutoPostBack="true" ViewStateMode="Enabled" EnableViewState="true" Width="250" OnSelectedIndexChanged="cmbSeccion_SelectedIndexChanged" CssClass="required search-select">
                                         <%--<asp:ListItem Text="--SELLECCIONE--" Value="0" Selected="True"/>--%>
                                     </asp:DropDownList>
-                                    <asp:RequiredFieldValidator ErrorMessage=" Seleccione una seccion" ControlToValidate="cmbSeccion" runat="server" ForeColor="Red" InitialValue=""/>
+                                    <asp:RequiredFieldValidator ErrorMessage="Seleccione una seccion" ControlToValidate="cmbSeccion" runat="server" ForeColor="Red" InitialValue=""/>
                                 </span>
                             </div>
                         </div>
