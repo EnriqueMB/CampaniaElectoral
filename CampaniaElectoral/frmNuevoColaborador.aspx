@@ -9,6 +9,8 @@
                 <div class="panel-body">
                     <div class="row">
                         <asp:HiddenField ID="hf" runat="server" />
+                        <input id="inputImgServer" type="hidden" value="<% Response.Write(imgServer); %>"/>
+                        <input id="inputPassServer" type="hidden" value="<% Response.Write(passServer); %>"/>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
@@ -38,7 +40,7 @@
                                         Tipo de Usuario <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                            <asp:TextBox ID="txtTipoUsuario" runat="server" class="form-control tooltips" placeholder="" data-original-title="Ingrese la clave de elector." data-rel="tooltip" title="" data-placement="top" ReadOnly="true"></asp:TextBox>
+                                            <asp:TextBox ID="txtTipoUsuario" runat="server" class="form-control tooltips" placeholder="" data-original-title="Seleccion un tipo de colaborador." data-rel="tooltip" title="" data-placement="top" ReadOnly="true"></asp:TextBox>
                                             <asp:DropDownList ID="cmbTipoUsuario" runat="server"  class="form-control search-select" ></asp:DropDownList>
                                         <i class="fa fa-keyboard-o"></i>
                                     </span>
@@ -207,7 +209,7 @@
                                     <select class="form-control search-select" id="txtGenero" name="txtGenero">
                                         <option value=""></option>
                                         <% foreach (var Item in ListaGeneros)
-                                           {
+                                           { 
                                                Response.Write("<option value='" + Item.IDGenero.ToString() + "'> " + Item.Descripcion.ToString() + "</option>");
                                            }%>
                                     </select>
@@ -262,9 +264,9 @@
                                         <div class="fileupload-preview fileupload-exists thumbnail"></div>
                                         <div>
                                             <span class="btn btn-light-grey btn-file"><span class="fileupload-new"><i class="fa fa-picture-o"></i>Seleccione una imagen</span><span class="fileupload-exists"><i class="fa fa-picture-o"></i> Cambiar</span>
-                                                <%--<input type="file" class="fileupload" id="imgLogo" name="imgLogo" runat="server"/>--%>
-                                                <asp:FileUpload CssClass="fileupload" name="imgImagen" ID="imgImagen" runat="server" />
+                                                <asp:FileUpload CssClass="fileupload" name="imgImagen" ID="imgImagen" runat="server"/>
                                             </span>
+                                            
                                             <a href="#" class="btn fileupload-exists btn-light-grey" data-dismiss="fileupload">
                                                 <i class="fa fa-times"></i>Quitar
                                             </a>

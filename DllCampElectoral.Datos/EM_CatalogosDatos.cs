@@ -538,7 +538,7 @@ namespace DllCampElectoral.Datos
                     Datos.IDGenero = Dr.GetInt32(Dr.GetOrdinal("IDGenero"));
                     Datos.CodigoPostal = Dr.GetString(Dr.GetOrdinal("CP"));
                     Datos.IDTipoUsu = Dr.GetInt32(Dr.GetOrdinal("IDTipoUsuario"));
-
+                    Datos.Imagen = Dr.GetString(Dr.GetOrdinal("Imagen"));
 
                     Datos.Completado = true;
                     break;
