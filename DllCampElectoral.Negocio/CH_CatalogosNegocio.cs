@@ -111,6 +111,20 @@ namespace DllCampElectoral.Negocio
             }
         }
 
+        public void ObtenerComboColaboradoresTipo(CH_PartidoPolitico Datos)
+        {
+            try
+            {
+                CH_CatalogosDatos CD = new CH_CatalogosDatos();
+                CD.ObtenerCombosColaborador(Datos);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
         public void EliminarPartidoXID(CH_PartidoPolitico Datos)
         {
             try

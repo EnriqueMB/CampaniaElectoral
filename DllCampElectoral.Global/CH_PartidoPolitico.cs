@@ -15,7 +15,13 @@ namespace DllCampElectoral.Global
             get { return _IDPartido; }
             set { _IDPartido = value; }
         }
+        private CH_Colaborador _DatosAuxColab;
 
+        public CH_Colaborador DatosAuxColab
+        {
+            get { return _DatosAuxColab; }
+            set { _DatosAuxColab = value; }
+        }
         private string _Nombre;
         public string Nombre
         {
@@ -36,6 +42,15 @@ namespace DllCampElectoral.Global
             get { return _UrlLogo; }
             set { _UrlLogo = value; }
         }
+
+        private string _Logo;
+
+        public string Logo
+        {
+            get { return _Logo; }
+            set { _Logo = value; }
+        }
+
 
         private string _ExtensionLogo;
         public string ExtensionLogo
