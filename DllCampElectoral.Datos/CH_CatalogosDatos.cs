@@ -142,6 +142,7 @@ namespace DllCampElectoral.Datos
                     Item.Siglas = Dr.GetString(Dr.GetOrdinal("Siglas"));
                     Item.UrlLogo = Dr.GetString(Dr.GetOrdinal("UrlLogo"));
                     Item.RGBColor = Dr.GetString(Dr.GetOrdinal("Color"));
+                    Item.Logo = Dr.GetString(Dr.GetOrdinal("Logo"));
                     Lista.Add(Item);
                 }
                 return Lista;
@@ -207,6 +208,51 @@ namespace DllCampElectoral.Datos
                     Datos.Completado = true;
                 }
                 Datos.Resultado = Resultado;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void ObtenerCombosColaborador(CH_PartidoPolitico Datos)
+        {
+            try
+            {
+                CH_Colaborador DatosResult = new CH_Colaborador();
+                DataSet Ds = SqlHelper.ExecuteDataset(Datos.Conexion, "EM_spCSLDB_get_ColaboradoresTipos");
+                if (Ds != null)
+                {
+                    if (Ds.Tables.Count == 2)
+                    {
+                        DataTableReader Dr = Ds.Tables[0].CreateDataReader();
+                        List<RR_TipoUsuarios> ListaTiposUsers = new List<RR_TipoUsuarios>();
+                        RR_TipoUsuarios ItemTU;
+                        while (Dr.Read())
+                        {
+                            ItemTU = new RR_TipoUsuarios();
+                            ItemTU.IDTUsuario = Dr.GetInt32(Dr.GetOrdinal("IDTipoUsuario"));
+                            ItemTU.Descripcion = Dr.GetString(Dr.GetOrdinal("Descripcion"));
+                            ListaTiposUsers.Add(ItemTU);
+                        }
+
+                        DataTableReader Dr2 = Ds.Tables[1].CreateDataReader();
+                        List<CH_Colaborador> ListaColabs = new List<CH_Colaborador>();
+                        CH_Colaborador ItemCo;
+                        while (Dr2.Read())
+                        {
+                            ItemCo = new CH_Colaborador();
+                            ItemCo.IDColaborador = Dr2.GetString(Dr2.GetOrdinal("IDColaborador"));
+                            ItemCo.Nombre = Dr2.GetString(Dr2.GetOrdinal("Nombre"));
+                            ItemCo.IDTipoUsuario = Dr2.GetInt32(Dr2.GetOrdinal("IDTipoUsuario"));
+                            ListaColabs.Add(ItemCo);
+                        }
+                        DatosResult.ListaUsers = ListaTiposUsers;
+                        DatosResult.ListaColaboradores = ListaColabs;
+                        Datos.Completado = true;
+                        Datos.DatosAuxColab = DatosResult;
+                    }
+                }
             }
             catch (Exception ex)
             {
