@@ -404,7 +404,83 @@ var FormValidator = function () {
         var errorHandler2 = $('.errorHandler', form2);
         var successHandler2 = $('.successHandler', form2);
        
+        $.validator.addMethod("formatoImg", function (value, element, params) {
+            //Checamos que tenga un archivo el input file
+            var bandera = document.getElementById('inputImgServer').value;
+            if (element.value.length != 0) {
+                //Si hay obtenemos la extensión
+                var arrayString = element.value.split(".");
+                var longitud = arrayString.length;
+                var extension = arrayString[longitud - 1];
+                var valido = false;
+
+                for (var i = 0 ; i < params.length ; i++) {
+                    if (params[i] == extension)
+                        valido = true;
+                }
+            }
+            else {
+                if (bandera == "True")
+                {
+                    valido = true;
+                }
+                else
+                {
+                    valido = false;
+                }
+            }
+            return valido;
+        }, 'Formato no valido.');
+
+        $.validator.addMethod("validarImg", function (value, element, params) {
+            //Bandera que me indica si hay o no imagen en el servidor
+            var bandera = document.getElementById(params[0]).value;
+            //Hay imagen en el servidor?
+            if (bandera == "True") {
+                return true;
+            }
+            else {
+                //No Hay un elemento en el file input
+                if (element.value.length == 0 || element === undefined) {
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            }
+
+        }, 'Debe seleccionar una imagen.');
+
+        $.validator.addMethod("passwordCSL", function (value, element, params) {
+            //Bandera que me indica si hay o no imagen en el servidor
+            var password = document.getElementById(params[0]).value;
+            var passwordAgain = document.getElementById(params[1]).value;
+            var bandera = document.getElementById(params[2]).value;
+            var valido = false;
+            var maxCaracteres = 15, minCaracteres = 6;
+            //console.log(password);
+            //console.log(passwordAgain);
+
+            //Estan vacios
+            if (password.length == 0 && passwordAgain == 0) {
+                //Hay password en la bd
+                if (bandera == "True") {
+                    valido = true;
+                }
+            }
+            else
+            {
+                //Caracteres min: 6 y max: 15                                                                                     Mismos passwords=?
+                if ((minCaracteres <= password.length <= maxCaracteres && minCaracteres <= passwordAgain <= maxCaracteres) && (password == passwordAgain))
+                {
+                    valido = true;
+                }
+            }
+            return valido;
+        }, 'Por favor ingrese un password de con una longitud m&iacute;nima de: 6 y  m&aacute;xima de 15, adem&aacute;s ambos campos deben coincider: Password y Confirmar password.');
+
         $('#frmMaster').validate({
+            //debug:true,
             errorElement: "span", // contain the error msg in a small tag
             errorClass: 'help-block',
             errorPlacement: function (error, element) { // render error placement for each input type
@@ -448,13 +524,10 @@ var FormValidator = function () {
                     required: true
                 },
                 ctl00$cph_MasterBody$id_password: {
-                    minlength: 6,
-                    required: true
+                    passwordCSL: true, passwordCSL: ["cph_MasterBody_id_password", "cph_MasterBody_id_password_again", "inputPassServer"]
                 },
                 ctl00$cph_MasterBody$id_password_again: {
-                    required: true,
-                    minlength: 6,
-                    equalTo: "#cph_MasterBody_id_password"
+                    passwordCSL: true, passwordCSL: ["cph_MasterBody_id_password", "cph_MasterBody_id_password_again", "inputPassServer"]
                 },
                 ctl00$cph_MasterBody$txtFechaNac: {
                     minlength: 1,
@@ -472,11 +545,10 @@ var FormValidator = function () {
                 ctl00$cph_MasterBody$txtColonia: {
                     required: true
                 },
-                //txtTipoUsuario: {
-                //    required: true
-                //}
-                //,
-                //ctl00$cph_MasterBody$imgLogo: "TieneImagen"
+                ctl00$cph_MasterBody$imgImagen: {
+                    validarImg: true, validarImg:["inputImgServer"],
+                    formatoImg: true, formatoImg: ["png"]
+                },
                 ctl00$cph_MasterBody$txtDireccion: {
                     required: true,
                     minlength: 5
@@ -484,7 +556,7 @@ var FormValidator = function () {
                 txtGenero: {
                     required: true,
                     min: true
-                }
+                },
             },
             messages: {
                 ctl00$cph_MasterBody$txtClavElector: {
@@ -499,17 +571,6 @@ var FormValidator = function () {
                     email: "Su direcci&oacute;n de correo electr&oacute;nico debe tener el formato de nombre@dominio.com"
                 },
                 ctl00$cph_MasterBody$txtTelefono: "Por favor, ingrese el t&eacute;lefono del colaborador",
-                ctl00$cph_MasterBody$id_password: 
-                    {
-                        required: "Por favor, ingrese un password",
-                        minlength: "Por favor, ingrese al menos 6 caracteres"
-                    },
-                ctl00$cph_MasterBody$id_password_again:
-                    {
-                        required: "Por favor, ingrese de nuevo su password",
-                        minlength: "Por favor, ingrese al menos 6 caracteres",
-                        equalTo: "Por favor, confirme su password"
-                    },
                 ctl00$cph_MasterBody$txtFechaNac: "Por favor, selecciones un fecha de nacimiento",
                 ctl00$cph_MasterBody$txtCodigoPostal: "Por favor, ingrese su c&oacute;digo postal",
                 ctl00$cph_MasterBody$txtCuidad: "Por favor, ingrese su cuidad",
