@@ -9,8 +9,8 @@
                 <div class="panel-body">
                     <div class="row">
                         <asp:HiddenField ID="hf" runat="server" />
-                        <input id="inputImgServer" type="hidden" value="<% Response.Write(imgServer); %>"/>
-                        <input id="inputPassServer" type="hidden" value="<% Response.Write(passServer); %>"/>
+                        <input id="inputImgServer"  name="inputImgServer"   type="hidden" value="<% Response.Write(imgServer); %>"/>
+                        <input id="inputPassServer" name="inputPassServer"  type="hidden" value="<% Response.Write(passServer); %>"/>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
@@ -210,7 +210,10 @@
                                         <option value=""></option>
                                         <% foreach (var Item in ListaGeneros)
                                            { 
-                                               Response.Write("<option value='" + Item.IDGenero.ToString() + "'> " + Item.Descripcion.ToString() + "</option>");
+                                                if(Item.IDGenero == idGenero)
+                                                    Response.Write("<option value='" + Item.IDGenero.ToString() + "' selected='selected'> " + Item.Descripcion.ToString() + "</option>");
+                                                else
+                                                    Response.Write("<option value='" + Item.IDGenero.ToString() + "'> " + Item.Descripcion.ToString() + "</option>");
                                            }%>
                                     </select>
                                 </div>

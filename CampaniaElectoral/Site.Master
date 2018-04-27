@@ -271,7 +271,7 @@
 							<div class="col-md-12">
 								<div class="panel panel-white">
 									<div class="panel-body">
-                                        <form id="frmMaster" runat="server">
+                                        <form id="frmMaster" runat="server" autocomplete="on">
                                          <div>
                                                 <asp:ContentPlaceHolder ID="cph_MasterBody" runat="server">
                                                 </asp:ContentPlaceHolder>

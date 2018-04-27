@@ -301,6 +301,23 @@ namespace DllCampElectoral.Global
             get { return _NuevoRegistro; }
             set { _NuevoRegistro = value; }
         }
+
+        private string _MensajeSQL;
+
+        public string MensajeSQL
+        {
+            get { return _MensajeSQL; }
+            set { _MensajeSQL = value; }
+        }
+        private bool _BandPassServer;
+
+        public bool BandPassServer
+        {
+            get { return _BandPassServer; }
+            set { _BandPassServer = value; }
+        }
+
+
         #endregion
 
     }
