@@ -162,7 +162,7 @@
                         <div class="modal-dialog modal-sm">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button">
+                                  <button id="eliminar-<% = Item.IDAfiliado.Trim() %>" aria-hidden="true" data-dismiss="modal" class="close" type="button">
                                         ×
                                     </button>
                                     <h4 id="mySmallModalLabel" class="modal-title">Confirmación</h4>
@@ -175,7 +175,7 @@
                                 <div class="modal-footer">                     
                                     <button data-dismiss="modal" class="btn btn-red" type="button">No</button>
                                     <%
-                                        Response.Write("<a href='frmAfiliadosGrid.aspx?op=3&id=" + Item.IDAfiliado.ToString() + "' class='btn btn-green add-row' runat='server'>Si</a>");
+                                        Response.Write("<button  data-id='" + Item.IDAfiliado.ToString() +"'  class='btn btn-green add-row eliminar' runat='server' >Sí</button>");
                                     %>                                          
                                 </div>
                             </div>
@@ -186,7 +186,7 @@
                         <div class="modal-dialog modal-sm">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button">
+                                    <button id="ratificar-<% = Item.IDAfiliado.Trim() %>" aria-hidden="true" data-dismiss="modal" class="close" type="button">
                                         ×
                                     </button>
                                     <h4 id="mySmallModalLabel" class="modal-title">Confirmación</h4>
@@ -198,9 +198,9 @@
                                 </div>
                                 <div class="modal-footer">                     
                                     <button data-dismiss="modal" class="btn btn-red" type="button">No</button>
-                                    <%
-                                        Response.Write("<a href='frmAfiliadosGrid.aspx?op=6&id=" + Item.IDAfiliado.ToString() + "' class='btn btn-green add-row' runat='server'>Si</a>");
-                                    %>                                          
+                                   <%
+                                        Response.Write("<button  data-id='" + Item.IDAfiliado.ToString() +"'  class='btn btn-green add-row ratificar' runat='server' >Sí</button>");
+                                    %>                            
                                 </div>
                             </div>
                             <!-- /.modal-content -->
@@ -210,7 +210,7 @@
                         <div class="modal-dialog modal-sm">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button">
+                                    <button id="imprimir-<% = Item.IDAfiliado.Trim() %>" aria-hidden="true" data-dismiss="modal" class="close" type="button">
                                         ×
                                     </button>
                                     <h4 id="mySmallModalLabel" class="modal-title">Confirmación</h4>
@@ -223,7 +223,7 @@
                                 <div class="modal-footer">                     
                                     <button data-dismiss="modal" class="btn btn-red" type="button">No</button>
                                     <%
-                                        Response.Write("<a href='frmAfiliadosGrid.aspx?op=7&id=" + Item.IDAfiliado.ToString() + "' class='btn btn-green add-row' runat='server'>Si</a>");
+                                        Response.Write("<a href='frmAfiliadosGrid.aspx?op=7&id=" + Item.IDAfiliado.ToString() + "'  data-id='" + Item.IDAfiliado.ToString() +"'  class='btn btn-green add-row imprimir' runat='server'>Si</a>");
                                     %>                                          
                                 </div>
                             </div>
@@ -241,6 +241,68 @@
 <asp:Content ContentPlaceHolderID="cphScripts" runat="server">
     <script>
         $(document).ready(function () {
+            $(".imprimir").click(function () {
+                var id = $(this).attr('data-id');
+                $('#imprimir-' + id).click();
+            });
+            $(".ratificar ").click(function () {
+                var id = $(this).attr('data-id');
+                
+                $.ajax({
+                    type: 'get',
+                    url: 'sfrmRetificarAfiliadosGrid.aspx',
+                    async: false,
+                    data: {
+                        'id': id
+                    },
+                    success: function (data) {
+
+                        if (data == 'Exito') {
+                            alert("La acción fue ejecutada con éxito");
+                            $('#ratificar-' + id).click();
+                            location.reload();
+                        } else {
+                            alert("La acción no se pudo ejecutar correctamente. Por favor contacte a soporte técnico");
+                           
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert(xhr.status);
+                        alert(thrownError);
+                    }
+                });
+            });
+            $(".eliminar ").click(function () {
+                
+                var id = $(this).attr('data-id');
+                
+               
+                
+                $.ajax({
+                    type: 'get',
+                    url: 'sfrmEliminarAfiliadosGrid.aspx',
+                    async: false,
+                    data: {
+                        'id': id
+                    },
+                    success: function (data) {
+                      
+                        if (data=='Exito') {
+                            alert("El registro se ha eliminado con éxito");
+                            $('#eliminar-' + id).click();
+                            
+                            location.reload();
+                        } else {
+                            alert("El registro no se pudo eliminar. Contacte a soporte técnico");
+                          
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status);
+                    alert(thrownError);
+                }
+                });
+            });
             $(".pbBusqueda a").click(function () {
              //$(".panel-body").on("click", "a", function (event) {
                  event.preventDefault();

@@ -236,6 +236,7 @@
     <Content Include="assets\images\NoImage.png" />
     <Content Include="assets\images\note_dot.png" />
     <Content Include="assets\images\photodune-4043508-3d-modern-office-room-l.jpg" />
+    <Content Include="assets\images\por-definir.png" />
     <Content Include="assets\images\shadow-left.png" />
     <Content Include="assets\images\timer-piece.png" />
     <Content Include="assets\images\triangle_toolbar.png" />
@@ -4327,6 +4328,8 @@
     <Content Include="assets\sass\vendor\_tags-input.scss" />
     <Content Include="assets\sass\vendor\_time-picker.scss" />
     <Content Include="Images\FotosBlog\Thumbs.db" />
+    <Content Include="sfrmEliminarAfiliadosGrid.aspx" />
+    <Content Include="sfrmRetificarAfiliadosGrid.aspx" />
     <Content Include="Site.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -5304,6 +5307,13 @@
     <Compile Include="sfrmDetallePoligono.aspx.designer.cs">
       <DependentUpon>sfrmDetallePoligono.aspx</DependentUpon>
     </Compile>
+    <Compile Include="sfrmEliminarAfiliadosGrid.aspx.cs">
+      <DependentUpon>sfrmEliminarAfiliadosGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sfrmEliminarAfiliadosGrid.aspx.designer.cs">
+      <DependentUpon>sfrmEliminarAfiliadosGrid.aspx</DependentUpon>
+    </Compile>
     <Compile Include="sfrmEventos.aspx.cs">
       <DependentUpon>sfrmEventos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5345,6 +5355,13 @@
     </Compile>
     <Compile Include="sfrmResultadosEncuesta.aspx.designer.cs">
       <DependentUpon>sfrmResultadosEncuesta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="sfrmRetificarAfiliadosGrid.aspx.cs">
+      <DependentUpon>sfrmRetificarAfiliadosGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sfrmRetificarAfiliadosGrid.aspx.designer.cs">
+      <DependentUpon>sfrmRetificarAfiliadosGrid.aspx</DependentUpon>
     </Compile>
     <Compile Include="sfrmZonasRiesgoXIDs.aspx.cs">
       <DependentUpon>sfrmZonasRiesgoXIDs.aspx</DependentUpon>
