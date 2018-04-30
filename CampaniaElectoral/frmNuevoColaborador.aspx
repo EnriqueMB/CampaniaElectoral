@@ -128,7 +128,7 @@
                                     <label class="control-label" for="cmbSeccion">
                                         Casilla <span class="symbol required"></span>
                                     </label>
-                                    <asp:DropDownList ID="cmbCasilla" runat="server"  class="form-control search-select"></asp:DropDownList>
+                                    <asp:DropDownList ID="cmbCasilla" runat="server"  class="form-control search-select" ></asp:DropDownList>
                                 </div>
                             </div>
                         </div>
@@ -295,7 +295,10 @@
                                     <input type="submit" formaction="frmNuevoColaborador.aspx" class="btn btn-green btn-block" name="btnGuardar" value="Guardar"/>
                                 </div>
                                 <div class="col-md-6">
-                                    <a id="btnRegresar" href="#" class="btn btn-red btn-block" name="btnCancelar">Cancelar</a>
+                                    <asp:button id="btnRegresar" class="btn btn-red btn-block" name="btnCancelar" 
+                                        runat="server" text="Cancelar" 
+                                        OnClientClick="JavaScript:window.history.back(1);return false;">
+                                    </asp:button>
                                 </div>
                             </div>
                         </div>
