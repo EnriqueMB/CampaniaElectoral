@@ -79,6 +79,10 @@ namespace CampaniaElectoral
                     double.TryParse(Request.Form["hfLatitud"].ToString(), NumberStyles.Currency, esMX, out Latitud);
                     double.TryParse(Request.Form["hfLongitud"].ToString(), NumberStyles.Currency, esMX, out Longitud);
                     this.Guardar(IDPoligono, Latitud, Longitud, Latitud, Longitud);
+
+                    string Script = DialogMessage.Show(TipoMensaje.Success, "Datos guardados correctamente.", "Success", ShowMethod.FadeIn, HideMethod.FadeOut, ToastPosition.TopFullWidth, true);
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "popup", Script, true);
+                    Response.Redirect(Request.Url.AbsoluteUri);
                 }
             }
         }

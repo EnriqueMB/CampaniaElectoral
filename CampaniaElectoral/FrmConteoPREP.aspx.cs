@@ -19,6 +19,8 @@ namespace CampaniaElectoral
 
         public List<CH_PartidoPolitico> partidos = new List<CH_PartidoPolitico>();
 
+        public CH_PartidoPolitico DatosGlobales = new CH_PartidoPolitico();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -34,7 +36,8 @@ namespace CampaniaElectoral
                 CH_PartidoPolitico datos = new CH_PartidoPolitico { Conexion = Comun.Conexion };
                 CH_CatalogosNegocio CPPN = new CH_CatalogosNegocio();
                 partidos = CPPN.ObtenerCatalogoPartidos(datos);
-
+                CPPN.ObtenerComboColaboradoresTipo(datos);
+                 DatosGlobales = datos;
 
             if (!IsPostBack)
             {

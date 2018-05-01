@@ -54,7 +54,7 @@
 							<br>
 							No se preocupe, ¡lo arreglaremos!
 						</p>
-                        <a href="/" class="btn btn-red btn-return"> Ir a Inicio </a>
+                        <a href="frmEjemplo.aspx" class="btn btn-red btn-return"> Ir a Inicio </a>
 					</div>
 				</div>
 				<!-- end: 500 -->

@@ -33,9 +33,6 @@ namespace DllCampElectoral.Global
             set { _casilla = value; }
         }
 
-
-
-
         private string _IDColaborador;
 
         public string IDColaborador
@@ -301,6 +298,31 @@ namespace DllCampElectoral.Global
             get { return _NuevoRegistro; }
             set { _NuevoRegistro = value; }
         }
+
+        private string _MensajeSQL;
+
+        public string MensajeSQL
+        {
+            get { return _MensajeSQL; }
+            set { _MensajeSQL = value; }
+        }
+        private bool _BandPassServer;
+
+        public bool BandPassServer
+        {
+            get { return _BandPassServer; }
+            set { _BandPassServer = value; }
+        }
+
+        private int _Seccion;
+
+        public int Seccion
+        {
+            get { return _Seccion; }
+            set { _Seccion = value; }
+        }
+
+
         #endregion
 
     }

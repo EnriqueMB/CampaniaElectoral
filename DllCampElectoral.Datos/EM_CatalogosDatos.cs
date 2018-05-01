@@ -418,10 +418,13 @@ namespace DllCampElectoral.Datos
         public void ACCatalogoColaboradores(EM_CatColaborador Datos)
         {
             
-                object[] Parametros = { Datos.NuevoRegistro, Datos.IDColaborador, Datos.IDTipoUsu, Datos.Nombre, Datos.ApPaterno, Datos.ApMaterno,Datos.Estado,Datos.Municipio,Datos.IDPoligono,
-                                        Datos.Direccion,Datos.NumeroExt,Datos.NumeroInt,Datos.Colonia,Datos.CodigoPostal,Datos.ClaveElector,Datos.Correo,
-                                        Datos.Telefono, Datos.Password, Datos.IDGenero,Datos.FechaNac,
-                     Datos.Imagen,Datos.imgGuardada, Datos.IDUsuario,Datos.Padre,Datos.Sumplente,Datos.Casilla };
+                object[] Parametros = { Datos.IDColaborador,    Datos.IDTipoUsu,    Datos.Nombre,       Datos.ApPaterno,    Datos.ApMaterno,
+                                        Datos.Estado,           Datos.Municipio,    Datos.IDPoligono,   Datos.Direccion,    Datos.NumeroExt,
+                                        Datos.NumeroInt,        Datos.Colonia,      Datos.CodigoPostal, Datos.ClaveElector, Datos.Correo,
+                                        Datos.Telefono,         Datos.Password,     Datos.IDGenero,     Datos.FechaNac,     Datos.Imagen,
+                                        Datos.IDUsuario,        Datos.Padre,        Datos.Sumplente,    Datos.Casilla,      Datos.BandPassServer,
+                                        Datos.imgGuardada,      Datos.Seccion.ToString()
+                                    };
                 SqlDataReader Dr = SqlHelper.ExecuteReader(Datos.Conexion, "EC_spCSLDB_AC_Colaboradores", Parametros);
                 while (Dr.Read())
                 {
@@ -433,6 +436,7 @@ namespace DllCampElectoral.Datos
                         Datos.IDColaborador = Dr.GetString(Dr.GetOrdinal("IDColaborador"));
                     }
                     Datos.Resultado = Resultado;
+                    Datos.MensajeSQL = Mesaje;
                     break;
                 }
            
@@ -520,25 +524,27 @@ namespace DllCampElectoral.Datos
                 SqlDataReader Dr = SqlHelper.ExecuteReader(Datos.Conexion, "EM_spCSLDB_get_ColaboradorDetalle", Parametros);
                 while (Dr.Read())
                 {
-                    Datos.ClaveElector = Dr.GetString(Dr.GetOrdinal("ClaveElector"));
-                    Datos.Nombre = Dr.GetString(Dr.GetOrdinal("Nombre"));
-                    Datos.ApPaterno = Dr.GetString(Dr.GetOrdinal("ApPaterno"));
-                    Datos.ApMaterno = Dr.GetString(Dr.GetOrdinal("ApMaterno"));
-                    Datos.Estado = Dr.GetInt32(Dr.GetOrdinal("Estado"));
-                    Datos.Municipio = Dr.GetInt32(Dr.GetOrdinal("Municipio"));
-                    Datos.IDPoligono = Dr.GetString(Dr.GetOrdinal("Id_poligono"));
-                   // Datos.Seccion = Dr.GetString(Dr.GetOrdinal("Seccion"));
-                    Datos.Correo = Dr.GetString(Dr.GetOrdinal("Correo"));
-                    Datos.Telefono = Dr.GetString(Dr.GetOrdinal("Telefono"));
-                    Datos.FechaNac = Dr.GetDateTime(Dr.GetOrdinal("FechaNac"));
-                    Datos.Direccion = Dr.GetString(Dr.GetOrdinal("Direccion"));
-                    Datos.Colonia = Dr.GetString(Dr.GetOrdinal("Colonia"));
-                    Datos.NumeroExt = Dr.GetString(Dr.GetOrdinal("numExt"));
-                    Datos.NumeroInt = Dr.GetString(Dr.GetOrdinal("numInt"));
-                    Datos.IDGenero = Dr.GetInt32(Dr.GetOrdinal("IDGenero"));
-                    Datos.CodigoPostal = Dr.GetString(Dr.GetOrdinal("CP"));
-                    Datos.IDTipoUsu = Dr.GetInt32(Dr.GetOrdinal("IDTipoUsuario"));
-
+                    Datos.ClaveElector  = Dr.GetString(Dr.GetOrdinal("ClaveElector"));
+                    Datos.Nombre        = Dr.GetString(Dr.GetOrdinal("Nombre"));
+                    Datos.ApPaterno     = Dr.GetString(Dr.GetOrdinal("ApPaterno"));
+                    Datos.ApMaterno     = Dr.GetString(Dr.GetOrdinal("ApMaterno"));
+                    Datos.Estado        = Dr.GetInt32(Dr.GetOrdinal("Estado"));
+                    Datos.Municipio     = Dr.GetInt32(Dr.GetOrdinal("Municipio"));
+                    Datos.IDPoligono    = Dr.GetString(Dr.GetOrdinal("Id_poligono"));
+                    Datos.Seccion       = Int32.Parse(Dr.GetString(Dr.GetOrdinal("Seccion")));
+                    Datos.Correo        = Dr.GetString(Dr.GetOrdinal("Correo"));
+                    Datos.Telefono      = Dr.GetString(Dr.GetOrdinal("Telefono"));
+                    Datos.FechaNac      = Dr.GetDateTime(Dr.GetOrdinal("FechaNac"));
+                    Datos.Direccion     = Dr.GetString(Dr.GetOrdinal("Direccion"));
+                    Datos.Colonia       = Dr.GetString(Dr.GetOrdinal("Colonia"));
+                    Datos.NumeroExt     = Dr.GetString(Dr.GetOrdinal("numExt"));
+                    Datos.NumeroInt     = Dr.GetString(Dr.GetOrdinal("numInt"));
+                    Datos.IDGenero      = Dr.GetInt32(Dr.GetOrdinal("IDGenero"));
+                    Datos.CodigoPostal  = Dr.GetString(Dr.GetOrdinal("CP"));
+                    Datos.IDTipoUsu     = Dr.GetInt32(Dr.GetOrdinal("IDTipoUsuario"));
+                    Datos.Imagen        = Dr.GetString(Dr.GetOrdinal("Imagen"));
+                    Datos.Padre         = Dr.GetString(Dr.GetOrdinal("IDPadre"));
+                    Datos.Sumplente     = Dr.GetString(Dr.GetOrdinal("IDSuplente"));
 
                     Datos.Completado = true;
                     break;

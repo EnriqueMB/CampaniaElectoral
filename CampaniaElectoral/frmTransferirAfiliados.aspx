@@ -27,10 +27,10 @@
                                     Seccion<span class="symbol required"></span>
                                 </label>
                                 <span class="input-icon">
-                                    <asp:DropDownList runat="server" ID="cmbSeccion" AutoPostBack="true" ViewStateMode="Enabled" EnableViewState="true" Width="250" OnSelectedIndexChanged="cmbSeccion_SelectedIndexChanged" CssClass="required">
+                                    <asp:DropDownList runat="server" ID="cmbSeccion" AutoPostBack="true" ViewStateMode="Enabled" EnableViewState="true" Width="250" OnSelectedIndexChanged="cmbSeccion_SelectedIndexChanged" CssClass="required search-select">
                                         <%--<asp:ListItem Text="--SELLECCIONE--" Value="0" Selected="True"/>--%>
                                     </asp:DropDownList>
-                                    <asp:RequiredFieldValidator ErrorMessage=" Seleccione una seccion" ControlToValidate="cmbSeccion" runat="server" ForeColor="Red" InitialValue=""/>
+                                    <asp:RequiredFieldValidator ErrorMessage="Seleccione una seccion" ControlToValidate="cmbSeccion" runat="server" ForeColor="Red" InitialValue=""/>
                                 </span>
                             </div>
                         </div>
@@ -42,7 +42,7 @@
                                     Operador Origen<span class="symbol required"></span>
                                 </label>
                                 <span class="input-icon">
-                                    <asp:DropDownList runat="server" ID="cmbOperadorOrigen" AutoPostBack="true" Width="250" OnSelectedIndexChanged="cmbOperadorOrigen_SelectedIndexChanged">
+                                    <asp:DropDownList runat="server" ID="cmbOperadorOrigen" AutoPostBack="true" Width="250" OnSelectedIndexChanged="cmbOperadorOrigen_SelectedIndexChanged" CssClass=" search-select">
                                     <asp:ListItem Text="--SELLECCIONE--" Value="0" Selected="True"/>
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ErrorMessage=" Seleccion un operador origen" ControlToValidate="cmbOperadorOrigen" runat="server" ForeColor="Red" InitialValue="0"/>
@@ -56,7 +56,7 @@
                                    Opedaro destino<span class="symbol required"></span>
                                 </label>
                                 <span class="input-icon">
-                                    <asp:DropDownList runat="server" ID="cmbOperadorDestino" ViewStateMode="Enabled" EnableViewState="true" Width="250">
+                                    <asp:DropDownList runat="server" ID="cmbOperadorDestino" ViewStateMode="Enabled" EnableViewState="true" Width="250" CssClass=" search-select">
                                     <asp:ListItem Text="--SELLECCIONE--" Value="0" Selected="True"/>
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ErrorMessage=" Seleccione un operador destino" ControlToValidate="cmbOperadorDestino" runat="server" InitialValue="0" ForeColor="Red"/>

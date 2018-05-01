@@ -404,7 +404,83 @@ var FormValidator = function () {
         var errorHandler2 = $('.errorHandler', form2);
         var successHandler2 = $('.successHandler', form2);
        
+        $.validator.addMethod("formatoImg", function (value, element, params) {
+            //Checamos que tenga un archivo el input file
+            var bandera = document.getElementById('inputImgServer').value;
+            if (element.value.length != 0) {
+                //Si hay obtenemos la extensión
+                var arrayString = element.value.split(".");
+                var longitud = arrayString.length;
+                var extension = arrayString[longitud - 1];
+                var valido = false;
+
+                for (var i = 0 ; i < params.length ; i++) {
+                    if (params[i] == extension)
+                        valido = true;
+                }
+            }
+            else {
+                if (bandera == "True")
+                {
+                    valido = true;
+                }
+                else
+                {
+                    valido = false;
+                }
+            }
+            return valido;
+        }, 'Formato no valido.');
+
+        $.validator.addMethod("validarImg", function (value, element, params) {
+            //Bandera que me indica si hay o no imagen en el servidor
+            var bandera = document.getElementById(params[0]).value;
+            //Hay imagen en el servidor?
+            if (bandera == "True") {
+                return true;
+            }
+            else {
+                //No Hay un elemento en el file input
+                if (element.value.length == 0 || element === undefined) {
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            }
+
+        }, 'Debe seleccionar una imagen.');
+
+        $.validator.addMethod("passwordCSL", function (value, element, params) {
+            //Bandera que me indica si hay o no imagen en el servidor
+            var password = document.getElementById(params[0]).value;
+            var passwordAgain = document.getElementById(params[1]).value;
+            var bandera = document.getElementById(params[2]).value;
+            var valido = false;
+            var maxCaracteres = 15, minCaracteres = 6;
+            //console.log(password);
+            //console.log(passwordAgain);
+
+            //Estan vacios
+            if (password.length == 0 && passwordAgain == 0) {
+                //Hay password en la bd
+                if (bandera == "True") {
+                    valido = true;
+                }
+            }
+            else
+            {
+                //Caracteres min: 6 y max: 15                                                                                     Mismos passwords=?
+                if ((minCaracteres <= password.length <= maxCaracteres && minCaracteres <= passwordAgain <= maxCaracteres) && (password == passwordAgain))
+                {
+                    valido = true;
+                }
+            }
+            return valido;
+        }, 'Por favor ingrese un password de con una longitud m&iacute;nima de: 6 y  m&aacute;xima de 15, adem&aacute;s ambos campos deben coincider: Password y Confirmar password.');
+
         $('#frmMaster').validate({
+            //debug:true,
             errorElement: "span", // contain the error msg in a small tag
             errorClass: 'help-block',
             errorPlacement: function (error, element) { // render error placement for each input type
@@ -421,6 +497,10 @@ var FormValidator = function () {
             },
             ignore: "",
             rules: {
+                ctl00$cph_MasterBody$txtClavElector: {
+                    required: true,
+                    minlength: 18
+                },
                 ctl00$cph_MasterBody$txtNombre: {
                     minlength: 2,
                     required: true
@@ -444,13 +524,10 @@ var FormValidator = function () {
                     required: true
                 },
                 ctl00$cph_MasterBody$id_password: {
-                    minlength: 6,
-                    required: true
+                    passwordCSL: true, passwordCSL: ["cph_MasterBody_id_password", "cph_MasterBody_id_password_again", "inputPassServer"]
                 },
                 ctl00$cph_MasterBody$id_password_again: {
-                    required: true,
-                    minlength: 6,
-                    equalTo: "#cph_MasterBody_id_password"
+                    passwordCSL: true, passwordCSL: ["cph_MasterBody_id_password", "cph_MasterBody_id_password_again", "inputPassServer"]
                 },
                 ctl00$cph_MasterBody$txtFechaNac: {
                     minlength: 1,
@@ -464,14 +541,28 @@ var FormValidator = function () {
                 ctl00$cph_MasterBody$txtCuidad: {
                     minlength: 1,
                     required: true
-                }//,
-                //txtTipoUsuario: {
-                //    required: true
-                //}
-                //,
-                //ctl00$cph_MasterBody$imgLogo: "TieneImagen"
+                },
+                ctl00$cph_MasterBody$txtColonia: {
+                    required: true
+                },
+                ctl00$cph_MasterBody$imgImagen: {
+                    validarImg: true, validarImg:["inputImgServer"],
+                    formatoImg: true, formatoImg: ["png"]
+                },
+                ctl00$cph_MasterBody$txtDireccion: {
+                    required: true,
+                    minlength: 5
+                },
+                txtGenero: {
+                    required: true,
+                    min: true
+                },
             },
             messages: {
+                ctl00$cph_MasterBody$txtClavElector: {
+                    required: "Por favor, ingrese la clave de elector",
+                    minlength: "La longitud debe ser m&iacute;nimo de 18 caracteres"
+                },
                 ctl00$cph_MasterBody$txtNombre: "Por favor, ingrese el nombre del colaborador",
                 ctl00$cph_MasterBody$txtApPaterno: "Por favor, ingrese el apellido paterno del colaborador",
                 ctl00$cph_MasterBody$txtApMaterno: "Por favor, ingrese el apellido materno del colaborador",
@@ -480,21 +571,17 @@ var FormValidator = function () {
                     email: "Su direcci&oacute;n de correo electr&oacute;nico debe tener el formato de nombre@dominio.com"
                 },
                 ctl00$cph_MasterBody$txtTelefono: "Por favor, ingrese el t&eacute;lefono del colaborador",
-                ctl00$cph_MasterBody$id_password: 
-                    {
-                        required: "Por favor, ingrese un password",
-                        minlength: "Por favor, ingrese al menos 6 caracteres"
-                    },
-                ctl00$cph_MasterBody$id_password_again:
-                    {
-                        required: "Por favor, ingrese de nuevo su password",
-                        minlength: "Por favor, ingrese al menos 6 caracteres",
-                        equalTo: "Por favor, confirme su password"
-                    },
                 ctl00$cph_MasterBody$txtFechaNac: "Por favor, selecciones un fecha de nacimiento",
                 ctl00$cph_MasterBody$txtCodigoPostal: "Por favor, ingrese su c&oacute;digo postal",
-                ctl00$cph_MasterBody$txtCuidad: "Por favor, ingrese su cuidad"//,
-                //txtTipoUsuario: "Por favor, selecciones un tipo de usuario"
+                ctl00$cph_MasterBody$txtCuidad: "Por favor, ingrese su cuidad",
+                ctl00$cph_MasterBody$txtDireccion: "Por favor, ingrese una direcci&oacute;n",
+                ctl00$cph_MasterBody$txtColonia: {
+                    required: "Por favor, ingrese una colonia"
+                },
+                txtGenero: {
+                    required: "Por favor, seleccion un g&eacute;nero",
+                    min: "Por favor, seleccion un g&eacute;nero"
+                }
             },
             invalidHandler: function (event, validator) { //display error alert on form submit
                 successHandler2.hide();
@@ -2006,6 +2093,14 @@ var FormValidator = function () {
                 },
                 ctl00$cph_MasterBody$txtNumeroInt: {
                     number: true
+                },
+                cmbSeccion: {
+                    required: true,
+                    min: 1 
+                },
+                cmbOperador: {
+                    required: true,
+                    min: 1
                 }
             },
             messages: {
@@ -2028,7 +2123,15 @@ var FormValidator = function () {
                 txtGenero: "Por favor, seleciones un g&eacute;nero",
                 ctl00$cph_MasterBody$txtCelular: "Por favor, ingrese un n&uacute;mero valido",
                 ctl00$cph_MasterBody$txtNumeroExt: "Por favor, ingrese un n&uacute;mero exterior valido",
-                ctl00$cph_MasterBody$txtNumeroInt: "Por favor, ingrese un n&uacute;mero interior valido"
+                ctl00$cph_MasterBody$txtNumeroInt: "Por favor, ingrese un n&uacute;mero interior valido",
+                cmbSeccion: {
+                    required: "Por favor, seleccione una secci&oacute;n.",
+                    min: "Por favor, seleccione una secci&oacute;n."
+                },
+                cmbOperador: {
+                    required: "Por favor, seleccione un operador.",
+                    min: "Por favor, seleccione un operador."
+                }
             },
             invalidHandler: function (event, validator) { //display error alert on form submit
                 successHandler2.hide();
@@ -2458,7 +2561,7 @@ var FormValidator = function () {
             submitHandler: function (form2) {
                 successHandler2.show();
                 errorHandler2.hide();
-                this.submit();
+                form.submit();
             }
         });
     };
@@ -3250,6 +3353,90 @@ var FormValidator = function () {
         });
     };
 
+    var runValidator100V2 = function () {
+        var form2 = $('#frmMaster');
+        var errorHandler2 = $('.errorHandler', form2);
+        var successHandler2 = $('.successHandler', form2);
+
+        $.validator.addMethod("validarImagen", function () {
+            if (document.getElementById("cph_MasterBody_fuploadImagen").value === '') {
+                if ((document.getElementById("cph_MasterBody_fuploadImagen").value === ''))
+                    return false;
+                else
+                    return true;
+            }
+            else
+                return true;
+        }, 'Debe seleccionar una imagen.');
+        //form2.validate({
+        $('#frmMaster').validate({
+            errorElement: "span", // contain the error msg in a small tag
+            errorClass: 'help-block',
+            errorPlacement: function (error, element) { // render error placement for each input type
+                if (element.attr("type") == "radio" || element.attr("type") == "checkbox") { // for chosen elements, need to insert the error after the chosen container
+                    error.insertAfter($(element).closest('.form-group').children('div').children().last());
+                } else if (element.hasClass("ckeditor")) {
+                    error.appendTo($(element).closest('.form-group'));
+                }
+                else if (element.hasClass("fileupload")) {
+                    error.appendTo($(element).closest('.form-group'));
+                }
+                else {
+                    error.insertAfter(element);
+                    // for other inputs, just perform default behavior
+                }
+            },
+            ignore: "",
+            rules: {
+
+                CmbPoligonos: {
+                    required: true
+                },
+               CmbCasilla:
+                    {
+                        required: true
+                    },
+               cmbColaboradores:
+                   {
+                       required: true
+                   },
+                ctl00$cph_MasterBody$fuploadImagen: "validarImagen"
+            },
+            messages: {
+               CmbPoligonos: "Por favor, seleccione el poligono",
+               CmbCasilla: "Por favor, selecciones la casilla",
+               cmbColaboradores: "Por favor, selecciones un colaborador",
+                ctl00$cph_MasterBody$fuploadImagen: "Por favor, seleccione una imagen"
+            },
+            invalidHandler: function (event, validator) { //display error alert on form submit
+                successHandler2.hide();
+                errorHandler2.show();
+            },
+            highlight: function (element) {
+                $(element).closest('.help-block').removeClass('valid');
+                // display OK icon
+                $(element).closest('.form-group').removeClass('has-success').addClass('has-error').find('.symbol').removeClass('ok').addClass('required');
+                // add the Bootstrap error class to the control group
+            },
+            unhighlight: function (element) { // revert the change done by hightlight
+                $(element).closest('.form-group').removeClass('has-error');
+                // set error class to the control group
+            },
+            success: function (label, element) {
+                label.addClass('help-block valid');
+                // mark the current input as valid and display OK icon
+                $(element).closest('.form-group').removeClass('has-error').addClass('has-success').find('.symbol').removeClass('required').addClass('ok');
+            },
+            submitHandler: function (form2) {
+                //successHandler2.show();
+                errorHandler2.hide();
+                // submit form
+                this.submit();
+                //$('#frmMaster').trigger("submit");
+            }
+        });
+    };
+
     return {
         //main function to initiate template pages
         init: function (aux) {
@@ -3337,6 +3524,8 @@ var FormValidator = function () {
                 case 44: runValidator44();
                     break;
                 case 45: runValidator45();
+                    break;
+                case 100: runValidator100V2();
                     break;
             }
         }
