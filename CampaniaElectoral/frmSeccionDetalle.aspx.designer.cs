@@ -10,16 +10,16 @@
 namespace CampaniaElectoral {
     
     
-    public partial class frmPuntosPoligono {
+    public partial class frmSeccionDetalle {
         
         /// <summary>
-        /// Control hf.
+        /// Control spanSeccion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hf;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanSeccion;
         
         /// <summary>
         /// Control hf2.
@@ -31,22 +31,13 @@ namespace CampaniaElectoral {
         protected global::System.Web.UI.WebControls.HiddenField hf2;
         
         /// <summary>
-        /// Control txtNombrePoligono.
+        /// Control hf3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtNombrePoligono;
-        
-        /// <summary>
-        /// Control txtClave.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtClave;
+        protected global::System.Web.UI.WebControls.HiddenField hf3;
         
         /// <summary>
         /// Control txtEstado.
@@ -65,14 +56,5 @@ namespace CampaniaElectoral {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtMunicipio;
-        
-        /// <summary>
-        /// Control txtColonia.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtColonia;
     }
 }

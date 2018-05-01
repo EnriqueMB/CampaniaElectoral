@@ -11,6 +11,7 @@
 				<div class="panel-body">
 					<div class="row">
                         <asp:HiddenField ID="hf" runat="server" />
+                        <asp:HiddenField ID="hf2" runat="server" />
                     </div>
                     <%-- Nombre y clave del polígono --%>
                     <div class="row">
@@ -163,7 +164,7 @@
 	<script type="text/javascript" src="assets/js/table-data.js"></script>
     <script src="assets/js/form-validation2.js"></script>   
     <script src="assets/js/ui-notifications.js"></script>
-    <script src="assets/plugins/sweetalert/lib/sweet-alert.min.js"></script>
+    <script src="assets/plugins/sweetalert/lib/sweet-alert.min.js"></script>     
     <script src="assets/js/mapsPuntos.js"></script>
 	<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 	<!-- start: CORE JAVASCRIPTS  -->
@@ -173,7 +174,7 @@
 	    jQuery(document).ready(function () {
 	        //Maps.init(16.7807937830878, -93.0996894836426);
 	        FormValidator.init(32);
-			TableData.init();
+	        TableData.init();
 		});
 	</script>
         
