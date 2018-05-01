@@ -83,6 +83,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RR_AdministradorWebDatos.cs" />
     <Compile Include="RR_CatalogoDatos.cs" />
+    <Compile Include="SeccionesDatos.cs" />
     <Compile Include="WN_CombosDatos.cs" />
     <Compile Include="ZM_CatalogosDatos.cs" />
   </ItemGroup>

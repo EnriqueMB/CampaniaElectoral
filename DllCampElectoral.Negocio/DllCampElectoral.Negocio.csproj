@@ -79,6 +79,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RR_AdministradorWebNegocio.cs" />
     <Compile Include="RR_CatalogosNegocio.cs" />
+    <Compile Include="SeccionesNegocio.cs" />
     <Compile Include="WN_CombosNegocio.cs" />
     <Compile Include="ZM_CatalogosNegocio.cs" />
   </ItemGroup>

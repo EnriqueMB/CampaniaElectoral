@@ -258,6 +258,7 @@
     <Content Include="assets\js\mapsPoligono.js" />
     <Content Include="assets\js\mapsPuntos.js" />
     <Content Include="assets\js\mapsResultado.js" />
+    <Content Include="assets\js\mapsSeccion.js" />
     <Content Include="assets\js\mapsZonaRiesgo.js" />
     <Content Include="assets\js\pages-calendar.js" />
     <Content Include="assets\js\pages-gallery.js" />
@@ -3344,6 +3345,8 @@
     <Content Include="frmRangoEdadesGrid.aspx" />
     <Content Include="frmRespuestaEncuestaGrid.aspx" />
     <Content Include="frmResultadoPregunta.aspx" />
+    <Content Include="frmSeccionDetalle.aspx" />
+    <Content Include="frmSecciones.aspx" />
     <Content Include="frmStatusAfiliados.aspx" />
     <Content Include="frmStatusAfiliadosGrid.aspx" />
     <Content Include="frmStatusColaborador.aspx" />
@@ -4330,6 +4333,8 @@
     <Content Include="Images\FotosBlog\Thumbs.db" />
     <Content Include="sfrmEliminarAfiliadosGrid.aspx" />
     <Content Include="sfrmRetificarAfiliadosGrid.aspx" />
+    <Content Include="seccionesService.asmx" />
+    <Content Include="sfrmSecciones.aspx" />
     <Content Include="Site.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -4392,6 +4397,19 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Code\DataTableResultSet.cs" />
+    <Content Include="App_Code\DataTables.cs" />
+    <Compile Include="frmSeccionDetalle.aspx.cs">
+      <DependentUpon>frmSeccionDetalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmSeccionDetalle.aspx.designer.cs">
+      <DependentUpon>frmSeccionDetalle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="seccionesService.asmx.cs">
+      <DependentUpon>seccionesService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Content Include="App_Code\QueryString.cs" />
     <Compile Include="ClasesAux\Autenticacion.cs" />
     <Compile Include="ClasesAux\Auth.cs" />
@@ -5051,6 +5069,13 @@
     <Compile Include="frmResultadoPregunta.aspx.designer.cs">
       <DependentUpon>frmResultadoPregunta.aspx</DependentUpon>
     </Compile>
+    <Compile Include="frmSecciones.aspx.cs">
+      <DependentUpon>frmSecciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmSecciones.aspx.designer.cs">
+      <DependentUpon>frmSecciones.aspx</DependentUpon>
+    </Compile>
     <Compile Include="frmStatusAfiliados.aspx.cs">
       <DependentUpon>frmStatusAfiliados.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5355,6 +5380,13 @@
     </Compile>
     <Compile Include="sfrmResultadosEncuesta.aspx.designer.cs">
       <DependentUpon>sfrmResultadosEncuesta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="sfrmSecciones.aspx.cs">
+      <DependentUpon>sfrmSecciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sfrmSecciones.aspx.designer.cs">
+      <DependentUpon>sfrmSecciones.aspx</DependentUpon>
     </Compile>
     <Compile Include="sfrmRetificarAfiliadosGrid.aspx.cs">
       <DependentUpon>sfrmRetificarAfiliadosGrid.aspx</DependentUpon>

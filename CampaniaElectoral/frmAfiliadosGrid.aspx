@@ -331,8 +331,8 @@
                          break;
                  }
                  url = url + "&Buscar=" + Searchtxt
-                 console.log(url);
-                 //window.location = url;
+                 //console.log(url);
+                 window.location = url;
              });
          });
     </script>   

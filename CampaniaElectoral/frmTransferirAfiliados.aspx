@@ -125,14 +125,17 @@
             </div>
         </div>
     </div>
-    <!-- start: MAIN JAVASCRIPTS -->
+</asp:Content>
+
+<asp:Content runat="server" ContentPlaceHolderID="cphScripts">
+       <!-- start: MAIN JAVASCRIPTS -->
     <!--[if lt IE 9]>
         <script src="assets/plugins/respond.min.js"></script>
         <script src="assets/plugins/excanvas.min.js"></script>
         <script type="text/javascript" src="assets/plugins/jQuery/jquery-1.11.1.min.js"></script>
     <![endif]-->
     <!--[if gte IE 9]><!-->
-    <script src="assets/plugins/jQuery/jquery-2.1.1.min.js"></script>
+    
     <!--<![endif]-->
     <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
     <script src="assets/js/form-validation2.js"></script>
@@ -170,9 +173,8 @@
 	    }
     </script>
     <script>
-        jquery(document).ready(function () {
-            formvalidator.init(46);
+        $(document).ready(function () {
+            FormValidator.init(46);
         });
     </script>
-
 </asp:Content>

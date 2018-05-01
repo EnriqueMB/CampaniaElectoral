@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -63,6 +67,8 @@
     <Compile Include="CH_ZonaRiesgo.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Comun.cs" />
+    <Compile Include="DataTableResultSet.cs" />
+    <Compile Include="DataTables.cs" />
     <Compile Include="EC_ColaboradorJSON.cs" />
     <Compile Include="EC_EquipoTrabajo.cs" />
     <Compile Include="EC_EventoExtra.cs" />
@@ -113,12 +119,16 @@
     <Compile Include="RR_TipoGastos.cs" />
     <Compile Include="RR_TipoRiesgos.cs" />
     <Compile Include="RR_TipoUsuarios.cs" />
+    <Compile Include="Secciones.cs" />
     <Compile Include="WN_Combos.cs" />
     <Compile Include="WN_Configuracion.cs" />
     <Compile Include="WN_Permisos.cs" />
     <Compile Include="WN_Usuario.cs" />
     <Compile Include="ZM_ConversionBS.cs" />
     <Compile Include="ZM_ImagenesAfiliados.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
