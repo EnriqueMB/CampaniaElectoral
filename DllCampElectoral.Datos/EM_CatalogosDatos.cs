@@ -510,7 +510,8 @@ namespace DllCampElectoral.Datos
                     Item.ApMaterno = Dr.GetString(Dr.GetOrdinal("ApMaterno"));
                     Item.TipoUsuario = Dr.GetString(Dr.GetOrdinal("TipoUsuario"));
                     Item.ColorPerfil = Dr.GetString(Dr.GetOrdinal("ColorTipoUsuario"));
-                    Lista.Add(Item);
+                    Item.IDTipoUsu   = Dr.GetInt32(Dr.GetOrdinal("IDTipoUsuario"));
+                Lista.Add(Item);
                 }
                 return Lista;
            

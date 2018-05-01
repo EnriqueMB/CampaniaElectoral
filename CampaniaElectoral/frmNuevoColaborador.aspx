@@ -71,7 +71,7 @@
                                 </div>
                             </div>
                         </div>
-                        <dv class="row">
+                        <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="control-label" for="cph_MasterBody_txtApMaterno">
@@ -94,12 +94,14 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
                              <div class="col-md-4" id="divAsiganado" runat="server">
                                 <div class="form-group">
                                     <label class="control-label" for="cmbSeccion">
                                         Asignado a <span class="symbol required"></span>
                                     </label>
-                                    <asp:DropDownList ID="cmbAsignado" runat="server"  class="form-control search-select"></asp:DropDownList>
+                                    <asp:DropDownList ID="cmbAsignado" runat="server"  class="form-control search-select" OnSelectedIndexChanged="cmbAsignado_SelectedIndexChanged1"></asp:DropDownList>
                                 </div>
                             </div>
 
@@ -112,26 +114,65 @@
                                 </div>
                             </div>
                         
+                            <div class="col-md-4"  id="divMunicipio" runat="server">
+                                <div class="form-group">
+                                    <label class="control-label" for="cmbMunicipio">
+                                        Municipio <span class="symbol required"></span>
+                                    </label>
+                                    <asp:DropDownList ID="cmbMunicipio" runat="server"  class="form-control search-select" OnSelectedIndexChanged="cmbMunicipio_SelectedIndexChanged"></asp:DropDownList>
+                                </div>
+                            </div>
 
+                            <asp:ScriptManager ID="ScriptManager1" runat="server">
+                            </asp:ScriptManager>
+                            <script>
+                                //Para mantener los scripts despues del postback por parte del updatePanel
+                                var prm = Sys.WebForms.PageRequestManager.getInstance();
+                                prm.add_endRequest(function () {
+                                    $('.search-select').selectpicker();
+                                    
+                                });
+                            </script>
 
                             <div class="col-md-4"  id="divSeccion" runat="server">
-                                <div class="form-group">
-                                    <label class="control-label" for="cmbSeccion">
-                                        Sección <span class="symbol required"></span>
-                                    </label>
-                                    <asp:DropDownList ID="cmbSeccion" runat="server"  class="form-control search-select"></asp:DropDownList>
-                                </div>
+                                <asp:UpdatePanel ID="upSeccion" runat="server">
+                                    <ContentTemplate>
+                                            <div class="form-group">
+                                                <label class="control-label" for="cmbSeccion">
+                                                    Sección <span class="symbol required"></span>
+                                                </label>
+                                                <asp:DropDownList ID="cmbSeccion" runat="server"  class="form-control search-select" data-live-search="true"></asp:DropDownList>
+                                            </div>
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="cmbMunicipio" 
+                                            EventName="SelectedIndexChanged" />
+                                         <asp:AsyncPostBackTrigger ControlID="cmbAsignado" 
+                                            EventName="SelectedIndexChanged" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
                             </div>
+                            
 
-                            <div class="col-md-4" id="divCasilla" runat="server">
-                                <div class="form-group">
-                                    <label class="control-label" for="cmbSeccion">
-                                        Casilla <span class="symbol required"></span>
-                                    </label>
-                                    <asp:DropDownList ID="cmbCasilla" runat="server"  class="form-control search-select" ></asp:DropDownList>
-                                </div>
+                             <div class="col-md-4" id="divCasilla" runat="server">
+                                <asp:UpdatePanel ID="upCasilla" runat="server">
+                                    <ContentTemplate>
+                                                <div class="form-group">
+                                                    <label class="control-label" for="cmbCasilla">
+                                                        Casilla <span class="symbol required"></span>
+                                                    </label>
+                                                    <asp:DropDownList ID="cmbCasilla" runat="server"  class="form-control search-select" data-live-search="true"></asp:DropDownList>
+                                                </div>
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="cmbAsignado" 
+                                            EventName="SelectedIndexChanged" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
                             </div>
                         </div>
+                   
+
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
@@ -279,26 +320,27 @@
                             </div>
                         </div>
                         
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div>
-                                <span class="symbol required"></span>Campos Obligatorios
-								<hr>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div>
+                                    <span class="symbol required"></span>Campos Obligatorios
+								    <hr>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
+                        <div class="row">
                        
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    <input type="submit" formaction="frmNuevoColaborador.aspx" class="btn btn-green btn-block" name="btnGuardar" value="Guardar"/>
-                                </div>
-                                <div class="col-md-6">
-                                    <asp:button id="btnRegresar" class="btn btn-red btn-block" name="btnCancelar" 
-                                        runat="server" text="Cancelar" 
-                                        OnClientClick="JavaScript:window.history.back(1);return false;">
-                                    </asp:button>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <input type="submit" formaction="frmNuevoColaborador.aspx" class="btn btn-green btn-block" name="btnGuardar" value="Guardar"/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <asp:button id="btnRegresar" class="btn btn-red btn-block" name="btnCancelar" 
+                                            runat="server" text="Cancelar" 
+                                            OnClientClick="JavaScript:window.history.back(1);return false;">
+                                        </asp:button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -307,7 +349,7 @@
             </div>
         </div>
     </div>
-</div>
+
         <script src="assets/plugins/jQuery/jquery-2.1.1.min.js"></script>
 		<!--<![endif]-->
 		<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->

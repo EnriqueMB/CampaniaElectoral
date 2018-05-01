@@ -45,11 +45,12 @@
                                 <i class="fa fa-plus"></i>
                                 </a>
 
-                                        <%  if (Request.QueryString["op"].ToString() == "200" || Request.QueryString["op"].ToString() == "300")
+                                        <%  if (Request.QueryString["op"].ToString() == "200")
                                          {
+                                                string op = "201";
                                          %>
-                                            
-                                               <a href="frmNuevoColaborador.aspx?pus=1000&op=<%Response.Write(Request.QueryString["op"].ToString());%>" class="btn btn-green">
+                                                
+                                               <a href="frmNuevoColaborador.aspx?op=<%Response.Write(op);%>" class="btn btn-green">
                                                 Nuevo Suplente
                                                 <i class="fa fa-plus"></i>
                                                 </a>
@@ -79,7 +80,7 @@
                                     <%Response.Write("<th class= 'center hidden-xs'><span style=' background-color: " + Item.ColorPerfil + "' class='label label-primary' >&nbsp" + " " + Item.TipoUsuario + " </span></td>");%>
                                     <td>
                                         <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                            <%Response.Write("<a href='frmNuevoColaborador.aspx?op=" + Request.QueryString["op"].ToString() +"&opW=2&id=" + Item.IDColaborador.ToString() + "' class='btn btn-xs btn-blue tooltips' data-placement='top' data-original-title='Editar'> <i class='fa fa-edit'> </i> </a>"); 
+                                            <%Response.Write("<a href='frmNuevoColaborador.aspx?op=" + Item.IDTipoUsu.ToString() +"&opW=2&id=" + Item.IDColaborador.ToString() + "' class='btn btn-xs btn-blue tooltips' data-placement='top' data-original-title='Editar'> <i class='fa fa-edit'> </i> </a>"); 
                                                 %>
                                             <%Response.Write("<a data-placement='top' data-target='.bs-example-modal-sm" + Item.IDColaborador.ToString() + "' data-toggle='modal'  class='btn btn-xs btn-red tooltips' data-placement='top' data-original-title='Eliminar'> <i class='fa fa-times fa fa-white'> </i> </a>");%>
 									    </div>

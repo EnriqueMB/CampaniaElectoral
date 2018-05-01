@@ -38,8 +38,21 @@ namespace DllCampElectoral.Negocio
             return CD.ObtenerComboSeccionesXPadre(Datos);
 
         }
+        public DataTable ObtenerComboSeccionesXJefe(WN_Combos Datos)
+        {
 
+            WN_CombosDatos CD = new WN_CombosDatos();
+            return CD.ObtenerComboSeccionesXJefe(Datos);
 
+        }
+
+        public DataTable ObtenerComboMunicipios(WN_Combos Datos)
+        {
+
+            WN_CombosDatos CD = new WN_CombosDatos();
+            return CD.ObtenerComboMunicipios(Datos);
+
+        }
 
         public DataTable ObtenerComboSecciones(WN_Combos Datos)
         {

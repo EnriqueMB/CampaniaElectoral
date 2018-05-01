@@ -557,6 +557,17 @@ var FormValidator = function () {
                     required: true,
                     min: true
                 },
+                ctl00$cph_MasterBody$cmbSeccion: {
+                    required: true,
+                    min: true
+                },
+                ctl00$cph_MasterBody$cmbMunicipio: {
+                    required: true,
+                    min: true
+                },
+                ctl00$cph_MasterBody$cmbAsignado: {
+                    required: true
+                }
             },
             messages: {
                 ctl00$cph_MasterBody$txtClavElector: {
@@ -581,6 +592,17 @@ var FormValidator = function () {
                 txtGenero: {
                     required: "Por favor, seleccion un g&eacute;nero",
                     min: "Por favor, seleccion un g&eacute;nero"
+                },
+                ctl00$cph_MasterBody$cmbSeccion: {
+                    required: "Por favor, seleccion una secci&oacute;n",
+                    min: "Por favor, seleccion una secci&oacute;n"
+                },
+                ctl00$cph_MasterBody$cmbMunicipio: {
+                    required: "Por favor, seleccion un municipio",
+                    min: "Por favor, seleccion un municipio"
+                },
+                ctl00$cph_MasterBody$cmbAsignado: {
+                    required: "Por favor, asigne un jefe inmediato."
                 }
             },
             invalidHandler: function (event, validator) { //display error alert on form submit
