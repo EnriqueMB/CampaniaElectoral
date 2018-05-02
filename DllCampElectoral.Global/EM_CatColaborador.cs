@@ -25,9 +25,9 @@ namespace DllCampElectoral.Global
             set { _suplente = value; }
         }
 
-        private int _casilla;
+        private string _casilla;
 
-        public int Casilla
+        public string Casilla
         {
             get { return _casilla; }
             set { _casilla = value; }

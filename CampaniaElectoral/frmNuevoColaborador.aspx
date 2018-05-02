@@ -33,53 +33,15 @@
                                     </span>
                                 </div>
                             </div>
-
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="control-label" for="cph_MasterBody_txtClavElector">
+                                    <label class="control-label" for="cph_MasterBody_txtTipoUsuario">
                                         Tipo de Usuario <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
                                             <asp:TextBox ID="txtTipoUsuario" runat="server" class="form-control tooltips" placeholder="" data-original-title="Seleccion un tipo de colaborador." data-rel="tooltip" title="" data-placement="top" ReadOnly="true"></asp:TextBox>
                                             <asp:DropDownList ID="cmbTipoUsuario" runat="server"  class="form-control search-select" ></asp:DropDownList>
                                         <i class="fa fa-keyboard-o"></i>
-                                    </span>
-                                </div>
-                            </div>
-
-
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label" for="cph_MasterBody_txtNombre">
-                                        Nombre(s) <span class="symbol required"></span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input type="text" class="form-control tooltips" runat="server" id="txtNombre" name="txtNombre" maxlength="80" data-original-title="Ingrese el nombre" data-rel="tooltip" title="" data-placement="top" />
-                                        <i class="fa fa-circle"></i>
-                                    </span>
-                                </div>
-                            </div>
-                             <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label" for="cph_MasterBody_txtApPaterno">
-                                        Apellido Paterno <span class="symbol required"></span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input type="text" class="form-control tooltips" runat="server" id="txtApPaterno" name="txtApPaterno" maxlength="70" data-original-title="Ingrese el Apellido Paterno" data-rel="tooltip" title="" data-placement="top" />
-                                        <i class="fa fa-circle"></i>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label" for="cph_MasterBody_txtApMaterno">
-                                        Apellido Materno <span class="symbol required"></span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input type="text" class="form-control tooltips" runat="server" id="txtApMaterno" name="txtApMaterno" maxlength="70" data-original-title="Ingrese el Apellido Materno" data-rel="tooltip" title="" data-placement="top" />
-                                        <i class="fa fa-circle"></i>
                                     </span>
                                 </div>
                             </div>
@@ -92,6 +54,41 @@
                                         <input id="txtFechaNac" name="txtFechaNac" runat="server" type="text" data-date-format="dd-mm-yyyy" data-date-viewmode="years" class="form-control date-picker">
                                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="cph_MasterBody_txtNombre">
+                                        Nombre(s) <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input type="text" class="form-control tooltips" runat="server" id="txtNombre" name="txtNombre" maxlength="80" data-original-title="Ingrese el nombre" data-rel="tooltip" title="" data-placement="top" />
+                                        <i class="fa fa-circle"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="cph_MasterBody_txtApPaterno">
+                                        Apellido Paterno <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input type="text" class="form-control tooltips" runat="server" id="txtApPaterno" name="txtApPaterno" maxlength="70" data-original-title="Ingrese el Apellido Paterno" data-rel="tooltip" title="" data-placement="top" />
+                                        <i class="fa fa-circle"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="cph_MasterBody_txtApMaterno">
+                                        Apellido Materno <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input type="text" class="form-control tooltips" runat="server" id="txtApMaterno" name="txtApMaterno" maxlength="70" data-original-title="Ingrese el Apellido Materno" data-rel="tooltip" title="" data-placement="top" />
+                                        <i class="fa fa-circle"></i>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -267,7 +264,7 @@
                                         Teléfono <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input type="text" class="form-control tooltips" runat="server" id="txtTelefono" name="txtTelefono" maxlength="20" data-original-title="Ingrese el Teléfono" data-rel="tooltip" title="" data-placement="top" />
+                                        <input type="text" class="form-control tooltips" runat="server" id="txtTelefono" name="txtTelefono" maxlength="20" data-original-title="Ingrese el Teléfono" data-rel="tooltip" title="" data-placement="top" autocomplete="off"/>
                                         <i class="fa fa-phone-square"></i>
                                     </span>
                                 </div>
@@ -278,7 +275,7 @@
                                         Password <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input type="password" class="form-control" runat="server" name="password" id="id_password" />
+                                        <input type="password" class="form-control" runat="server" name="password" id="id_password"  autocomplete="off"/>
                                         <i class="fa fa-unlock"></i>
                                     </span>
                                 </div>
@@ -289,7 +286,7 @@
                                         Confirmar Password <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input type="password" class="form-control" runat="server" id="id_password_again" name="password_again" />
+                                        <input type="password" class="form-control" runat="server" id="id_password_again" name="password_again" autocomplete="off"/>
                                         <i class="fa fa-unlock-alt"></i>
                                     </span>
                                 </div>
@@ -348,7 +345,7 @@
                 </div>
             </div>
         </div>
-    </div>
+   </div>
 
         <script src="assets/plugins/jQuery/jquery-2.1.1.min.js"></script>
 		<!--<![endif]-->

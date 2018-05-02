@@ -40,10 +40,10 @@
                                  {
                               %>
 
-                                <a href="frmNuevoColaborador.aspx?op=<%Response.Write(Request.QueryString["op"].ToString());%>" class="btn btn-green">
-                                Nuevo
-                                <i class="fa fa-plus"></i>
-                                </a>
+                                    <a href="frmNuevoColaborador.aspx?op=<%Response.Write(Request.QueryString["op"].ToString());%>" class="btn btn-green">
+                                    Nuevo
+                                    <i class="fa fa-plus"></i>
+                                    </a>
 
                                         <%  if (Request.QueryString["op"].ToString() == "200")
                                          {
@@ -55,7 +55,18 @@
                                                 <i class="fa fa-plus"></i>
                                                 </a>
                                 
-                                        <% } %>
+                                        <% }
+                                            else if(Request.QueryString["op"].ToString() == "300")
+                                            {
+                                                string op = "301";
+                                                %>
+
+                                               <a href="frmNuevoColaborador.aspx?op=<%Response.Write(op);%>" class="btn btn-green">
+                                                Nuevo Suplente
+                                                <i class="fa fa-plus"></i>
+                                                </a>                                        
+                                        <% }
+                                            %>
                              <% } %>
 						</div>
 					</div>
