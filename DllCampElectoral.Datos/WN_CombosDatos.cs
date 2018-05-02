@@ -51,6 +51,7 @@ namespace DllCampElectoral.Datos
                         return ds.Tables[0];
             return null;
         }
+        
         public DataTable ObtenerComboSeccionesXJefe(WN_Combos Datos)
         {
             DataSet ds;
@@ -61,9 +62,19 @@ namespace DllCampElectoral.Datos
                     if (ds.Tables[0].Rows.Count > 0)
                         return ds.Tables[0];
             return null;
-
-
         }
+        public DataTable ObtenerComboCasillaXIDJefe(WN_Combos Datos)
+        {
+            DataSet ds;
+
+            ds = SqlHelper.ExecuteDataset(Datos.CadenaConexion, "WN_spCSLDB_get_Combos", 11, Datos.Parametro01String, 0);
+            if (ds != null)
+                if (ds.Tables[0] != null)
+                    if (ds.Tables[0].Rows.Count > 0)
+                        return ds.Tables[0];
+            return null;
+        }
+
 
 
 

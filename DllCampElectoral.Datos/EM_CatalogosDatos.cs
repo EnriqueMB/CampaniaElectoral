@@ -504,7 +504,7 @@ namespace DllCampElectoral.Datos
                 while (Dr.Read())
                 {
                     Item = new EM_CatColaborador();
-                    Item.IDColaborador = Dr.GetString(Dr.GetOrdinal("IDColaborador"));
+                    Item.IDColaborador = Dr.GetString(Dr.GetOrdinal("IDColaborador")).Trim();
                     Item.Nombre = Dr.GetString(Dr.GetOrdinal("Nombre"));
                     Item.ApPaterno = Dr.GetString(Dr.GetOrdinal("ApPaterno"));
                     Item.ApMaterno = Dr.GetString(Dr.GetOrdinal("ApMaterno"));

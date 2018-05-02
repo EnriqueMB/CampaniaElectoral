@@ -406,7 +406,7 @@ var FormValidator = function () {
        
         $.validator.addMethod("formatoImg", function (value, element, params) {
             //Checamos que tenga un archivo el input file
-            var bandera = document.getElementById('inputImgServer').value;
+            var bandera = document.getElementById('cph_MasterBody_inputImgServer').value;
             if (element.value.length != 0) {
                 //Si hay obtenemos la extensión
                 var arrayString = element.value.split(".");
@@ -524,10 +524,10 @@ var FormValidator = function () {
                     required: true
                 },
                 ctl00$cph_MasterBody$id_password: {
-                    passwordCSL: true, passwordCSL: ["cph_MasterBody_id_password", "cph_MasterBody_id_password_again", "inputPassServer"]
+                    passwordCSL: true, passwordCSL: ["cph_MasterBody_id_password", "cph_MasterBody_id_password_again", "cph_MasterBody_inputPassServer"]
                 },
                 ctl00$cph_MasterBody$id_password_again: {
-                    passwordCSL: true, passwordCSL: ["cph_MasterBody_id_password", "cph_MasterBody_id_password_again", "inputPassServer"]
+                    passwordCSL: true, passwordCSL: ["cph_MasterBody_id_password", "cph_MasterBody_id_password_again", "cph_MasterBody_inputPassServer"]
                 },
                 ctl00$cph_MasterBody$txtFechaNac: {
                     minlength: 1,
@@ -546,14 +546,14 @@ var FormValidator = function () {
                     required: true
                 },
                 ctl00$cph_MasterBody$imgImagen: {
-                    validarImg: true, validarImg:["inputImgServer"],
+                    validarImg: true, validarImg: ["cph_MasterBody_inputImgServer"],
                     formatoImg: true, formatoImg: ["png"]
                 },
                 ctl00$cph_MasterBody$txtDireccion: {
                     required: true,
                     minlength: 5
                 },
-                txtGenero: {
+                ctl00$cph_MasterBody$cmbGenero: {
                     required: true,
                     min: true
                 },
@@ -589,12 +589,12 @@ var FormValidator = function () {
                 ctl00$cph_MasterBody$txtColonia: {
                     required: "Por favor, ingrese una colonia"
                 },
-                txtGenero: {
+                ctl00$cph_MasterBody$cmbGenero: {
                     required: "Por favor, seleccion un g&eacute;nero",
                     min: "Por favor, seleccion un g&eacute;nero"
                 },
                 ctl00$cph_MasterBody$cmbSeccion: {
-                    required: "Por favor, seleccion una secci&oacute;n",
+                    required: "Por favor, seleccione una secci&oacute;n",
                     min: "Por favor, seleccion una secci&oacute;n"
                 },
                 ctl00$cph_MasterBody$cmbMunicipio: {
