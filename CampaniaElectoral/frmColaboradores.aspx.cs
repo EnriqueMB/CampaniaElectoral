@@ -57,33 +57,26 @@ namespace CampaniaElectoral
                         }
                     }
                 }
+                var op = Request.QueryString["op"];
+                var opw = Request.QueryString["opW"];
 
-
-                if (!IsPostBack)
-                {
-
-                }
-                else
-                {
-
-                }
-
-               if( Request.QueryString["op"] != null)
+            if ( Request.QueryString["op"] != null )
                 this.CargarGridColaboradores(Convert.ToInt32(Request.QueryString["op"].ToString()));
-               else
-                    Response.Redirect("PageError.aspx?errorNumber=" + "No existe el tipo de operación");
+            
+            else
+                Response.Redirect("PageError.aspx?errorNumber=" + "No existe el tipo de operación");
 
-                if (Request.QueryString["errorMessage"] != null)
-                {
-                    string ScriptError = DialogMessage.Show(TipoMensaje.Error, "Error al cargar los datos. Intenté nuevamente", "Error", ShowMethod.FadeIn, HideMethod.FadeOut, ToastPosition.TopFullWidth, true);
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "popup", ScriptError, true);
-                }
-            }
-            catch (Exception ex)
+            if (Request.QueryString["errorMessage"] != null)
             {
-                Response.Redirect("PageError.aspx?errorNumber=" + ex.HResult);
+                string ScriptError = DialogMessage.Show(TipoMensaje.Error, "Error al cargar los datos. Intenté nuevamente", "Error", ShowMethod.FadeIn, HideMethod.FadeOut, ToastPosition.TopFullWidth, true);
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "popup", ScriptError, true);
             }
         }
+        catch (Exception ex)
+        {
+            Response.Redirect("PageError.aspx?errorNumber=" + ex.HResult);
+        }
+    }
 
         public void CargarGridColaboradores(int tipoop)
         {

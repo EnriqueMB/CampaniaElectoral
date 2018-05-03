@@ -22,6 +22,24 @@ namespace CampaniaElectoral {
         protected global::System.Web.UI.WebControls.HiddenField hf;
         
         /// <summary>
+        /// inputImgServer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField inputImgServer;
+        
+        /// <summary>
+        /// inputPassServer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField inputPassServer;
+        
+        /// <summary>
         /// txtClavElector control.
         /// </summary>
         /// <remarks>
@@ -29,6 +47,15 @@ namespace CampaniaElectoral {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtClavElector;
+        
+        /// <summary>
+        /// divTipoUsuario control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divTipoUsuario;
         
         /// <summary>
         /// txtTipoUsuario control.
@@ -85,6 +112,15 @@ namespace CampaniaElectoral {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtApMaterno;
         
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
         /// divAsiganado control.
         /// </summary>
         /// <remarks>
@@ -139,13 +175,13 @@ namespace CampaniaElectoral {
         protected global::System.Web.UI.WebControls.DropDownList cmbMunicipio;
         
         /// <summary>
-        /// ScriptManager1 control.
+        /// upSeccion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.UpdatePanel upSeccion;
         
         /// <summary>
         /// divSeccion control.
@@ -157,15 +193,6 @@ namespace CampaniaElectoral {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSeccion;
         
         /// <summary>
-        /// upSeccion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upSeccion;
-        
-        /// <summary>
         /// cmbSeccion control.
         /// </summary>
         /// <remarks>
@@ -175,15 +202,6 @@ namespace CampaniaElectoral {
         protected global::System.Web.UI.WebControls.DropDownList cmbSeccion;
         
         /// <summary>
-        /// divCasilla control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCasilla;
-        
-        /// <summary>
         /// upCasilla control.
         /// </summary>
         /// <remarks>
@@ -191,6 +209,15 @@ namespace CampaniaElectoral {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upCasilla;
+        
+        /// <summary>
+        /// divCasilla control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCasilla;
         
         /// <summary>
         /// cmbCasilla control.
@@ -254,6 +281,15 @@ namespace CampaniaElectoral {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtCorreo;
+        
+        /// <summary>
+        /// cmbGenero control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList cmbGenero;
         
         /// <summary>
         /// txtTelefono control.
