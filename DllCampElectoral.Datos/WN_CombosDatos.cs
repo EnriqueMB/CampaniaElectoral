@@ -51,7 +51,19 @@ namespace DllCampElectoral.Datos
                         return ds.Tables[0];
             return null;
         }
-        
+
+        public DataTable ObtenerComboSeccionesXMunicipio(WN_Combos Datos)
+        {
+            DataSet ds;
+
+            ds = SqlHelper.ExecuteDataset(Datos.CadenaConexion, "WN_spCSLDB_get_Combos", 13, "", Datos.Parametro01Int);
+            if (ds != null)
+                if (ds.Tables[0] != null)
+                    if (ds.Tables[0].Rows.Count > 0)
+                        return ds.Tables[0];
+            return null;
+        }
+
         public DataTable ObtenerComboSeccionesXJefe(WN_Combos Datos)
         {
             DataSet ds;
@@ -98,7 +110,7 @@ namespace DllCampElectoral.Datos
 
             DataSet ds;
 
-            ds = SqlHelper.ExecuteDataset(Datos.CadenaConexion, "WN_spCSLDB_get_Combos", 7, "", 0);
+            ds = SqlHelper.ExecuteDataset(Datos.CadenaConexion, "WN_spCSLDB_get_Combos", 12, "", 0);
             if (ds != null)
                 if (ds.Tables[0] != null)
                     if (ds.Tables[0].Rows.Count > 0)

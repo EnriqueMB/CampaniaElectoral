@@ -546,7 +546,9 @@ namespace DllCampElectoral.Datos
                     Datos.Imagen        = Dr.GetString(Dr.GetOrdinal("Imagen"));
                     Datos.Padre         = Dr.GetString(Dr.GetOrdinal("IDPadre"));
                     Datos.Sumplente     = Dr.GetString(Dr.GetOrdinal("IDSuplente"));
-                    Datos.Casilla       = Dr.GetString(Dr.GetOrdinal("Casilla"));
+                    Datos.Casilla       = Dr.GetInt32(Dr.GetOrdinal("Casilla"));
+                    Datos.NomCasilla    = Dr.GetString(Dr.GetOrdinal("NomCasilla"));
+                    Datos.NomMunicipio  = Dr.GetString(Dr.GetOrdinal("NomMunicipio"));
 
                     Datos.Completado = true;
                     break;

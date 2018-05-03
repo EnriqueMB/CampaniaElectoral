@@ -27,10 +27,12 @@ namespace CampaniaElectoral
             op = Request.QueryString["op"];
 
             if (!IsPostBack)
-            { 
-                //Reglas de Operacion
-                if (Request.QueryString["op"] != null)
+            {
+                ListItem itemDefault = new ListItem("--Selecione--", "");
+            
+                if (op != null)
                 {
+                    #region Valores Predeterminados
                     //padre
                     divAsiganado.Visible = false;
                     cmbAsignado.DataSource = null;
@@ -49,8 +51,9 @@ namespace CampaniaElectoral
                     //tipo de usuario (solo en admin, monitor y capturista)
                     cmbTipoUsuario.Visible = false;
                     cmbTipoUsuario.DataSource = null;
-
-                    if (Request.QueryString["op"].ToString() == "100")
+                    #endregion
+                    #region 100 Representante general
+                    if (op == "100")
                     {
                         //Si es general, no tiene padre. no tiene suplente. no tiene seccion ni casilla
                         txtTipoUsuario.Visible = true;
@@ -58,8 +61,9 @@ namespace CampaniaElectoral
                         txtTipoUsuario.Text = "REPRESENTANTE GENERAL";
                         Session["idtipouser"] = 100;
                     }
-                    //Suplente de representante general
-                    else if (Request.QueryString["op"].ToString() == "101")
+                    #endregion
+                    #region 101 Suplente de representante general
+                    else if (op == "101")
                     {
                         //es suplente
                         divSuplente.Visible = true;
@@ -73,9 +77,13 @@ namespace CampaniaElectoral
                         txtTipoUsuario.Text = "SUPLENTE DE REPRESENTANTE GENERAL";
                         Session["idtipouser"] = 101;
                     }
-                    //representante de seccion
-                    else if (Request.QueryString["op"].ToString() == "200")
+                    #endregion
+                    #region 200 representante de seccion
+                    else if (op == "200")
                     {
+                        txtTipoUsuario.Text = "REPRESENTANTE DE SECCIÓN";
+                        Session["idtipouser"] = 200;
+
                         //seccion
                         txtTipoUsuario.Visible = true;
 
@@ -83,7 +91,6 @@ namespace CampaniaElectoral
                         divAsiganado.Visible = true;
                         cmbAsignado.DataSource = null;
                         llenarComboPadre(100);
-                        cmbAsignado.SelectedIndexChanged += null;
 
                         //municipio
                         divMunicipio.Visible = true;
@@ -92,14 +99,11 @@ namespace CampaniaElectoral
 
                         //seccion
                         divSeccion.Visible = true;
-                        cmbSeccion.SelectedIndexChanged += null;
-                        llenarComboSecciones(cmbMunicipio.SelectedIndex.ToString());
-
-                        txtTipoUsuario.Text = "REPRESENTANTE DE SECCIÓN";
-                        Session["idtipouser"] = 200;
+                        cmbSeccion.Items.Insert(0, itemDefault);
                     }
-                    //suplente de representante de seccion
-                    else if (Request.QueryString["op"].ToString() == "201")
+                    #endregion
+                    #region 201 suplente de representante de seccion
+                    else if (op == "201")
                     {
                         //es suplente
                         divSuplente.Visible = true;
@@ -108,13 +112,14 @@ namespace CampaniaElectoral
 
                         divSeccion.Visible = true;
                         cmbSeccion.DataSource = null;
-                        llenarComboSecciones("0");
+                        cmbSeccion.Items.Insert(0, itemDefault);
 
                         txtTipoUsuario.Text = "SUPLENTE DE REPRESENTANTE DE SECCIÓN";
                         Session["idtipouser"] = 201;
                     }
-                    //representante de casilla
-                    else if (Request.QueryString["op"].ToString() == "300")
+                    #endregion
+                    #region 300 representante de casilla
+                    else if (op == "300")
                     {
                         txtTipoUsuario.Visible = true;
 
@@ -126,19 +131,19 @@ namespace CampaniaElectoral
                         //se llena segun el asignado
                         divSeccion.Visible = true;
                         cmbSeccion.DataSource = null;
-
-                        llenarComboSecciones("0");
+                        cmbSeccion.Items.Insert(0, itemDefault);
 
                         //OBTENER LAS CASILLAS DE ACUERDO AL REPRESENTANTE DE SECCION
                         divCasilla.Visible = true;
                         cmbCasilla.DataSource = null;
-                        llenarComboCasillas("0");
+                        cmbCasilla.Items.Insert(0, itemDefault);
 
                         txtTipoUsuario.Text = "REPRESENTANTE DE CASILLA";
                         Session["idtipouser"] = 300;
                     }
-                    //suplente de representante de casilla
-                    else if (Request.QueryString["op"].ToString() == "301")
+                    #endregion
+                    #region 301 suplente de representante de casilla
+                    else if (op == "301")
                     {
                         //es suplente
                         divSuplente.Visible = true;
@@ -148,17 +153,18 @@ namespace CampaniaElectoral
                         //seccion y casilla se toma del padre
                         divSeccion.Visible = true;
                         cmbSeccion.DataSource = null;
-                        llenarComboSecciones("0");
+                        cmbSeccion.Items.Insert(0, itemDefault);
 
                         divCasilla.Visible = true;
                         cmbCasilla.DataSource = null;
-                        llenarComboCasillas("0");
+                        cmbCasilla.Items.Insert(0, itemDefault);
 
                         txtTipoUsuario.Text = "SUPLENTE DE REPRESENTANTE DE CASILLA";
                         Session["idtipouser"] = 301;
                     }
-                    //operador politico
-                    else if (Request.QueryString["op"].ToString() == "400")
+                    #endregion
+                    #region 400 operador politico
+                    else if (op == "400")
                     {
                         //operador
                         txtTipoUsuario.Visible = true;
@@ -171,18 +177,20 @@ namespace CampaniaElectoral
                         //seccion y casilla se toma del padre, seria del jefe de casilla, solo para efecto de muestra
                         divSeccion.Visible = true;
                         cmbSeccion.DataSource = null;
-                        llenarComboSecciones("0");
+                        cmbSeccion.Items.Insert(0, itemDefault);
 
                         //Para efecto de muestra
                         divCasilla.Visible = true;
                         cmbCasilla.DataSource = null;
-                        llenarComboCasillas("0");
+                        cmbCasilla.Items.Insert(0, itemDefault);
 
                         txtTipoUsuario.Text = "OPERADOR POLÍTICO";
                         Session["idtipouser"] = 400;
                     }
+                    #endregion
+                    #region 1-10-11 administrador, secretaria y monitor
                     //administrador, secretaria y monitor
-                    else if (Request.QueryString["op"].ToString() == "1" || Request.QueryString["op"].ToString() == "10" || Request.QueryString["op"].ToString() == "11")
+                    else if (op == "1" || op == "10" || op == "11")
                     {
                         //escondemos el input tipo de usuario
                         txtTipoUsuario.Visible = false;
@@ -195,6 +203,7 @@ namespace CampaniaElectoral
 
                         Session["idtipouser"] = null;
                     }
+                    #endregion
                 }
             }
 
@@ -217,11 +226,9 @@ namespace CampaniaElectoral
                                 CN.ObtenerDetalleColaboradoresXID(DatosAux);
                                 if (DatosAux.Completado)
                                 {
-
-                                    //idGenero = DatosAux.IDGenero;
                                     this.CargarDatos(DatosAux);
 
-                                    //Valores predeterminados para los select por tipo de usuario
+                                    #region 200 Asignar valores Representante de seccion
                                     if (DatosAux.IDTipoUsu == 200)
                                     {
                                         cmbAsignado.SelectedIndex = -1;
@@ -248,7 +255,7 @@ namespace CampaniaElectoral
                                             cmbMunicipio.SelectedIndex = -1;
                                         }
 
-                                        llenarComboSecciones(DatosAux.Municipio.ToString());
+                                        llenarComboSeccionesXMunicipio(DatosAux.Municipio);
                                         cmbSeccion.SelectedIndex = -1;
 
                                         ListItem listItemSeccion = cmbSeccion.Items.FindByValue(DatosAux.Seccion.ToString());
@@ -261,9 +268,10 @@ namespace CampaniaElectoral
                                             cmbSeccion.SelectedIndex = -1;
                                         }
                                     }
+                                    #endregion
+                                    #region 201 Asignar valores Suplente de Representante de seccion
                                     else if (DatosAux.IDTipoUsu == 201)
                                     {
-
                                         ListItem listItemSuplente = cmbSuplente.Items.FindByValue(DatosAux.Sumplente);
                                         if (listItemSuplente != null)
                                         {
@@ -273,9 +281,12 @@ namespace CampaniaElectoral
                                         {
                                             cmbSuplente.SelectedIndex = -1;
                                         }
-                                        //seccion es directo de la base de datos
+                                        llenarComboSeccionesXMunicipio(DatosAux.Municipio);
+                                        cmbSeccion.SelectedIndex = -1;
                                         cmbSeccion.Items.Insert(0, new ListItem(DatosAux.Seccion.ToString(), DatosAux.Seccion.ToString()));
                                     }
+                                    #endregion
+                                    #region 300 Asignar valores Representante de casilla
                                     else if (DatosAux.IDTipoUsu == 300)
                                     {
                                         cmbAsignado.SelectedIndex = -1;
@@ -292,13 +303,11 @@ namespace CampaniaElectoral
                                             cmbAsignado.SelectedIndex = -1;
                                         }
 
-                                        //la seccion se llena directo ya que es el mismo id y nombre
+                                        //la seccion se llena directo ya que es el mismo id y nombre, es único
                                         cmbSeccion.Items.Insert(0, new ListItem(DatosAux.Seccion.ToString(), DatosAux.Seccion.ToString()));
-                                        //llenamos la casilla en relacion a la seccion
-                                        llenarComboCasillas(DatosAux.Seccion.ToString());
-                                        cmbCasilla.SelectedIndex = -1;
+                                        cmbSeccion.Items.Insert(0, new ListItem(DatosAux.Seccion.ToString(), DatosAux.Seccion.ToString()));
 
-                                        ListItem listItemCasilla = cmbCasilla.Items.FindByValue(DatosAux.Casilla);
+                                        ListItem listItemCasilla = cmbCasilla.Items.FindByValue(DatosAux.Casilla.ToString());
                                         if (listItemCasilla != null)
                                         {
                                             cmbCasilla.SelectedValue = listItemCasilla.Value;
@@ -308,6 +317,7 @@ namespace CampaniaElectoral
                                             cmbCasilla.SelectedIndex = -1;
                                         }
                                     }
+                                    #endregion
                                     else if (DatosAux.IDTipoUsu == 301)
                                     {
                                         cmbSuplente.SelectedIndex = -1;
@@ -323,10 +333,25 @@ namespace CampaniaElectoral
                                         {
                                             cmbSuplente.SelectedIndex = -1;
                                         }
+
+                                        llenarComboSecciones();
+
+
+                                        llenarComboCasillas(DatosAux.Seccion.ToString());
+                                        cmbCasilla.SelectedIndex = -1;
+
+                                        ListItem listItemCasilla = cmbCasilla.Items.FindByValue(DatosAux.Seccion.ToString());
+                                        if (listItemCasilla != null)
+                                        {
+                                            cmbCasilla.SelectedValue = listItemCasilla.Value;
+                                        }
+                                        else
+                                        {
+                                            cmbCasilla.SelectedIndex = -1;
+                                        }
+
                                         //la seccion se llena directo ya que es el mismo id y nombre
-                                        cmbSeccion.Items.Insert(0, new ListItem(DatosAux.Seccion.ToString(), DatosAux.Seccion.ToString()));
-                                        //llenamos la casilla en relacion a la seccion
-                                        cmbCasilla.Items.Insert(0, new ListItem(DatosAux.Casilla.ToString(), DatosAux.Casilla.ToString()));
+                                        //cmbSeccion.Items.Insert(0, new ListItem(DatosAux.Seccion.ToString(), DatosAux.Seccion.ToString()));
                                     }
                                     else if (DatosAux.IDTipoUsu == 400)
                                     {
@@ -422,8 +447,8 @@ namespace CampaniaElectoral
                             IDTipoUsuario = Convert.ToInt32(cmbTipoUsuario.SelectedValue.ToString());
 
                         //Valores predeterminados, tanto para el representante general como el administrador
-                        string padre = "X", suplente = "X", id_poligono = "X", casilla = "0";
-                        int seccion = 0, municipio = 0;
+                        string padre = "X", suplente = "X", id_poligono = "X";
+                        int seccion = 0, municipio = 0, casilla = 0;
 
                         //regla de los nuevos campos
                         //checamos el suplente del representante general
@@ -449,21 +474,21 @@ namespace CampaniaElectoral
                         {
                             padre = cmbAsignado.SelectedValue.ToString();
                             seccion = Convert.ToInt32(cmbSeccion.SelectedValue.ToString());
-                            casilla = cmbCasilla.SelectedValue.ToString();
+                            int.TryParse(cmbCasilla.SelectedValue.ToString(), out casilla);
                         }
                         //suplente representante de casilla
                         else if (IDTipoUsuario == 301)
                         {
                             suplente = cmbSuplente.SelectedValue.ToString();
                             seccion = Convert.ToInt32(cmbSeccion.SelectedValue.ToString());
-                            casilla = cmbCasilla.SelectedValue.ToString();
+                            int.TryParse(cmbCasilla.SelectedValue.ToString(), out casilla);
                         }
                         //operador politico
                         else if (IDTipoUsuario == 400)
                         {
                             padre = cmbAsignado.SelectedValue.ToString();
                             seccion = Int32.Parse(cmbSeccion.SelectedValue.ToString());
-                            casilla = cmbCasilla.SelectedValue.ToString();
+                            int.TryParse(cmbCasilla.SelectedValue.ToString(), out casilla);
                         }
                         //Administrador | capturista | monitor
                         else if (IDTipoUsuario == 1 || IDTipoUsuario == 10 || IDTipoUsuario == 11)
@@ -471,8 +496,7 @@ namespace CampaniaElectoral
 
                         }
 
-                        //predeterminado 
-                        int estado = 7;
+                        int estado = 0;
 
                         string txtNomb = Request.Form["ctl00$cph_MasterBody$txtNombre"].ToString();
                         string txtApPaterno = Request.Form["ctl00$cph_MasterBody$txtApPaterno"].ToString();
@@ -509,39 +533,22 @@ namespace CampaniaElectoral
             }
         }
 
-        public Control GetPostBackControl(Page page)
-        {
-            Control control = null;
-
-            string ctrlname = page.Request.Params.Get("__EVENTTARGET");
-            if (ctrlname != null && ctrlname != string.Empty)
-            {
-                control = page.FindControl(ctrlname);
-            }
-            else
-            {
-                foreach (string ctl in page.Request.Form)
-                {
-                    Control c = page.FindControl(ctl);
-                    if (c is System.Web.UI.WebControls.Button)
-                    {
-                        control = c;
-                        break;
-                    }
-                }
-            }
-            return control;
-        }
+        #region Combos
         private void llenarComboPadre(int tipusu)
         {
             try
             {
-                WN_Combos Datos = new WN_Combos { CadenaConexion = Comun.Conexion , Parametro01Int=tipusu};
+                WN_Combos Datos = new WN_Combos { CadenaConexion = Comun.Conexion, Parametro01Int = tipusu };
                 WN_CombosNegocio GN = new WN_CombosNegocio();
                 cmbAsignado.DataSource = GN.ObtenerComboPadre(Datos);
                 cmbAsignado.DataValueField = "ID";
                 cmbAsignado.DataTextField = "Nombre";
                 cmbAsignado.DataBind();
+
+                //remuevo el --seleccione--
+                if (tipusu == 100)
+                    cmbAsignado.Items.RemoveAt(0);
+
             }
             catch (Exception ex)
             {
@@ -564,11 +571,27 @@ namespace CampaniaElectoral
                 throw ex;
             }
         }
-        private void llenarComboSecciones(string padre)
+        private void llenarComboSeccionesXMunicipio(int municipio)
         {
             try
             {
-                WN_Combos Datos = new WN_Combos { CadenaConexion = Comun.Conexion, Parametro01String=padre };
+                WN_Combos Datos = new WN_Combos { CadenaConexion = Comun.Conexion, Parametro01Int = municipio };
+                WN_CombosNegocio GN = new WN_CombosNegocio();
+                cmbSeccion.DataSource = GN.ObtenerComboSeccionesXMunicipio(Datos);
+                cmbSeccion.DataValueField = "ID";
+                cmbSeccion.DataTextField = "Nombre";
+                cmbSeccion.DataBind();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        private void llenarComboSeccionesXPadre(string padre)
+        {
+            try
+            {
+                WN_Combos Datos = new WN_Combos { CadenaConexion = Comun.Conexion, Parametro01String = padre };
                 WN_CombosNegocio GN = new WN_CombosNegocio();
                 cmbSeccion.DataSource = GN.ObtenerComboSeccionesXPadre(Datos);
                 cmbSeccion.DataValueField = "ID";
@@ -612,11 +635,11 @@ namespace CampaniaElectoral
                 throw ex;
             }
         }
-        private void llenarComboCasillas(string poligono)
+        private void llenarComboCasillas(string casilla)
         {
             try
             {
-                WN_Combos Datos = new WN_Combos { CadenaConexion = Comun.Conexion, Parametro01String = poligono };
+                WN_Combos Datos = new WN_Combos { CadenaConexion = Comun.Conexion, Parametro01String = casilla };
                 WN_CombosNegocio GN = new WN_CombosNegocio();
                 cmbCasilla.DataSource = GN.ObtenerComboCasillasXSeccion(Datos);
                 cmbCasilla.DataValueField = "ID";
@@ -637,7 +660,7 @@ namespace CampaniaElectoral
                 cmbMunicipio.DataSource = GN.ObtenerComboMunicipios(Datos);
                 cmbMunicipio.DataValueField = "ID";
                 cmbMunicipio.DataTextField = "Nombre";
-               
+
                 cmbMunicipio.DataBind();
             }
             catch (Exception ex)
@@ -661,6 +684,8 @@ namespace CampaniaElectoral
                 throw ex;
             }
         }
+        #endregion
+        #region Eventos
         private void CmbSeccion_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -679,14 +704,39 @@ namespace CampaniaElectoral
             try
             {
                 if (cmbAsignado.SelectedIndex > 0)
-                    llenarComboSecciones(cmbAsignado.SelectedValue.ToString());
+                    llenarComboSeccionesXPadre(cmbAsignado.SelectedValue.ToString());
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
+        #endregion
+
         #region Métodos
+        public Control GetPostBackControl(Page page)
+        {
+            Control control = null;
+
+            string ctrlname = page.Request.Params.Get("__EVENTTARGET");
+            if (ctrlname != null && ctrlname != string.Empty)
+            {
+                control = page.FindControl(ctrlname);
+            }
+            else
+            {
+                foreach (string ctl in page.Request.Form)
+                {
+                    Control c = page.FindControl(ctl);
+                    if (c is System.Web.UI.WebControls.Button)
+                    {
+                        control = c;
+                        break;
+                    }
+                }
+            }
+            return control;
+        }
         private void CargarDatos(EM_CatColaborador DatosAux)
         {
             try
@@ -742,8 +792,8 @@ namespace CampaniaElectoral
                              int estado,            int municipio,          string IDpoligono,      string direccion,       string numExt,      
                              string numInt,         string colonia,         string CodigoPostal,    string claveElector,    string Correo,
                              string Telefono,       string Password,        int id_genero,          DateTime FechasNac,     string imagen,
-                             bool bandPassServer,   string padre,           string suplente,        string casilla,            bool bandImgServer, 
-                             int seccion
+                             bool bandPassServer,   string padre,           string suplente,        int casilla,            bool bandImgServer, 
+                             int seccion   
                             )
         {
             try
@@ -826,7 +876,11 @@ namespace CampaniaElectoral
             try
             {
                 if (cmbMunicipio.SelectedIndex > 0)
-                    llenarComboSecciones(cmbMunicipio.SelectedValue.ToString());
+                {
+                    int value;
+                    int.TryParse(cmbMunicipio.SelectedValue, out value);
+                    llenarComboSeccionesXMunicipio(value);
+                }
             }
             catch (Exception ex)
             {
