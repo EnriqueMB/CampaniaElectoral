@@ -567,6 +567,12 @@ var FormValidator = function () {
                 },
                 ctl00$cph_MasterBody$cmbAsignado: {
                     required: true
+                },
+                ctl00$cph_MasterBody$cmbCasilla: {
+                    required: true
+                },
+                ctl00$cph_MasterBody$cmbSuplente: {
+                    required: true
                 }
             },
             messages: {
@@ -602,6 +608,12 @@ var FormValidator = function () {
                     min: "Por favor, seleccion un municipio"
                 },
                 ctl00$cph_MasterBody$cmbAsignado: {
+                    required: "Por favor, asigne un jefe inmediato."
+                },
+                ctl00$cph_MasterBody$cmbCasilla: {
+                    required: "Por favor, asigne una casilla."
+                },
+                ctl00$cph_MasterBody$cmbSuplente: {
                     required: "Por favor, asigne un jefe inmediato."
                 }
             },

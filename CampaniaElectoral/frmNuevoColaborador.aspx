@@ -156,15 +156,17 @@
                                 </asp:UpdatePanel>
 
 
-                             <div class="col-md-4" id="divCasilla" runat="server">
+                             
                                 <asp:UpdatePanel ID="upCasilla" runat="server" UpdateMode="Conditional">
                                     <ContentTemplate>
+                                            <div class="col-md-4" id="divCasilla" runat="server">
                                                 <div class="form-group">
                                                     <label class="control-label" for="cmbCasilla">
                                                         Casilla <span class="symbol required"></span>
                                                     </label>
                                                     <asp:DropDownList ID="cmbCasilla" runat="server"  class="form-control search-select" data-live-search="true"></asp:DropDownList>
                                                 </div>
+                                            </div>
                                     </ContentTemplate>
                                     <Triggers>
                                         <asp:AsyncPostBackTrigger ControlID="cmbAsignado" 
@@ -173,7 +175,7 @@
                                             EventName="SelectedIndexChanged" />
                                     </Triggers>
                                 </asp:UpdatePanel>
-                            </div>
+                            
                         </div>
                    
 

@@ -228,16 +228,51 @@ namespace CampaniaElectoral
                                         cmbMunicipio.SelectedIndex = -1;
                                         cmbSeccion.SelectedIndex = -1;
 
-                                        cmbAsignado.Items.FindByValue(DatosAux.Padre).Selected = true;
-                                        cmbMunicipio.Items.FindByValue(DatosAux.Municipio.ToString()).Selected = true;
+                                        ListItem listItemPadre = cmbAsignado.Items.FindByValue(DatosAux.Padre);
+                                        if (listItemPadre != null)
+                                        {
+                                            cmbAsignado.SelectedValue = listItemPadre.Value;
+                                        }
+                                        else
+                                        {
+                                            cmbAsignado.SelectedIndex = -1;
+                                        }
+
+                                        ListItem listItemMunicipio = cmbMunicipio.Items.FindByValue(DatosAux.Municipio.ToString());
+                                        if (listItemMunicipio != null)
+                                        {
+                                            cmbMunicipio.SelectedValue = listItemMunicipio.Value;
+                                        }
+                                        else
+                                        {
+                                            cmbMunicipio.SelectedIndex = -1;
+                                        }
+
                                         llenarComboSecciones(DatosAux.Municipio.ToString());
                                         cmbSeccion.SelectedIndex = -1;
 
-                                        cmbSeccion.Items.FindByValue(DatosAux.Seccion.ToString()).Selected = true;
+                                        ListItem listItemSeccion = cmbSeccion.Items.FindByValue(DatosAux.Seccion.ToString());
+                                        if (listItemMunicipio != null)
+                                        {
+                                            cmbSeccion.SelectedValue = listItemSeccion.Value;
+                                        }
+                                        else
+                                        {
+                                            cmbSeccion.SelectedIndex = -1;
+                                        }
                                     }
                                     else if (DatosAux.IDTipoUsu == 201)
                                     {
-                                        cmbSuplente.Items.FindByValue(DatosAux.Sumplente).Selected = true;
+
+                                        ListItem listItemSuplente = cmbSuplente.Items.FindByValue(DatosAux.Sumplente);
+                                        if (listItemSuplente != null)
+                                        {
+                                            cmbSuplente.SelectedValue = listItemSuplente.Value;
+                                        }
+                                        else
+                                        {
+                                            cmbSuplente.SelectedIndex = -1;
+                                        }
                                         //seccion es directo de la base de datos
                                         cmbSeccion.Items.Insert(0, new ListItem(DatosAux.Seccion.ToString(), DatosAux.Seccion.ToString()));
                                     }
@@ -288,11 +323,10 @@ namespace CampaniaElectoral
                                         {
                                             cmbSuplente.SelectedIndex = -1;
                                         }
-
-                                        //seccion se obtiene del jefe inmediado
-                                        llenarComboSeccionesXIDJefe(DatosAux.Sumplente);
-                                        //casilla se obtiene del jefe inmediado
-                                        llenarComboCasillaXIDJefe(DatosAux.Sumplente);
+                                        //la seccion se llena directo ya que es el mismo id y nombre
+                                        cmbSeccion.Items.Insert(0, new ListItem(DatosAux.Seccion.ToString(), DatosAux.Seccion.ToString()));
+                                        //llenamos la casilla en relacion a la seccion
+                                        cmbCasilla.Items.Insert(0, new ListItem(DatosAux.Casilla.ToString(), DatosAux.Casilla.ToString()));
                                     }
                                     else if (DatosAux.IDTipoUsu == 400)
                                     {
@@ -865,12 +899,12 @@ namespace CampaniaElectoral
                 {
                     cmbSeccion.Items.Clear();
                     cmbSeccion.Items.Insert(0, new ListItem("0", "0"));
-                }
-                llenarComboCasillaXIDJefe(cmbSuplente.SelectedValue.ToString());
-                if (cmbCasilla.DataSource == null)
-                {
                     cmbSeccion.Items.Clear();
-                    cmbSeccion.Items.Insert(0, new ListItem("0", "0"));
+                    cmbSeccion.Items.Insert(0, new ListItem("0", ""));
+                }
+                else
+                {
+                    llenarComboCasillaXIDJefe(cmbSuplente.SelectedValue.ToString());
                 }
             }
         }
