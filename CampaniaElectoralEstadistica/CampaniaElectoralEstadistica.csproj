@@ -99,7 +99,9 @@
     <Content Include="assets\images\bg.png" />
     <Content Include="assets\images\logo.png" />
     <Content Include="assets\js\login.js" />
+    <Content Include="assets\js\logout.js" />
     <Content Include="assets\js\main.js" />
+    <Content Include="assets\js\ui-notifications.js" />
     <Content Include="assets\jtable.2.4.0\extensions\jquery.jtable.aspnetpagemethods.js" />
     <Content Include="assets\jtable.2.4.0\extensions\jquery.jtable.aspnetpagemethods.min.js" />
     <Content Include="assets\jtable.2.4.0\external\json2.js" />
@@ -528,6 +530,24 @@
     <Content Include="assets\plugins\jquery.transit\test\test.js" />
     <Content Include="assets\plugins\jQuery\jquery-1.11.1.min.js" />
     <Content Include="assets\plugins\jQuery\jquery-2.1.1.min.js" />
+    <Content Include="assets\plugins\sweetalert\.gitignore" />
+    <Content Include="assets\plugins\sweetalert\example\example.css" />
+    <Content Include="assets\plugins\sweetalert\example\images\logo_big%402x.png" />
+    <Content Include="assets\plugins\sweetalert\example\images\logo_big.png" />
+    <Content Include="assets\plugins\sweetalert\example\images\logo_small%402x.png" />
+    <Content Include="assets\plugins\sweetalert\example\images\logo_small.png" />
+    <Content Include="assets\plugins\sweetalert\example\images\te-logo-small.svg" />
+    <Content Include="assets\plugins\sweetalert\example\images\thumbs-up.jpg" />
+    <Content Include="assets\plugins\sweetalert\example\images\vs_icon%402x.png" />
+    <Content Include="assets\plugins\sweetalert\example\images\vs_icon.png" />
+    <Content Include="assets\plugins\sweetalert\example\index.html" />
+    <Content Include="assets\plugins\sweetalert\gulpfile.js" />
+    <Content Include="assets\plugins\sweetalert\lib\ie9.css" />
+    <Content Include="assets\plugins\sweetalert\lib\sweet-alert.css" />
+    <Content Include="assets\plugins\sweetalert\lib\sweet-alert.html" />
+    <Content Include="assets\plugins\sweetalert\lib\sweet-alert.js" />
+    <Content Include="assets\plugins\sweetalert\lib\sweet-alert.min.js" />
+    <Content Include="assets\plugins\sweetalert\sweetalert.gif" />
     <Content Include="assets\plugins\TouchSwipe\.gitignore" />
     <Content Include="assets\plugins\TouchSwipe\demos\Any_finger_swipe.html" />
     <Content Include="assets\plugins\TouchSwipe\demos\Basic_swipe.html" />
@@ -843,6 +863,7 @@
     <Content Include="libs\jquery\footable\css\fonts\footable.eot" />
     <Content Include="libs\jquery\footable\css\fonts\footable.ttf" />
     <Content Include="libs\jquery\footable\css\fonts\footable.woff" />
+    <Content Include="sfrmLogout.aspx" />
     <Content Include="siteEstadisticos.Master" />
     <Content Include="tsconfig.json" />
     <Content Include="assets\plugins\bootstrap\css\bootstrap-theme.css.map" />
@@ -905,6 +926,14 @@
     <Content Include="assets\plugins\TouchSwipe\README.md" />
     <Content Include="assets\plugins\jquery-validation\package.json" />
     <Content Include="assets\plugins\jquery-validation\README.md" />
+    <Content Include="assets\plugins\sweetalert\.editorconfig" />
+    <Content Include="assets\plugins\sweetalert\bower.json" />
+    <Content Include="assets\plugins\sweetalert\example\example.scss" />
+    <Content Include="assets\plugins\sweetalert\lib\.sass-cache\7981e80cc38cc883c439302cccda55b50fb7fde4\sweet-alert.scssc" />
+    <Content Include="assets\plugins\sweetalert\lib\sweet-alert.scss" />
+    <Content Include="assets\plugins\sweetalert\LICENSE" />
+    <Content Include="assets\plugins\sweetalert\package.json" />
+    <Content Include="assets\plugins\sweetalert\README.md" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -917,6 +946,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClaseAux\Autenticacion.cs" />
+    <Compile Include="ClaseAux\DialogMessage.cs" />
     <Compile Include="frmConteoPrep.aspx.cs">
       <DependentUpon>frmConteoPrep.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -977,6 +1008,13 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sfrmLogout.aspx.cs">
+      <DependentUpon>sfrmLogout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sfrmLogout.aspx.designer.cs">
+      <DependentUpon>sfrmLogout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="siteEstadisticos.Master.cs">
       <DependentUpon>siteEstadisticos.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -989,6 +1027,16 @@
     <Folder Include="App_Data\" />
     <Folder Include="assets\plugins\animate.css\source\sliders\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DllCampElectoral.Global\DllCampElectoral.Global.csproj">
+      <Project>{7DF0AC62-466D-4C0B-AAF7-C45BEB593718}</Project>
+      <Name>DllCampElectoral.Global</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DllCampElectoral.Negocio\DllCampElectoral.Negocio.csproj">
+      <Project>{E436CA30-402A-49F7-AE49-9AA4295C9344}</Project>
+      <Name>DllCampElectoral.Negocio</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

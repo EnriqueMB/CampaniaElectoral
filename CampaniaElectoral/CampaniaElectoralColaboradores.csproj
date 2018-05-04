@@ -250,6 +250,7 @@
     <Content Include="assets\js\form-wizard.js" />
     <Content Include="assets\js\index.js" />
     <Content Include="assets\js\login.js" />
+    <Content Include="assets\js\logout.js" />
     <Content Include="assets\js\main.js" />
     <Content Include="assets\js\maps.js" />
     <Content Include="assets\js\mapsContacto.js" />
@@ -4333,6 +4334,7 @@
     <Content Include="Images\FotosBlog\Thumbs.db" />
     <Content Include="sfrmCasillasCmb.aspx" />
     <Content Include="sfrmEliminarAfiliadosGrid.aspx" />
+    <Content Include="sfrmLogout.aspx" />
     <Content Include="sfrmRetificarAfiliadosGrid.aspx" />
     <Content Include="seccionesService.asmx" />
     <Content Include="sfrmSecciones.aspx" />
@@ -5354,6 +5356,13 @@
     </Compile>
     <Compile Include="sfrmEventos.aspx.designer.cs">
       <DependentUpon>sfrmEventos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="sfrmLogout.aspx.cs">
+      <DependentUpon>sfrmLogout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sfrmLogout.aspx.designer.cs">
+      <DependentUpon>sfrmLogout.aspx</DependentUpon>
     </Compile>
     <Compile Include="sfrmMunicipios.aspx.cs">
       <DependentUpon>sfrmMunicipios.aspx</DependentUpon>

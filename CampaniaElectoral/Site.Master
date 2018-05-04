@@ -215,7 +215,7 @@
 						</a>
 					</div>
 					<div class="col-xs-6 text-right no-padding">
-						<a class="btn btn-sm log-out text-right" href="login_login.html">
+						<a class="btn btn-sm log-out text-right" id="btnlogout">
 							<i class="fa fa-power-off"></i> Cerrar Sesión
 						</a>
 					</div>
@@ -816,7 +816,7 @@
 		<!-- start: CORE JAVASCRIPTS  -->
 		<script src="assets/js/main.js"></script>
 		<!-- end: CORE JAVASCRIPTS  -->
-
+        <script src="/assets/js/logout.js"></script>
         <asp:ContentPlaceHolder ID="cphScripts" runat="server">
 
         </asp:ContentPlaceHolder>
@@ -831,6 +831,7 @@
                 FormElements.init();
                 UIElements.init();
                 $('#xxx').remove();
+                Logout.init();
 			});
 		</script>
 	</body>
