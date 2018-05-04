@@ -20,7 +20,7 @@
 		<!-- end: META -->
 		<!-- start: MAIN CSS -->
 		<link href='http://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700,200,100,800' rel='stylesheet' type='text/css'>
-        <link href='https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>
+        <%--<link href='https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>--%>
     
 		<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.min.css">
@@ -38,6 +38,7 @@
 		<link rel="stylesheet" href="assets/plugins/bootstrap-select/bootstrap-select.min.css">
 		<link rel="stylesheet" href="assets/plugins/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css">
 		<link rel="stylesheet" href="assets/plugins/DataTables/media/css/DT_bootstrap.css">
+        <link rel="stylesheet" href="assets/plugins/DataTables/media/css/jquery.dataTables.min.css">
 		<link rel="stylesheet" href="assets/plugins/bootstrap-fileupload/bootstrap-fileupload.min.css">
 		<link rel="stylesheet" href="assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css">
 		<!-- end: CSS REQUIRED FOR THIS SUBVIEW CONTENTS-->

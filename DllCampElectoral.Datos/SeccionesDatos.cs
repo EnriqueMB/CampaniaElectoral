@@ -80,6 +80,7 @@ namespace DllCampElectoral.Datos
             {
                 Secciones Result = new Secciones();
                 SqlDataReader Dr = SqlHelper.ExecuteReader(_Datos.Conexion, "INE_spCSLDB_get_SeccionXID", _Datos.IDSeccion);
+                _Datos.IDSeccion = -1;
                 while(Dr.Read())
                 {
                     Result.IDSeccion = !Dr.IsDBNull(Dr.GetOrdinal("IDSeccion")) ? Dr.GetInt32(Dr.GetOrdinal("IDSeccion")) : -1;
