@@ -36,9 +36,11 @@ namespace DllCampElectoral.Datos
                                 user.IDUsuario = Dr1.GetString(Dr1.GetOrdinal("id_user"));
                                 user.Nombre = Dr1.GetString(Dr1.GetOrdinal("nombre"));
                                 user.Usuario = Dr1.GetString(Dr1.GetOrdinal("user"));
-                                user.Apellidos = Dr1.GetString(Dr1.GetOrdinal("apPaterno")) + "" + Dr1.GetString(Dr1.GetOrdinal("apMaterno"));
+                                user.Apellidos = Dr1.GetString(Dr1.GetOrdinal("apPaterno")) + " " + Dr1.GetString(Dr1.GetOrdinal("apMaterno"));
                                 user.Correo = Dr1.GetString(Dr1.GetOrdinal("correo"));
                                 user.Imagen = Dr1.GetString(Dr1.GetOrdinal("Imagen"));
+                                user.IDEstado = Dr1.GetInt32(Dr1.GetOrdinal("estado"));
+                                user.IDMunicipio = Dr1.GetInt32(Dr1.GetOrdinal("municipio"));
                             break;
                             }
                             List<WN_Permisos> listaIdsPadres = new List<WN_Permisos>(); //Lista de los IDs Padres del usuario logeado

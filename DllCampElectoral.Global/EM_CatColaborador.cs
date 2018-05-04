@@ -25,9 +25,9 @@ namespace DllCampElectoral.Global
             set { _suplente = value; }
         }
 
-        private string _casilla;
+        private int _casilla;
 
-        public string Casilla
+        public int Casilla
         {
             get { return _casilla; }
             set { _casilla = value; }
@@ -124,7 +124,7 @@ namespace DllCampElectoral.Global
             get { return _Cuidad; }
             set { _Cuidad = value; }
         }
-        
+
         private bool _ImagenGuardada;
 
         public bool ImagenGuardada
@@ -321,6 +321,22 @@ namespace DllCampElectoral.Global
             get { return _Seccion; }
             set { _Seccion = value; }
         }
+
+        private string _nomCasilla;
+
+        public string NomCasilla
+        {
+            get { return _nomCasilla; }
+            set { _nomCasilla = value; }
+        }
+        private string _nomMunicipio;
+
+        public string NomMunicipio
+        {
+            get { return _nomMunicipio; }
+            set { _nomMunicipio = value; }
+        }
+
 
 
         #endregion

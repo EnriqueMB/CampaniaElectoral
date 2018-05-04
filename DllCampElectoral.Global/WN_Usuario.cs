@@ -116,13 +116,28 @@ namespace DllCampElectoral.Global
             set { _modulosNietos = value; }
         }
 
-
         private bool _band;
 
         public bool Band
         {
             get { return _band; }
             set { _band = value; }
+        }
+
+        private int _IDMunicipio;
+
+        public int IDMunicipio
+        {
+            get { return _IDMunicipio; }
+            set { _IDMunicipio = value; }
+        }
+
+        private int _IDEstado;
+
+        public int IDEstado
+        {
+            get { return _IDEstado; }
+            set { _IDEstado = value; }
         }
 
     }
