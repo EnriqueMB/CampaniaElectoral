@@ -22,12 +22,12 @@ namespace DllCampElectoral.Negocio
                 throw ex;
             }
         }
-        public void ACDetalleCapturaXID(CH_Conteo Datos, string id_poligono)
+        public void ACDetalleCapturaXID(CH_Conteo Datos, string id_seccion,string id_casilla,string id_colaborador)
         {
             try
             {
                 CH_ConteoDatos CD = new CH_ConteoDatos();
-                CD.ACDetalleCapturaXID(Datos, id_poligono);
+                CD.ACDetalleCapturaXID(Datos, id_seccion,id_casilla,id_colaborador);
             }
             catch (Exception ex)
             {

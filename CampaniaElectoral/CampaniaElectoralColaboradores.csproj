@@ -4331,10 +4331,12 @@
     <Content Include="assets\sass\vendor\_tags-input.scss" />
     <Content Include="assets\sass\vendor\_time-picker.scss" />
     <Content Include="Images\FotosBlog\Thumbs.db" />
+    <Content Include="sfrmCasillasCmb.aspx" />
     <Content Include="sfrmEliminarAfiliadosGrid.aspx" />
     <Content Include="sfrmRetificarAfiliadosGrid.aspx" />
     <Content Include="seccionesService.asmx" />
     <Content Include="sfrmSecciones.aspx" />
+    <Content Include="sfrmSeccionesCmb.aspx" />
     <Content Include="Site.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -5325,6 +5327,13 @@
       <DependentUpon>NuevoAfiliado2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sfrmCasillasCmb.aspx.cs">
+      <DependentUpon>sfrmCasillasCmb.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sfrmCasillasCmb.aspx.designer.cs">
+      <DependentUpon>sfrmCasillasCmb.aspx</DependentUpon>
+    </Compile>
     <Compile Include="sfrmDetallePoligono.aspx.cs">
       <DependentUpon>sfrmDetallePoligono.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5394,6 +5403,13 @@
     </Compile>
     <Compile Include="sfrmRetificarAfiliadosGrid.aspx.designer.cs">
       <DependentUpon>sfrmRetificarAfiliadosGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="sfrmSeccionesCmb.aspx.cs">
+      <DependentUpon>sfrmSeccionesCmb.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sfrmSeccionesCmb.aspx.designer.cs">
+      <DependentUpon>sfrmSeccionesCmb.aspx</DependentUpon>
     </Compile>
     <Compile Include="sfrmZonasRiesgoXIDs.aspx.cs">
       <DependentUpon>sfrmZonasRiesgoXIDs.aspx</DependentUpon>
