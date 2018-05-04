@@ -1,4 +1,5 @@
-﻿using DllCampElectoral.Global;
+﻿using CampaniaElectoral.ClasesAux;
+using DllCampElectoral.Global;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,8 +27,18 @@ namespace CampaniaElectoral
             if (usr.Identity.IsAuthenticated || usr.Identity.AuthenticationType == "Forms")
             {
                 if (Session["Usuario"] == null)
+                {
                     //Obtener de base de datos.
-                    Response.Redirect("Login.aspx?idE='La sesión ha concluido, debe ingresar de nuevo su usuario y contraseña'");
+                    WN_Usuario Usuario = new WN_Usuario();
+                    Usuario.IDUsuario = usr.Identity.Name;
+                    Autenticacion.AutenticarSeccion(Usuario);
+                    listaPadres = Usuario.ModulosPadres;
+                    listaHijos = Usuario.ModulosHijos;
+                    listaNietos = Usuario.ModuloNietos;
+                    Comun.IDUsuario = Usuario.IDUsuario;
+                    Session["Usuario"] = Usuario;
+                   // Response.Redirect("Login.aspx?idE='La sesión ha concluido, debe ingresar de nuevo su usuario y contraseña'");
+                }
                 else
                 {
                     WN_Usuario u = (WN_Usuario)Session["Usuario"];

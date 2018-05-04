@@ -15,5 +15,11 @@ namespace DllCampElectoral.Negocio
             DA_AutenticarDatos autdatos = new DA_AutenticarDatos();
            return autdatos.Autenticar(user);
         }
+
+        public WN_Usuario AutenticarSeccion(WN_Usuario user)
+        {
+            DA_AutenticarDatos autdatos = new DA_AutenticarDatos();
+            return autdatos.AutenticarSeccion(user);
+        }
     }
 }
