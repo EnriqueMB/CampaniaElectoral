@@ -68,7 +68,7 @@ namespace CampaniaElectoral
                         //es suplente
                         divSuplente.Visible = true;
                         //LlenarCombo
-                        llenarComboSuplente(100);
+                        llenarComboRepresentanteSinCasilla(100, op);
 
                         //padre
                         divAsiganado.Visible = false;
@@ -90,7 +90,7 @@ namespace CampaniaElectoral
                         //padre
                         divAsiganado.Visible = true;
                         cmbAsignado.DataSource = null;
-                        llenarComboPadre(100);
+                        llenarComboRepresentanteSinCasilla(100, op);
 
                         //municipio
                         divMunicipio.Visible = true;
@@ -107,7 +107,7 @@ namespace CampaniaElectoral
                     {
                         //es suplente
                         divSuplente.Visible = true;
-                        llenarComboSuplente(200);
+                        llenarComboRepresentanteSinCasilla(200, op);
                         cmbSuplente.AutoPostBack = true;
 
                         divSeccion.Visible = true;
@@ -125,7 +125,7 @@ namespace CampaniaElectoral
 
                         //padre
                         divAsiganado.Visible = true;
-                        llenarComboPadre(200);
+                        llenarComboRepresentanteSinCasilla(200, op);
                         cmbAsignado.AutoPostBack = true;
 
                         //se llena segun el asignado
@@ -171,7 +171,7 @@ namespace CampaniaElectoral
                         divAsiganado.Visible = true;
 
                         //llenar combo a partir de casilla al parecer
-                        llenarComboPadre(300);
+                        llenarComboPadre(300, op);
                         cmbAsignado.AutoPostBack = true;
 
                         //seccion y casilla se toma del padre, seria del jefe de casilla, solo para efecto de muestra
@@ -227,7 +227,20 @@ namespace CampaniaElectoral
                                 if (DatosAux.Completado)
                                 {
                                     this.CargarDatos(DatosAux);
-
+                                    #region 101 Asignar valores Suplente Representante General
+                                    if (DatosAux.IDTipoUsu == 101)
+                                    {
+                                        ListItem listItemSuplente = cmbSuplente.Items.FindByValue(DatosAux.Sumplente);
+                                        if (listItemSuplente != null)
+                                        {
+                                            cmbSuplente.SelectedValue = listItemSuplente.Value;
+                                        }
+                                        else
+                                        {
+                                            cmbSuplente.SelectedIndex = -1;
+                                        }
+                                    }
+                                    #endregion
                                     #region 200 Asignar valores Representante de seccion
                                     if (DatosAux.IDTipoUsu == 200)
                                     {
@@ -305,7 +318,9 @@ namespace CampaniaElectoral
 
                                         //la seccion se llena directo ya que es el mismo id y nombre, es único
                                         cmbSeccion.Items.Insert(0, new ListItem(DatosAux.Seccion.ToString(), DatosAux.Seccion.ToString()));
-                                        cmbSeccion.Items.Insert(0, new ListItem(DatosAux.Seccion.ToString(), DatosAux.Seccion.ToString()));
+
+                                        llenarComboCasillas(DatosAux.Seccion.ToString());
+                                        cmbCasilla.SelectedIndex = -1;
 
                                         ListItem listItemCasilla = cmbCasilla.Items.FindByValue(DatosAux.Casilla.ToString());
                                         if (listItemCasilla != null)
@@ -318,6 +333,7 @@ namespace CampaniaElectoral
                                         }
                                     }
                                     #endregion
+                                    #region 301 Asignar Valores Suplente de casilla
                                     else if (DatosAux.IDTipoUsu == 301)
                                     {
                                         cmbSuplente.SelectedIndex = -1;
@@ -334,25 +350,12 @@ namespace CampaniaElectoral
                                             cmbSuplente.SelectedIndex = -1;
                                         }
 
-                                        llenarComboSecciones();
-
-
-                                        llenarComboCasillas(DatosAux.Seccion.ToString());
-                                        cmbCasilla.SelectedIndex = -1;
-
-                                        ListItem listItemCasilla = cmbCasilla.Items.FindByValue(DatosAux.Seccion.ToString());
-                                        if (listItemCasilla != null)
-                                        {
-                                            cmbCasilla.SelectedValue = listItemCasilla.Value;
-                                        }
-                                        else
-                                        {
-                                            cmbCasilla.SelectedIndex = -1;
-                                        }
-
-                                        //la seccion se llena directo ya que es el mismo id y nombre
-                                        //cmbSeccion.Items.Insert(0, new ListItem(DatosAux.Seccion.ToString(), DatosAux.Seccion.ToString()));
+                                        //la seccion se llena directo ya que es el mismo id y nombre, es único
+                                        cmbSeccion.Items.Insert(0, new ListItem(DatosAux.Seccion.ToString(), DatosAux.Seccion.ToString()));
+                                        cmbCasilla.Items.Insert(0, new ListItem(DatosAux.NomCasilla, DatosAux.Casilla.ToString()));
                                     }
+                                    #endregion
+                                    #region 400 Operador político
                                     else if (DatosAux.IDTipoUsu == 400)
                                     {
                                         cmbAsignado.SelectedIndex = -1;
@@ -371,9 +374,9 @@ namespace CampaniaElectoral
 
                                         //la seccion se llena directo ya que es el mismo id y nombre
                                         cmbSeccion.Items.Insert(0, new ListItem(DatosAux.Seccion.ToString(), DatosAux.Seccion.ToString()));
-                                        //llenamos la casilla en relacion a la seccion
-                                        cmbCasilla.Items.Insert(0, new ListItem(DatosAux.Casilla.ToString(), DatosAux.Casilla.ToString()));
+                                        cmbCasilla.Items.Insert(0, new ListItem(DatosAux.NomCasilla, DatosAux.Casilla.ToString()));
                                     }
+                                    #endregion
                                     else if (DatosAux.IDTipoUsu == 1 || DatosAux.IDTipoUsu == 10 || DatosAux.IDTipoUsu == 11)
                                     {
                                         cmbTipoUsuario.SelectedIndex = -1;
@@ -534,7 +537,35 @@ namespace CampaniaElectoral
         }
 
         #region Combos
-        private void llenarComboPadre(int tipusu)
+        private void llenarComboRepresentanteSinCasilla(int tipusu, string tipoUsuarioActual)
+        {
+            try
+            {
+                WN_Combos Datos = new WN_Combos { CadenaConexion = Comun.Conexion, Parametro01Int = tipusu };
+                WN_CombosNegocio GN = new WN_CombosNegocio();
+
+                if (tipoUsuarioActual == "101" || tipoUsuarioActual == "201")
+                {
+                    cmbSuplente.DataSource = GN.ObtenerComboRepresentanteSinCasilla(Datos);
+                    cmbSuplente.DataValueField = "ID";
+                    cmbSuplente.DataTextField = "Nombre";
+                    cmbSuplente.DataBind();
+                }
+                else if (tipoUsuarioActual == "200" || tipoUsuarioActual == "300")
+                {
+                    cmbAsignado.DataSource = GN.ObtenerComboRepresentanteSinCasilla(Datos);
+                    cmbAsignado.DataValueField = "ID";
+                    cmbAsignado.DataTextField = "Nombre";
+                    cmbAsignado.DataBind();
+                }
+                    
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        private void llenarComboPadre(int tipusu, string tipoUsuarioActual)
         {
             try
             {
@@ -546,7 +577,7 @@ namespace CampaniaElectoral
                 cmbAsignado.DataBind();
 
                 //remuevo el --seleccione--
-                if (tipusu == 100)
+                if (tipoUsuarioActual == "100")
                     cmbAsignado.Items.RemoveAt(0);
 
             }
@@ -684,6 +715,40 @@ namespace CampaniaElectoral
                 throw ex;
             }
         }
+        public void CargarComboGenero()
+        {
+            try
+            {
+                CH_Genero Datos = new CH_Genero { Conexion = Comun.Conexion };
+                EM_CatalagosNegocio GN = new EM_CatalagosNegocio();
+                cmbGenero.DataSource = GN.ObtenerComboGenero(Datos);
+                cmbGenero.DataValueField = "IDGenero";
+                cmbGenero.DataTextField = "Descripcion";
+                cmbGenero.DataBind();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public void CargarComboTipoUsuario()
+        {
+            try
+            {
+                WN_Combos Datos = new WN_Combos { CadenaConexion = Comun.Conexion };
+                WN_CombosNegocio CN = new WN_CombosNegocio();
+
+                cmbTipoUsuario.DataSource = CN.ObtenerComboTipoUsuario(Datos);
+                cmbTipoUsuario.DataValueField = "ID";
+                cmbTipoUsuario.DataTextField = "Nombre";
+                cmbTipoUsuario.DataBind();
+                cmbTipoUsuario.Items.Insert(0, new ListItem("-Seleccione-", "0"));
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         #endregion
         #region Eventos
         private void CmbSeccion_SelectedIndexChanged(object sender, EventArgs e)
@@ -709,6 +774,66 @@ namespace CampaniaElectoral
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+        protected void cmbSuplente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (string.Equals(op, "201"))
+            {
+                llenarComboSeccionesXIDJefe(cmbSuplente.SelectedValue.ToString());
+                if (cmbSeccion.DataSource == null)
+                {
+                    cmbSeccion.Items.Clear();
+                    cmbSeccion.Items.Insert(0, new ListItem("0", "0"));
+                }
+            }
+            else if (string.Equals(op, "301"))
+            {
+                llenarComboSeccionesXIDJefe(cmbSuplente.SelectedValue.ToString());
+                if (cmbSeccion.DataSource == null)
+                {
+                    cmbSeccion.Items.Clear();
+                    cmbSeccion.Items.Insert(0, new ListItem("0", "0"));
+                    cmbSeccion.Items.Clear();
+                    cmbSeccion.Items.Insert(0, new ListItem("0", ""));
+                }
+                else
+                {
+                    llenarComboCasillaXIDJefe(cmbSuplente.SelectedValue.ToString());
+                }
+            }
+        }
+        protected void cmbAsignado_SelectedIndexChanged1(object sender, EventArgs e)
+        {
+            if (string.Equals(op, "300"))
+            {
+                llenarComboSeccionesXIDJefe(cmbAsignado.SelectedValue.ToString());
+                if (cmbSeccion.DataSource == null)
+                {
+                    cmbSeccion.Items.Clear();
+                    cmbSeccion.Items.Insert(0, new ListItem("0", "0"));
+                }
+                llenarComboCasillas(cmbSeccion.SelectedValue.ToString());
+                if (cmbCasilla.DataSource == null)
+                {
+                    cmbCasilla.Items.Clear();
+                    cmbCasilla.Items.Insert(0, new ListItem("0", "0"));
+                }
+            }
+            else if (string.Equals(op, "400"))
+            {
+                llenarComboSeccionesXIDJefe(cmbAsignado.SelectedValue.ToString());
+                if (cmbSeccion.DataSource == null)
+                {
+                    cmbSeccion.Items.Clear();
+                    cmbSeccion.Items.Insert(0, new ListItem("0", "0"));
+                }
+                llenarComboCasillaXIDJefe(cmbAsignado.SelectedValue.ToString());
+                if (cmbCasilla.DataSource == null)
+                {
+                    cmbCasilla.Items.Clear();
+                    cmbCasilla.Items.Insert(0, new ListItem("0", "0"));
+                }
             }
         }
         #endregion
@@ -831,8 +956,6 @@ namespace CampaniaElectoral
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "popup", ScriptError, true);
             }
         }
-
-       
         private void IniciarDatos()
         {
             try
@@ -855,22 +978,7 @@ namespace CampaniaElectoral
                 throw ex;
             }
         }
-        public void CargarComboGenero()
-        {
-            try
-            {
-                CH_Genero Datos = new CH_Genero { Conexion = Comun.Conexion };
-                EM_CatalagosNegocio GN = new EM_CatalagosNegocio();
-                cmbGenero.DataSource = GN.ObtenerComboGenero(Datos);
-                cmbGenero.DataValueField = "IDGenero";
-                cmbGenero.DataTextField = "Descripcion";
-                cmbGenero.DataBind();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+      
         protected void cmbMunicipio_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -887,80 +995,6 @@ namespace CampaniaElectoral
                 throw ex;
             }
         }
-        protected void cmbAsignado_SelectedIndexChanged1(object sender, EventArgs e)
-        {
-            if (string.Equals(op, "300"))
-            {
-                llenarComboSeccionesXIDJefe(cmbAsignado.SelectedValue.ToString());
-                if(cmbSeccion.DataSource == null)
-                {
-                    cmbSeccion.Items.Clear();
-                    cmbSeccion.Items.Insert(0, new ListItem("0", "0"));
-                }
-                llenarComboCasillas(cmbSeccion.SelectedValue.ToString());
-            }
-            else if (string.Equals(op, "400"))
-            {
-                llenarComboSeccionesXIDJefe(cmbAsignado.SelectedValue.ToString());
-                if (cmbSeccion.DataSource == null)
-                {
-                    cmbSeccion.Items.Clear();
-                    cmbSeccion.Items.Insert(0, new ListItem("0", "0"));
-                }
-                llenarComboCasillaXIDJefe(cmbAsignado.SelectedValue.ToString());
-                if (cmbCasilla.DataSource == null)
-                {
-                    cmbCasilla.Items.Clear();
-                    cmbCasilla.Items.Insert(0, new ListItem("0", "0"));
-                }
-            }
-        }
-        public void CargarComboTipoUsuario()
-        {
-            try
-            {
-                WN_Combos Datos = new WN_Combos { CadenaConexion = Comun.Conexion };
-                WN_CombosNegocio CN = new WN_CombosNegocio();
-
-                cmbTipoUsuario.DataSource = CN.ObtenerComboTipoUsuario(Datos);
-                cmbTipoUsuario.DataValueField = "ID";
-                cmbTipoUsuario.DataTextField = "Nombre";
-                cmbTipoUsuario.DataBind();
-                cmbTipoUsuario.Items.Insert(0, new ListItem("-Seleccione-", "0"));
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
         #endregion
-
-        protected void cmbSuplente_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(string.Equals(op, "201"))
-            {
-                llenarComboSeccionesXIDJefe(cmbSuplente.SelectedValue.ToString());
-                if (cmbSeccion.DataSource == null)
-                {
-                    cmbSeccion.Items.Clear();
-                    cmbSeccion.Items.Insert(0, new ListItem("0", "0"));
-                }
-            }
-            else if (string.Equals(op, "301"))
-            {
-                llenarComboSeccionesXIDJefe(cmbSuplente.SelectedValue.ToString());
-                if (cmbSeccion.DataSource == null)
-                {
-                    cmbSeccion.Items.Clear();
-                    cmbSeccion.Items.Insert(0, new ListItem("0", "0"));
-                    cmbSeccion.Items.Clear();
-                    cmbSeccion.Items.Insert(0, new ListItem("0", ""));
-                }
-                else
-                {
-                    llenarComboCasillaXIDJefe(cmbSuplente.SelectedValue.ToString());
-                }
-            }
-        }
     }
 }
