@@ -2101,13 +2101,13 @@ div.tagsinput input {
 /* ---------------------------------------------------------------------- */
 /* line 4, ../sass/vendor/_file-upload.scss */
 .fileupload-new.thumbnail {
-  width: 200px;
-  height: 150px;
+  width: 100%;
+  height: auto;
 }
 
 /* line 8, ../sass/vendor/_file-upload.scss */
 .fileupload-preview.thumbnail {
-  max-width: 200px;
-  max-height: 150px;
+  max-width: 100%;
+  max-height: auto;
   line-height: 20px;
 }

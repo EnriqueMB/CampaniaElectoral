@@ -44,6 +44,9 @@ namespace CampaniaElectoral
             {
                 if (Request.Form.Count > 0)
                 {
+                    string idseccion = "";
+                    string idcasilla = "";
+                    string colaborador = "";
                     string[] KeysForm = Request.Form.AllKeys;
                     DataTable TablaAux = new DataTable();
                     TablaAux.Columns.Add("IDPartido", typeof(int));
@@ -60,7 +63,7 @@ namespace CampaniaElectoral
                         }
                     }
                     string IDCaptura = string.IsNullOrEmpty(hf.Value) ? string.Empty : hf.Value.ToString();
-                    //this.Guardar(IDCaptura, TablaAux);
+                    this.Guardar(IDCaptura,idseccion,idcasilla,colaborador, TablaAux);
                 }
             }
         }
@@ -81,36 +84,36 @@ namespace CampaniaElectoral
 
 
 
-        //private void Guardar(string _IDCaptura, DataTable _TablaDatos)
-        //{
-        //    try
-        //    {
-        //        CH_Conteo DatosAux = new CH_Conteo
-        //        {
-        //            IDCaptura = _IDCaptura,
-        //            TablaDatos = _TablaDatos,
-        //            IDUsuario = Comun.IDUsuario,
-        //            Conexion = Comun.Conexion
-        //        };
-        //        CH_ConteoNegocio CN = new CH_ConteoNegocio();
-        //        CN.ACDetalleCapturaXID(DatosAux);
-        //        if (DatosAux.Completado)
-        //        {
-        //            Response.Redirect("frmCapturas.aspx", false);
-        //        }
-        //        else
-        //        {
-        //            CN.ObtenerDetalleCapturaXID(DatosAux);
-        //            Datos = DatosAux;
-        //            string ScriptError = DialogMessage.Show(TipoMensaje.Error, "Error al guardar los datos.", "Error", ShowMethod.FadeIn, HideMethod.FadeOut, ToastPosition.TopFullWidth, true);
-        //            ScriptManager.RegisterStartupScript(this, typeof(Page), "popup", ScriptError, true);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
+        private void Guardar(string _IDCaptura,string _IDSeccion,string _IDCasilla,string _Colaborador, DataTable _TablaDatos)
+        {
+            try
+            {
+                CH_Conteo DatosAux = new CH_Conteo
+                {
+                    IDCaptura = _IDCaptura,
+                    TablaDatos = _TablaDatos,
+                    IDUsuario = Comun.IDUsuario,
+                    Conexion = Comun.Conexion
+                };
+                CH_ConteoNegocio CN = new CH_ConteoNegocio();
+                CN.ACDetalleCapturaXID(DatosAux,_IDSeccion,_IDCasilla,_Colaborador);
+                if (DatosAux.Completado)
+                {
+                    Response.Redirect("frmCapturas.aspx", false);
+                }
+                else
+                {
+                    CN.ObtenerDetalleCapturaXID(DatosAux);
+                    Datos = DatosAux;
+                    string ScriptError = DialogMessage.Show(TipoMensaje.Error, "Error al guardar los datos.", "Error", ShowMethod.FadeIn, HideMethod.FadeOut, ToastPosition.TopFullWidth, true);
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "popup", ScriptError, true);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         private void IniciarDatos()
         {
