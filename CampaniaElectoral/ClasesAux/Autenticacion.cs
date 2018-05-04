@@ -34,5 +34,11 @@ namespace CampaniaElectoral.ClasesAux
             DA_AutenticarNegocio autnegocio = new DA_AutenticarNegocio();
             return autnegocio.Autenticar(user);
         }
+
+        public static WN_Usuario AutenticarSeccion(WN_Usuario user)
+        {
+            DA_AutenticarNegocio autnegocio = new DA_AutenticarNegocio();
+            return autnegocio.AutenticarSeccion(user);
+        }
     }
 }

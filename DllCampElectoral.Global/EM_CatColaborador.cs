@@ -124,7 +124,7 @@ namespace DllCampElectoral.Global
             get { return _Cuidad; }
             set { _Cuidad = value; }
         }
-        
+
         private bool _ImagenGuardada;
 
         public bool ImagenGuardada
@@ -321,6 +321,22 @@ namespace DllCampElectoral.Global
             get { return _Seccion; }
             set { _Seccion = value; }
         }
+
+        private string _nomCasilla;
+
+        public string NomCasilla
+        {
+            get { return _nomCasilla; }
+            set { _nomCasilla = value; }
+        }
+        private string _nomMunicipio;
+
+        public string NomMunicipio
+        {
+            get { return _nomMunicipio; }
+            set { _nomMunicipio = value; }
+        }
+
 
 
         #endregion

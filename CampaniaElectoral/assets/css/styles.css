@@ -7994,3 +7994,12 @@ body.error-full-page {
 .isMobile ul.main-navigation-menu li:not(.open) a:hover {
   background: inherit !important;
 }
+
+.form-group.has-success button{
+    border-color: #3c763d !important;
+}
+
+.form-group.has-error button {
+    border-color: #a94442;
+}
+

@@ -504,13 +504,14 @@ namespace DllCampElectoral.Datos
                 while (Dr.Read())
                 {
                     Item = new EM_CatColaborador();
-                    Item.IDColaborador = Dr.GetString(Dr.GetOrdinal("IDColaborador"));
+                    Item.IDColaborador = Dr.GetString(Dr.GetOrdinal("IDColaborador")).Trim();
                     Item.Nombre = Dr.GetString(Dr.GetOrdinal("Nombre"));
                     Item.ApPaterno = Dr.GetString(Dr.GetOrdinal("ApPaterno"));
                     Item.ApMaterno = Dr.GetString(Dr.GetOrdinal("ApMaterno"));
                     Item.TipoUsuario = Dr.GetString(Dr.GetOrdinal("TipoUsuario"));
                     Item.ColorPerfil = Dr.GetString(Dr.GetOrdinal("ColorTipoUsuario"));
-                    Lista.Add(Item);
+                    Item.IDTipoUsu   = Dr.GetInt32(Dr.GetOrdinal("IDTipoUsuario"));
+                Lista.Add(Item);
                 }
                 return Lista;
            
@@ -531,7 +532,7 @@ namespace DllCampElectoral.Datos
                     Datos.Estado        = Dr.GetInt32(Dr.GetOrdinal("Estado"));
                     Datos.Municipio     = Dr.GetInt32(Dr.GetOrdinal("Municipio"));
                     Datos.IDPoligono    = Dr.GetString(Dr.GetOrdinal("Id_poligono"));
-                    Datos.Seccion       = Int32.Parse(Dr.GetString(Dr.GetOrdinal("Seccion")));
+                    Datos.Seccion       = Dr.GetInt32(Dr.GetOrdinal("Seccion"));
                     Datos.Correo        = Dr.GetString(Dr.GetOrdinal("Correo"));
                     Datos.Telefono      = Dr.GetString(Dr.GetOrdinal("Telefono"));
                     Datos.FechaNac      = Dr.GetDateTime(Dr.GetOrdinal("FechaNac"));
@@ -545,6 +546,8 @@ namespace DllCampElectoral.Datos
                     Datos.Imagen        = Dr.GetString(Dr.GetOrdinal("Imagen"));
                     Datos.Padre         = Dr.GetString(Dr.GetOrdinal("IDPadre"));
                     Datos.Sumplente     = Dr.GetString(Dr.GetOrdinal("IDSuplente"));
+                    Datos.Casilla       = Dr.GetInt32(Dr.GetOrdinal("Casilla"));
+                    Datos.NomCasilla    = Dr.GetString(Dr.GetOrdinal("NomCasilla"));
 
                     Datos.Completado = true;
                     break;

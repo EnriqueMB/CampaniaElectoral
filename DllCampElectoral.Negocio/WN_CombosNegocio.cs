@@ -29,6 +29,13 @@ namespace DllCampElectoral.Negocio
             return CD.ObtenerComboSuplente(Datos);
 
         }
+        public DataTable ObtenerComboRepresentanteSinCasilla(WN_Combos Datos)
+        {
+
+            WN_CombosDatos CD = new WN_CombosDatos();
+            return CD.ObtenerComboRepresentanteSinCasilla(Datos);
+
+        }
 
 
         public DataTable ObtenerComboSeccionesXPadre(WN_Combos Datos)
@@ -38,8 +45,35 @@ namespace DllCampElectoral.Negocio
             return CD.ObtenerComboSeccionesXPadre(Datos);
 
         }
+        public DataTable ObtenerComboSeccionesXMunicipio(WN_Combos Datos)
+        {
 
+            WN_CombosDatos CD = new WN_CombosDatos();
+            return CD.ObtenerComboSeccionesXMunicipio(Datos);
 
+        }
+        public DataTable ObtenerComboSeccionesXJefe(WN_Combos Datos)
+        {
+
+            WN_CombosDatos CD = new WN_CombosDatos();
+            return CD.ObtenerComboSeccionesXJefe(Datos);
+
+        }
+        public DataTable ObtenerComboCasillaXIDJefe(WN_Combos Datos)
+        {
+
+            WN_CombosDatos CD = new WN_CombosDatos();
+            return CD.ObtenerComboCasillaXIDJefe(Datos);
+
+        }
+
+        public DataTable ObtenerComboMunicipios(WN_Combos Datos)
+        {
+
+            WN_CombosDatos CD = new WN_CombosDatos();
+            return CD.ObtenerComboMunicipios(Datos);
+
+        }
 
         public DataTable ObtenerComboSecciones(WN_Combos Datos)
         {

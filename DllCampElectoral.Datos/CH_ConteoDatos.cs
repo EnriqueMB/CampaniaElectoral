@@ -16,7 +16,7 @@ namespace DllCampElectoral.Datos
         {
             try
             {
-                DataSet Ds = SqlHelper.ExecuteDataset(Datos.Conexion, "CH_spCSLDB_get_CapturaPREPDetalle", Datos.IDCaptura);
+                DataSet Ds = SqlHelper.ExecuteDataset(Datos.Conexion, "ER_spCSLDB_get_CapturaPREPDetalleV2", Datos.IDCaptura);
                 if (Ds != null)
                 {
                     if (Ds.Tables.Count == 2)
@@ -97,16 +97,18 @@ namespace DllCampElectoral.Datos
         //    }
         //}
 
-        public void ACDetalleCapturaXID(CH_Conteo Datos, string poligono)
+        public void ACDetalleCapturaXID(CH_Conteo Datos, string seccion,string casilla,string colaborador)
         {
             try
             {
-                object[] Parametros = { Datos.IDCaptura, Datos.TablaDatos, Datos.IDUsuario, poligono, "" };
+                object[] Parametros = { Datos.IDCaptura, Datos.TablaDatos, Datos.IDUsuario, seccion,casilla ,"" };
                 object Result = SqlHelper.ExecuteScalar(Datos.Conexion, CommandType.StoredProcedure, "CH_spCSLDB_AC_CapturaDetalleResultados",
                 new SqlParameter("@IDCaptura", Datos.IDCaptura),
                 new SqlParameter("@TablaVotos", Datos.TablaDatos),
                 new SqlParameter("@IDUsuario", Datos.IDUsuario),
-                new SqlParameter("@IdPoligono", poligono),
+                new SqlParameter("@IdSeccion", seccion),
+                new SqlParameter("@IdCasilla", casilla),
+                 new SqlParameter("@IdColaborador", colaborador),
                 new SqlParameter("@Imagen", Datos.UrlImagen)
                 );
                 if (Result != null)
@@ -194,7 +196,7 @@ namespace DllCampElectoral.Datos
         {
             try
             {
-                SqlDataReader Dr = SqlHelper.ExecuteReader(Datos.Conexion, "CH_spCSLDB_get_CapturaPREP");
+                SqlDataReader Dr = SqlHelper.ExecuteReader(Datos.Conexion, "ER_spCSLDB_get_CapturaPREPv2");
                 List<CH_Conteo> Lista = new List<CH_Conteo>();
                 CH_Conteo Item;
                 while (Dr.Read())

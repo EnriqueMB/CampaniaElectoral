@@ -1,7 +1,9 @@
-﻿using DllCampElectoral.Global;
+﻿using CampaniaElectoral.ClasesAux;
+using DllCampElectoral.Global;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -21,16 +23,36 @@ namespace CampaniaElectoral
 
             //if (Session["Usuario"] == null)
             //    Response.Redirect("Login.aspx?idE='La sesión ha concluido, debe ingresar de nuevo su usuario y contraseña'");
+            IPrincipal usr = HttpContext.Current.User;
+            if (usr.Identity.IsAuthenticated || usr.Identity.AuthenticationType == "Forms")
+            {
+                if (Session["Usuario"] == null)
+                {
+                    //Obtener de base de datos.
+                    WN_Usuario Usuario = new WN_Usuario();
+                    Usuario.IDUsuario = usr.Identity.Name;
+                    Autenticacion.AutenticarSeccion(Usuario);
+                    listaPadres = Usuario.ModulosPadres;
+                    listaHijos = Usuario.ModulosHijos;
+                    listaNietos = Usuario.ModuloNietos;
+                    Comun.IDUsuario = Usuario.IDUsuario;
+                    Session["Usuario"] = Usuario;
+                   // Response.Redirect("Login.aspx?idE='La sesión ha concluido, debe ingresar de nuevo su usuario y contraseña'");
+                }
+                else
+                {
+                    WN_Usuario u = (WN_Usuario)Session["Usuario"];
+                    listaPadres = u.ModulosPadres;
+                    listaHijos = u.ModulosHijos;
+                    listaNietos = u.ModuloNietos;
+                    Comun.IDUsuario = u.IDUsuario;
 
-            if (Session["Usuario"] == null)
-                Response.Redirect("Login.aspx?idE='La sesión ha concluido, debe ingresar de nuevo su usuario y contraseña'");
+                    Session["Usuario"] = u;
+                }
+            }
             else
             {
-                WN_Usuario u = (WN_Usuario)Session["Usuario"];
-                listaPadres = u.ModulosPadres;
-                listaHijos = u.ModulosHijos;
-                listaNietos = u.ModuloNietos;
-                Comun.IDUsuario = u.IDUsuario;
+                Response.Redirect("Login.aspx", false);
             }
         }
     }

@@ -21,6 +21,7 @@ namespace CampaniaElectoral
 
         public CH_PartidoPolitico DatosGlobales = new CH_PartidoPolitico();
 
+        public List<EM_Munucipios> municipios = new List<EM_Munucipios>();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -29,9 +30,14 @@ namespace CampaniaElectoral
                 Datos.IDEstado = 1;
                 Datos.IDMunicipio = 1;
 
+            ER_Secciones DatosSecciones = new ER_Secciones();
+            DatosSecciones.Conexion = Comun.Conexion;
+            DatosSecciones.opcion = 7;
                 CH_PoligonoNegocio CPN = new CH_PoligonoNegocio();
                 poligonos = CPN.ObtenerComboPoligonos(Datos);
 
+            ER_SeccionesNegocio ESN = new ER_SeccionesNegocio();
+            municipios=ESN.ObtenerComboMunicipios(DatosSecciones);
 
                 CH_PartidoPolitico datos = new CH_PartidoPolitico { Conexion = Comun.Conexion };
                 CH_CatalogosNegocio CPPN = new CH_CatalogosNegocio();
@@ -52,7 +58,9 @@ namespace CampaniaElectoral
 
                 CH_Conteo conteo = new CH_Conteo();
 
-                string idpoligono = Request.Form["CmbPoligonos"].ToString();
+                string idseccion = Request.Form["CmbSecciones"].ToString();
+                string idcasilla = Request.Form["CmbCasilla"].ToString();
+                string colaborador= Request.Form["cmbColaboradores"].ToString();
                 DataTable dt = new DataTable();
                 dt.Columns.AddRange(new DataColumn[2] { new DataColumn("IDPartido", typeof(int)), new DataColumn("Votos", typeof(int)) });
 
@@ -84,13 +92,13 @@ namespace CampaniaElectoral
                
                 #endregion
 
-                this.Guardar("", dt, idpoligono, imagenString);
+                this.Guardar("", dt, idseccion,idcasilla,colaborador, imagenString);
                    
             }
 
         }
 
-        private void Guardar(string _IDCaptura, DataTable _TablaDatos,string _idPoligono,string imagen)
+        private void Guardar(string _IDCaptura, DataTable _TablaDatos,string _idSeccion,string _idCasilla,string colaborador,string imagen)
         {
             try
             {
@@ -103,7 +111,7 @@ namespace CampaniaElectoral
                     UrlImagen = imagen
                 };
                 CH_ConteoNegocio CN = new CH_ConteoNegocio();
-                CN.ACDetalleCapturaXID(DatosAux, _idPoligono);
+                CN.ACDetalleCapturaXID(DatosAux, _idSeccion, _idCasilla,colaborador);
                 if (DatosAux.Completado)
                 {
                     Response.Redirect("frmCapturas.aspx", false);

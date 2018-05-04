@@ -14,6 +14,7 @@ namespace CampaniaElectoral
 {
     public partial class frmNuevoAfiliado : System.Web.UI.Page
     {
+        //public RR_Afiliados Datos = new RR_Afiliados();
         public List<CH_Genero> ListaGeneros = new List<CH_Genero>();
         public List<CH_Estados> ListaEstado = new List<CH_Estados>();
         public List<CH_Poligono> ListaSeccion = new List<CH_Poligono>();
@@ -39,6 +40,7 @@ namespace CampaniaElectoral
                                 CN.ObtenerDetalleAfiliadoXID(DatosAux);
                                 if (DatosAux.Completado)
                                 {
+                                    //Datos = DatosAux;
                                     this.CargarDatos(DatosAux);
                                 }
                                 else

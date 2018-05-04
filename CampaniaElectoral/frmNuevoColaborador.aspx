@@ -9,8 +9,8 @@
                 <div class="panel-body">
                     <div class="row">
                         <asp:HiddenField ID="hf" runat="server" />
-                        <input id="inputImgServer"  name="inputImgServer"   type="hidden" value="<% Response.Write(imgServer); %>"/>
-                        <input id="inputPassServer" name="inputPassServer"  type="hidden" value="<% Response.Write(passServer); %>"/>
+                        <asp:HiddenField ID="inputImgServer" runat="server" />
+                        <asp:HiddenField ID="inputPassServer" runat="server" />
                     </div>
                     <div class="row">
                         <div class="col-md-12">
@@ -33,54 +33,18 @@
                                     </span>
                                 </div>
                             </div>
-
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="control-label" for="cph_MasterBody_txtClavElector">
+                                    <label class="control-label" for="cph_MasterBody_txtTipoUsuario">
                                         Tipo de Usuario <span class="symbol required"></span>
                                     </label>
-                                    <span class="input-icon">
-                                            <asp:TextBox ID="txtTipoUsuario" runat="server" class="form-control tooltips" placeholder="" data-original-title="Seleccion un tipo de colaborador." data-rel="tooltip" title="" data-placement="top" ReadOnly="true"></asp:TextBox>
-                                            <asp:DropDownList ID="cmbTipoUsuario" runat="server"  class="form-control search-select" ></asp:DropDownList>
-                                        <i class="fa fa-keyboard-o"></i>
-                                    </span>
-                                </div>
-                            </div>
-
-
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label" for="cph_MasterBody_txtNombre">
-                                        Nombre(s) <span class="symbol required"></span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input type="text" class="form-control tooltips" runat="server" id="txtNombre" name="txtNombre" maxlength="80" data-original-title="Ingrese el nombre" data-rel="tooltip" title="" data-placement="top" />
-                                        <i class="fa fa-circle"></i>
-                                    </span>
-                                </div>
-                            </div>
-                             <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label" for="cph_MasterBody_txtApPaterno">
-                                        Apellido Paterno <span class="symbol required"></span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input type="text" class="form-control tooltips" runat="server" id="txtApPaterno" name="txtApPaterno" maxlength="70" data-original-title="Ingrese el Apellido Paterno" data-rel="tooltip" title="" data-placement="top" />
-                                        <i class="fa fa-circle"></i>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <dv class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label" for="cph_MasterBody_txtApMaterno">
-                                        Apellido Materno <span class="symbol required"></span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input type="text" class="form-control tooltips" runat="server" id="txtApMaterno" name="txtApMaterno" maxlength="70" data-original-title="Ingrese el Apellido Materno" data-rel="tooltip" title="" data-placement="top" />
-                                        <i class="fa fa-circle"></i>
-                                    </span>
+                                    <div id="divTipoUsuario" runat="server">
+                                        <span class="input-icon">
+                                                <asp:TextBox ID="txtTipoUsuario" runat="server" class="form-control tooltips" placeholder="" data-original-title="Seleccion un tipo de colaborador." data-rel="tooltip" title="" data-placement="top" ReadOnly="true"></asp:TextBox>
+                                                <i class="fa fa-keyboard-o"></i>
+                                        </span>
+                                    </div>
+                                    <asp:DropDownList ID="cmbTipoUsuario" runat="server"  class="form-control search-select" ></asp:DropDownList>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -94,12 +58,60 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="cph_MasterBody_txtNombre">
+                                        Nombre(s) <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input type="text" class="form-control tooltips" runat="server" id="txtNombre" name="txtNombre" maxlength="80" data-original-title="Ingrese el nombre" data-rel="tooltip" title="" data-placement="top" />
+                                        <i class="fa fa-circle"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="cph_MasterBody_txtApPaterno">
+                                        Apellido Paterno <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input type="text" class="form-control tooltips" runat="server" id="txtApPaterno" name="txtApPaterno" maxlength="70" data-original-title="Ingrese el Apellido Paterno" data-rel="tooltip" title="" data-placement="top" />
+                                        <i class="fa fa-circle"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="cph_MasterBody_txtApMaterno">
+                                        Apellido Materno <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input type="text" class="form-control tooltips" runat="server" id="txtApMaterno" name="txtApMaterno" maxlength="70" data-original-title="Ingrese el Apellido Materno" data-rel="tooltip" title="" data-placement="top" />
+                                        <i class="fa fa-circle"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
+                            </asp:ScriptManager>
+                            <script>
+                                //Para mantener los scripts despues del postback por parte del updatePanel
+                                var prm = Sys.WebForms.PageRequestManager.getInstance();
+                                prm.add_endRequest(function () {
+                                    $('.search-select').selectpicker();
+                                    
+                                });
+                            </script>
+
                              <div class="col-md-4" id="divAsiganado" runat="server">
                                 <div class="form-group">
-                                    <label class="control-label" for="cmbSeccion">
+                                    <label class="control-label" for="cmbAsignado">
                                         Asignado a <span class="symbol required"></span>
                                     </label>
-                                    <asp:DropDownList ID="cmbAsignado" runat="server"  class="form-control search-select"></asp:DropDownList>
+                                    <asp:DropDownList ID="cmbAsignado" runat="server"  class="form-control search-select" OnSelectedIndexChanged="cmbAsignado_SelectedIndexChanged1"></asp:DropDownList>
                                 </div>
                             </div>
 
@@ -108,30 +120,65 @@
                                     <label class="control-label" for="cmbSeccion">
                                        Es suplente de <span class="symbol required"></span>
                                     </label>
-                                    <asp:DropDownList ID="cmbSuplente" runat="server"  class="form-control search-select"></asp:DropDownList>
+                                    <asp:DropDownList ID="cmbSuplente" runat="server"  class="form-control search-select" OnSelectedIndexChanged="cmbSuplente_SelectedIndexChanged"></asp:DropDownList>
                                 </div>
                             </div>
                         
-
-
-                            <div class="col-md-4"  id="divSeccion" runat="server">
+                            <div class="col-md-4"  id="divMunicipio" runat="server">
                                 <div class="form-group">
-                                    <label class="control-label" for="cmbSeccion">
-                                        Sección <span class="symbol required"></span>
+                                    <label class="control-label" for="cmbMunicipio">
+                                        Municipio <span class="symbol required"></span>
                                     </label>
-                                    <asp:DropDownList ID="cmbSeccion" runat="server"  class="form-control search-select"></asp:DropDownList>
+                                    <asp:DropDownList ID="cmbMunicipio" runat="server"  class="form-control search-select" OnSelectedIndexChanged="cmbMunicipio_SelectedIndexChanged"></asp:DropDownList>
                                 </div>
                             </div>
+                            
+                            
+                                <asp:UpdatePanel ID="upSeccion" runat="server" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <div class="col-md-4"  id="divSeccion" runat="server">
+                                            <div class="form-group">
+                                                <label class="control-label" for="cmbSeccion">
+                                                Sección <span class="symbol required"></span>
+                                                </label>
+                                                    <asp:DropDownList ID="cmbSeccion" runat="server"  class="form-control search-select" data-live-search="true"></asp:DropDownList>
+                                            </div>
+                                        </div>
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="cmbMunicipio" 
+                                            EventName="SelectedIndexChanged" />
+                                         <asp:AsyncPostBackTrigger ControlID="cmbAsignado" 
+                                            EventName="SelectedIndexChanged" />
+                                        <asp:AsyncPostBackTrigger ControlID="cmbSuplente" 
+                                            EventName="SelectedIndexChanged" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
 
-                            <div class="col-md-4" id="divCasilla" runat="server">
-                                <div class="form-group">
-                                    <label class="control-label" for="cmbSeccion">
-                                        Casilla <span class="symbol required"></span>
-                                    </label>
-                                    <asp:DropDownList ID="cmbCasilla" runat="server"  class="form-control search-select" ></asp:DropDownList>
-                                </div>
-                            </div>
+
+                             
+                                <asp:UpdatePanel ID="upCasilla" runat="server" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                            <div class="col-md-4" id="divCasilla" runat="server">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="cmbCasilla">
+                                                        Casilla <span class="symbol required"></span>
+                                                    </label>
+                                                    <asp:DropDownList ID="cmbCasilla" runat="server"  class="form-control search-select" data-live-search="true"></asp:DropDownList>
+                                                </div>
+                                            </div>
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="cmbAsignado" 
+                                            EventName="SelectedIndexChanged" />
+                                        <asp:AsyncPostBackTrigger ControlID="cmbSuplente" 
+                                            EventName="SelectedIndexChanged" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
+                            
                         </div>
+                   
+
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
@@ -206,16 +253,7 @@
                                     <label class="control-label" for="cph_MasterBody_txtGenero">
                                         Genero <span class="symbol required"></span>
                                     </label>
-                                    <select class="form-control search-select" id="txtGenero" name="txtGenero">
-                                        <option value=""></option>
-                                        <% foreach (var Item in ListaGeneros)
-                                           { 
-                                                if(Item.IDGenero == idGenero)
-                                                    Response.Write("<option value='" + Item.IDGenero.ToString() + "' selected='selected'> " + Item.Descripcion.ToString() + "</option>");
-                                                else
-                                                    Response.Write("<option value='" + Item.IDGenero.ToString() + "'> " + Item.Descripcion.ToString() + "</option>");
-                                           }%>
-                                    </select>
+                                     <asp:DropDownList ID="cmbGenero" runat="server"  class="form-control search-select" data-live-search="true"></asp:DropDownList>
                                 </div>
                             </div>
                         </div>
@@ -226,7 +264,7 @@
                                         Teléfono <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input type="text" class="form-control tooltips" runat="server" id="txtTelefono" name="txtTelefono" maxlength="20" data-original-title="Ingrese el Teléfono" data-rel="tooltip" title="" data-placement="top" />
+                                        <input type="text" class="form-control tooltips" runat="server" id="txtTelefono" name="txtTelefono" maxlength="20" data-original-title="Ingrese el Teléfono" data-rel="tooltip" title="" data-placement="top" autocomplete="off"/>
                                         <i class="fa fa-phone-square"></i>
                                     </span>
                                 </div>
@@ -237,7 +275,7 @@
                                         Password <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input type="password" class="form-control" runat="server" name="password" id="id_password" />
+                                        <input type="password" class="form-control" runat="server" name="password" id="id_password"  autocomplete="off"/>
                                         <i class="fa fa-unlock"></i>
                                     </span>
                                 </div>
@@ -248,7 +286,7 @@
                                         Confirmar Password <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input type="password" class="form-control" runat="server" id="id_password_again" name="password_again" />
+                                        <input type="password" class="form-control" runat="server" id="id_password_again" name="password_again" autocomplete="off"/>
                                         <i class="fa fa-unlock-alt"></i>
                                     </span>
                                 </div>
@@ -279,26 +317,27 @@
                             </div>
                         </div>
                         
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div>
-                                <span class="symbol required"></span>Campos Obligatorios
-								<hr>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div>
+                                    <span class="symbol required"></span>Campos Obligatorios
+								    <hr>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
+                        <div class="row">
                        
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    <input type="submit" formaction="frmNuevoColaborador.aspx" class="btn btn-green btn-block" name="btnGuardar" value="Guardar"/>
-                                </div>
-                                <div class="col-md-6">
-                                    <asp:button id="btnRegresar" class="btn btn-red btn-block" name="btnCancelar" 
-                                        runat="server" text="Cancelar" 
-                                        OnClientClick="JavaScript:window.history.back(1);return false;">
-                                    </asp:button>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <input type="submit" formaction="frmNuevoColaborador.aspx" class="btn btn-green btn-block" name="btnGuardar" value="Guardar" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <asp:button id="btnRegresar" class="btn btn-red btn-block" name="btnCancelar" 
+                                            runat="server" text="Cancelar" 
+                                            OnClientClick="JavaScript:window.history.back(1);return false;">
+                                        </asp:button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -306,8 +345,8 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
+   </div>
+
         <script src="assets/plugins/jQuery/jquery-2.1.1.min.js"></script>
 		<!--<![endif]-->
 		<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
