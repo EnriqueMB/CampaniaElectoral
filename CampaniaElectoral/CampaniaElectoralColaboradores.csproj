@@ -3322,8 +3322,10 @@
     <Content Include="frmNuevoEntrevistador.aspx" />
     <Content Include="frmNuevoEvento.aspx" />
     <Content Include="frmNuevoGastos.aspx" />
+    <Content Include="frmPartidoPoliticoAlianzaCrear.aspx" />
     <Content Include="frmPartidos.aspx" />
     <Content Include="frmPartidosGrid.aspx" />
+    <Content Include="frmPartidosPoliticosAlianzasGrid.aspx" />
     <Content Include="frmPoligonos.aspx" />
     <Content Include="frmPoligonosGrid.aspx" />
     <Content Include="frmPorcentajePregunta.aspx" />
@@ -4399,6 +4401,20 @@
   <ItemGroup>
     <Content Include="App_Code\DataTableResultSet.cs" />
     <Content Include="App_Code\DataTables.cs" />
+    <Compile Include="frmPartidoPoliticoAlianzaCrear.aspx.cs">
+      <DependentUpon>frmPartidoPoliticoAlianzaCrear.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmPartidoPoliticoAlianzaCrear.aspx.designer.cs">
+      <DependentUpon>frmPartidoPoliticoAlianzaCrear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmPartidosPoliticosAlianzasGrid.aspx.cs">
+      <DependentUpon>frmPartidosPoliticosAlianzasGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmPartidosPoliticosAlianzasGrid.aspx.designer.cs">
+      <DependentUpon>frmPartidosPoliticosAlianzasGrid.aspx</DependentUpon>
+    </Compile>
     <Compile Include="frmSeccionDetalle.aspx.cs">
       <DependentUpon>frmSeccionDetalle.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

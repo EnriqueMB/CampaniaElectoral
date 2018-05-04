@@ -17,48 +17,44 @@ namespace CampaniaElectoral
         {
             try
             {
-                //if (Request.QueryString["op"] != null && Request.QueryString["op"] == "1")
-                //{
-                //    //REPRESENTANTE GENERAL 
+                var op = Request.QueryString["op"];
+                var opw = Request.QueryString["opW"];
+                var comp = Request.QueryString["complete"];
+                if ( comp == "1")
+                {
+                    string ScriptError = DialogMessage.Show(TipoMensaje.Success, "Registro eliminado correctamente.", "Información", ShowMethod.FadeIn, HideMethod.FadeOut, ToastPosition.TopFullWidth, true);
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "popup", ScriptError, true);
+                }
+                else if (comp == "0")
+                {
+                    string ScriptError = DialogMessage.Show(TipoMensaje.Error, "Error al guardar los datos.", "Error", ShowMethod.FadeIn, HideMethod.FadeOut, ToastPosition.TopFullWidth, true);
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "popup", ScriptError, true);
+                }
 
-                //}
-                //if (Request.QueryString["op"] != null && Request.QueryString["op"] == "2")
-                //{
-                //    //REPRESENTANTE GENERAL DE LA CASILLA 
-
-                //} 
-                //if (Request.QueryString["op"] != null && Request.QueryString["op"] == "4")
-                //{
-                //    //PERADORES POLITICOS
-
-                //}
-                //if (Request.QueryString["op"] != null && Request.QueryString["op"] == "5")
-                //{
-                //    //ADMINISTRADOR Y CAPTURISTAS
-
-                //}
                 if (Request.QueryString["opW"] != null && Request.QueryString["opW"] == "3")
                 {
                     if (Request.QueryString["id"] != null)
                     {
+                        
                         string AuxID = Request.QueryString["id"].ToString();
+
                         EM_CatColaborador Datos = new EM_CatColaborador { Conexion = Comun.Conexion, IDColaborador = AuxID, IDUsuario = Comun.IDUsuario };
                         EM_CatalagosNegocio CN = new EM_CatalagosNegocio();
                         CN.EliminarColaboradorXID(Datos);
+
+                        string complete = "0";
+                        string url = "frmColaboradores.aspx?op=" + op + "&complete=" + complete;
+
                         if (Datos.Completado)
                         {
-                            string ScriptError = DialogMessage.Show(TipoMensaje.Success, "Registro eliminado correctamente.", "Información", ShowMethod.FadeIn, HideMethod.FadeOut, ToastPosition.TopFullWidth, true);
-                            ScriptManager.RegisterStartupScript(this, typeof(Page), "popup", ScriptError, true);
+                            complete = "1";
+                            url = "frmColaboradores.aspx?op=" + op + "&complete="+ complete;
                         }
-                        else
-                        {
-                            string ScriptError = DialogMessage.Show(TipoMensaje.Error, "Error al guardar los datos.", "Error", ShowMethod.FadeIn, HideMethod.FadeOut, ToastPosition.TopFullWidth, true);
-                            ScriptManager.RegisterStartupScript(this, typeof(Page), "popup", ScriptError, true);
-                        }
+                        Response.Redirect(url, false);
+                        
                     }
                 }
-                var op = Request.QueryString["op"];
-                var opw = Request.QueryString["opW"];
+                
 
             if ( Request.QueryString["op"] != null )
                 this.CargarGridColaboradores(Convert.ToInt32(Request.QueryString["op"].ToString()));
