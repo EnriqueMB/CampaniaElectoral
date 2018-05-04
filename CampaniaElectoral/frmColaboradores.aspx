@@ -1,28 +1,35 @@
 ﻿<%@ Page Language="C#" Title="Catálogo de Colaboradores" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmColaboradores.aspx.cs" Inherits="CampaniaElectoral.frmColaboradores" %>
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="cph_MasterBody" runat="server">
     <div class="row">
+        <%  //Validamos el op
+            int op = 0; bool valido;
+            valido = int.TryParse(Request.QueryString["op"].ToString(), out op);
+            if (!valido)
+                Response.Redirect("ErrorPage.aspx", false);
+        %>
 	    <div class="col-md-12">
 		    <!-- start: DYNAMIC TABLE PANEL -->
 		    <div class="panel panel-white">
 			    <div class="panel-heading">
 				    <h4 class="panel-title"><span class="text-bold">
-                        <%  if(Request.QueryString["op"].ToString() == "1")
+                        <%  if(op == 1)
                                 Response.Write("Administrador y Capturista");
                             else
-                            if(Request.QueryString["op"].ToString() == "100")
+                            if(op == 100)
                                 Response.Write("Representante General");
                             else
 
-                            if(Request.QueryString["op"].ToString() == "200")
+                            if(op == 200)
                                 Response.Write("Representante de Sección");
                             else
 
-                            if(Request.QueryString["op"].ToString() == "300")
+                            if(op == 300)
                                 Response.Write("Representante de Casilla");
 
                             else
-                            if(Request.QueryString["op"].ToString() == "400")
+                            if(op == 400)
                                 Response.Write("Operadores Políticos");
                             else
 
@@ -36,38 +43,40 @@
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-md-12 space20">
-                             <%  if (Request.QueryString["op"].ToString() != "100")
-                                 {
-                              %>
 
-                                    <a href="frmNuevoColaborador.aspx?op=<%Response.Write(Request.QueryString["op"].ToString());%>" class="btn btn-green">
+                             <%  //Nuevo
+                                 if (op == 200 || op == 201 || op == 300 || op == 301 || op == 400 )
+                                 {
+
+                                     if(op == 201 || op == 301)
+                                     {
+
+                                         op = op - 1;
+                                     }
+                              %>
+                                    <a href="frmNuevoColaborador.aspx?op=<%Response.Write(op);%>" class="btn btn-green">
                                     Nuevo
                                     <i class="fa fa-plus"></i>
                                     </a>
+                            <%      
+                                } %>
 
-                                        <%  if (Request.QueryString["op"].ToString() == "200")
-                                         {
-                                                string op = "201";
-                                         %>
-                                                
-                                               <a href="frmNuevoColaborador.aspx?op=<%Response.Write(op);%>" class="btn btn-green">
-                                                Nuevo Suplente
-                                                <i class="fa fa-plus"></i>
-                                                </a>
+                            <%  //Suplente
+                                if (op == 100 || op == 101 || op == 200 || op == 201 || op == 300 || op == 301)
+                                {
+                                    if(op == 100 || op == 200 || op == 300)
+                                     {
+
+                                         op = op + 1;
+                                     }
+                                %>
+                                    <a href="frmNuevoColaborador.aspx?op=<%Response.Write(op);%>" class="btn btn-green">
+                                    Nuevo Suplente
+                                    <i class="fa fa-plus"></i>
+                                    </a>
                                 
-                                        <% }
-                                            else if(Request.QueryString["op"].ToString() == "300")
-                                            {
-                                                string op = "301";
-                                                %>
-
-                                               <a href="frmNuevoColaborador.aspx?op=<%Response.Write(op);%>" class="btn btn-green">
-                                                Nuevo Suplente
-                                                <i class="fa fa-plus"></i>
-                                                </a>                                        
-                                        <% }
-                                            %>
-                             <% } %>
+                            <% } %>
+                             
 						</div>
 					</div>
 					<div class="table-responsive">
