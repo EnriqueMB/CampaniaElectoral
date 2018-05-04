@@ -223,6 +223,12 @@ namespace DllCampElectoral.Global
             get { return _CredencialFrente; }
             set { _CredencialFrente = value; }
         }
+        private string _CredencialPosterior;
+        public string CredencialPosterior
+        {
+            get { return _CredencialPosterior; }
+            set { _CredencialPosterior = value; }
+        }
         private string _Seccion;
 
         public string Seccion
