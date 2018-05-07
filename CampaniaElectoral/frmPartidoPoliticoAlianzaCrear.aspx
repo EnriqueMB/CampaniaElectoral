@@ -25,7 +25,7 @@
                     </div>
 
                     <div class="row">   
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="row">
                                 <div class="col-md-12">
 					                <div class="form-group">
@@ -45,7 +45,7 @@
 					            </div>
                             </div>                            
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
 				                    <div class="form-group">
 				                        <label class="control-label" for="cph_MasterBody_txtSigla">
 						                    Sigla <span class="symbol required"></span>
@@ -61,16 +61,14 @@
                                         </span>
 					                </div>
                                 </div>
-                                <div class="col-md-6">
-                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-8">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
 								        <label class="control-label">
-									        Logo del partido pol&iacute;tico <span class="symbol required"></span>
+									        Logo de la alianza <span class="symbol required"></span>
 								        </label>
 								        <div class="fileupload fileupload-new" data-provides="fileupload">
 									        <div class="fileupload-new thumbnail">
@@ -79,7 +77,7 @@
 									        <div class="fileupload-preview fileupload-exists thumbnail"></div>
 									        <div>
 										        <span class="btn btn-light-grey btn-file"><span class="fileupload-new"><i class="fa fa-picture-o"></i> Seleccione una imagen</span><span class="fileupload-exists"><i class="fa fa-picture-o"></i> Cambiar</span>
-                                                    <asp:FileUpload CssClass="fileupload" name="imgLogo" accept=".png,.jpg,.jpeg" ID="imgLogo" runat="server" />
+                                                    <asp:FileUpload CssClass="fileupload form-control" name="imgLogo" accept=".png,.jpg,.jpeg" ID="imgLogo" runat="server" />
                                                     <asp:CustomValidator id="valLogo" runat="server" 
                                                       OnServerValidate="ValidarImagenExtension" 
                                                       ControlToValidate="imgLogo" 
@@ -93,34 +91,18 @@
 								        </div>
 						            </div>                                    
                                 </div>
-                                <div class="col-md-6"></div>
                             </div>
                         </div>
                     </div>                    
                     <div class="row">
-                        <div class="table-responsive">
-						<table class="table table-striped table-bordered table-hover table-full-width" id="sample_1">
-							<thead>
-								<tr>
-                                    <th>Logo</th>
-									<th>Nombre</th>
-									<th>Siglas</th>
-									<th>Agregar</th>
-								</tr>
-							</thead>
-							<tbody>                  
-                                <% foreach (var item in listaPartidosPoliticos)
-                                    {%>
-                                        <tr>
-                                            <td><img src="data:<%=item.ExtensionLogo %>;base64, <%=item.Logo%>" alt="Red dot" />/></td>
-                                            <td><%=item.Nombre %></td>
-								            <td><%=item.Siglas %></td>
-                                        </tr>
-                                   <% } 
-                                %>
-							</tbody>
-						</table>
-					</div>
+                        <div class="col-md-12" id="divPartidoPolitico" runat="server">
+                            <div class="form-group">
+                                <label class="control-label" for="cmbPartidosPoliticos">
+                                    Partidos Políticos <span class="symbol required"></span>
+                                </label>
+                                <asp:ListBox SelectionMode="Multiple" ID="cmbPartidosPoliticos" runat="server"  class="form-control selectpicker" multiple data-live-search="true" data-none-selected-text="--Seleccione--"></asp:ListBox>
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
 					    <div class="col-md-12">
@@ -130,7 +112,6 @@
 						    </div>
 					    </div>
 				    </div>
-
                     <div class="row">
                         <div class="col-md-6"></div>
                         <div class="col-md-6">
@@ -153,17 +134,18 @@
 		<script src="assets/plugins/jQuery/jquery-2.1.1.min.js"></script>
 	<!-- end: MAIN JAVASCRIPTS -->
 	<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-	<script type="text/javascript" src="assets/plugins/select2/select2.min.js"></script>
-	<script type="text/javascript" src="assets/js/table-data.js"></script>
 	<script src="assets/js/form-validation2.js"></script>   
     <script src="assets/js/ui-notifications.js"></script>     
     <script src="assets/plugins/sweetalert/lib/sweet-alert.min.js"></script>
 		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 	<!-- start: CORE JAVASCRIPTS  -->
 	<script src="assets/js/main.js"></script>
+    <!--New Select-->
+    <%--<script src="assets/plugins/bootstrap-select/bootstrap-select-new.js"></script>--%>
 	<!-- end: CORE JAVASCRIPTS  -->
 	<script>
 	    jQuery(document).ready(function () {
+	        //$('#cph_MasterBody_cmbPartidosPoliticos').selectpicker();
 	        FormValidator.init(10);
 		});
 	</script>

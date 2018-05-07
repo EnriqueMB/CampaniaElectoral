@@ -21,12 +21,11 @@ namespace DllCampElectoral.Datos
                 while (Dr.Read())
                 {
                     item = new CH_PartidoPolitico();
-                    item.IDPartido = Dr.GetInt32(Dr.GetOrdinal("id_CatPoliticoAlianza"));
+                    item.IDPartido = Dr.GetInt32(Dr.GetOrdinal("id_partido"));
                     item.Nombre = Dr.GetString(Dr.GetOrdinal("nombre"));
                     item.Siglas = Dr.GetString(Dr.GetOrdinal("siglas"));
                     item.Logo = Dr.GetString(Dr.GetOrdinal("logo"));
-                    
-                    
+                    item.ExtensionLogo = FG_Auxiliar.ObtenerExtensionImagenBase64(item.Logo);
 
                     lista.Add(item);
                 }

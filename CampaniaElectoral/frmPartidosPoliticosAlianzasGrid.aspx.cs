@@ -83,7 +83,7 @@ namespace CampaniaElectoral
             {
                 FG_CatPartidoPoliticoAlianza Datos = new FG_CatPartidoPoliticoAlianza { Conexion = Comun.Conexion };
                 FG_CatPartidoPoliticoAlianzaNegocio FG = new FG_CatPartidoPoliticoAlianzaNegocio();
-                listaAlianzas = FG.ObtenerCatalogoPartidos(Datos);
+                listaAlianzas = FG.ObtenerListaPartidosPoliticosAlianza(Datos);
             }
             catch (Exception ex)
             {
