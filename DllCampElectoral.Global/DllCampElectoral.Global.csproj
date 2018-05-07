@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Afiliados.cs" />
     <Compile Include="CH_Colaborador.cs" />
     <Compile Include="CH_Contacto.cs" />
     <Compile Include="CH_Conteo.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="EM_StatusGeneralEvento.cs" />
     <Compile Include="EM_TipoEventoCampania.cs" />
     <Compile Include="EM_TipoImagenVideo.cs" />
+    <Compile Include="ER_Casillas.cs" />
     <Compile Include="ER_Secciones.cs" />
     <Compile Include="FG_Auxiliar.cs" />
     <Compile Include="FG_CatPartidoPoliticoAlianza.cs" />

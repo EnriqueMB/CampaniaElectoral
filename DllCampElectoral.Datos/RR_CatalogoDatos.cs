@@ -1158,7 +1158,7 @@ namespace DllCampElectoral.Datos
             {
                 object[] Parametros = { Datos.NuevoRegistro, Datos.IDAfiliado,Datos.IDColaborador, Datos.Nombre, Datos.ApePat, Datos.ApeMat,
                         Datos.FechaAfiliacion, Datos.Estado, Datos.Municipio,Datos.IDPoligono,Datos.Seccion ,Datos.Direccion, Datos.NumeroExt, Datos.NumeroInt,
-                    Datos.Colonia, Datos.CodigoPostal, Datos.ClaveElector, Datos.CorreoElect, Datos.Celular, Datos.Genero, Datos.Observaciones,Datos.IDUsuario };
+                    Datos.Colonia, Datos.CodigoPostal, Datos.ClaveElector, Datos.CorreoElect, Datos.Celular, Datos.Genero, Datos.Observaciones,Datos.CredencialFrente,Datos.CredencialPosterior,Datos.IDUsuario };
                 Object Result = SqlHelper.ExecuteScalar(Datos.Conexion, "RR_spCSLDB_AC_Afiliados", Parametros);
                 int Resultado = 0;
                 int.TryParse(Result.ToString(), out Resultado);

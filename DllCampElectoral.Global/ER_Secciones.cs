@@ -57,6 +57,13 @@ namespace DllCampElectoral.Global
             get { return _Municipio; }
             set { _Municipio = value; }
         }
+        private string _seccionDesc;
+
+        public string seccionDesc
+        {
+            get { return _seccionDesc; }
+            set { _seccionDesc = value; }
+        }
 
         private string _poligono;
 
@@ -91,6 +98,28 @@ namespace DllCampElectoral.Global
         {
             get { return _listaSecciones; }
             set { _listaSecciones = value; }
+        }
+        private List<EM_Munucipios> _listaMunicipios;
+
+        public List<EM_Munucipios> listaMunicipios
+        {
+            get { return _listaMunicipios; }
+            set { _listaMunicipios = value; }
+        }
+        private List<ER_Casillas> _listaCasillas;
+
+        public List<ER_Casillas> listaCasillas
+        {
+            get { return _listaCasillas; }
+            set { _listaCasillas = value; }
+        }
+
+        private int _opcion;
+
+        public int opcion
+        {
+            get { return _opcion; }
+            set { _opcion = value; }
         }
 
     }

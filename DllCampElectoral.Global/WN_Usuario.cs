@@ -140,5 +140,13 @@ namespace DllCampElectoral.Global
             set { _IDEstado = value; }
         }
 
+        private int _IDTipoUsuario;
+
+        public int IDTipoUsuario
+        {
+            get { return _IDTipoUsuario; }
+            set { _IDTipoUsuario = value; }
+        }
+
     }
 }

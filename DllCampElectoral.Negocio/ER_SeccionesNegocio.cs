@@ -21,6 +21,29 @@ namespace DllCampElectoral.Negocio
                 throw ex;
             }
         }
+        public List<ER_Casillas> ObtenerComboCasillas(ER_Secciones Datos)
+        {
+            try
+            {
+                ER_SeccionesDatos CD = new ER_SeccionesDatos();
+                return CD.ObtenerComboCasillas(Datos);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public List<EM_Munucipios> ObtenerComboMunicipios(ER_Secciones Datos) {
+            try
+            {
+                ER_SeccionesDatos CD = new ER_SeccionesDatos();
+                return CD.ObtenerComboMunicipios(Datos);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
     }
 }

@@ -20,7 +20,7 @@
 		<!-- end: META -->
 		<!-- start: MAIN CSS -->
 		<link href='http://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700,200,100,800' rel='stylesheet' type='text/css'>
-        <link href='https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>
+        <%--<link href='https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>--%>
     
 		<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.min.css">
@@ -38,6 +38,7 @@
 		<link rel="stylesheet" href="assets/plugins/bootstrap-select/bootstrap-select.min.css">
 		<link rel="stylesheet" href="assets/plugins/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css">
 		<link rel="stylesheet" href="assets/plugins/DataTables/media/css/DT_bootstrap.css">
+        <link rel="stylesheet" href="assets/plugins/DataTables/media/css/jquery.dataTables.min.css">
 		<link rel="stylesheet" href="assets/plugins/bootstrap-fileupload/bootstrap-fileupload.min.css">
 		<link rel="stylesheet" href="assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css">
 		<!-- end: CSS REQUIRED FOR THIS SUBVIEW CONTENTS-->
@@ -215,7 +216,7 @@
 						</a>
 					</div>
 					<div class="col-xs-6 text-right no-padding">
-						<a class="btn btn-sm log-out text-right" href="login_login.html">
+						<a class="btn btn-sm log-out text-right" id="btnlogout">
 							<i class="fa fa-power-off"></i> Cerrar Sesión
 						</a>
 					</div>
@@ -816,7 +817,7 @@
 		<!-- start: CORE JAVASCRIPTS  -->
 		<script src="assets/js/main.js"></script>
 		<!-- end: CORE JAVASCRIPTS  -->
-
+        <script src="/assets/js/logout.js"></script>
         <asp:ContentPlaceHolder ID="cphScripts" runat="server">
 
         </asp:ContentPlaceHolder>
@@ -831,6 +832,7 @@
                 FormElements.init();
                 UIElements.init();
                 $('#xxx').remove();
+                Logout.init();
 			});
 		</script>
 	</body>

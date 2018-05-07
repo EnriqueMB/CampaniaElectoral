@@ -140,7 +140,7 @@ namespace DllCampElectoral.Datos
                     Item.IDPartido = Dr.GetInt32(Dr.GetOrdinal("IDPartido"));
                     Item.Nombre = Dr.GetString(Dr.GetOrdinal("Nombre"));
                     Item.Siglas = Dr.GetString(Dr.GetOrdinal("Siglas"));
-                    Item.UrlLogo = Dr.GetString(Dr.GetOrdinal("UrlLogo"));
+                    //Item.UrlLogo = Dr.GetString(Dr.GetOrdinal("UrlLogo"));
                     Item.RGBColor = Dr.GetString(Dr.GetOrdinal("Color"));
                     Item.Logo = Dr.GetString(Dr.GetOrdinal("Logo"));
                     Lista.Add(Item);

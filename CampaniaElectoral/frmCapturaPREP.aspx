@@ -51,7 +51,7 @@
                         </div>
                         <div class="col-md-7 center">
 							<div class="">
-                                <% Response.Write("<div class='thumbnail'><img src='" + Datos.UrlImagen + "' alt=''></div>"); %>								
+                                <% Response.Write("<div class='thumbnail'><img src='data:image/png;base64, " + Datos.UrlImagen + "' alt=''></div>"); %>								
 							</div>
                         </div>
                         <div class="col-md-1"></div>

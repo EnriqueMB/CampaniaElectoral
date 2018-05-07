@@ -13,16 +13,28 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="control-label" for="CmbPoligonos">
-                                            Poligono
+                                            Municipios
                                         </label>
-                                        <select id="CmbPoligonos" name="CmbPoligonos" class="form-control search-select" required>
+                                        <select id="CmbMunicipios" name="CmbMunicipios" class="form-control search-select" required>
                                              <option value="">&nbsp;</option>
                                             <%
-                                                foreach (var item in poligonos)
+                                                foreach (var item in municipios)
                                                 {
-                                                    Response.Write("<option  value='" + item.IDPoligono + "' > " + item.Nombre + "</option>");
+                                                    Response.Write("<option  value='" + item.IDMunicipio + "' > " + item.MunicipioDesc + "</option>");
                                                 }
                                             %>
+                                        </select>
+                                    </div>
+                                </div>
+                                 <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label" for="CmbSecciones">
+                                            Secciones
+                                        </label>
+                                        <select id="CmbSecciones" name="CmbSecciones" class="form-control search-select" required>
+                                             <option value="">&nbsp;</option>
+
+                                          
                                         </select>
                                     </div>
                                 </div>
@@ -33,12 +45,7 @@
                                         </label>
                                         <select id="CmbCasilla" name="CmbCasilla" class="form-control search-select" required>
                                              <option value="">&nbsp;</option>
-                                            <%
-                                                foreach (var item in poligonos)
-                                                {
-                                                    Response.Write("<option  value='" + item.IDPoligono + "' > " + item.Nombre + "</option>");
-                                                }
-                                            %>
+                                          
                                         </select>
                                     </div>
                                 </div>
@@ -64,8 +71,8 @@
                                         </select>
                                     </div>
                                      </div>
-                                  <div class="col-md-6">
-                                    <div class="form-group">
+                                  <div class="col-md-12">
+                                    <div class="form-group text-center">
                                         <label class="control-label">
                                             Foto <span class="symbol required"></span>
                                         </label>
@@ -178,6 +185,65 @@
 		<script>
 		    jQuery(document).ready(function () {
 		        FormValidator.init(100);
+		        $('#CmbMunicipios').change(function () {
+		            var id = $(this).val();
+		            getSecciones(id);
+		        });
+		        $('#CmbSecciones').change(function () {
+		            var id= $(this).val();
+		           
+		            getCasillas(id);
+		        });
+		        function getSecciones(id) {
+
+		            $.ajax({
+		                url: "sfrmSeccionesCmb.aspx",
+		                data: { municipio: id },
+		                dataType: "json",
+		                type: "GET",
+		                error: function () {
+		                    $("#CmbSecciones").html('');
+		                },
+		                success: function (data) {
+
+		                    var items = "";
+		                    for (var i = 0; i < data.length; i++) {
+
+		                        items += "<option value=\"" + data[i].IDSeccion + "\">" + data[i].seccionDesc + "</option>";
+		                    }
+		                    $("#CmbSecciones").html(items);
+		                    $("#CmbSecciones").trigger('change.select2');
+		                    $('#CmbSecciones.select').selectpicker('refresh');
+		                    auxbol = 0;
+
+		                }
+		            });
+		        }
+		        function getCasillas(id) {
+
+		            $.ajax({
+		                url: "sfrmCasillasCmb.aspx",
+		                data: { seccion: id },
+		                dataType: "json",
+		                type: "GET",
+		                error: function () {
+		                    $("#CmbCasilla").html('');
+		                },
+		                success: function (data) {
+
+		                    var items = "";
+		                    for (var i = 0; i < data.length; i++) {
+		                        items += "<option value=\"" + data[i].IDCasilla + "\">" + data[i].DescCasilla + "</option>";
+		                        
+		                    }
+		                    $("#CmbCasilla").html(items);
+		                    $("#CmbCasilla").trigger('change.select2');
+		                    $('#CmbCasilla.select').selectpicker('refresh');
+		                    auxbol = 0;
+
+		                }
+		            });
+		        }
 		    });
 		</script>            
 </asp:Content>
