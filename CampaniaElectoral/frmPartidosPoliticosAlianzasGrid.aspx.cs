@@ -17,12 +17,11 @@ namespace CampaniaElectoral
         protected void Page_Load(object sender, EventArgs e)
         {
             var op = Request.QueryString["op"];
-            var realizado = Request.QueryString["realizado"];
-            var tipoMsj = Request.QueryString["tipoMsj"];
+            var resultado = Request.QueryString["resultado"];
             var mensaje = Request.QueryString["mensaje"];
 
-            if (!(string.IsNullOrEmpty(tipoMsj) && string.IsNullOrEmpty(tipoMsj) && string.IsNullOrEmpty(tipoMsj)))
-                Mensaje(tipoMsj, mensaje, realizado);
+            if (!(string.IsNullOrEmpty(resultado) && string.IsNullOrEmpty(mensaje)))
+                Mensaje(mensaje, resultado);
 
             switch (op)
             {
@@ -37,31 +36,21 @@ namespace CampaniaElectoral
         }
 
         #region mostrar mensaje
-        private void Mensaje(string tipoMensaje, string mensaje, string realizado)
+        private void Mensaje(string mensaje, string resultado)
         {
-            switch (realizado)
+            switch (resultado)
             {
                 case "1":
-                    switch (tipoMensaje)
-                    {
-                        case "Eliminado":
-                            MensajeValido(mensaje);
-                            break;
-                        default:
-                            break;
-                    }
+                    MensajeValido(mensaje);
+                    break;
+                case "True":
+                    MensajeValido(mensaje);
                     break;
                 case "0":
-                    switch (tipoMensaje)
-                    {
-                        case "Eliminado":
-                            MensajeError(mensaje);
-                            break;
-                        default:
-                            break;
-                    }
+                    MensajeError(mensaje);
                     break;
-                default:
+                case "False":
+                    MensajeError(mensaje);
                     break;
             }
         }
@@ -98,25 +87,24 @@ namespace CampaniaElectoral
                     {
                         int AuxID = 0;
                         int.TryParse(Request.QueryString["id"], out AuxID);
-                        CH_PartidoPolitico Datos = new CH_PartidoPolitico { Conexion = Comun.Conexion, IDPartido = AuxID, IDUsuario = Comun.IDUsuario };
-                        CH_CatalogosNegocio CN = new CH_CatalogosNegocio();
-                        CN.EliminarPartidoXID(Datos);
-                        if (Datos.Completado)
+                        FG_CatPartidoPoliticoAlianza Datos = new FG_CatPartidoPoliticoAlianza
                         {
-                            //Mostrar mensaje Success
-                        }
-                        else
-                        {
-                            //Mostrar Mensaje de error
-                        }
+                            Conexion = Comun.Conexion
+                            ,IDPartidoPoliticoAlianza = AuxID
+                            ,Usuario = User.Identity.Name
+                        };
+                        FG_CatPartidoPoliticoAlianzaNegocio FG = new FG_CatPartidoPoliticoAlianzaNegocio();
+
+                        Datos = FG.EliminarAlianza(Datos);
+                        
+                        Response.Redirect("frmPartidosPoliticosAlianzasGrid.aspx?resultado="+Datos.Completado+"&mensaje=" + Datos.Mensaje, false);
                     }
-                
-                
-                
             }
             catch (Exception ex)
             {
-                Response.Redirect("PageError.aspx?errorNumber=" + ex.HResult);
+                string mensajeEx;
+                mensajeEx = ex.Message.Replace("\r\n", string.Empty);
+                Response.Redirect("frmPartidosPoliticosAlianzasGrid.aspx?resultado=False&mensaje=" + mensajeEx, false);
             }
         }
     }

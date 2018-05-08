@@ -34,5 +34,42 @@ namespace DllCampElectoral.Negocio
                 throw ex;
             }
         }
+        public FG_CatPartidoPoliticoAlianza ObtenerDatosAlianza(FG_CatPartidoPoliticoAlianza Datos)
+        {
+            try
+            {
+                FG_CatPartidoPoliticoAlianzaDatos FG = new FG_CatPartidoPoliticoAlianzaDatos();
+                return FG.ObtenerDatosAlianza(Datos);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public FG_CatPartidoPoliticoAlianza CrearAlianza(FG_CatPartidoPoliticoAlianza Datos)
+        {
+            try
+            {
+                FG_CatPartidoPoliticoAlianzaDatos FG = new FG_CatPartidoPoliticoAlianzaDatos();
+                return FG.CrearAlianza(Datos);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public FG_CatPartidoPoliticoAlianza EliminarAlianza(FG_CatPartidoPoliticoAlianza Datos)
+        {
+            try
+            {
+                FG_CatPartidoPoliticoAlianzaDatos FG = new FG_CatPartidoPoliticoAlianzaDatos();
+                return FG.EliminarAlianza(Datos);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

@@ -10,16 +10,7 @@
 namespace CampaniaElectoral {
     
     
-    public partial class frmPartidoPoliticoAlianzaCrear {
-        
-        /// <summary>
-        /// Control hf.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hf;
+    public partial class frmPartidoPoliticoAlianzaEdit {
         
         /// <summary>
         /// Control txtNombre.

@@ -13,7 +13,12 @@ namespace DllCampElectoral.Global
         public string Siglas { get; set; }
         public string Logo { get; set; }
 
+        public string PartidosPoliticos { get; set; }
+        public string ExtensionBase64 { get; set; }
+
         public string Conexion { get; set; }
         public string Usuario { get; set; }
+        public bool Completado { get; set; }
+        public string Mensaje { get; set; }
     }
 }

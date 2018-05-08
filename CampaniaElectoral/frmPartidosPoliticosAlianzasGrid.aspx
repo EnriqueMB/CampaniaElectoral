@@ -11,7 +11,7 @@
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-md-12 space20">
-                            <a href="frmPartidoPoliticoAlianzaCrear.aspx" class="btn btn-green">
+                           <a href="frmPartidoPoliticoAlianzaCrear.aspx" class="btn btn-green">
                                 Nueva Alianza de Partido Político
                                 <i class="fa fa-plus"></i>
                             </a>
@@ -36,8 +36,22 @@
 									<td><%=item.Nombre %></td>
 									<td><%=item.Siglas %></td>
                                     <td>
+                                        <ul>
+                                        <%
+                                            string[] partidosPoliticos = item.PartidosPoliticos.Split(',');
+                                            for(int i = 0; i < partidosPoliticos.Count(); i++)
+                                            {
+                                        %>      <li><%= partidosPoliticos[i] %></li>
+                                            <%
+                                            }
+                                            %>
+                                        </ul>
+                                    <td>
+                                        <img src="data:<%= item.ExtensionBase64 %>;base64, <%= item.Logo %>" alt="Logo" height="100" width="150"/>
+                                    </td>
+                                    <td>
                                         <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                            <%Response.Write("<a href='frmPartidos.aspx?op=2&id=" + item.IDPartidoPoliticoAlianza.ToString() + "' class='btn btn-xs btn-blue tooltips' data-placement='top' data-original-title='Editar'> <i class='fa fa-edit'> </i> </a>"); %>
+                                            <%Response.Write("<a href='frmPartidoPoliticoAlianzaEdit.aspx?id=" + item.IDPartidoPoliticoAlianza.ToString() + "' class='btn btn-xs btn-blue tooltips' data-placement='top' data-original-title='Editar'> <i class='fa fa-edit'> </i> </a>"); %>
                                             <%Response.Write("<a data-placement='top' data-target='.bs-example-modal-sm" + item.IDPartidoPoliticoAlianza.ToString() + "' data-toggle='modal'  class='btn btn-xs btn-red tooltips' data-placement='top' data-original-title='Eliminar'> <i class='fa fa-times fa fa-white'> </i> </a>");%>
 									    </div>
 
@@ -48,7 +62,7 @@
 												</a>
 												<ul role="menu" class="dropdown-menu pull-right dropdown-dark">
 													<li>
-                                                        <%Response.Write("<a href='frmPartidos.aspx?op=2&id=" + item.IDPartidoPoliticoAlianza.ToString() + "' role='menuitem' tabindex='-1' class='tooltips' data-placement='top' data-original-title='Editar'><i class='fa fa-edit'></i>Editar</a>"); %>
+                                                        <%Response.Write("<a href='frmPartidoPoliticoAlianzaEdit.aspx?id=" + item.IDPartidoPoliticoAlianza.ToString() + "' role='menuitem' tabindex='-1' class='tooltips' data-placement='top' data-original-title='Editar'><i class='fa fa-edit'></i>Editar</a>"); %>
 													</li>
 													<li>
                                                         <%Response.Write("<a data-placement='top' data-target='.bs-example-modal-sm" + item.IDPartidoPoliticoAlianza.ToString() + "' role='menuitem' tabindex='-1' data-toggle='modal'  class='tooltips' data-placement='top' data-original-title='Eliminar'><i class='fa fa-times fa fa-white'></i>Eliminar</a>");%>
@@ -72,7 +86,7 @@
 			                                    </div>
 			                                    <div class="modal-footer">                     
 				                                    <button data-dismiss="modal" class="btn btn-red" type="button">No</button>
-                                                    <% Response.Write("<a  href='frmPartidosGrid.aspx?op=3&id=" + item.IDPartidoPoliticoAlianza.ToString() + "' class='btn btn-green add-row' runat='server'>Si</a>");%>                                           
+                                                    <% Response.Write("<a  href='frmPartidosPoliticosAlianzasGrid.aspx?op=1&id=" + item.IDPartidoPoliticoAlianza.ToString() + "' class='btn btn-green add-row' runat='server'>Si</a>");%>                                           
 			                                    </div>
 		                                    </div>
 	                                    </div>
@@ -94,6 +108,8 @@
 	<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 	<script type="text/javascript" src="assets/plugins/select2/select2.min.js"></script>
 	<script type="text/javascript" src="assets/js/table-data.js"></script>
+    <script src="assets/js/ui-notifications.js"></script>     
+    <script src="assets/plugins/sweetalert/lib/sweet-alert.min.js"></script>
 	<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 	<!-- start: CORE JAVASCRIPTS  -->
 	<script src="assets/js/main.js"></script>

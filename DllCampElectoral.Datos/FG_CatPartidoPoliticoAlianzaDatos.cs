@@ -50,6 +50,9 @@ namespace DllCampElectoral.Datos
                     item.Nombre = Dr.GetString(Dr.GetOrdinal("nombre"));
                     item.Siglas = Dr.GetString(Dr.GetOrdinal("siglas"));
                     item.Logo = Dr.GetString(Dr.GetOrdinal("logo"));
+                    item.ExtensionBase64 = FG_Auxiliar.ObtenerExtensionImagenBase64(item.Logo);
+                    item.PartidosPoliticos = Dr.GetString(Dr.GetOrdinal("partidos"));
+                    
                     lista.Add(item);
                 }
                 return lista;
@@ -59,5 +62,84 @@ namespace DllCampElectoral.Datos
                 throw ex;
             }
         }
+
+        public FG_CatPartidoPoliticoAlianza ObtenerDatosAlianza(FG_CatPartidoPoliticoAlianza Datos)
+        {
+            try
+            {
+                object[] Parametros =
+                {
+                    Datos.IDPartidoPoliticoAlianza
+                };
+                SqlDataReader Dr = SqlHelper.ExecuteReader(Datos.Conexion, "FG_spCSLDB_get_DatosAlianzaXIDAlianza", Parametros);
+                while (Dr.Read())
+                {
+
+                    Datos.Nombre = Dr.GetString(Dr.GetOrdinal("nombre")); 
+                    Datos.Siglas = Dr.GetString(Dr.GetOrdinal("siglas"));
+                    Datos.Logo = Dr.GetString(Dr.GetOrdinal("logo"));
+                    Datos.ExtensionBase64 = FG_Auxiliar.ObtenerExtensionImagenBase64(Datos.Logo);
+                    Datos.PartidosPoliticos = Dr.GetString(Dr.GetOrdinal("partidos"));
+                    break;
+                }
+                return Datos;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public FG_CatPartidoPoliticoAlianza CrearAlianza(FG_CatPartidoPoliticoAlianza Datos)
+        {
+            try
+            {
+                object[] Parametros = 
+                {
+                    1
+                    ,Datos.IDPartidoPoliticoAlianza
+                    ,Datos.Nombre
+                    ,Datos.Siglas
+                    ,Datos.Logo
+                    ,Datos.PartidosPoliticos
+                    ,Datos.Usuario
+                };
+                SqlDataReader Dr = SqlHelper.ExecuteReader(Datos.Conexion, "FG_spCSLDB_ac_CatPartidoPoliticoAlianza", Parametros);
+                while (Dr.Read())
+                {
+                    Datos.Completado = Dr.GetBoolean(Dr.GetOrdinal("completado")); ;
+                    Datos.Mensaje = Dr.GetString(Dr.GetOrdinal("mensaje")); ;
+                    break;
+                }
+                return Datos;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public FG_CatPartidoPoliticoAlianza EliminarAlianza(FG_CatPartidoPoliticoAlianza Datos)
+        {
+            try
+            {
+                object[] Parametros =
+                {
+                     Datos.IDPartidoPoliticoAlianza
+                    ,Datos.Usuario
+                };
+                SqlDataReader Dr = SqlHelper.ExecuteReader(Datos.Conexion, "FG_spCSLDB_del_CatPartidoPoliticoAlianzaXIDAlianza", Parametros);
+                while (Dr.Read())
+                {
+                    Datos.Completado = Dr.GetBoolean(Dr.GetOrdinal("completado")); 
+                    Datos.Mensaje = Dr.GetString(Dr.GetOrdinal("mensaje")); 
+                    break;
+                }
+                return Datos;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
+

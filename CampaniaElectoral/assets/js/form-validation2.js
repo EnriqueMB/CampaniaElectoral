@@ -3471,6 +3471,101 @@ var FormValidator = function () {
         });
     };
 
+    var runValidator46 = function () {
+        console.log("entro 46");
+        var form2 = $('#frmMaster');
+        var errorHandler2 = $('.errorHandler', form2);
+        var successHandler2 = $('.successHandler', form2);
+
+        $.validator.addMethod("formatoImg", function (value, element, params) {
+            
+            if (element.value.length != 0) {
+                //Si hay obtenemos la extensión
+                var arrayString = element.value.split(".");
+                var longitud = arrayString.length;
+                var extension = arrayString[longitud - 1];
+                var valido = false;
+
+                for (var i = 0 ; i < params.length ; i++) {
+                    if (params[i] == extension)
+                        valido = true;
+                }
+            }
+            else
+            {
+                valido = false;
+            }
+            return valido;
+        }, 'Por favor, seleccione un archivo con extensi&oacute;n: png, jpg, jpeg y bmp.');
+
+        $('#frmMaster').validate({
+            //debug:true,
+            errorElement: "span", // contain the error msg in a small tag
+            errorClass: 'help-block',
+            errorPlacement: function (error, element) { // render error placement for each input type
+                if (element.attr("type") == "radio" || element.attr("type") == "checkbox") { // for chosen elements, need to insert the error after the chosen container
+                    error.insertAfter($(element).closest('.form-group').children('div').children().last());
+                } else if (element.attr("name") == "ctl00$cph_MasterBody$txtFechaNac") {
+                    error.insertAfter($(element).closest('.form-group').children('div'));
+                } else if (element.hasClass("fileupload")) {
+                    error.appendTo($(element).closest('.form-group'));
+                } else {
+                    error.insertAfter(element);
+                    // for other inputs, just perform default behavior
+                }
+            },
+            ignore: "",
+            rules: {
+                ctl00$cph_MasterBody$txtNombre: {
+                    minlength: 2,
+                    required: true
+                },
+                ctl00$cph_MasterBody$txtSigla: {
+                    minlength: 1,
+                    required: true
+                },
+                ctl00$cph_MasterBody$imgLogo: {
+                    required: true,
+                    formatoImg: true, formatoImg: ["PNG", "png", "JPG", "jpg", "JPEG", "jpeg", "BMP", "bmp"]
+                },
+                ctl00$cph_MasterBody$cmbPartidosPoliticos:{
+                    required:true
+                }
+            },
+            messages: {
+                ctl00$cph_MasterBody$txtNombre: "Por favor, ingrese el nombre del partido pol&iacute;tico.",
+                ctl00$cph_MasterBody$txtSigla:  "Por favor, ingrese la sigla del partido pol&iacute;tico.",
+                ctl00$cph_MasterBody$imgLogo: "Por favor, seleccione una imagen con extensi&oacute;n: png, jpg, jpeg y bmp.",
+                ctl00$cph_MasterBody$cmbPartidosPoliticos: "Por favor, seleccione un partido pol&iacute;tico."
+            },
+            invalidHandler: function (event, validator) { //display error alert on form submit
+                successHandler2.hide();
+                errorHandler2.show();
+            },
+            highlight: function (element) {
+                $(element).closest('.help-block').removeClass('valid');
+                // display OK icon
+                $(element).closest('.form-group').removeClass('has-success').addClass('has-error').find('.symbol').removeClass('ok').addClass('required');
+                // add the Bootstrap error class to the control group
+            },
+            unhighlight: function (element) { // revert the change done by hightlight
+                $(element).closest('.form-group').removeClass('has-error');
+                // set error class to the control group
+            },
+            success: function (label, element) {
+                label.addClass('help-block valid');
+                // mark the current input as valid and display OK icon
+                $(element).closest('.form-group').removeClass('has-error').addClass('has-success').find('.symbol').removeClass('required').addClass('ok');
+            },
+            submitHandler: function (form2) {
+                //successHandler2.show();
+                errorHandler2.hide();
+                // submit form
+                this.submit();
+            }
+        });
+    };
+
     return {
         //main function to initiate template pages
         init: function (aux) {
@@ -3558,6 +3653,8 @@ var FormValidator = function () {
                 case 44: runValidator44();
                     break;
                 case 45: runValidator45();
+                    break;
+                case 46: runValidator46();
                     break;
                 case 100: runValidator100V2();
                     break;

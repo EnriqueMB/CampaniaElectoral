@@ -1,19 +1,14 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmPartidoPoliticoAlianzaCrear.aspx.cs" Inherits="CampaniaElectoral.frmPartidoPoliticoAlianzaCrear" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmPartidoPoliticoAlianzaEdit.aspx.cs" Inherits="CampaniaElectoral.frmPartidoPoliticoAlianzaEdit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="cph_MasterBody" runat="server">
 
-   <div class="row">
-		<div class="col-sm-12">
-			<!-- start: TEXT AREA PANEL -->
-			<div class="panel panel-white">
-				<div class="panel-heading">
-					<h4 class="panel-title">Cat&aacute;logo <span class="text-bold"> Partidos Pol&iacute;ticos </span></h4>
-				</div>
-				<div class="panel-body">
-                    <div class="row">
-                        <asp:HiddenField ID="hf" runat="server" />
-                    </div>
-
-                    <div class="row">
+<div class="row"> 
+    <div class="col-sm-12">
+        <div class="panel panel-white">
+            <div class="panel-heading">
+			    <h4 class="panel-title">Cat&aacute;logo <span class="text-bold"> Partidos Pol&iacute;ticos </span></h4>
+			</div>
+            <div class="panel-body">
+                 <div class="row">
                         <div class="col-md-12">
 						    <div class="errorHandler alert alert-danger no-display">
 							    <i class="fa fa-times-sign"></i> Hay errores en la captura de información. Revise las especificaciones de los campos.
@@ -23,8 +18,7 @@
 						    </div>
 					    </div>
                     </div>
-
-                    <div class="row">   
+                 <div class="row">   
                         <div class="col-md-4">
                             <div class="row">
                                 <div class="col-md-12">
@@ -63,7 +57,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-8">
+                               <div class="col-md-8">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -95,8 +89,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>                    
-                    <div class="row">
+                </div>
+                  <div class="row">
                         <div class="col-md-12" id="divPartidoPolitico" runat="server">
                             <div class="form-group">
                                 <label class="control-label" for="cmbPartidosPoliticos">
@@ -132,28 +126,12 @@
 					        </div>
                         </div>
                     </div>
-				</div>
+                   
             </div>
-		</div>
-	</div>
-    
-    <!-- start: MAIN JAVASCRIPTS -->
-		<script src="assets/plugins/jQuery/jquery-2.1.1.min.js"></script>
-	<!-- end: MAIN JAVASCRIPTS -->
-	<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-	<script src="assets/js/form-validation2.js"></script>   
-    <script src="assets/js/ui-notifications.js"></script>     
-    <script src="assets/plugins/sweetalert/lib/sweet-alert.min.js"></script>
-		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-	<!-- start: CORE JAVASCRIPTS  -->
-	<script src="assets/js/main.js"></script>
-    <!--New Select-->
-    <%--<script src="assets/plugins/bootstrap-select/bootstrap-select-new.js"></script>--%>
-	<!-- end: CORE JAVASCRIPTS  -->
-	<script>
-	    jQuery(document).ready(function () {
-	        FormValidator.init(46);
-		});
-	</script>
+        </div>
+    </div>
+</div>
 
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="cphScripts" runat="server">
 </asp:Content>
