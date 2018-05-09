@@ -18,7 +18,7 @@
 						</div>
 					</div>
 					<div class="table-responsive">
-						<table class="table table-striped table-bordered table-hover table-full-width" id="tbl_alianza">
+						<table class="table table-striped table-bordered table-hover table-full-width" id="sample_1">
 							<thead>
 								<tr>
 									<th>Nombre</th>

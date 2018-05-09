@@ -430,7 +430,7 @@ var FormValidator = function () {
                 }
             }
             return valido;
-        }, 'Formato no valido.');
+        }, 'Por favor, seleccione un archivo con extensi&oacute;n: png, jpg, jpeg y bmp.');
 
         $.validator.addMethod("validarImg", function (value, element, params) {
             //Bandera que me indica si hay o no imagen en el servidor
@@ -547,7 +547,7 @@ var FormValidator = function () {
                 },
                 ctl00$cph_MasterBody$imgImagen: {
                     validarImg: true, validarImg: ["cph_MasterBody_inputImgServer"],
-                    formatoImg: true, formatoImg: ["png"]
+                    formatoImg: true, formatoImg: ["PNG", "png", "JPG", "jpg", "JPEG", "jpeg", "BMP", "bmp"]
                 },
                 ctl00$cph_MasterBody$txtDireccion: {
                     required: true,
@@ -651,14 +651,31 @@ var FormValidator = function () {
         var errorHandler2 = $('.errorHandler', form2);
         var successHandler2 = $('.successHandler', form2);
 
-        //$.validator.addMethod("TieneImagen", function () {
-        //    //if ($('#cph_MasterBody_imgLogo').value == undefined)
-        //    var file = $('#cph_MasterBody_imgLogo').value;
-        //    if(file)
-        //        return true;
-        //    else
-        //        return false;
-        //}, 'Debe subir una imagen.');
+        $.validator.addMethod("formatoImg", function (value, element, params) {
+            var bandera = element.dataset.imagenserver;
+
+            if (element.value.length != 0) {
+                //Si hay obtenemos la extensión
+                var arrayString = element.value.split(".");
+                var longitud = arrayString.length;
+                var extension = arrayString[longitud - 1];
+                var valido = false;
+
+                for (var i = 0 ; i < params.length ; i++) {
+                    if (params[i] == extension)
+                        valido = true;
+                }
+            }
+            else {
+                if (bandera == "True") {
+                    valido = true;
+                }
+                else {
+                    valido = false;
+                }
+            }
+            return valido;
+        }, 'Por favor, seleccione un archivo con extensi&oacute;n: png, jpg, jpeg y bmp.');
 
         //form2.validate({
         $('#frmMaster').validate({
@@ -690,9 +707,10 @@ var FormValidator = function () {
                 ctl00$cph_MasterBody$txtColor: {
                     minlength: 1,
                     required: true
+                },
+                ctl00$cph_MasterBody$imgLogo: {
+                    formatoImg: true, formatoImg: ["PNG", "png", "JPG", "jpg", "JPEG", "jpeg", "BMP", "bmp"]
                 }
-                //,
-                //ctl00$cph_MasterBody$imgLogo: "TieneImagen"
             },
             messages: {
                 ctl00$cph_MasterBody$txtNombre: "Por favor, ingrese el nombre del partido pol&iacute;tico.",
@@ -3472,13 +3490,13 @@ var FormValidator = function () {
     };
 
     var runValidator46 = function () {
-        console.log("entro 46");
         var form2 = $('#frmMaster');
         var errorHandler2 = $('.errorHandler', form2);
         var successHandler2 = $('.successHandler', form2);
 
         $.validator.addMethod("formatoImg", function (value, element, params) {
-            
+            var bandera = element.dataset.imagenserver;
+            console.log(bandera);
             if (element.value.length != 0) {
                 //Si hay obtenemos la extensión
                 var arrayString = element.value.split(".");
@@ -3491,9 +3509,13 @@ var FormValidator = function () {
                         valido = true;
                 }
             }
-            else
-            {
-                valido = false;
+            else {
+                if (bandera == "True") {
+                    valido = true;
+                }
+                else {
+                    valido = false;
+                }
             }
             return valido;
         }, 'Por favor, seleccione un archivo con extensi&oacute;n: png, jpg, jpeg y bmp.');
@@ -3525,7 +3547,6 @@ var FormValidator = function () {
                     required: true
                 },
                 ctl00$cph_MasterBody$imgLogo: {
-                    required: true,
                     formatoImg: true, formatoImg: ["PNG", "png", "JPG", "jpg", "JPEG", "jpeg", "BMP", "bmp"]
                 },
                 ctl00$cph_MasterBody$cmbPartidosPoliticos:{
@@ -3535,7 +3556,6 @@ var FormValidator = function () {
             messages: {
                 ctl00$cph_MasterBody$txtNombre: "Por favor, ingrese el nombre del partido pol&iacute;tico.",
                 ctl00$cph_MasterBody$txtSigla:  "Por favor, ingrese la sigla del partido pol&iacute;tico.",
-                ctl00$cph_MasterBody$imgLogo: "Por favor, seleccione una imagen con extensi&oacute;n: png, jpg, jpeg y bmp.",
                 ctl00$cph_MasterBody$cmbPartidosPoliticos: "Por favor, seleccione un partido pol&iacute;tico."
             },
             invalidHandler: function (event, validator) { //display error alert on form submit

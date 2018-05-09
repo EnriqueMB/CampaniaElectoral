@@ -95,6 +95,7 @@
 	<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 	<script type="text/javascript" src="assets/plugins/select2/select2.min.js"></script>
 	<script type="text/javascript" src="assets/js/table-data.js"></script>
+    <script src="assets/js/ui-notifications.js"></script>     
 	<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 	<!-- start: CORE JAVASCRIPTS  -->
 	<script src="assets/js/main.js"></script>

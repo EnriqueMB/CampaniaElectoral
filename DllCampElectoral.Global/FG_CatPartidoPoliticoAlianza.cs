@@ -15,6 +15,7 @@ namespace DllCampElectoral.Global
 
         public string PartidosPoliticos { get; set; }
         public string ExtensionBase64 { get; set; }
+        public bool ImagenServer { get; set; }
 
         public string Conexion { get; set; }
         public string Usuario { get; set; }

@@ -1,4 +1,5 @@
-﻿using DllCampElectoral.Global;
+﻿using CampaniaElectoral.ClasesAux;
+using DllCampElectoral.Global;
 using DllCampElectoral.Negocio;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,15 @@ namespace CampaniaElectoral
         {
             try
             {
-                if (Request.QueryString["op"] != null && Request.QueryString["op"] == "3")
+                var op = Request.QueryString["op"];
+                var resultado = Request.QueryString["resultado"];
+                var mensaje = Request.QueryString["mensaje"];
+
+                if (!(string.IsNullOrEmpty(resultado) && string.IsNullOrEmpty(mensaje)))
+                    Mensaje(mensaje, resultado);
+
+
+                if (op != null && op == "3")
                 {
                     if (Request.QueryString["id"] != null)
                     {
@@ -26,23 +35,10 @@ namespace CampaniaElectoral
                         CH_PartidoPolitico Datos = new CH_PartidoPolitico { Conexion = Comun.Conexion, IDPartido = AuxID, IDUsuario = Comun.IDUsuario };
                         CH_CatalogosNegocio CN = new CH_CatalogosNegocio();
                         CN.EliminarPartidoXID(Datos);
-                        if (Datos.Completado)
-                        {
-                            //Mostrar mensaje Success
-                        }
-                        else
-                        {
-                            //Mostrar Mensaje de error
-                        }
+                        Response.Redirect("frmPartidosGrid.aspx?resultado=" + Datos.Completado + "&mensaje=" + Datos.Nombre, false);
                     }
                 }
-                if (!IsPostBack)
-                {
 
-                }
-                else
-                {
-                }
                 this.CargarGrid();
             }
             catch (Exception ex)
@@ -64,6 +60,35 @@ namespace CampaniaElectoral
                 throw ex;
             }
         }
-        
+        #region mostrar mensaje
+        private void Mensaje(string mensaje, string resultado)
+        {
+            switch (resultado)
+            {
+                case "1":
+                    MensajeValido(mensaje);
+                    break;
+                case "True":
+                    MensajeValido(mensaje);
+                    break;
+                case "0":
+                    MensajeError(mensaje);
+                    break;
+                case "False":
+                    MensajeError(mensaje);
+                    break;
+            }
+        }
+        private void MensajeError(string mensaje)
+        {
+            string ScriptError = DialogMessage.Show(TipoMensaje.Error, mensaje, "Error", ShowMethod.FadeIn, HideMethod.FadeOut, ToastPosition.TopFullWidth, true);
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "error", ScriptError, true);
+        }
+        private void MensajeValido(string mensaje)
+        {
+            string ScriptError = DialogMessage.Show(TipoMensaje.Success, mensaje, "Información", ShowMethod.FadeIn, HideMethod.FadeOut, ToastPosition.TopFullWidth, true);
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "valido", ScriptError, true);
+        }
+        #endregion
     }
 }

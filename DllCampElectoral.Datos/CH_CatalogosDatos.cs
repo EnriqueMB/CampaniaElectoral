@@ -106,18 +106,16 @@ namespace DllCampElectoral.Datos
         {
             try
             {
-                object[] Parametros = { Datos.NuevoRegistro, Datos.IDPartido, Datos.Nombre, Datos.Siglas, Datos.RGBColor, Datos.ExtensionLogo, Datos.CambioImagen, Datos.IDUsuario };
+                object[] Parametros = {
+                    Datos.NuevoRegistro,    Datos.IDPartido,    Datos.Nombre,
+                    Datos.Siglas,           Datos.RGBColor,     Datos.CambioImagen,
+                    Datos.IDUsuario,        Datos.Logo
+                };
                 SqlDataReader Dr = SqlHelper.ExecuteReader(Datos.Conexion, "CH_spCSLDB_AC_PartidosPoliticos", Parametros);
                 while(Dr.Read())
                 {
-                    int Resultado = Dr.GetInt32(Dr.GetOrdinal("Resultado"));
-                    if (Resultado == 1)
-                    {
-                        Datos.Completado = true;
-                        Datos.UrlLogo = Dr.GetString(Dr.GetOrdinal("UrlLogo"));
-                        Datos.IDPartido = Dr.GetInt32(Dr.GetOrdinal("IDPartido"));
-                    }
-                    Datos.Resultado = Resultado;
+                    Datos.Completado = Dr.GetBoolean(Dr.GetOrdinal("completado"));
+                    Datos.Nombre = Dr.GetString(Dr.GetOrdinal("resultado"));
                     break;
                 }
             }
@@ -163,8 +161,15 @@ namespace DllCampElectoral.Datos
                 {
                     Datos.Nombre = Dr.GetString(Dr.GetOrdinal("Nombre"));
                     Datos.Siglas = Dr.GetString(Dr.GetOrdinal("Siglas"));
-                    Datos.UrlLogo = Dr.GetString(Dr.GetOrdinal("UrlLogo"));
+                    Datos.Logo = Dr.GetString(Dr.GetOrdinal("Logo"));
                     Datos.RGBColor = Dr.GetString(Dr.GetOrdinal("Color"));
+                    Datos.CambioImagen = Dr.GetBoolean(Dr.GetOrdinal("imagenGuardada"));
+
+                    if (string.IsNullOrEmpty(Datos.Logo))
+                        Datos.Logo = FG_Auxiliar.ImagenPredeterminada();
+
+                    Datos.ExtensionLogo = FG_Auxiliar.ObtenerExtensionImagenBase64(Datos.Logo);
+
                     Datos.Completado = true;
                     break;
                 }
@@ -180,14 +185,15 @@ namespace DllCampElectoral.Datos
             try
             {
                 object[] Parametros = { Datos.IDPartido, Datos.IDUsuario };
-                object Result = SqlHelper.ExecuteScalar(Datos.Conexion, "CH_spCSLDB_del_PartidoPolitico", Parametros);
-                int Resultado = 0;
-                int.TryParse(Result.ToString(), out Resultado);
-                if (Resultado == 1)
+                SqlDataReader Dr = SqlHelper.ExecuteReader(Datos.Conexion, "CH_spCSLDB_del_PartidoPolitico", Parametros);
+
+                while (Dr.Read())
                 {
-                    Datos.Completado = true;
+                    Datos.Nombre = Dr.GetString(Dr.GetOrdinal("mensaje"));
+                    Datos.Completado = Dr.GetBoolean(Dr.GetOrdinal("resultado"));
+                    break;
                 }
-                Datos.Resultado = Resultado;
+
             }
             catch (Exception ex)
             {

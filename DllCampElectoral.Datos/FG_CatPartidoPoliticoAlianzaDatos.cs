@@ -75,9 +75,18 @@ namespace DllCampElectoral.Datos
                 while (Dr.Read())
                 {
 
-                    Datos.Nombre = Dr.GetString(Dr.GetOrdinal("nombre")); 
+                    Datos.Nombre = Dr.GetString(Dr.GetOrdinal("nombre"));
                     Datos.Siglas = Dr.GetString(Dr.GetOrdinal("siglas"));
                     Datos.Logo = Dr.GetString(Dr.GetOrdinal("logo"));
+                    if (string.IsNullOrEmpty(Datos.Logo))
+                    {
+                        Datos.Logo = FG_Auxiliar.ImagenPredeterminada();
+                        Datos.ImagenServer = false;
+                    }
+                    else
+                    {
+                        Datos.ImagenServer = true;
+                    }
                     Datos.ExtensionBase64 = FG_Auxiliar.ObtenerExtensionImagenBase64(Datos.Logo);
                     Datos.PartidosPoliticos = Dr.GetString(Dr.GetOrdinal("partidos"));
                     break;
@@ -96,6 +105,34 @@ namespace DllCampElectoral.Datos
                 object[] Parametros = 
                 {
                     1
+                    ,Datos.IDPartidoPoliticoAlianza
+                    ,Datos.Nombre
+                    ,Datos.Siglas
+                    ,Datos.Logo
+                    ,Datos.PartidosPoliticos
+                    ,Datos.Usuario
+                };
+                SqlDataReader Dr = SqlHelper.ExecuteReader(Datos.Conexion, "FG_spCSLDB_ac_CatPartidoPoliticoAlianza", Parametros);
+                while (Dr.Read())
+                {
+                    Datos.Completado = Dr.GetBoolean(Dr.GetOrdinal("completado")); ;
+                    Datos.Mensaje = Dr.GetString(Dr.GetOrdinal("mensaje")); ;
+                    break;
+                }
+                return Datos;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public FG_CatPartidoPoliticoAlianza EditarAlianza(FG_CatPartidoPoliticoAlianza Datos)
+        {
+            try
+            {
+                object[] Parametros =
+                {
+                     2
                     ,Datos.IDPartidoPoliticoAlianza
                     ,Datos.Nombre
                     ,Datos.Siglas
