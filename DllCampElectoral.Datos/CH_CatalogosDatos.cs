@@ -133,15 +133,16 @@ namespace DllCampElectoral.Datos
             {
                 List<CH_PartidoPolitico> Lista = new List<CH_PartidoPolitico>();
                 CH_PartidoPolitico Item;
-                SqlDataReader Dr = SqlHelper.ExecuteReader(Datos.Conexion, "CH_spCSLDB_get_PartidosPoliticos");
+                SqlDataReader Dr = SqlHelper.ExecuteReader(Datos.Conexion, "ER_spCSLDB_get_PartidosPoliticos2");
                 while (Dr.Read())
                 {
                     Item = new CH_PartidoPolitico();
-                    Item.IDPartido = Dr.GetInt32(Dr.GetOrdinal("IDPartido"));
+                    Item.IDPartido = Dr.GetInt32(Dr.GetOrdinal("IDAlianza"));
                     Item.Nombre = Dr.GetString(Dr.GetOrdinal("Nombre"));
                     Item.Siglas = Dr.GetString(Dr.GetOrdinal("Siglas"));
-                    //Item.UrlLogo = Dr.GetString(Dr.GetOrdinal("UrlLogo"));
+                    int a = Dr.GetInt32(Dr.GetOrdinal("alianza"));
                     Item.RGBColor = Dr.GetString(Dr.GetOrdinal("Color"));
+                    Item.alianza = Convert.ToBoolean(a);
                     Item.Logo = Dr.GetString(Dr.GetOrdinal("Logo"));
                     Lista.Add(Item);
                 }

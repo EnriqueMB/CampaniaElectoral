@@ -28,6 +28,13 @@ namespace DllCampElectoral.Global
             get { return _Nombre; }
             set { _Nombre = value; }
         }
+        private bool _alianza;
+
+        public bool alianza
+        {
+            get { return _alianza; }
+            set { _alianza = value; }
+        }
 
         private string _Siglas;
         public string Siglas
