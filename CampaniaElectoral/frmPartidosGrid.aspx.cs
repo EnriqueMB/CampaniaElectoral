@@ -12,7 +12,7 @@ namespace CampaniaElectoral
     public partial class frmPartidosGrid : System.Web.UI.Page
     {
         public List<CH_PartidoPolitico> Lista = new List<CH_PartidoPolitico>();
-
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             try
