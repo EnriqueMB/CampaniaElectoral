@@ -62,14 +62,15 @@ namespace CampaniaElectoral
                 string idcasilla = Request.Form["CmbCasilla"].ToString();
                 string colaborador= Request.Form["cmbColaboradores"].ToString();
                 DataTable dt = new DataTable();
-                dt.Columns.AddRange(new DataColumn[2] { new DataColumn("IDPartido", typeof(int)), new DataColumn("Votos", typeof(int)) });
+                dt.Columns.AddRange(new DataColumn[3] { new DataColumn("IDPartido", typeof(int)), new DataColumn("Votos", typeof(int)),new DataColumn("alianza",typeof(bool)) });
 
                 for (int i = 0; i < partidos.Count; i++)
                 {
                     int id = Convert.ToInt32(partidos[i].IDPartido);
                     int voto = Convert.ToInt32(Request.Form[partidos[i].Siglas].ToString());
-                    object[] FilaDatos = { id, voto };
-                    dt.Rows.Add(id, voto);
+                    bool alianza = Convert.ToBoolean(partidos[i].alianza);
+                    object[] FilaDatos = { id, voto,alianza };
+                    dt.Rows.Add(id, voto,alianza);
                 }
 
                 #region Obtener datos de la imagen
