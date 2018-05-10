@@ -42,6 +42,7 @@ namespace DllCampElectoral.Datos
                                 user.IDEstado = Dr1.GetInt32(Dr1.GetOrdinal("estado"));
                                 user.IDMunicipio = Dr1.GetInt32(Dr1.GetOrdinal("municipio"));
                                 user.IDTipoUsuario = Dr1.GetInt32(Dr1.GetOrdinal("id_profile"));
+                            user.DesEstado = Dr1.GetString(Dr1.GetOrdinal("DesEstado"));
                             break;
                             }
                             List<WN_Permisos> listaIdsPadres = new List<WN_Permisos>(); //Lista de los IDs Padres del usuario logeado
@@ -133,6 +134,7 @@ namespace DllCampElectoral.Datos
                         user.IDEstado = Dr1.GetInt32(Dr1.GetOrdinal("estado"));
                         user.IDMunicipio = Dr1.GetInt32(Dr1.GetOrdinal("municipio"));
                         user.IDTipoUsuario = Dr1.GetInt32(Dr1.GetOrdinal("id_profile"));
+                        user.DesEstado = Dr1.GetString(Dr1.GetOrdinal("DesEstado"));
                         break;
                     }
                     List<WN_Permisos> listaIdsPadres = new List<WN_Permisos>(); //Lista de los IDs Padres del usuario logeado

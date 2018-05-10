@@ -54,6 +54,7 @@
     <script src="assets/js/form-validation2.js"></script>   
     <script src="assets/js/ui-notifications.js"></script>
     <script src="assets/plugins/sweetalert/lib/sweet-alert.min.js"></script>     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OverlappingMarkerSpiderfier/1.0.3/oms.min.js"></script>
     <script src="assets/js/mapsSeccion.js"></script>
 	<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 	<!-- start: CORE JAVASCRIPTS  -->

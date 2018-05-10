@@ -151,6 +151,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="afiliadosService.asmx" />
     <Content Include="assets\css\plugins.css" />
     <Content Include="assets\css\print.css" />
     <Content Include="assets\css\styles-responsive.css" />
@@ -241,6 +242,7 @@
     <Content Include="assets\images\timer-piece.png" />
     <Content Include="assets\images\triangle_toolbar.png" />
     <Content Include="assets\images\your-logo-here.png" />
+    <Content Include="assets\js\afiliados.js" />
     <Content Include="assets\js\charts.js" />
     <Content Include="assets\js\form-dropzone.js" />
     <Content Include="assets\js\form-elements.js" />
@@ -250,6 +252,7 @@
     <Content Include="assets\js\form-wizard.js" />
     <Content Include="assets\js\index.js" />
     <Content Include="assets\js\login.js" />
+    <Content Include="assets\js\logout.js" />
     <Content Include="assets\js\main.js" />
     <Content Include="assets\js\maps.js" />
     <Content Include="assets\js\mapsContacto.js" />
@@ -264,6 +267,7 @@
     <Content Include="assets\js\pages-gallery.js" />
     <Content Include="assets\js\pages-timeline.js" />
     <Content Include="assets\js\pages-user-profile.js" />
+    <Content Include="assets\js\secciones.js" />
     <Content Include="assets\js\subview-examples.js" />
     <Content Include="assets\js\subview.js" />
     <Content Include="assets\js\table-data.js" />
@@ -3256,6 +3260,7 @@
     <Content Include="frmActividadComercial.aspx" />
     <Content Include="frmActividadComercialGrid.aspx" />
     <Content Include="frmActividadesEventosGrid.aspx" />
+    <Content Include="frmAfiliados.aspx" />
     <Content Include="frmAfiliadosGrid.aspx" />
     <Content Include="frmAfiliadosImagenesGrid.aspx" />
     <Content Include="frmAuxiliarGrid.aspx" />
@@ -3324,8 +3329,10 @@
     <Content Include="frmNuevoEntrevistador.aspx" />
     <Content Include="frmNuevoEvento.aspx" />
     <Content Include="frmNuevoGastos.aspx" />
+    <Content Include="frmPartidoPoliticoAlianzaCrear.aspx" />
     <Content Include="frmPartidos.aspx" />
     <Content Include="frmPartidosGrid.aspx" />
+    <Content Include="frmPartidosPoliticosAlianzasGrid.aspx" />
     <Content Include="frmPoligonos.aspx" />
     <Content Include="frmPoligonosGrid.aspx" />
     <Content Include="frmPorcentajePregunta.aspx" />
@@ -3418,6 +3425,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="frmPartidoPoliticoAlianzaEdit.aspx" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
     <Content Include="assets\images\Thumbs.db" />
@@ -4335,11 +4343,13 @@
     <Content Include="Images\FotosBlog\Thumbs.db" />
     <Content Include="sfrmCasillasCmb.aspx" />
     <Content Include="sfrmEliminarAfiliadosGrid.aspx" />
+    <Content Include="sfrmLogout.aspx" />
     <Content Include="sfrmRetificarAfiliadosGrid.aspx" />
     <Content Include="seccionesService.asmx" />
     <Content Include="sfrmSecciones.aspx" />
     <Content Include="sfrmSeccionesCmb.aspx" />
     <Content Include="Site.Master" />
+    <Content Include="assets\json\Spanish.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4398,24 +4408,50 @@
     <Content Include="sfrmPuntosPoligono.aspx" />
     <Content Include="sfrmResultadosEncuesta.aspx" />
     <Content Include="sfrmZonasRiesgoXIDs.aspx" />
+    <Content Include="TestSearchDataTable.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmPartidoPoliticoAlianzaEdit.aspx.cs">
+      <DependentUpon>frmPartidoPoliticoAlianzaEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmPartidoPoliticoAlianzaEdit.aspx.designer.cs">
+      <DependentUpon>frmPartidoPoliticoAlianzaEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestSearchDataTable.aspx.cs">
+      <DependentUpon>TestSearchDataTable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestSearchDataTable.aspx.designer.cs">
+      <DependentUpon>TestSearchDataTable.aspx</DependentUpon>
+    </Compile>
     <Content Include="App_Code\DataTableResultSet.cs" />
     <Content Include="App_Code\DataTables.cs" />
-    <Compile Include="frmIncidencias.aspx.cs">
-      <DependentUpon>frmIncidencias.aspx</DependentUpon>
+    <Compile Include="frmPartidoPoliticoAlianzaCrear.aspx.cs">
+      <DependentUpon>frmPartidoPoliticoAlianzaCrear.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="frmIncidencias.aspx.designer.cs">
-      <DependentUpon>frmIncidencias.aspx</DependentUpon>
+    <Compile Include="frmPartidoPoliticoAlianzaCrear.aspx.designer.cs">
+      <DependentUpon>frmPartidoPoliticoAlianzaCrear.aspx</DependentUpon>
     </Compile>
-    <Compile Include="frmNuevaIncidencia.aspx.cs">
-      <DependentUpon>frmNuevaIncidencia.aspx</DependentUpon>
+    <Compile Include="frmPartidosPoliticosAlianzasGrid.aspx.cs">
+      <DependentUpon>frmPartidosPoliticosAlianzasGrid.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="frmNuevaIncidencia.aspx.designer.cs">
-      <DependentUpon>frmNuevaIncidencia.aspx</DependentUpon>
+    <Compile Include="frmPartidosPoliticosAlianzasGrid.aspx.designer.cs">
+      <DependentUpon>frmPartidosPoliticosAlianzasGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="afiliadosService.asmx.cs">
+      <DependentUpon>afiliadosService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="frmAfiliados.aspx.cs">
+      <DependentUpon>frmAfiliados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmAfiliados.aspx.designer.cs">
+      <DependentUpon>frmAfiliados.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmSeccionDetalle.aspx.cs">
       <DependentUpon>frmSeccionDetalle.aspx</DependentUpon>
@@ -5370,6 +5406,13 @@
     </Compile>
     <Compile Include="sfrmEventos.aspx.designer.cs">
       <DependentUpon>sfrmEventos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="sfrmLogout.aspx.cs">
+      <DependentUpon>sfrmLogout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sfrmLogout.aspx.designer.cs">
+      <DependentUpon>sfrmLogout.aspx</DependentUpon>
     </Compile>
     <Compile Include="sfrmMunicipios.aspx.cs">
       <DependentUpon>sfrmMunicipios.aspx</DependentUpon>

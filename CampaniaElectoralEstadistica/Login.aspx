@@ -210,6 +210,8 @@
 		<!--[if gte IE 9]><!-->
 		<script src="assets/plugins/jQuery/jquery-2.1.1.min.js"></script>
 		<!--<![endif]-->
+         <script src="assets/js/ui-notifications.js"></script>
+    <script src="assets/plugins/sweetalert/lib/sweet-alert.min.js"></script>
 		<script src="assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
 		<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 		<script src="assets/plugins/iCheck/jquery.icheck.min.js"></script>
@@ -220,6 +222,7 @@
 		<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 		<script src="assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
 		<script src="assets/js/login.js"></script>
+       
 		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 		<script>
 			jQuery(document).ready(function() {

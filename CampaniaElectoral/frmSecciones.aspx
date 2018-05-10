@@ -8,11 +8,6 @@
 				    <h4 class="panel-title">Lista de <span class="text-bold">Secciones</span></h4>
 				</div>
 				<div class="panel-body">
-					<div class="row">
-						<div class="col-md-12 space20">
-						</div>
-					</div>
-                   
 					<div class="table-responsive">
 						<table class="table table-striped table-bordered table-hover table-full-width" id="sample_1">
 							<thead>
@@ -63,27 +58,14 @@
 	<script type="text/javascript" src="assets/js/table-data.js"></script>
     <script src="assets/js/ui-notifications.js"></script>
     <script src="assets/plugins/sweetalert/lib/sweet-alert.min.js"></script>
+    <script src="assets/js/secciones.js"></script>
 	<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 	<!-- start: CORE JAVASCRIPTS  -->
 	<script src="assets/js/main.js"></script>
 	<!-- end: CORE JAVASCRIPTS  -->
 	<script>
 	    jQuery(document).ready(function () {
-	        //TableData.init();
-
-	        $('#sample_1').DataTable({
-	            "processing": true,
-	            "serverSide": true,
-	            "ajax": {
-	                        type: "POST",
-	                        contentType: "application/json; charset=utf-8",
-	                        url: "/seccionesService.asmx/Data",
-	                        data: function (d) {
-	                            return JSON.stringify({ parameters: d });
-	                        }   
-	                    }
-	        });
-
+            Secciones.init();
 		});
 	</script>
 </asp:Content>

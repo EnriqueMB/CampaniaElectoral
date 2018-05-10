@@ -49,7 +49,7 @@ namespace CampaniaElectoral
                     string colaborador = "";
                     string[] KeysForm = Request.Form.AllKeys;
                     DataTable TablaAux = new DataTable();
-                    TablaAux.Columns.Add("IDPartido", typeof(int));
+                    TablaAux.Columns.Add("IDAlianza", typeof(int));
                     TablaAux.Columns.Add("Votos", typeof(int));
                     for (int i=0; i<KeysForm.Length; i++)
                     {
