@@ -237,5 +237,40 @@ namespace DllCampElectoral.Datos
             }
         }
 
+        public void ObtenerDatosGraficaConteoPrep(CH_Conteo Datos)
+        {
+            try
+            {
+                DataSet Ds = SqlHelper.ExecuteDataset(Datos.Conexion, "EM_Estadisticos_spCSLDB_get_ConteoPrep");
+                if (Ds != null)
+                {
+                    if (Ds.Tables.Count == 2)
+                    {
+                        DataTableReader Dr = Ds.Tables[0].CreateDataReader();
+                        while (Dr.Read())
+                        {
+                            Datos.CasillaGanada = Dr.GetInt32(Dr.GetOrdinal("CasillaGanada"));
+                            Datos.Completado = true;
+                            break;
+                        }
+                        List<CH_Conteo> Lista = new List<CH_Conteo>();
+                        CH_Conteo Item;
+                        DataTableReader Dr2 = Ds.Tables[1].CreateDataReader();
+                        while (Dr2.Read())
+                        {
+                            Item = new CH_Conteo();
+                            Item.CantidadVoto = Dr2.GetInt32(Dr2.GetOrdinal("CantidadVoto"));
+                            Item.SiglasPartido = Dr2.GetString(Dr2.GetOrdinal("siglas"));
+                            Lista.Add(Item);
+                        }
+                        Datos.ListaConteo = Lista;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

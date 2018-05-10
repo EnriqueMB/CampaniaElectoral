@@ -9,7 +9,7 @@
           <div class="row row-sm text-center">
             <div class="col-xs-12">
               <div class="panel padder-v item">
-                <div class="h1 text-info font-thin h1">210</div>
+                <div class="h1 text-info font-thin h1"><%=ConteoPagina.CasillaGanada%></div>
                 <span class="text-muted text-xs">Casillas Ganadas</span>
                 <div class="top text-right w-full">
                   <i class="fa fa-caret-down text-warning m-r-sm"></i>
@@ -38,19 +38,23 @@
           <div class="panel-body">
             <div ui-jq="plot" ui-options="
               [
-                { data: [ [0,7],[1,6.5],[2,12.5],[3,7],[4,9],[5,6],[6,11],[7,6.5],[8,8],[9,7] ], label: 'Unique Visits', points: { show: true } }, 
-                { data: [ [0,4],[1,4.5],[2,7],[3,4.5],[4,3],[5,3.5],[6,6],[7,3],[8,4],[9,3] ], label: 'Page Views', bars: { show: true, barWidth: 0.6, fillColor: { colors: [{ opacity: 0.2 }, { opacity: 0.4}] } } }
+                <%int cont = 0;%>
+               <%foreach (var item in ConteoPagina.ListaConteo)
+                {%>
+                    { data: [ [<%=cont %>,<%=item.CantidadVoto %> ] ], label: '<%=item.SiglasPartido %>', bars: { show: true, barWidth: 0.5, fillColor: { colors: [{ opacity: 0.2 }, { opacity: 0.4}] } } },
+                <%cont++;%>
+                 <%} %>
               ],
               {                
-                colors: [ '#23b7e5','#27c24c' ],
+                colors: [ '#23b7e5','#27c24c','#ff001d','#0c0c0c','#06ef02','#662e2e','#0438f4','#ff00f6','#ffffff'],
                 series: { shadowSize: 2 },
                 xaxis:{ font: { color: '#ccc' } },
                 yaxis:{ font: { color: '#ccc' } },
                 grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#ccc' },
                 tooltip: true,
-                tooltipOpts: { content: '%s of %x.1 is %y.4',  defaultTheme: false, shifts: { x: 0, y: 20 } }
+                tooltipOpts: { content: '%s  con %y.4 votos',  defaultTheme: false, shifts: { x: 0, y: 20 } }
               }
-            " style="height:240px"></div>
+            " style="height:300px"></div>
           </div>                  
         </div>
       </div>

@@ -122,5 +122,45 @@ namespace DllCampElectoral.Global
             set { _TablaDatos = value; }
         }
 
+        private int _CasillaGanada;
+
+        public int CasillaGanada
+        {
+            get { return _CasillaGanada; }
+            set { _CasillaGanada = value; }
+        }
+
+        private int _CasillaPerdida;
+
+        public int CasillaPerdida
+        {
+            get { return _CasillaPerdida; }
+            set { _CasillaPerdida = value; }
+        }
+
+        private int _CantidadVoto;
+
+        public int CantidadVoto
+        {
+            get { return _CantidadVoto; }
+            set { _CantidadVoto = value; }
+        }
+
+        private string _SiglasPartido;
+
+        public string SiglasPartido
+        {
+            get { return _SiglasPartido; }
+            set { _SiglasPartido = value; }
+        }
+
+        private List<CH_Conteo> _ListaConteo;
+
+        public List<CH_Conteo> ListaConteo
+        {
+            get { return _ListaConteo; }
+            set { _ListaConteo = value; }
+        }
+
     }
 }
