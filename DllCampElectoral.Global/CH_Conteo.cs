@@ -147,6 +147,14 @@ namespace DllCampElectoral.Global
             set { _CasillaEmpatada = value; }
         }
 
+        private int _TotalCasilla;
+
+        public int TotalCasilla
+        {
+            get { return _TotalCasilla; }
+            set { _TotalCasilla = value; }
+        }
+
 
         private int _CantidadVoto;
 
