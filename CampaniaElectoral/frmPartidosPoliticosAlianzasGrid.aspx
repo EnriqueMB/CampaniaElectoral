@@ -1,17 +1,18 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="frmPartidosGrid.aspx.cs" Inherits="CampaniaElectoral.frmPartidosGrid" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmPartidosPoliticosAlianzasGrid.aspx.cs" Inherits="CampaniaElectoral.frmPartidosPoliticosAlianzasGrid" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="cph_MasterBody" runat="server">
+
     <div class="row">
 	    <div class="col-md-12">
 		    <!-- start: DYNAMIC TABLE PANEL -->
 		    <div class="panel panel-white">
 			    <div class="panel-heading">
-				    <h4 class="panel-title">Catálogo <span class="text-bold"> Partidos Políticos</span></h4>
+				    <h4 class="panel-title">Catálogo <span class="text-bold"> Alianzas de Partidos Políticos</span></h4>
 				</div>
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-md-12 space20">
-                            <a href="frmPartidos.aspx" class="btn btn-green">
-                                Nuevo
+                           <a href="frmPartidoPoliticoAlianzaCrear.aspx" class="btn btn-green">
+                                Nueva Alianza de Partido Político
                                 <i class="fa fa-plus"></i>
                             </a>
 						</div>
@@ -22,24 +23,36 @@
 								<tr>
 									<th>Nombre</th>
 									<th>Siglas</th>
-                                    <th class="">Color</th>
+                                    <th>Partidos</th>
+                                    <th>Logo</th>
 									<th>Acciones</th>
 								</tr>
 							</thead>
 							<tbody>                  
-                                <% foreach (var Item in Lista)
+                                <% 
+                                    foreach (var item in listaAlianzas)
                                     { %>
 								<tr>
-									<td><%=Item.Nombre %></td>
-									<td><%=Item.Siglas %></td>
-
-                                    <% Response.Write("<td class=''><div style=' background-color: " + Item.RGBColor + "'>&nbsp" + "</div></td>");%>
-
-                                    
+									<td><%=item.Nombre %></td>
+									<td><%=item.Siglas %></td>
+                                    <td>
+                                        <ul>
+                                        <%
+                                            string[] partidosPoliticos = item.PartidosPoliticos.Split(',');
+                                            for(int i = 0; i < partidosPoliticos.Count(); i++)
+                                            {
+                                        %>      <li><%= partidosPoliticos[i] %></li>
+                                            <%
+                                            }
+                                            %>
+                                        </ul>
+                                    <td>
+                                        <img src="data:<%= item.ExtensionBase64 %>;base64, <%= item.Logo %>" alt="Logo" height="100" width="150"/>
+                                    </td>
                                     <td>
                                         <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                            <%Response.Write("<a href='frmPartidos.aspx?op=2&id=" + Item.IDPartido.ToString() + "' class='btn btn-xs btn-blue tooltips' data-placement='top' data-original-title='Editar'> <i class='fa fa-edit'> </i> </a>"); %>
-                                            <%Response.Write("<a data-placement='top' data-target='.bs-example-modal-sm" + Item.IDPartido.ToString() + "' data-toggle='modal'  class='btn btn-xs btn-red tooltips' data-placement='top' data-original-title='Eliminar'> <i class='fa fa-times fa fa-white'> </i> </a>");%>
+                                            <%Response.Write("<a href='frmPartidoPoliticoAlianzaEdit.aspx?id=" + item.IDPartidoPoliticoAlianza.ToString() + "' class='btn btn-xs btn-blue tooltips' data-placement='top' data-original-title='Editar'> <i class='fa fa-edit'> </i> </a>"); %>
+                                            <%Response.Write("<a data-placement='top' data-target='.bs-example-modal-sm" + item.IDPartidoPoliticoAlianza.ToString() + "' data-toggle='modal'  class='btn btn-xs btn-red tooltips' data-placement='top' data-original-title='Eliminar'> <i class='fa fa-times fa fa-white'> </i> </a>");%>
 									    </div>
 
 										<div class="visible-xs visible-sm hidden-md hidden-lg">
@@ -49,15 +62,15 @@
 												</a>
 												<ul role="menu" class="dropdown-menu pull-right dropdown-dark">
 													<li>
-                                                        <%Response.Write("<a href='frmPartidos.aspx?op=2&id=" + Item.IDPartido.ToString() + "' role='menuitem' tabindex='-1' class='tooltips' data-placement='top' data-original-title='Editar'><i class='fa fa-edit'></i>Editar</a>"); %>
+                                                        <%Response.Write("<a href='frmPartidoPoliticoAlianzaEdit.aspx?id=" + item.IDPartidoPoliticoAlianza.ToString() + "' role='menuitem' tabindex='-1' class='tooltips' data-placement='top' data-original-title='Editar'><i class='fa fa-edit'></i>Editar</a>"); %>
 													</li>
 													<li>
-                                                        <%Response.Write("<a data-placement='top' data-target='.bs-example-modal-sm" + Item.IDPartido.ToString() + "' role='menuitem' tabindex='-1' data-toggle='modal'  class='tooltips' data-placement='top' data-original-title='Eliminar'><i class='fa fa-times fa fa-white'></i>Eliminar</a>");%>
+                                                        <%Response.Write("<a data-placement='top' data-target='.bs-example-modal-sm" + item.IDPartidoPoliticoAlianza.ToString() + "' role='menuitem' tabindex='-1' data-toggle='modal'  class='tooltips' data-placement='top' data-original-title='Eliminar'><i class='fa fa-times fa fa-white'></i>Eliminar</a>");%>
 													</li>
 												</ul>
 											</div>
 										</div>
-                                        <div class="modal fade bs-example-modal-sm<% = Item.IDPartido %>" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                        <div class="modal fade bs-example-modal-sm<% = item.IDPartidoPoliticoAlianza %>" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 	                                    <div class="modal-dialog modal-sm">
 		                                    <div class="modal-content">
 			                                    <div class="modal-header">
@@ -73,7 +86,7 @@
 			                                    </div>
 			                                    <div class="modal-footer">                     
 				                                    <button data-dismiss="modal" class="btn btn-red" type="button">No</button>
-                                                    <% Response.Write("<a  href='frmPartidosGrid.aspx?op=3&id=" + Item.IDPartido.ToString() + "' class='btn btn-green add-row' runat='server'>Si</a>");%>                                           
+                                                    <% Response.Write("<a  href='frmPartidosPoliticosAlianzasGrid.aspx?op=1&id=" + item.IDPartidoPoliticoAlianza.ToString() + "' class='btn btn-green add-row' runat='server'>Si</a>");%>                                           
 			                                    </div>
 		                                    </div>
 	                                    </div>
@@ -96,6 +109,7 @@
 	<script type="text/javascript" src="assets/plugins/select2/select2.min.js"></script>
 	<script type="text/javascript" src="assets/js/table-data.js"></script>
     <script src="assets/js/ui-notifications.js"></script>     
+    <script src="assets/plugins/sweetalert/lib/sweet-alert.min.js"></script>
 	<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 	<!-- start: CORE JAVASCRIPTS  -->
 	<script src="assets/js/main.js"></script>
@@ -105,5 +119,5 @@
 			TableData.init();
 		});
 	</script>
-        
-</asp:Content>    
+
+</asp:Content>

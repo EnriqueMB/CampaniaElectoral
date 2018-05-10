@@ -102,7 +102,7 @@ namespace DllCampElectoral.Datos
             try
             {
                 object[] Parametros = { Datos.IDCaptura, Datos.TablaDatos, Datos.IDUsuario, seccion,casilla ,"" };
-                object Result = SqlHelper.ExecuteScalar(Datos.Conexion, CommandType.StoredProcedure, "CH_spCSLDB_AC_CapturaDetalleResultados",
+                object Result = SqlHelper.ExecuteScalar(Datos.Conexion, CommandType.StoredProcedure, "ER_spCSLDB_AC_CapturaDetalleResultados2",
                 new SqlParameter("@IDCaptura", Datos.IDCaptura),
                 new SqlParameter("@TablaVotos", Datos.TablaDatos),
                 new SqlParameter("@IDUsuario", Datos.IDUsuario),
