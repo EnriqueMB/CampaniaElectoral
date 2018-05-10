@@ -14,6 +14,14 @@ namespace DllCampElectoral.Global
             _ListaTipoRiesgos = new List<CH_TipoRiesgo>();
         }
 
+        private string _Estado;
+
+        public string Estado
+        {
+            get { return _Estado; }
+            set { _Estado = value; }
+        }
+
         private string _IDZonaRiesgo;
 
         public string IDZonaRiesgo
@@ -147,6 +155,12 @@ namespace DllCampElectoral.Global
             get { return _ListaEstados; }
             set { _ListaEstados = value; }
         }
+        private List<CH_Municipio> _ListaMunicipio;
 
+        public List<CH_Municipio> ListaMunicipio
+        {
+            get { return _ListaMunicipio; }
+            set { _ListaMunicipio = value; }
+        }
     }
 }

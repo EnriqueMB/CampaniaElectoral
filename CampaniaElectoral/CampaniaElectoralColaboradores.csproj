@@ -3293,6 +3293,7 @@
     <Content Include="frmGradoEstudios.aspx" />
     <Content Include="frmGradoEstudiosGrid.aspx" />
     <Content Include="frmHistorialActividades.aspx" />
+    <Content Include="frmIncidencias.aspx" />
     <Content Include="frmIndicadorEncuestaGrid.aspx" />
     <Content Include="frmIndicadorEncuestas.aspx" />
     <Content Include="frmLoadBanner.aspx" />
@@ -3311,6 +3312,7 @@
     <Content Include="frmNuevaActividad.aspx" />
     <Content Include="frmNuevaEncuesta.aspx" />
     <Content Include="frmNuevaImagen.aspx" />
+    <Content Include="frmNuevaIncidencia.aspx" />
     <Content Include="frmNuevaPregunta.aspx" />
     <Content Include="frmNuevaRespuesta.aspx" />
     <Content Include="frmNuevaRespuestaGrid.aspx" />
@@ -4401,6 +4403,20 @@
   <ItemGroup>
     <Content Include="App_Code\DataTableResultSet.cs" />
     <Content Include="App_Code\DataTables.cs" />
+    <Compile Include="frmIncidencias.aspx.cs">
+      <DependentUpon>frmIncidencias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmIncidencias.aspx.designer.cs">
+      <DependentUpon>frmIncidencias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmNuevaIncidencia.aspx.cs">
+      <DependentUpon>frmNuevaIncidencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmNuevaIncidencia.aspx.designer.cs">
+      <DependentUpon>frmNuevaIncidencia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="frmSeccionDetalle.aspx.cs">
       <DependentUpon>frmSeccionDetalle.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5469,7 +5485,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>2981</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

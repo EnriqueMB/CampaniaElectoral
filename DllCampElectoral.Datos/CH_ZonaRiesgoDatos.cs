@@ -16,12 +16,12 @@ namespace DllCampElectoral.Datos
         {
             try
             {
-                DataSet Ds = SqlHelper.ExecuteDataset(Datos.Conexion, "CH_spCSLDB_get_CombosZonaDeRiesgo");
+                DataSet Ds = SqlHelper.ExecuteDataset(Datos.Conexion, "CH_spCSLDB_get_CombosZonaDeRiesgo",Datos.IDEstado);
                 if (Ds != null)
                 {
                     if (Ds.Tables.Count == 2)
                     {
-                        Datos.ListaEstados = ObtenerComboEstados(Ds.Tables[0]);
+                        Datos.ListaMunicipio = ObtenerComboMunicipios(Ds.Tables[0]);
                         Datos.ListaTipoRiesgos = ObtenerComboTipoRiesgos(Ds.Tables[1]);
                         Datos.Completado = true;
                     }
@@ -156,7 +156,27 @@ namespace DllCampElectoral.Datos
                 throw ex;
             }
         }
-
+        private List<CH_Municipio> ObtenerComboMunicipios(DataTable Tabla)
+        {
+            try
+            {
+                List<CH_Municipio> Lista = new List<CH_Municipio>();
+                CH_Municipio Item;
+                DataTableReader Dr = Tabla.CreateDataReader();
+                while (Dr.Read())
+                {
+                    Item = new CH_Municipio();
+                    Item.IDEstado = Dr.GetInt32(Dr.GetOrdinal("IDMunicipio"));
+                    Item.Descripcion= Dr.GetString(Dr.GetOrdinal("Descripcion"));
+                    Lista.Add(Item);
+                }
+                return Lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         private List<CH_TipoRiesgo> ObtenerComboTipoRiesgos(DataTable Tabla)
         {
             try
