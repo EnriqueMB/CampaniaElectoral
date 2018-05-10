@@ -7,20 +7,27 @@
     
         <div class="col-lg-4">
           <div class="row row-sm text-center">
-            <div class="col-xs-12">
-              <div class="panel padder-v item">
-                <div class="h1 text-info font-thin h1"><%=ConteoPagina.CasillaGanada%></div>
-                <span class="text-muted text-xs">Casillas Ganadas</span>
-                <div class="top text-right w-full">
-                  <i class="fa fa-caret-down text-warning m-r-sm"></i>
-                </div>
+              <div class="col-xs-12">
+                  <div class="col-xs-6">
+                      <div class="panel padder-v item">
+                          <div class="h1 text-info font-thin h1"><%=ConteoPagina.CasillaGanada%></div>
+                          <span class="text-muted text-xs">Casillas Ganadas</span>
+                        <%--  <div class="top text-right w-full">
+                              <i class="fa fa-caret-down text-warning m-r-sm"></i>
+                          </div>--%>
+                      </div>
+                  </div>
+                  <div class="col-xs-6">
+                      <a href class="block panel padder-v bg-dark item">
+                          <span class="text-white font-thin h1 block"><%=ConteoPagina.CasillaEmpatada%></span>
+                          <span class="text-muted text-xs">Casillas Empatadas</span>
+                      </a>
+                  </div>
               </div>
-            </div>
             <div class="col-xs-12">
               <a href class="block panel padder-v bg-danger item">
-                <span class="text-white font-thin h1 block">930</span>
+                <span class="text-white font-thin h1 block"><%=ConteoPagina.CasillaPerdida%></span>
                 <span class="text-muted text-xs">Casillas Perdidas</span>
-               
               </a>
             </div>
             
@@ -54,7 +61,7 @@
                 tooltip: true,
                 tooltipOpts: { content: '%s  con %y.4 votos',  defaultTheme: false, shifts: { x: 0, y: 20 } }
               }
-            " style="height:300px"></div>
+            " style="height:340px"></div>
           </div>                  
         </div>
       </div>

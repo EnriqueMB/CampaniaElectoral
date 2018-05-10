@@ -244,7 +244,7 @@ namespace DllCampElectoral.Datos
                 DataSet Ds = SqlHelper.ExecuteDataset(Datos.Conexion, "EM_Estadisticos_spCSLDB_get_ConteoPrep");
                 if (Ds != null)
                 {
-                    if (Ds.Tables.Count == 2)
+                    if (Ds.Tables.Count == 3)
                     {
                         DataTableReader Dr = Ds.Tables[0].CreateDataReader();
                         while (Dr.Read())
@@ -253,9 +253,16 @@ namespace DllCampElectoral.Datos
                             Datos.Completado = true;
                             break;
                         }
+                        DataTableReader Drp = Ds.Tables[1].CreateDataReader();
+                        while (Drp.Read())
+                        {
+                            Datos.CasillaPerdida = Drp.GetInt32(Drp.GetOrdinal("CasillaPerdida"));
+                            Datos.Completado = true;
+                            break;
+                        }
                         List<CH_Conteo> Lista = new List<CH_Conteo>();
                         CH_Conteo Item;
-                        DataTableReader Dr2 = Ds.Tables[1].CreateDataReader();
+                        DataTableReader Dr2 = Ds.Tables[2].CreateDataReader();
                         while (Dr2.Read())
                         {
                             Item = new CH_Conteo();
@@ -264,6 +271,11 @@ namespace DllCampElectoral.Datos
                             Lista.Add(Item);
                         }
                         Datos.ListaConteo = Lista;
+                        Datos.CasillaEmpatada = Datos.CasillaGanada - Datos.CasillaPerdida;
+                        if (Datos.CasillaEmpatada < 0)
+                        {
+                            Datos.CasillaEmpatada *= -1;
+                        }
                     }
                 }
             }
