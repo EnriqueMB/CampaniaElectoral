@@ -9,13 +9,13 @@
           <div class="row row-sm text-center">
               <div class="col-xs-12">
                   <div class="col-xs-6">
-                      <div class="panel padder-v item">
-                          <div class="h1 text-info font-thin h1"><%=ConteoPagina.CasillaGanada%></div>
+                      <a href class="block panel padder-v item">
+                          <span class="h1 text-info font-thin h1 block"><%=ConteoPagina.CasillaGanada%></span>
                           <span class="text-muted text-xs">Casillas Ganadas</span>
                         <%--  <div class="top text-right w-full">
                               <i class="fa fa-caret-down text-warning m-r-sm"></i>
                           </div>--%>
-                      </div>
+                      </a>
                   </div>
                   <div class="col-xs-6">
                       <a href class="block panel padder-v bg-dark item">
@@ -48,7 +48,7 @@
                 <%int cont = 0;%>
                <%foreach (var item in ConteoPagina.ListaConteo)
                 {%>
-                    { data: [ [<%=cont %>,<%=item.CantidadVoto %> ] ], label: '<%=item.SiglasPartido %>', bars: { show: true, barWidth: 0.5, fillColor: { colors: [{ opacity: 0.2 }, { opacity: 0.4}] } } },
+                    { data: [ [<%=cont %>,<%=item.CantidadVoto.ToString("0") %> ] ], label: '<%=item.SiglasPartido %>', bars: { show: true, barWidth: 0.5, fillColor: { colors: [{ opacity: 0.2 }, { opacity: 0.4}] } } },
                 <%cont++;%>
                  <%} %>
               ],
@@ -59,7 +59,7 @@
                 yaxis:{ font: { color: '#ccc' } },
                 grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#ccc' },
                 tooltip: true,
-                tooltipOpts: { content: '%s  con %y.4 votos',  defaultTheme: false, shifts: { x: 0, y: 20 } }
+                tooltipOpts: { content: '%s  con %y.2 votos',  defaultTheme: false, shifts: { x: 0, y: 20 } }
               }
             " style="height:340px"></div>
           </div>                  
