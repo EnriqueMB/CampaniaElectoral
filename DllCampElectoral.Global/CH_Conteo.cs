@@ -12,6 +12,7 @@ namespace DllCampElectoral.Global
         public CH_Conteo()
         {
             _ListaPartidos = new List<CH_PartidoPolitico>();
+            _ListaConteo = new List<CH_Conteo>();
         }
 
         private string _IDCaptura;
@@ -120,6 +121,63 @@ namespace DllCampElectoral.Global
         {
             get { return _TablaDatos; }
             set { _TablaDatos = value; }
+        }
+
+        private int _CasillaGanada;
+
+        public int CasillaGanada
+        {
+            get { return _CasillaGanada; }
+            set { _CasillaGanada = value; }
+        }
+
+        private int _CasillaPerdida;
+
+        public int CasillaPerdida
+        {
+            get { return _CasillaPerdida; }
+            set { _CasillaPerdida = value; }
+        }
+
+        private int _CasillaEmpatada;
+
+        public int CasillaEmpatada
+        {
+            get { return _CasillaEmpatada; }
+            set { _CasillaEmpatada = value; }
+        }
+
+        private int _TotalCasilla;
+
+        public int TotalCasilla
+        {
+            get { return _TotalCasilla; }
+            set { _TotalCasilla = value; }
+        }
+
+
+        private int _CantidadVoto;
+
+        public int CantidadVoto
+        {
+            get { return _CantidadVoto; }
+            set { _CantidadVoto = value; }
+        }
+
+        private string _SiglasPartido;
+
+        public string SiglasPartido
+        {
+            get { return _SiglasPartido; }
+            set { _SiglasPartido = value; }
+        }
+
+        private List<CH_Conteo> _ListaConteo;
+
+        public List<CH_Conteo> ListaConteo
+        {
+            get { return _ListaConteo; }
+            set { _ListaConteo = value; }
         }
 
     }
