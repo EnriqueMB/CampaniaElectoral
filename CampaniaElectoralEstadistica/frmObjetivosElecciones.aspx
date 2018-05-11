@@ -43,18 +43,9 @@
         <div class="panel-body text-center">
          
           <div class="inline">
-            <div ui-jq="easyPieChart"  ui-options="{
-                      percent: 26,
-                      lineWidth: 10,
-                      trackColor: '#e8eff0',
-                      barColor: '#27c24c',
-                      scaleColor: '#e8eff0',
-                      size: 188,
-                      lineCap: 'butt',
-                      animate: 1000
-                    }">
+            <div id="divAvanceGeneralVotos" ui-jq="easyPieChart"  ui-options="" runat="server">
               <div>
-                <span class="h2 m-l-sm step">25</span>%
+                <span class="h2 m-l-sm step"><asp:Label ID="lblPorcentajeAvanceGeneralVotos" runat="server"></asp:Label></span>%
                 <div class="text text-sm">VOTOS</div>
               </div>
             </div>
@@ -65,18 +56,20 @@
     </div>
         <div class="col-lg-4">
           <div class="row row-sm text-center">
+
             <div class="col-xs-6">
               <div class="panel padder-v item">
-                <div class="h1 text-info font-thin h1">150210</div>
+                <div class="h1 text-info font-thin h1"> <asp:Label ID="lblMetaGeneral" runat="server"></asp:Label> </div>
                 <span class="text-muted text-xs">Meta de Votos</span>
                 <div class="top text-right w-full">
                   <i class="fa fa-caret-down text-warning m-r-sm"></i>
                 </div>
               </div>
             </div>
+
             <div class="col-xs-6">
               <a href class="block panel padder-v bg-primary item">
-                <span class="text-white font-thin h1 block">39300</span>
+                <span class="text-white font-thin h1 block"><asp:Label ID="lblTotalVotosRealizados" runat="server"></asp:Label></span>
                 <span class="text-muted text-xs">Votos Realizados</span>
                
               </a>
@@ -84,7 +77,7 @@
             
             <div class="col-xs-12">
               <div class="panel padder-v bg-danger item">
-                <div class="font-thin h1">129</div>
+                <div class="font-thin h1"><asp:Label ID="lblTotalVotosFaltantes" runat="server"></asp:Label></div>
                 <span class="text-muted text-xs">Votos Faltantes por sección</span>
                 <div class="bottom">
                   <i class="fa fa-caret-up text-warning m-l-sm m-r-sm"></i>
@@ -108,61 +101,20 @@
         </div>
         <div class="panel-body text-center" style=" height:230px;overflow-y:scroll; ">
            
-
+            <!--Inicia Lista de metas-->
             <div class="list-group list-group-lg list-group-sp">
-            <a herf class="list-group-item clearfix">
-                   <span class="pull-left label text-base bg-danger pos-rlt m-r"><i class="arrow right arrow-danger"></i> 10:00 hrs</span>
-             
-              <span class="clear">
-                <span>Meta 15%</span>
-               
-              </span>
-            </a>
-            <a herf class="list-group-item clearfix">
-                 <span class="pull-left label text-base bg-warning pos-rlt m-r"><i class="arrow right arrow-warning"></i>12:00 hrs</span>
-           
-              <span class="clear">
-                <span>Meta 30%</span>
-            
-              </span>
-            </a>
-            <a herf class="list-group-item clearfix">
-                  <span class="pull-left label text-base bg-info pos-rlt m-r"><i class="arrow right arrow-info"></i>14:00 hrs</span>
-           
-              <span class="clear">
-                <span>Meta 45%</span>
-         
-              </span>
-            </a>
-            <a herf class="list-group-item clearfix">
-                  <span class="pull-left label text-base bg-primary pos-rlt m-r"><i class="arrow right arrow-primary"></i>16:00 hrs</span>
-           
-              <span class="clear">
-                <span>Meta 65%</span>
-            
-              </span>
-            </a>
-            <a herf class="list-group-item clearfix">
-                 <span class="pull-left label text-base bg-success pos-rlt m-r"><i class="arrow right arrow-success"></i>18:00 hrs</span>
-           
-              <span class="clear">
-                <span>Meta 85%</span>
-               
-              </span>
-            </a>
-
-                 <a herf class="list-group-item clearfix">
-                 <span class="pull-left label text-base bg-success pos-rlt m-r"><i class="arrow right arrow-success"></i>20:00 hrs</span>
-           
-              <span class="clear">
-                <span>Meta 100%</span>
-               
-              </span>
-            </a>
-          </div>
-
-
-
+            <%foreach (var item in listaMetasXHora)
+                {%>
+                    <a class="list-group-item clearfix">
+                        <span class="pull-left label text-base bg-<%= item.ColorEtiqueta %> pos-rlt m-r"><i class="arrow right arrow-<%= item.ColorEtiqueta %>"></i> <%= item.Hora.ToString(@"hh\:mm") %> hrs</span>
+                            <span class="clear">
+                            <span>Meta <%= item.Meta %>%</span>
+                        </span>
+                    </a>
+            <%
+                }%>
+            </div>
+            <!--Termina Lista de metas-->
         </div>
         <div class="panel-footer bg-danger"><small>RESULTADO: EL TRABAJO ESTA POR DEBAJO DE LO ESTIMADO</small></div>
       </div>

@@ -71,6 +71,7 @@
     <Compile Include="EM_PreguntasNegocio.cs" />
     <Compile Include="ER_SeccionesNegocio.cs" />
     <Compile Include="FG_CatPartidoPoliticoAlianzaNegocio.cs" />
+    <Compile Include="FG_EstadisticosVotosNegocio.cs" />
     <Compile Include="GM_CalendarNegocio.cs" />
     <Compile Include="GM_CarreraPoliticaNegocio.cs" />
     <Compile Include="GM_LoadBannerNegocio.cs" />
