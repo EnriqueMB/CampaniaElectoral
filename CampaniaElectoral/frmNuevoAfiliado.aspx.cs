@@ -18,6 +18,8 @@ namespace CampaniaElectoral
         public List<CH_Genero> ListaGeneros = new List<CH_Genero>();
         public List<CH_Estados> ListaEstado = new List<CH_Estados>();
         public List<CH_Poligono> ListaSeccion = new List<CH_Poligono>();
+        public List<CH_Municipio> ListMunicipio = new List<CH_Municipio>();
+        
         //public List<> ListaEventoAgenda = new List<RR_TipoEventoAgenda>();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,6 +27,7 @@ namespace CampaniaElectoral
             {
                 CargarComboGenero();
                 CargarComboEstado();
+                llenarComboMunicipios();
                 if (Request.QueryString["op"] != null)
                 {
                     if (Request.QueryString["op"] == "2")
@@ -68,44 +71,55 @@ namespace CampaniaElectoral
             }
             else
             {
-                if (Request.Form.Count == 21)
+                Page.Validate();
+                if (Page.IsValid)
                 {
-                    int cp = 0, genero = 0;
-                    DateTime fecAfiliacion;
-                    string operador = Request.Form["cmbOperador"].ToString();
-                    string nombre = Request.Form["ctl00$cph_MasterBody$txtNombreAfiliado"].ToString();
-                    string apepat = Request.Form["ctl00$cph_MasterBody$txtApePatAfiliado"].ToString();
-                    string apemat = Request.Form["ctl00$cph_MasterBody$txtApeMatAfiliado"].ToString();
-                    DateTime.TryParseExact(Request.Form["ctl00$cph_MasterBody$txtFechaAfiliacion"], "dd/MM/yyyy", CultureInfo.CurrentCulture, System.Globalization.DateTimeStyles.None, out fecAfiliacion);
-                    //int estado = Convert.ToInt32(Request.Form["txtEstadoAfil"]);
-                    //int municipio = Convert.ToInt32(Request.Form["txtMunicpioAfil"]);
-                    int estado = 1;
-                    int municipio = 1;
-                    string id_poligono = Request.Form["cmbSeccion"].ToString();
-                    string seccion = Request.Form["cmbSeccion"].ToString();
-                    string direccion = Request.Form["ctl00$cph_MasterBody$txtDireccion"].ToString();
-                    string numExt = Request.Form["ctl00$cph_MasterBody$txtNumeroExt"].ToString();
-                    string numInt = Request.Form["ctl00$cph_MasterBody$txtNumeroInt"].ToString();
-                    string colonia = Request.Form["ctl00$cph_MasterBody$txtColonia"].ToString();
-                    int.TryParse(Request.Form["ctl00$cph_MasterBody$txtCodigoP"].ToString(), out cp);
-                    string clvElector = Request.Form["ctl00$cph_MasterBody$txtClavElector"].ToString();
-                    string correo = Request.Form["ctl00$cph_MasterBody$txtCorreoElectronico"].ToString();
-                    string celular = Request.Form["ctl00$cph_MasterBody$txtCelular"].ToString();
-                    int.TryParse(Request.Form["txtGenero"].ToString(), out genero);
-                    string observaciones = Request.Form["ctl00$cph_MasterBody$txtObservaciones"].ToString();
-                    try
-                    {
-                        string AuxID = Request.Form["ctl00$cph_MasterBody$hf"].ToString();
-                        //IDColaborador = AuxID;
-                        bool NuevoRegistro = AuxID == "";
-                        this.Guardar(NuevoRegistro, AuxID, operador, nombre, apepat, apemat, fecAfiliacion,
-                            estado, municipio, id_poligono, seccion, direccion, numExt, numInt, colonia, cp, clvElector, correo, celular, genero, observaciones);
-                    }
-                    catch (Exception ex)
-                    {
-                        Response.Redirect("ErrorPage.aspx?msjError=" + ex.Message);
-                    }
 
+                    if (Request.Form.Count == 22)
+                    {
+                        int cp = 0, genero = 0;
+                        DateTime fecAfiliacion;
+                        string operador = Request.Form["ctl00$cph_MasterBody$cmbOperador"].ToString();
+                        string nombre = Request.Form["ctl00$cph_MasterBody$txtNombreAfiliado"].ToString();
+                        string apepat = Request.Form["ctl00$cph_MasterBody$txtApePatAfiliado"].ToString();
+                        string apemat = Request.Form["ctl00$cph_MasterBody$txtApeMatAfiliado"].ToString();
+                        DateTime.TryParseExact(Request.Form["ctl00$cph_MasterBody$txtFechaAfiliacion"], "dd/MM/yyyy", CultureInfo.CurrentCulture, System.Globalization.DateTimeStyles.None, out fecAfiliacion);
+                        //int estado = Convert.ToInt32(Request.Form["txtEstadoAfil"]);
+                        //int municipio = Convert.ToInt32(Request.Form["MunicpioAfil"]);
+                        int estado = 7;
+                        int municipio = Convert.ToInt32(Request.Form["ctl00$cph_MasterBody$cmbMunicipio"].ToString());
+                        //string id_poligono = Request.Form["cmbSeccion"].ToString();
+                        //string seccion = Request.Form["cmbSeccion"].ToString();
+                        int seccion = Convert.ToInt32(Request.Form["ctl00$cph_MasterBody$cmbSeccion"].ToString());
+                        string direccion = Request.Form["ctl00$cph_MasterBody$txtDireccion"].ToString();
+                        string numExt = Request.Form["ctl00$cph_MasterBody$txtNumeroExt"].ToString();
+                        string numInt = Request.Form["ctl00$cph_MasterBody$txtNumeroInt"].ToString();
+                        string colonia = Request.Form["ctl00$cph_MasterBody$txtColonia"].ToString();
+                        int.TryParse(Request.Form["ctl00$cph_MasterBody$txtCodigoP"].ToString(), out cp);
+                        string clvElector = Request.Form["ctl00$cph_MasterBody$txtClavElector"].ToString();
+                        string correo = Request.Form["ctl00$cph_MasterBody$txtCorreoElectronico"].ToString();
+                        string celular = Request.Form["ctl00$cph_MasterBody$txtCelular"].ToString();
+                        int.TryParse(Request.Form["ctl00$cph_MasterBody$cmbGenero"].ToString(), out genero);
+                        string observaciones = Request.Form["ctl00$cph_MasterBody$txtObservaciones"].ToString();
+                        try
+                        {
+                            string AuxID = Request.Form["ctl00$cph_MasterBody$hf"].ToString();
+                            //IDColaborador = AuxID;
+                            bool NuevoRegistro = AuxID == "";
+                            this.Guardar(NuevoRegistro, AuxID, operador, nombre, apepat, apemat, fecAfiliacion,
+                                estado, municipio, seccion, direccion, numExt, numInt, colonia, cp, clvElector, correo, celular, genero, observaciones);
+                        }
+                        catch (Exception ex)
+                        {
+                            Response.Redirect("ErrorPage.aspx?msjError=" + ex.Message);
+                        }
+
+                    }
+                }
+                else
+                {
+                    string x = Page.Validators.Count.ToString();
+                    //Response.Redirect("frmNuevoAfiliado.aspx");
                 }
             }
         }
@@ -130,21 +144,15 @@ namespace CampaniaElectoral
                 txtCelular.Value = DatosAux.Celular;
                 txtObservaciones.Value = DatosAux.Observaciones;
                 string ScriptError = @"
-
                         $(document).ready(
                             function() {
-                            document.getElementById('cmbSeccion').value= '" + DatosAux.IDPoligono + @"';
-                            $('#cmbSeccion').trigger('change');
-                            document.getElementById('cmbOperador').value= '" + DatosAux.IDColaborador + @"';
-                            document.getElementById('txtGenero').value= " + DatosAux.Genero + @";                
+                            document.getElementById('cph_MasterBody_cmbMunicipio').value= '" + DatosAux.Municipio + @"';
+                            $('#cph_MasterBody_cmbMunicipio').trigger('change');
+                            document.getElementById('cph_MasterBody_cmbSeccion').value= '" + DatosAux.Seccion + @"';
+                            $('#cph_MasterBody_cmbSeccion').trigger('change');
+                            document.getElementById('cph_MasterBody_cmbOperador').value= '" + DatosAux.IDColaborador + @"';
+                            document.getElementById('cph_MasterBody_cmbGenero').value= '" + DatosAux.Genero + @"';                
                         });";
-                    //$( function($){ 
-                    //    $('#cmbSeccion').trigger('change');
-                    //    document.getElementById('cmbSeccion').value= '" + DatosAux.IDPoligono + @"';
-                    //    document.getElementById('cmbOperador').value= '" + DatosAux.IDColaborador + @"';
-                    //    document.getElementById('txtGenero').value= " + DatosAux.Genero + @";
-                         
-                    //});";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "popup", ScriptError, true);
                 Response.Cookies.Clear();
             }
@@ -155,7 +163,7 @@ namespace CampaniaElectoral
         }
 
         private void Guardar(bool NuevoRegistro, string AuxID, string IDColaborador, string nombre, string apepat, string apemat, DateTime fecAfiliacion,
-            int estado, int municipio, string IDPoligono, string seccion, string direccion, string numExt, string numInt, string colonia, int cp, string clvElector, string correo, string celular,
+            int estado, int municipio, int seccion, string direccion, string numExt, string numInt, string colonia, int cp, string clvElector, string correo, string celular,
             int genero, string observaciones)
         {
             try
@@ -171,7 +179,6 @@ namespace CampaniaElectoral
                     FechaAfiliacion = fecAfiliacion,
                     Estado = estado,
                     Municipio = municipio,
-                    IDPoligono = IDPoligono,
                     Seccion = seccion,
                     Direccion = direccion,
                     NumeroExt = numExt,
@@ -191,6 +198,8 @@ namespace CampaniaElectoral
                 CN.ACCatalogoAfiliado(Datos);
                 if (Datos.Completado)
                 {
+                    string ScriptError = DialogMessage.Show(TipoMensaje.Success, "Los datos se guardaron correctamente", "Información", ShowMethod.FadeIn, HideMethod.FadeOut, ToastPosition.TopFullWidth, true);
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "popup", ScriptError, true);
                     Response.Redirect("frmAfiliadosGrid.aspx?op=1", false);
                 }
                 else
@@ -239,6 +248,10 @@ namespace CampaniaElectoral
             CH_Genero Datos = new CH_Genero() { Conexion = Comun.Conexion };
             RR_CatalogosNegocio GN = new RR_CatalogosNegocio();
             ListaGeneros = GN.ObtenerComboGenero(Datos);
+            cmbGenero.DataSource = ListaGeneros;
+            cmbGenero.DataTextField = "Descripcion";
+            cmbGenero.DataValueField = "IDGenero";
+            cmbGenero.DataBind();
         }
 
         private void CargarComboEstado()
@@ -248,7 +261,49 @@ namespace CampaniaElectoral
             ListaSeccion = PN.ObtenerComboPoligonos(Datos);
         }
 
-       
+        private void llenarComboMunicipios()
+        {
+            try
+            {
+                CH_Municipio Datos = new CH_Municipio { Conexion = Comun.Conexion, IDEstado=7 };
+                RR_CatalogosNegocio GN = new RR_CatalogosNegocio();
+                ListMunicipio = GN.ObtenerComboMunicipio(Datos);
+                cmbMunicipio.DataSource = ListMunicipio;
+                cmbMunicipio.DataTextField = "MunicipioDesc";
+                cmbMunicipio.DataValueField = "IDMunicipio";
+                cmbMunicipio.DataBind();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         #endregion
+
+        protected void cvMunicipio_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = (Convert.ToInt32(args.Value) >= 0);
+        }
+
+        protected void cvSeccion_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = (Convert.ToInt32(args.Value) >= 0);
+        }
+
+        protected void cvOperador_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid =args.Value.Length >= 0;
+        }
+
+        protected void cvCodigoP_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = (args.Value.Length >= 4);
+        }
+
+        protected void cvGenero_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = (Convert.ToInt32(args.Value) >= 0);
+        }
     }
 }

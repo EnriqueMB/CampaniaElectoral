@@ -759,6 +759,19 @@ namespace DllCampElectoral.Negocio
             }
         }
 
+        public void ObtenerDetalleAfiliadOCompletarXID(RR_Afiliados Datos)
+        {
+            try
+            {
+                RR_CatalogoDatos CD = new RR_CatalogoDatos();
+                CD.ObtenerDetalleAfiliadOCompletarXID(Datos);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public void EliminarAfiliadoXID(RR_Afiliados Datos)
         {
             try
@@ -795,6 +808,21 @@ namespace DllCampElectoral.Negocio
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        public List<CH_Municipio> ObtenerComboMunicipio(CH_Municipio Datos)
+        {
+            try
+            {
+                RR_CatalogoDatos CD = new RR_CatalogoDatos();
+                return CD.ObtenerComboMunicipio(Datos);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 

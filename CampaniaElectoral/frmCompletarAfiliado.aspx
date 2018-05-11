@@ -1,6 +1,17 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="frmCompletarAfiliado.aspx.cs" MasterPageFile="~/Site.Master" Inherits="CampaniaElectoral.frmCompletarAfiliado" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cph_MasterBody" runat="server">
+    <style>
+        #myCarousel{
+            width: 100%;
+            height: 100%;
+        }
+        #myCarousel img{
+            object-fit: initial;
+            display: block;
+            margin: auto;
+        }
+    </style>
     <div class="row">
         <div class="col-sm-12">
             <div class="panel panel-white">
@@ -12,6 +23,10 @@
                         <asp:HiddenField ID="hf"  runat="server" />
                     </div>
                     <div class="row">
+                        <div class="form-group">
+                            <asp:Label ID="labelMessage" runat="server" Text=""></asp:Label>
+                            <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ValidationGroup="AllValidators" />
+                        </div>
                         <div class="col-md-12">
                             <div class="errorHandler alert alert-danger no-display">
                                 <i class="fa fa-times-sign"></i>Hay errores en la captura de información. Revise las especificaciones de los campos.
@@ -28,6 +43,7 @@
                                     Clave Elector <span class="symbol required"></span>
                                 </label>
                                 <span class="input-icon">
+                                    <asp:RequiredFieldValidator ID="rfvClavElector" CssClass="text-danger serv" ControlToValidate="txtClavElector" runat="server" Display="Dynamic" ErrorMessage="Por favor, ingrese la clave de elector" Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="False" SetFocusOnError="True"></asp:RequiredFieldValidator>
                                     <input type="text" class="form-control tooltips" runat="server" id="txtClavElector" name="txtClavElector" placeholder="" minlength="18" data-original-title="Ingrese la clave de elector." data-rel="tooltip" title="" data-placement="top" />
                                     <i class="fa fa-keyboard-o"></i>
                                 </span>
@@ -41,6 +57,7 @@
                                     Nombre<span class="symbol required"></span>
                                 </label>
                                 <span class="input-icon">
+                                    <asp:RequiredFieldValidator ID="rfvNombreAfiliado" CssClass="text-danger serv" ControlToValidate="txtNombreAfiliado" runat="server" Display="Dynamic" ErrorMessage="Por favor, ingrese el nombre del afiliado" Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="False" SetFocusOnError="True"></asp:RequiredFieldValidator>
                                     <input type="text" class="form-control tooltips" runat="server" id="txtNombreAfiliado" name="txtNombreAfiliado" placeholder="" maxlength="150" data-original-title="Ingrese el nombre del afiliado." data-rel="tooltip" title="" data-placement="top" />
                                     <i class="fa fa-keyboard-o"></i>
                                 </span>
@@ -52,6 +69,7 @@
                                     Apellido Paterno<span class="symbol required"></span>
                                 </label>
                                 <span class="input-icon">
+                                    <asp:RequiredFieldValidator ID="rfvApePatAfiliado" CssClass="text-danger serv" ControlToValidate="txtApePatAfiliado" runat="server" Display="Dynamic" ErrorMessage="Por favor, ingrese el apellido paterno del afiliado." Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="False" SetFocusOnError="True"></asp:RequiredFieldValidator>
                                     <input type="text" class="form-control tooltips" runat="server" id="txtApePatAfiliado" name="txtApePatAfiliado" placeholder="" maxlength="150" data-original-title="Ingrese el apellido paterno del afiliado." data-rel="tooltip" title="" data-placement="top" />
                                     <i class="fa fa-keyboard-o"></i>
                                 </span>
@@ -65,6 +83,7 @@
                                     Apellido Materno<span class="symbol required"></span>
                                 </label>
                                 <span class="input-icon">
+                                    <asp:RequiredFieldValidator ID="rfvApeMatAfiliado" CssClass="text-danger serv" ControlToValidate="txtApeMatAfiliado" runat="server" Display="Dynamic" ErrorMessage="Por favor, ingrese el apellido materno del afiliado." Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="False" SetFocusOnError="True"></asp:RequiredFieldValidator>
                                     <input type="text" class="form-control tooltips" runat="server" id="txtApeMatAfiliado" name="txtApeMatAfiliado" placeholder="" maxlength="150" data-original-title="Ingrese el apellido materno del afiliado." data-rel="tooltip" title="" data-placement="top" />
                                     <i class="fa fa-keyboard-o"></i>
                                 </span>
@@ -76,51 +95,55 @@
                                     Fecha de afiliación <span class="symbol required"></span>
                                 </label>
                                 <div class="input-group input-append bootstrap-datepicker">
+                                    <asp:RequiredFieldValidator ID="rfvFechaAfiliacion" CssClass="text-danger serv" ControlToValidate="txtFechaAfiliacion" runat="server" Display="Dynamic" ErrorMessage="Por favor, selecciones un fecha de afiliaci&oacute;n." Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="False" SetFocusOnError="True"></asp:RequiredFieldValidator>
                                     <input id="txtFechaAfiliacion" name="txtFechaAfiliacion" runat="server" type="text" data-date-format="dd-mm-yyyy" data-date-viewmode="years" class="form-control date-picker" readonly/>
                                     <span class="input-group-addon add-on"><i class="fa fa-calendar"></i></span>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
                     <div class="row">
-                         <asp:HiddenField ID="id_poligono"  runat="server" />
-                    <div class="col-md-6">
-                            <div class="form-group">
-                                
-                                <label class="control-label" for="cph_MasterBody_txtPoligono">
-                                    Polígono<span class="symbol required"></span>
-                                </label>
-                                <span class="input-icon">
-                                    <input type="text" class="form-control tooltips" runat="server" id="txtPoligono" name="txtPoligono" placeholder="" maxlength="150" data-original-title="Poligono" data-rel="tooltip" title="" data-placement="top" readonly/>
-                                    <i class="fa fa-keyboard-o"></i>
-                                </span>
-                            </div>
-                        </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="control-label" for="cph_MasterBody_txtSeccion">
-                                    Sección<span class="symbol required"></span>
+                                <label class="control-label" for="cph_MasterBody_cmbMunicipio">
+                                    Municipio <span class="symbol required"></span>
                                 </label>
-                                <span class="input-icon">
-                                    <input type="text" class="form-control tooltips" runat="server" id="txtSeccion" name="txtSeccion" placeholder="" maxlength="150" data-original-title="Seccion" data-rel="tooltip" title="" data-placement="top" readonly/>
-                                    <i class="fa fa-keyboard-o"></i>
-                                </span>
+                                <asp:RequiredFieldValidator ID="rfvMunicipio" CssClass="text-danger serv" ControlToValidate="cmbMunicipio" runat="server" Display="Dynamic" ErrorMessage="Por favor, seleccione un municipio." Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="False" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                                <asp:CustomValidator ID="cvMunicipio" CssClass="text-danger serv" ControlToValidate="cmbMunicipio" OnServerValidate="cvMunicipio_ServerValidate" runat="server" Display="Dynamic" ErrorMessage="Por favor, seleccione un municipio." Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="false" SetFocusOnError="true"></asp:CustomValidator>
+                                <select id="cmbMunicipio" name="cmbMunicipio" class="form-control search-select" runat="server">
+                                     <option value=""></option>
+                                    
+                                    <% foreach (var Item in ListMunicipio)
+                                       {
+                                           Response.Write("<option value='" + Item.IDMunicipio.ToString() + "'> " + Item.MunicipioDesc.ToString() + "</option>");
+                                       }%>
+                                </select>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="control-label" for="cmbOperador">
+                                <label class="control-label" for="cph_MasterBody_cmbSeccion">
+                                    Sección <span class="symbol required"></span>
+                                </label>
+                                <%--<asp:RequiredFieldValidator ID="rfvSeccion" CssClass="text-danger serv" ControlToValidate="cmbSeccion" runat="server" Display="Dynamic" ErrorMessage="Por favor, seleccione una seccion." Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="False" SetFocusOnError="True"></asp:RequiredFieldValidator>--%>
+                                <asp:CustomValidator ID="cvSeccion" CssClass="text-danger serv" ControlToValidate="cmbSeccion" OnServerValidate="cvSeccion_ServerValidate" runat="server" Display="Dynamic" ErrorMessage="Por favor, seleccione una seccion." Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="false" SetFocusOnError="true"></asp:CustomValidator>
+                                <select id="cmbSeccion" name="cmbSeccion" class="form-control search-select" runat="server">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label" for="cph_MasterBody_cmbOperador">
                                     Operador político <span class="symbol required"></span>
                                 </label>
-                                <select id="cmbOperador" name="cmbOperador" class="form-control search-select">
-                                   <option value=""></option>
-                                    <% foreach (var Item in ListaOperador)
-                                       {
-                                           Response.Write("<option value='" + Item.IDColaborador.ToString() + "'> " + Item.Nombre.ToString()+"</option>");
-                                       }%>
+                                <%--<asp:RequiredFieldValidator ID="rfvOperador" CssClass="text-danger serv" ControlToValidate="cmbOperador" runat="server" Display="Dynamic" ErrorMessage="Por favor, seleccione un operador." Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="False" SetFocusOnError="True"></asp:RequiredFieldValidator>--%>
+                                <asp:CustomValidator ID="cvOperador" CssClass="text-danger serv" ControlToValidate="cmbOperador" OnServerValidate="cvOperador_ServerValidate" runat="server" Display="Dynamic" ErrorMessage="Por favor, seleccione un operador." Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="false" SetFocusOnError="true"></asp:CustomValidator>
+                                <select id="cmbOperador" name="cmbOperador" class="form-control search-select" runat="server">
+                                     <option value="">&nbsp;</option>
                                 </select>
                             </div>
                         </div>
@@ -132,6 +155,7 @@
                                     Dirección <span class="symbol required"></span>
                                 </label>
                                 <span class="input-icon">
+                                    <asp:RequiredFieldValidator ID="rfvDireccion" CssClass="text-danger serv" ControlToValidate="txtDireccion" runat="server" Display="Dynamic" ErrorMessage="Por favor, ingrese la direcci&oacute;n del afiliado." Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="False" SetFocusOnError="True"></asp:RequiredFieldValidator>
                                     <input type="text" class="form-control tooltips" runat="server" id="txtDireccion" name="txtDireccion" placeholder="" maxlength="500" data-original-title="Ingrese la dirección." data-rel="tooltip" title="" data-placement="top" />
                                     <i class="fa fa-keyboard-o"></i>
                                 </span>
@@ -143,6 +167,7 @@
                                     Colonia <span class="symbol required"></span>
                                 </label>
                                 <span class="input-icon">
+                                    <asp:RequiredFieldValidator ID="rfvColonia" CssClass="text-danger serv" ControlToValidate="txtColonia" runat="server" Display="Dynamic" ErrorMessage="Por favor, ingrese la colonia del afiliado." Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="False" SetFocusOnError="True"></asp:RequiredFieldValidator>
                                     <input type="text" class="form-control tooltips" runat="server" id="txtColonia" name="txtColonia" placeholder="" maxlength="150" data-original-title="Ingrese la colonia." data-rel="tooltip" title="" data-placement="top" />
                                     <i class="fa fa-keyboard-o"></i>
                                 </span>
@@ -154,6 +179,7 @@
                                     Número Exterior
                                 </label>
                                 <span class="input-icon">
+                                    <asp:RequiredFieldValidator ID="rfvNumeroExt" CssClass="text-danger serv" ControlToValidate="txtNumeroExt" runat="server" Display="Dynamic" ErrorMessage="Por favor, ingrese un n&uacute;mero exterior valido." Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="False" SetFocusOnError="True"></asp:RequiredFieldValidator>
                                     <input type="text" class="form-control tooltips" runat="server" id="txtNumeroExt" name="txtNumeroExt" placeholder="" maxlength="5" data-original-title="Ingrese el número exterior." data-rel="tooltip" title="" data-placement="top" />
                                     <i class="fa fa-keyboard-o"></i>
                                 </span>
@@ -165,6 +191,7 @@
                                     Número Interior
                                 </label>
                                 <span class="input-icon">
+                                    <asp:RequiredFieldValidator ID="rfvNumeroInt" CssClass="text-danger serv" ControlToValidate="txtNumeroInt" runat="server" Display="Dynamic" ErrorMessage="Por favor, ingrese un n&uacute;mero interior valido." Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="False" SetFocusOnError="True"></asp:RequiredFieldValidator>
                                     <input type="text" class="form-control tooltips" runat="server" id="txtNumeroInt" name="txtNumeroInt" placeholder="" maxlength="5" data-original-title="Ingrese el número interior." data-rel="tooltip" title="" data-placement="top" />
                                     <i class="fa fa-keyboard-o"></i>
                                 </span>
@@ -178,6 +205,8 @@
                                     Código Postal<span class="symbol required"></span>
                                 </label>
                                 <span class="input-icon">
+                                    <asp:RequiredFieldValidator ID="rfvCodigoP" CssClass="text-danger serv" ControlToValidate="txtCodigoP" runat="server" Display="Dynamic" ErrorMessage="Por favor, ingrese un c&oacute;digo postal." Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="False" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                                    <asp:CustomValidator ID="cvCodigoP" CssClass="text-danger serv" ControlToValidate="txtCodigoP" OnServerValidate="cvCodigoP_ServerValidate" runat="server" Display="Dynamic" ErrorMessage="Por favor, introduzca al menos 4 caracteres." Text="* Caracteres Insuficientes" ValidationGroup="AllValidators" EnableClientScript="false" SetFocusOnError="true"></asp:CustomValidator>
                                     <input type="text" class="form-control tooltips" runat="server" id="txtCodigoP" name="txtCodigoP" placeholder="" maxlength="5" data-original-title="Ingrese el código postal" data-rel="tooltip" title="" data-placement="top" />
                                     <i class="fa fa-keyboard-o"></i>
                                 </span>
@@ -189,6 +218,8 @@
                                     Correo Electrónico<span class="symbol required"></span>
                                 </label>
                                 <span class="input-icon">
+                                    <asp:RequiredFieldValidator ID="rfvCorreoElectronico" CssClass="text-danger serv" ControlToValidate="txtCorreoElectronico" runat="server" Display="Dynamic" ErrorMessage="Por favor, ingrese el correo electr&oacute;nico." Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="False" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="revCorreoElectronico" CssClass="text-danger serv" ControlToValidate="txtCorreoElectronico" runat="server" Display="Dynamic" ErrorMessage="Las direcciones de correo electrónico deben estar en el formato nombre@dominio.xyz" Text="* Formato no válido" ValidationGroup="AllValidators" EnableClientScript="False" SetFocusOnError="True" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                                     <input type="email" class="form-control tooltips" runat="server" id="txtCorreoElectronico" name="txtCorreoElectronico" placeholder="" maxlength="200" data-original-title="Ingrese un correo electronico." data-rel="tooltip" title="" data-placement="top" />
                                     <i class="fa fa-keyboard-o"></i>
                                 </span>
@@ -202,6 +233,7 @@
                                     Celular
                                 </label>
                                 <span class="input-icon">
+                                    <asp:RequiredFieldValidator ID="rfvCelular" CssClass="text-danger serv" ControlToValidate="txtCelular" runat="server" Display="Dynamic" ErrorMessage="Por favor, ingrese un n&uacute;mero valido." Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="False" SetFocusOnError="True"></asp:RequiredFieldValidator>
                                     <input type="text" class="form-control tooltips" runat="server" id="txtCelular" name="txtCelular" placeholder="" minlength="10" maxlength="13" data-original-title="Ingrese un número de celular." data-rel="tooltip" title="" data-placement="top" />
                                     <i class="fa fa-keyboard-o"></i>
                                 </span>
@@ -212,7 +244,9 @@
                                 <label class="control-label" for="cph_MasterBody_txtGenero">
                                     Genero <span class="symbol required"></span>
                                 </label>
-                                <select class="form-control search-select" id="txtGenero" name="txtGenero">
+                                <asp:RequiredFieldValidator ID="rfvGenero" CssClass="text-danger serv" ControlToValidate="cmbGenero" runat="server" Display="Dynamic" ErrorMessage="Por favor, seleccione un genero." Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="False" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                                <asp:CustomValidator ID="cvGenero" CssClass="text-danger serv" ControlToValidate="cmbGenero" OnServerValidate="cvGenero_ServerValidate" runat="server" Display="Dynamic" ErrorMessage="Por favor, seleccione un genero." Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="false" SetFocusOnError="true"></asp:CustomValidator>
+                                <select class="form-control search-select" id="cmbGenero" name="cmbGenero" runat="server">
                                     <option value=""></option>
                                     <% foreach (var Item in ListaGeneros)
                                        {
@@ -235,6 +269,39 @@
                         </div>
                     </div>
                     <div class="row">
+                                        <div class="col-md-8">
+                                            <div id="myCarousel" class="carousel slide">
+                  <!-- Indicators -->
+                                            <ol class="carousel-indicators">
+                                                <li data-target="#myCarousel" class="active"></li>
+                                                <li data-target="#myCarousel"></li>
+                                            </ol>
+
+                  <!-- Wrapper for slides -->
+                                            <div class="carousel-inner">
+                                                <div class="item active">
+                                              <img src="Images/Fotos/1D19822F-3218-4F44-9A0D-F95407192174.jpg" alt="Credencial Posterior" runat="server" id="imgPosterior">
+                                            </div>
+
+                                                <div class="item">
+                                              
+                                                    <img src="Images/Fotos/1D19822F-3218-4F44-9A0D-F95407192174.jpg" alt="Credencial Frente" runat="server" id="imgFrente">
+                                            </div>
+                                          </div>
+
+                  <!-- Left and right controls -->
+                                          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                                            <span class="glyphicon glyphicon-chevron-left"></span>
+                                            <span class="sr-only">Previous</span>
+                                          </a>
+                                          <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                                            <span class="glyphicon glyphicon-chevron-right"></span>
+                                            <span class="sr-only">Next</span>
+                                          </a>
+                                    </div>
+                                        </div>    
+                    </div>
+                    <div class="row">
                         <div class="col-md-12">
                             <div>
                                 <span class="symbol required"></span>Campos Requeridos
@@ -253,15 +320,6 @@
                                     <a href="frmCompletarAfiliadosGrid.aspx" class="btn btn-red btn-block" name="btnCancelar">Cancelar</a>
                                 </div>
                             </div>
-                            <div class="form-group pull-left">
-                                <div class="col-md-6">
-                                     
-                                <%Response.Write("<a href='frmCredencialImagen.aspx?op=1&id=" + IDAF + "'target='_blank' class='btn btn-blue btn-block' data-original-title='Ver Credencial Frente'> <i class='fa fa-plus'> </i> </a>");%>
-                                </div>
-                                <div class="col-md-6">
-                                    <%Response.Write("<a href='frmCredencialImagen.aspx?op=2&id=" + IDAF + "' target='_blank' class='btn btn-blue btn-block' data-original-title='Ver Credencial Posterior'> <i class='fa fa-plus'> </i> </a>");%>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -278,7 +336,7 @@
     <script src="assets/plugins/jQuery/jquery-2.1.1.min.js"></script>
     <!--<![endif]-->
     <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-    <script src="assets/js/form-validation2.js"></script>
+    <script src="assets/js/NuevoAfiliado.js"></script>
     <script src="assets/js/ui-notifications.js"></script>
     <script src="assets/plugins/sweetalert/lib/sweet-alert.min.js"></script>
     <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
@@ -288,11 +346,38 @@
     <!-- end: CORE JAVASCRIPTS  -->
     <script>
         jQuery(document).ready(function() {
-            FormValidator.init(26);
-            $("#cmbSeccion").change(function () {
-                $("#cmbSeccion option:selected").each(function () {
+            NuevoAfiliado.init();
+             $("#cph_MasterBody_cmbMunicipio").change(function () {
+                $("#cph_MasterBody_cmbMunicipio option:selected").each(function () {
                     elegido = $(this).val();
-                    $("#cmbOperador option").remove();
+                    $("#cph_MasterBody_cmbSeccion option").remove();
+                    // Set the global configs to synchronous 
+                    $.ajaxSetup({
+                        async: false
+                    });
+
+                    // Your $.getJSON() request is now synchronous...
+                    $.getJSON('sfrmSeccionesCmb.aspx?municipio=' + elegido, function (data) {
+                        $.each(data, function (key, value) {
+                            $("#cph_MasterBody_cmbSeccion").append('<option value="' + value.IDSeccion + '">' + value.seccionDesc + '</option>');
+                        });
+                    });
+                    //var $example = $("#cmbMunicipio").select2({ placeholder: " -- Seleccione -- ", allowClear: false });
+                    $("#cph_MasterBody_cmbSeccion").trigger('change.select2');
+                    //$('#select2-chosen-3').text(' -- Seleccione -- ');
+
+
+                    // Set the global configs back to asynchronous 
+                    $.ajaxSetup({
+                        async: true
+                    });
+
+                });
+            });
+            $("#cph_MasterBody_cmbSeccion").change(function () {
+                $("#cph_MasterBody_cmbSeccion option:selected").each(function () {
+                    elegido = $(this).val();
+                    $("#cph_MasterBody_cmbOperador option").remove();
                     // Set the global configs to synchronous 
                     $.ajaxSetup({
                         async: false
@@ -300,13 +385,12 @@
 
                     // Your $.getJSON() request is now synchronous...
                     $.getJSON('sfrmOperadorPolitico.aspx?poligono=' + elegido, function (data) {
-                        $("#cmbOperador").append('<option value="">&nbsp;</option>');
                         $.each(data, function (key, value) {
-                            $("#cmbOperador").append('<option value="' + value.IDColaborador + '">' + value.Nombre + '</option>');
+                            $("#cph_MasterBody_cmbOperador").append('<option value="' + value.IDColaborador + '">' + value.Nombre + '</option>');
                         });
                     });
                     //var $example = $("#cmbMunicipio").select2({ placeholder: " -- Seleccione -- ", allowClear: false });
-                    $("#cmbOperador").trigger('change.select2');
+                    $("#cph_MasterBody_cmbOperador").trigger('change.select2');
                     //$('#select2-chosen-3').text(' -- Seleccione -- ');
 
 
@@ -318,5 +402,8 @@
                 });
             });
         });
+    </script>
+    <script>
+        
     </script>
     </asp:Content>
