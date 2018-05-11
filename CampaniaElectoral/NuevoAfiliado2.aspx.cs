@@ -79,7 +79,7 @@ namespace CampaniaElectoral
                     int estado = 1;
                     int municipio = 1;
                     string id_poligono = Request.Form["cmbSeccion"].ToString();
-                    string seccion = Request.Form["cmbSeccion"].ToString();
+                    int seccion = 0;//Request.Form["cmbSeccion"].ToString();
                     string direccion = Request.Form["ctl00$cph_MasterBody$txtDireccion"].ToString();
                     string numExt = Request.Form["ctl00$cph_MasterBody$txtNumeroExt"].ToString();
                     string numInt = Request.Form["ctl00$cph_MasterBody$txtNumeroInt"].ToString();
@@ -152,7 +152,7 @@ namespace CampaniaElectoral
         }
 
         private void Guardar(bool NuevoRegistro, string AuxID, string IDColaborador, string nombre, string apepat, string apemat, DateTime fecAfiliacion,
-            int estado, int municipio, string IDPoligono, string seccion, string direccion, string numExt, string numInt, string colonia, int cp, string clvElector, string correo, string celular,
+            int estado, int municipio, string IDPoligono, int seccion, string direccion, string numExt, string numInt, string colonia, int cp, string clvElector, string correo, string celular,
             int genero, string observaciones)
         {
             try
