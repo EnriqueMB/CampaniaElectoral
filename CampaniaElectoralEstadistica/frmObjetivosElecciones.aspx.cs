@@ -23,13 +23,11 @@ namespace CampaniaElectoralEstadistica
         }
 
         #region Métodos
-
         private void ObtenerGeneralesEstadisticosVotacion()
         {
             FG = FG_Negocio.ObtenerGeneralesEstadisticosVotacion(FG);
             CargarDatos();
         }
-
         private void CargarDatos()
         {
             lblMetaGeneral.Text = FG.MetaVotosGeneral.ToString();
@@ -62,9 +60,6 @@ namespace CampaniaElectoralEstadistica
         {
             listaMensajeAvanceGeneral = FG.listaMensajeAvanceGeneral();
         }
-
-
-
         #endregion
 
         protected void Timer1_Tick(object sender, EventArgs e)
