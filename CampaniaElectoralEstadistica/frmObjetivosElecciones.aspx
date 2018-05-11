@@ -33,7 +33,11 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_Main" runat="server">
-
+    <form  id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+        </asp:ScriptManager>
+        <asp:Timer ID="Timer1" runat="server" Interval="10000" OnTick="Timer1_Tick">
+        </asp:Timer>
       <div class="row">
         <div class="col-lg-4">
       <div class="panel panel-default">
@@ -41,20 +45,18 @@
           Avance General Votación
         </div>
         <div class="panel-body text-center">
-         
           <div class="inline">
-            <div ui-jq="easyPieChart"  ui-options="{
-                      percent: 26,
-                      lineWidth: 10,
-                      trackColor: '#e8eff0',
-                      barColor: '#27c24c',
-                      scaleColor: '#e8eff0',
-                      size: 188,
-                      lineCap: 'butt',
-                      animate: 1000
-                    }">
+            <div id="divAvanceGeneralVotos" ui-jq="easyPieChart"  ui-options="" runat="server">
               <div>
-                <span class="h2 m-l-sm step">25</span>%
+                <asp:UpdatePanel ID="updPorcentajeAvanceGeneralVotos" runat="server" UpdateMode="Conditional" ViewStateMode="Enabled">
+                    <ContentTemplate>
+                        <span class="h2 m-l-sm step">
+                        <asp:Label ID="lblPorcentajeAvanceGeneralVotos" runat="server"></asp:Label></span>%
+                    </ContentTemplate>
+                    <Triggers>
+                        <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick"/>
+                    </Triggers>
+                </asp:UpdatePanel>
                 <div class="text text-sm">VOTOS</div>
               </div>
             </div>
@@ -65,26 +67,55 @@
     </div>
         <div class="col-lg-4">
           <div class="row row-sm text-center">
+
             <div class="col-xs-6">
               <div class="panel padder-v item">
-                <div class="h1 text-info font-thin h1">150210</div>
+                <asp:UpdatePanel ID="updMetaGeneral" runat="server" UpdateMode="Conditional" ViewStateMode="Enabled">
+                    <ContentTemplate>
+                        <div class="h1 text-info font-thin h1"> 
+                            <asp:Label ID="lblMetaGeneral" runat="server"></asp:Label> 
+                        </div>
+                    </ContentTemplate>
+                    <Triggers>
+                        <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick"/>
+                    </Triggers>
+                </asp:UpdatePanel>
                 <span class="text-muted text-xs">Meta de Votos</span>
                 <div class="top text-right w-full">
                   <i class="fa fa-caret-down text-warning m-r-sm"></i>
                 </div>
               </div>
             </div>
+
             <div class="col-xs-6">
               <a href class="block panel padder-v bg-primary item">
-                <span class="text-white font-thin h1 block">39300</span>
+                <asp:UpdatePanel ID="updTotalVotosRealizados" runat="server" UpdateMode="Conditional" ViewStateMode="Enabled">
+                    <ContentTemplate>
+                        <span class="text-white font-thin h1 block">
+                            <asp:Label ID="lblTotalVotosRealizados" runat="server"></asp:Label>
+                        </span>
+                    </ContentTemplate>
+                    <Triggers>
+                        <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick"/>
+                    </Triggers>
+                </asp:UpdatePanel>
                 <span class="text-muted text-xs">Votos Realizados</span>
-               
               </a>
             </div>
             
             <div class="col-xs-12">
               <div class="panel padder-v bg-danger item">
-                <div class="font-thin h1">129</div>
+                   <asp:UpdatePanel ID="updTotalVotosFaltantes" runat="server" UpdateMode="Conditional" ViewStateMode="Enabled">
+                    <ContentTemplate>
+                        <div class="font-thin h1">
+                            <asp:Label ID="lblTotalVotosFaltantes" runat="server"></asp:Label>
+                        </div>
+                    </ContentTemplate>
+                    <Triggers>
+                        <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick"/>
+                    </Triggers>
+                </asp:UpdatePanel>
+                
                 <span class="text-muted text-xs">Votos Faltantes por sección</span>
                 <div class="bottom">
                   <i class="fa fa-caret-up text-warning m-l-sm m-r-sm"></i>
@@ -106,75 +137,50 @@
         <div class="panel-heading font-bold">
          METAS ESTABLECIDAS POR HORA
         </div>
-        <div class="panel-body text-center" style=" height:230px;overflow-y:scroll; ">
+        
+           <div class="panel-body text-center" style=" height:230px;overflow-y:scroll; ">
            
-
-            <div class="list-group list-group-lg list-group-sp">
-            <a herf class="list-group-item clearfix">
-                   <span class="pull-left label text-base bg-danger pos-rlt m-r"><i class="arrow right arrow-danger"></i> 10:00 hrs</span>
-             
-              <span class="clear">
-                <span>Meta 15%</span>
-               
-              </span>
-            </a>
-            <a herf class="list-group-item clearfix">
-                 <span class="pull-left label text-base bg-warning pos-rlt m-r"><i class="arrow right arrow-warning"></i>12:00 hrs</span>
+                <!--Inicia Lista de metas-->
+                <div class="list-group list-group-lg list-group-sp">
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional" ViewStateMode="Enabled">
+            <ContentTemplate>
            
-              <span class="clear">
-                <span>Meta 30%</span>
-            
-              </span>
-            </a>
-            <a herf class="list-group-item clearfix">
-                  <span class="pull-left label text-base bg-info pos-rlt m-r"><i class="arrow right arrow-info"></i>14:00 hrs</span>
-           
-              <span class="clear">
-                <span>Meta 45%</span>
-         
-              </span>
-            </a>
-            <a herf class="list-group-item clearfix">
-                  <span class="pull-left label text-base bg-primary pos-rlt m-r"><i class="arrow right arrow-primary"></i>16:00 hrs</span>
-           
-              <span class="clear">
-                <span>Meta 65%</span>
-            
-              </span>
-            </a>
-            <a herf class="list-group-item clearfix">
-                 <span class="pull-left label text-base bg-success pos-rlt m-r"><i class="arrow right arrow-success"></i>18:00 hrs</span>
-           
-              <span class="clear">
-                <span>Meta 85%</span>
-               
-              </span>
-            </a>
-
-                 <a herf class="list-group-item clearfix">
-                 <span class="pull-left label text-base bg-success pos-rlt m-r"><i class="arrow right arrow-success"></i>20:00 hrs</span>
-           
-              <span class="clear">
-                <span>Meta 100%</span>
-               
-              </span>
-            </a>
-          </div>
-
-
-
-        </div>
-        <div class="panel-footer bg-danger"><small>RESULTADO: EL TRABAJO ESTA POR DEBAJO DE LO ESTIMADO</small></div>
+            <%foreach (var item in listaMetasXHora)
+                {%>
+                    <a class="list-group-item clearfix">
+                        <span class="pull-left label text-base bg-<%= item.ColorEtiqueta %> pos-rlt m-r"><i class="arrow right arrow-<%= item.ColorEtiqueta %>"></i> <%= item.Hora.ToString(@"hh\:mm") %> hrs</span>
+                            <span class="clear">
+                            <span>Meta <%= item.Meta %>%</span>
+                        </span>
+                    </a>
+                <%
+            }%>
+            </ContentTemplate>
+            <Triggers>
+            <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick"/>
+            </Triggers>
+            </asp:UpdatePanel>
+            </div>
+            <!--Termina Lista de metas-->
+            </div>
+            <asp:UpdatePanel ID="updMensajeAvanceGeneral" runat="server" UpdateMode="Conditional" ViewStateMode="Enabled">
+            <ContentTemplate>
+            <div class="panel-footer bg-<%=listaMensajeAvanceGeneral[0].sEtiqueta %>"><small>RESULTADO: <%=listaMensajeAvanceGeneral[0].sMensaje %></small></div>
+            </ContentTemplate>
+            <Triggers>
+            <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick"/>
+            </Triggers>
+            </asp:UpdatePanel>
       </div>
     </div>
    
       </div>
 
       <div class="row">
-                        <div class="col-md-12">
-                            <div id="map" style="width:100%; height:500px; border: 5px solid #5E5454;">  
-                            </div> 
-                        </div>
+        <div class="col-md-12">
+            <div id="map" style="width:100%; height:500px; border: 5px solid #5E5454;">  
+            </div> 
+        </div>
       </div> 
     
       <div class="row" style="margin-top:30px;">
@@ -270,7 +276,7 @@
         </div>
       </div>
 
-    
+    </form>
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder_ScriptDown" runat="server">

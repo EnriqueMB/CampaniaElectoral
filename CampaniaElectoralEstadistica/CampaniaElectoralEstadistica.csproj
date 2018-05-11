@@ -76,6 +76,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -99,7 +103,10 @@
     <Content Include="assets\images\bg.png" />
     <Content Include="assets\images\logo.png" />
     <Content Include="assets\js\login.js" />
+    <Content Include="assets\js\logout.js" />
     <Content Include="assets\js\main.js" />
+    <Content Include="assets\js\mapaVoto.js" />
+    <Content Include="assets\js\ui-notifications.js" />
     <Content Include="assets\jtable.2.4.0\extensions\jquery.jtable.aspnetpagemethods.js" />
     <Content Include="assets\jtable.2.4.0\extensions\jquery.jtable.aspnetpagemethods.min.js" />
     <Content Include="assets\jtable.2.4.0\external\json2.js" />
@@ -297,6 +304,194 @@
     <Content Include="assets\plugins\bootstrap\js\bootstrap.js" />
     <Content Include="assets\plugins\bootstrap\js\bootstrap.min.js" />
     <Content Include="assets\plugins\bootstrap\js\npm.js" />
+    <Content Include="assets\plugins\DataTables\extensions\AutoFill\css\dataTables.autoFill.css" />
+    <Content Include="assets\plugins\DataTables\extensions\AutoFill\css\dataTables.autoFill.min.css" />
+    <Content Include="assets\plugins\DataTables\extensions\AutoFill\examples\columns.html" />
+    <Content Include="assets\plugins\DataTables\extensions\AutoFill\examples\complete-callback.html" />
+    <Content Include="assets\plugins\DataTables\extensions\AutoFill\examples\fill-both.html" />
+    <Content Include="assets\plugins\DataTables\extensions\AutoFill\examples\fill-horizontal.html" />
+    <Content Include="assets\plugins\DataTables\extensions\AutoFill\examples\index.html" />
+    <Content Include="assets\plugins\DataTables\extensions\AutoFill\examples\scrolling.html" />
+    <Content Include="assets\plugins\DataTables\extensions\AutoFill\examples\simple.html" />
+    <Content Include="assets\plugins\DataTables\extensions\AutoFill\examples\step-callback.html" />
+    <Content Include="assets\plugins\DataTables\extensions\AutoFill\images\filler.png" />
+    <Content Include="assets\plugins\DataTables\extensions\AutoFill\js\dataTables.autoFill.js" />
+    <Content Include="assets\plugins\DataTables\extensions\AutoFill\js\dataTables.autoFill.min.js" />
+    <Content Include="assets\plugins\DataTables\extensions\AutoFill\Readme.txt" />
+    <Content Include="assets\plugins\DataTables\extensions\ColReorder\css\dataTables.colReorder.css" />
+    <Content Include="assets\plugins\DataTables\extensions\ColReorder\css\dataTables.colReorder.min.css" />
+    <Content Include="assets\plugins\DataTables\extensions\ColReorder\examples\alt_insert.html" />
+    <Content Include="assets\plugins\DataTables\extensions\ColReorder\examples\colvis.html" />
+    <Content Include="assets\plugins\DataTables\extensions\ColReorder\examples\col_filter.html" />
+    <Content Include="assets\plugins\DataTables\extensions\ColReorder\examples\fixedcolumns.html" />
+    <Content Include="assets\plugins\DataTables\extensions\ColReorder\examples\fixedheader.html" />
+    <Content Include="assets\plugins\DataTables\extensions\ColReorder\examples\index.html" />
+    <Content Include="assets\plugins\DataTables\extensions\ColReorder\examples\jqueryui.html" />
+    <Content Include="assets\plugins\DataTables\extensions\ColReorder\examples\new_init.html" />
+    <Content Include="assets\plugins\DataTables\extensions\ColReorder\examples\predefined.html" />
+    <Content Include="assets\plugins\DataTables\extensions\ColReorder\examples\realtime.html" />
+    <Content Include="assets\plugins\DataTables\extensions\ColReorder\examples\reset.html" />
+    <Content Include="assets\plugins\DataTables\extensions\ColReorder\examples\scrolling.html" />
+    <Content Include="assets\plugins\DataTables\extensions\ColReorder\examples\server_side.html" />
+    <Content Include="assets\plugins\DataTables\extensions\ColReorder\examples\simple.html" />
+    <Content Include="assets\plugins\DataTables\extensions\ColReorder\examples\state_save.html" />
+    <Content Include="assets\plugins\DataTables\extensions\ColReorder\images\insert.png" />
+    <Content Include="assets\plugins\DataTables\extensions\ColReorder\js\dataTables.colReorder.js" />
+    <Content Include="assets\plugins\DataTables\extensions\ColReorder\js\dataTables.colReorder.min.js" />
+    <Content Include="assets\plugins\DataTables\extensions\ColReorder\Readme.txt" />
+    <Content Include="assets\plugins\DataTables\extensions\ColVis\css\dataTables.colVis.css" />
+    <Content Include="assets\plugins\DataTables\extensions\ColVis\css\dataTables.colvis.jqueryui.css" />
+    <Content Include="assets\plugins\DataTables\extensions\ColVis\css\dataTables.colVis.min.css" />
+    <Content Include="assets\plugins\DataTables\extensions\ColVis\examples\button_order.html" />
+    <Content Include="assets\plugins\DataTables\extensions\ColVis\examples\exclude_columns.html" />
+    <Content Include="assets\plugins\DataTables\extensions\ColVis\examples\group_columns.html" />
+    <Content Include="assets\plugins\DataTables\extensions\ColVis\examples\index.html" />
+    <Content Include="assets\plugins\DataTables\extensions\ColVis\examples\jqueryui.html" />
+    <Content Include="assets\plugins\DataTables\extensions\ColVis\examples\mouseover.html" />
+    <Content Include="assets\plugins\DataTables\extensions\ColVis\examples\new_init.html" />
+    <Content Include="assets\plugins\DataTables\extensions\ColVis\examples\restore.html" />
+    <Content Include="assets\plugins\DataTables\extensions\ColVis\examples\simple.html" />
+    <Content Include="assets\plugins\DataTables\extensions\ColVis\examples\text.html" />
+    <Content Include="assets\plugins\DataTables\extensions\ColVis\examples\title_callback.html" />
+    <Content Include="assets\plugins\DataTables\extensions\ColVis\examples\two_tables.html" />
+    <Content Include="assets\plugins\DataTables\extensions\ColVis\examples\two_tables_identical.html" />
+    <Content Include="assets\plugins\DataTables\extensions\ColVis\js\dataTables.colVis.js" />
+    <Content Include="assets\plugins\DataTables\extensions\ColVis\js\dataTables.colVis.min.js" />
+    <Content Include="assets\plugins\DataTables\extensions\ColVis\Readme.txt" />
+    <Content Include="assets\plugins\DataTables\extensions\FixedColumns\css\dataTables.fixedColumns.css" />
+    <Content Include="assets\plugins\DataTables\extensions\FixedColumns\css\dataTables.fixedColumns.min.css" />
+    <Content Include="assets\plugins\DataTables\extensions\FixedColumns\examples\bootstrap.html" />
+    <Content Include="assets\plugins\DataTables\extensions\FixedColumns\examples\colvis.html" />
+    <Content Include="assets\plugins\DataTables\extensions\FixedColumns\examples\col_filter.html" />
+    <Content Include="assets\plugins\DataTables\extensions\FixedColumns\examples\css_size.html" />
+    <Content Include="assets\plugins\DataTables\extensions\FixedColumns\examples\index.html" />
+    <Content Include="assets\plugins\DataTables\extensions\FixedColumns\examples\index_column.html" />
+    <Content Include="assets\plugins\DataTables\extensions\FixedColumns\examples\left_right_columns.html" />
+    <Content Include="assets\plugins\DataTables\extensions\FixedColumns\examples\right_column.html" />
+    <Content Include="assets\plugins\DataTables\extensions\FixedColumns\examples\rowspan.html" />
+    <Content Include="assets\plugins\DataTables\extensions\FixedColumns\examples\server-side-processing.html" />
+    <Content Include="assets\plugins\DataTables\extensions\FixedColumns\examples\simple.html" />
+    <Content Include="assets\plugins\DataTables\extensions\FixedColumns\examples\size_fixed.html" />
+    <Content Include="assets\plugins\DataTables\extensions\FixedColumns\examples\size_fluid.html" />
+    <Content Include="assets\plugins\DataTables\extensions\FixedColumns\examples\two_columns.html" />
+    <Content Include="assets\plugins\DataTables\extensions\FixedColumns\js\dataTables.fixedColumns.js" />
+    <Content Include="assets\plugins\DataTables\extensions\FixedColumns\js\dataTables.fixedColumns.min.js" />
+    <Content Include="assets\plugins\DataTables\extensions\FixedColumns\Readme.txt" />
+    <Content Include="assets\plugins\DataTables\extensions\FixedHeader\css\dataTables.fixedHeader.css" />
+    <Content Include="assets\plugins\DataTables\extensions\FixedHeader\css\dataTables.fixedHeader.min.css" />
+    <Content Include="assets\plugins\DataTables\extensions\FixedHeader\examples\header_footer.html" />
+    <Content Include="assets\plugins\DataTables\extensions\FixedHeader\examples\index.html" />
+    <Content Include="assets\plugins\DataTables\extensions\FixedHeader\examples\simple.html" />
+    <Content Include="assets\plugins\DataTables\extensions\FixedHeader\examples\top_left_right.html" />
+    <Content Include="assets\plugins\DataTables\extensions\FixedHeader\examples\two_tables.html" />
+    <Content Include="assets\plugins\DataTables\extensions\FixedHeader\examples\zIndexes.html" />
+    <Content Include="assets\plugins\DataTables\extensions\FixedHeader\js\dataTables.fixedHeader.js" />
+    <Content Include="assets\plugins\DataTables\extensions\FixedHeader\js\dataTables.fixedHeader.min.js" />
+    <Content Include="assets\plugins\DataTables\extensions\FixedHeader\Readme.txt" />
+    <Content Include="assets\plugins\DataTables\extensions\KeyTable\css\dataTables.keyTable.css" />
+    <Content Include="assets\plugins\DataTables\extensions\KeyTable\css\dataTables.keyTable.min.css" />
+    <Content Include="assets\plugins\DataTables\extensions\KeyTable\examples\events.html" />
+    <Content Include="assets\plugins\DataTables\extensions\KeyTable\examples\html.html" />
+    <Content Include="assets\plugins\DataTables\extensions\KeyTable\examples\index.html" />
+    <Content Include="assets\plugins\DataTables\extensions\KeyTable\examples\scrolling.html" />
+    <Content Include="assets\plugins\DataTables\extensions\KeyTable\examples\simple.html" />
+    <Content Include="assets\plugins\DataTables\extensions\KeyTable\js\dataTables.keyTable.js" />
+    <Content Include="assets\plugins\DataTables\extensions\KeyTable\js\dataTables.keyTable.min.js" />
+    <Content Include="assets\plugins\DataTables\extensions\KeyTable\Readme.txt" />
+    <Content Include="assets\plugins\DataTables\extensions\Responsive\css\dataTables.responsive.css" />
+    <Content Include="assets\plugins\DataTables\extensions\Responsive\examples\child-rows\column-control.html" />
+    <Content Include="assets\plugins\DataTables\extensions\Responsive\examples\child-rows\custom-renderer.html" />
+    <Content Include="assets\plugins\DataTables\extensions\Responsive\examples\child-rows\disable-child-rows.html" />
+    <Content Include="assets\plugins\DataTables\extensions\Responsive\examples\child-rows\index.html" />
+    <Content Include="assets\plugins\DataTables\extensions\Responsive\examples\child-rows\right-column.html" />
+    <Content Include="assets\plugins\DataTables\extensions\Responsive\examples\child-rows\whole-row-control.html" />
+    <Content Include="assets\plugins\DataTables\extensions\Responsive\examples\display-control\auto.html" />
+    <Content Include="assets\plugins\DataTables\extensions\Responsive\examples\display-control\classes.html" />
+    <Content Include="assets\plugins\DataTables\extensions\Responsive\examples\display-control\index.html" />
+    <Content Include="assets\plugins\DataTables\extensions\Responsive\examples\display-control\init-classes.html" />
+    <Content Include="assets\plugins\DataTables\extensions\Responsive\examples\index.html" />
+    <Content Include="assets\plugins\DataTables\extensions\Responsive\examples\initialisation\ajax.html" />
+    <Content Include="assets\plugins\DataTables\extensions\Responsive\examples\initialisation\className.html" />
+    <Content Include="assets\plugins\DataTables\extensions\Responsive\examples\initialisation\index.html" />
+    <Content Include="assets\plugins\DataTables\extensions\Responsive\examples\initialisation\new.html" />
+    <Content Include="assets\plugins\DataTables\extensions\Responsive\examples\initialisation\option.html" />
+    <Content Include="assets\plugins\DataTables\extensions\Responsive\examples\styling\bootstrap.html" />
+    <Content Include="assets\plugins\DataTables\extensions\Responsive\examples\styling\foundation.html" />
+    <Content Include="assets\plugins\DataTables\extensions\Responsive\examples\styling\index.html" />
+    <Content Include="assets\plugins\DataTables\extensions\Responsive\js\dataTables.responsive.js" />
+    <Content Include="assets\plugins\DataTables\extensions\Responsive\js\dataTables.responsive.min.js" />
+    <Content Include="assets\plugins\DataTables\extensions\Scroller\css\dataTables.scroller.css" />
+    <Content Include="assets\plugins\DataTables\extensions\Scroller\css\dataTables.scroller.min.css" />
+    <Content Include="assets\plugins\DataTables\extensions\Scroller\examples\api_scrolling.html" />
+    <Content Include="assets\plugins\DataTables\extensions\Scroller\examples\data\2500.txt" />
+    <Content Include="assets\plugins\DataTables\extensions\Scroller\examples\index.html" />
+    <Content Include="assets\plugins\DataTables\extensions\Scroller\examples\large_js_source.html" />
+    <Content Include="assets\plugins\DataTables\extensions\Scroller\examples\server-side_processing.html" />
+    <Content Include="assets\plugins\DataTables\extensions\Scroller\examples\simple.html" />
+    <Content Include="assets\plugins\DataTables\extensions\Scroller\examples\state_saving.html" />
+    <Content Include="assets\plugins\DataTables\extensions\Scroller\images\loading-background.png" />
+    <Content Include="assets\plugins\DataTables\extensions\Scroller\js\dataTables.scroller.js" />
+    <Content Include="assets\plugins\DataTables\extensions\Scroller\js\dataTables.scroller.min.js" />
+    <Content Include="assets\plugins\DataTables\extensions\Scroller\Readme.txt" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\css\dataTables.tableTools.css" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\css\dataTables.tableTools.min.css" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\examples\ajax.html" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\examples\alter_buttons.html" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\examples\bootstrap.html" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\examples\button_text.html" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\examples\collection.html" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\examples\defaults.html" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\examples\index.html" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\examples\jqueryui.html" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\examples\multiple_tables.html" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\examples\multi_instance.html" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\examples\new_init.html" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\examples\pdf_message.html" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\examples\plug-in.html" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\examples\select_column.html" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\examples\select_multi.html" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\examples\select_os.html" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\examples\select_single.html" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\examples\simple.html" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\examples\swf_path.html" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\images\background.png" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\images\collection.png" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\images\collection_hover.png" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\images\copy.png" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\images\copy_hover.png" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\images\csv.png" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\images\csv_hover.png" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\images\pdf.png" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\images\pdf_hover.png" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\images\print.png" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\images\print_hover.png" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\images\xls.png" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\images\xls_hover.png" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\js\dataTables.tableTools.js" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\js\dataTables.tableTools.min.js" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\Readme.txt" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\swf\copy_csv_xls.swf" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\swf\copy_csv_xls_pdf.swf" />
+    <Content Include="assets\plugins\DataTables\license.txt" />
+    <Content Include="assets\plugins\DataTables\media\css\DT_bootstrap.css" />
+    <Content Include="assets\plugins\DataTables\media\css\jquery.dataTables.css" />
+    <Content Include="assets\plugins\DataTables\media\css\jquery.dataTables.min.css" />
+    <Content Include="assets\plugins\DataTables\media\css\jquery.dataTables_themeroller.css" />
+    <Content Include="assets\plugins\DataTables\media\images\back_disabled.png" />
+    <Content Include="assets\plugins\DataTables\media\images\back_enabled.png" />
+    <Content Include="assets\plugins\DataTables\media\images\back_enabled_hover.png" />
+    <Content Include="assets\plugins\DataTables\media\images\favicon.ico" />
+    <Content Include="assets\plugins\DataTables\media\images\forward_disabled.png" />
+    <Content Include="assets\plugins\DataTables\media\images\forward_enabled.png" />
+    <Content Include="assets\plugins\DataTables\media\images\forward_enabled_hover.png" />
+    <Content Include="assets\plugins\DataTables\media\images\sort_asc.png" />
+    <Content Include="assets\plugins\DataTables\media\images\sort_asc_disabled.png" />
+    <Content Include="assets\plugins\DataTables\media\images\sort_both.png" />
+    <Content Include="assets\plugins\DataTables\media\images\sort_desc.png" />
+    <Content Include="assets\plugins\DataTables\media\images\sort_desc_disabled.png" />
+    <Content Include="assets\plugins\DataTables\media\js\jquery.dataTables.js" />
+    <Content Include="assets\plugins\DataTables\media\js\jquery.dataTables.min.js" />
+    <Content Include="assets\plugins\DataTables\media\js\jquery.js" />
     <Content Include="assets\plugins\font-awesome\css\font-awesome.css" />
     <Content Include="assets\plugins\font-awesome\css\font-awesome.min.css" />
     <Content Include="assets\plugins\font-awesome\fonts\fontawesome-webfont.svg" />
@@ -528,6 +723,24 @@
     <Content Include="assets\plugins\jquery.transit\test\test.js" />
     <Content Include="assets\plugins\jQuery\jquery-1.11.1.min.js" />
     <Content Include="assets\plugins\jQuery\jquery-2.1.1.min.js" />
+    <Content Include="assets\plugins\sweetalert\.gitignore" />
+    <Content Include="assets\plugins\sweetalert\example\example.css" />
+    <Content Include="assets\plugins\sweetalert\example\images\logo_big%402x.png" />
+    <Content Include="assets\plugins\sweetalert\example\images\logo_big.png" />
+    <Content Include="assets\plugins\sweetalert\example\images\logo_small%402x.png" />
+    <Content Include="assets\plugins\sweetalert\example\images\logo_small.png" />
+    <Content Include="assets\plugins\sweetalert\example\images\te-logo-small.svg" />
+    <Content Include="assets\plugins\sweetalert\example\images\thumbs-up.jpg" />
+    <Content Include="assets\plugins\sweetalert\example\images\vs_icon%402x.png" />
+    <Content Include="assets\plugins\sweetalert\example\images\vs_icon.png" />
+    <Content Include="assets\plugins\sweetalert\example\index.html" />
+    <Content Include="assets\plugins\sweetalert\gulpfile.js" />
+    <Content Include="assets\plugins\sweetalert\lib\ie9.css" />
+    <Content Include="assets\plugins\sweetalert\lib\sweet-alert.css" />
+    <Content Include="assets\plugins\sweetalert\lib\sweet-alert.html" />
+    <Content Include="assets\plugins\sweetalert\lib\sweet-alert.js" />
+    <Content Include="assets\plugins\sweetalert\lib\sweet-alert.min.js" />
+    <Content Include="assets\plugins\sweetalert\sweetalert.gif" />
     <Content Include="assets\plugins\TouchSwipe\.gitignore" />
     <Content Include="assets\plugins\TouchSwipe\demos\Any_finger_swipe.html" />
     <Content Include="assets\plugins\TouchSwipe\demos\Basic_swipe.html" />
@@ -587,9 +800,11 @@
     <Content Include="css\font.css" />
     <Content Include="css\material-design-icons.css" />
     <Content Include="css\md.css" />
+    <Content Include="EvaluacionRep.asmx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\Material-Design-Icons.svg" />
     <Content Include="frmConteoPrep.aspx" />
+    <Content Include="frmEvaluacionRepresentantes.aspx" />
     <Content Include="frmHome.aspx" />
     <Content Include="frmIncidencias.aspx" />
     <Content Include="frmObjetivosAfiliados.aspx" />
@@ -607,6 +822,7 @@
     <Content Include="img\a7.jpg" />
     <Content Include="img\a8.jpg" />
     <Content Include="img\a9.jpg" />
+    <Content Include="img\anonymous.jpg" />
     <Content Include="img\b0.jpg" />
     <Content Include="img\b1.jpg" />
     <Content Include="img\b10.jpg" />
@@ -643,6 +859,8 @@
     <Content Include="img\p0.jpg" />
     <Content Include="js\app.min.js" />
     <Content Include="js\app.src.js" />
+    <Content Include="js\EstadisticosAfiliados.js" />
+    <Content Include="js\representantes.js" />
     <Content Include="js\ui-client.js" />
     <Content Include="js\ui-jp.config.js" />
     <Content Include="js\ui-jp.js" />
@@ -843,6 +1061,8 @@
     <Content Include="libs\jquery\footable\css\fonts\footable.eot" />
     <Content Include="libs\jquery\footable\css\fonts\footable.ttf" />
     <Content Include="libs\jquery\footable\css\fonts\footable.woff" />
+    <Content Include="sfrmLogout.aspx" />
+    <Content Include="sfrmObtenerPoligono.aspx" />
     <Content Include="siteEstadisticos.Master" />
     <Content Include="tsconfig.json" />
     <Content Include="assets\plugins\bootstrap\css\bootstrap-theme.css.map" />
@@ -905,6 +1125,29 @@
     <Content Include="assets\plugins\TouchSwipe\README.md" />
     <Content Include="assets\plugins\jquery-validation\package.json" />
     <Content Include="assets\plugins\jquery-validation\README.md" />
+    <Content Include="assets\json\Spanish.json" />
+    <Content Include="assets\plugins\DataTables\bower.json" />
+    <Content Include="assets\plugins\DataTables\composer.json" />
+    <Content Include="assets\plugins\DataTables\Contributing.md" />
+    <Content Include="assets\plugins\DataTables\dataTables.jquery.json" />
+    <Content Include="assets\plugins\DataTables\extensions\Responsive\css\dataTables.responsive.scss" />
+    <Content Include="assets\plugins\DataTables\extensions\Responsive\Readme.md" />
+    <Content Include="assets\plugins\DataTables\extensions\Scroller\examples\data\ssp.php" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\images\psd\collection.psd" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\images\psd\copy document.psd" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\images\psd\file_types.psd" />
+    <Content Include="assets\plugins\DataTables\extensions\TableTools\images\psd\printer.psd" />
+    <Content Include="assets\plugins\DataTables\media\images\Sorting icons.psd" />
+    <Content Include="assets\plugins\DataTables\package.json" />
+    <Content Include="assets\plugins\DataTables\Readme.md" />
+    <Content Include="assets\plugins\sweetalert\.editorconfig" />
+    <Content Include="assets\plugins\sweetalert\bower.json" />
+    <Content Include="assets\plugins\sweetalert\example\example.scss" />
+    <Content Include="assets\plugins\sweetalert\lib\.sass-cache\7981e80cc38cc883c439302cccda55b50fb7fde4\sweet-alert.scssc" />
+    <Content Include="assets\plugins\sweetalert\lib\sweet-alert.scss" />
+    <Content Include="assets\plugins\sweetalert\LICENSE" />
+    <Content Include="assets\plugins\sweetalert\package.json" />
+    <Content Include="assets\plugins\sweetalert\README.md" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -917,12 +1160,25 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EvaluacionRep.asmx.cs">
+      <DependentUpon>EvaluacionRep.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ClaseAux\Autenticacion.cs" />
+    <Compile Include="ClaseAux\DialogMessage.cs" />
     <Compile Include="frmConteoPrep.aspx.cs">
       <DependentUpon>frmConteoPrep.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="frmConteoPrep.aspx.designer.cs">
       <DependentUpon>frmConteoPrep.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmEvaluacionRepresentantes.aspx.cs">
+      <DependentUpon>frmEvaluacionRepresentantes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmEvaluacionRepresentantes.aspx.designer.cs">
+      <DependentUpon>frmEvaluacionRepresentantes.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmHome.aspx.cs">
       <DependentUpon>frmHome.aspx</DependentUpon>
@@ -977,6 +1233,20 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sfrmObtenerPoligono.aspx.cs">
+      <DependentUpon>sfrmObtenerPoligono.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sfrmObtenerPoligono.aspx.designer.cs">
+      <DependentUpon>sfrmObtenerPoligono.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="sfrmLogout.aspx.cs">
+      <DependentUpon>sfrmLogout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sfrmLogout.aspx.designer.cs">
+      <DependentUpon>sfrmLogout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="siteEstadisticos.Master.cs">
       <DependentUpon>siteEstadisticos.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -989,6 +1259,16 @@
     <Folder Include="App_Data\" />
     <Folder Include="assets\plugins\animate.css\source\sliders\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DllCampElectoral.Global\DllCampElectoral.Global.csproj">
+      <Project>{7DF0AC62-466D-4C0B-AAF7-C45BEB593718}</Project>
+      <Name>DllCampElectoral.Global</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DllCampElectoral.Negocio\DllCampElectoral.Negocio.csproj">
+      <Project>{E436CA30-402A-49F7-AE49-9AA4295C9344}</Project>
+      <Name>DllCampElectoral.Negocio</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

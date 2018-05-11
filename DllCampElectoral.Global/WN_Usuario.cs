@@ -148,5 +148,13 @@ namespace DllCampElectoral.Global
             set { _IDTipoUsuario = value; }
         }
 
+        private string _DesEstado;
+
+        public string DesEstado
+        {
+            get { return _DesEstado; }
+            set { _DesEstado = value; }
+        }
+
     }
 }

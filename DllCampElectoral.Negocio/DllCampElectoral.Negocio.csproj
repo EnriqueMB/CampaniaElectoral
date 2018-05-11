@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AfiliadosNegocio.cs" />
     <Compile Include="CH_CatalogosNegocio.cs" />
     <Compile Include="CH_ContactoNegocio.cs" />
     <Compile Include="CH_ConteoNegocio.cs" />
@@ -69,6 +70,9 @@
     <Compile Include="EM_PreguntaRespuestaNegocio.cs" />
     <Compile Include="EM_PreguntasNegocio.cs" />
     <Compile Include="ER_SeccionesNegocio.cs" />
+    <Compile Include="EstadisticosAfiliados_Negocio.cs" />
+    <Compile Include="FG_CatPartidoPoliticoAlianzaNegocio.cs" />
+    <Compile Include="FG_EstadisticosVotosNegocio.cs" />
     <Compile Include="GM_CalendarNegocio.cs" />
     <Compile Include="GM_CarreraPoliticaNegocio.cs" />
     <Compile Include="GM_LoadBannerNegocio.cs" />

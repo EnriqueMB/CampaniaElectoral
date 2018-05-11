@@ -31,6 +31,14 @@ namespace DllCampElectoral.Global
             get { return _IDEstado; }
             set { _IDEstado = value; }
         }
+        private string _Descripcion;
+
+        public string Descripcion
+        {
+            get { return _Descripcion; }
+            set { _Descripcion = value; }
+        }
+
 
         private string _MunicipioDesc;
         public string MunicipioDesc
