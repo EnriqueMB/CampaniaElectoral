@@ -4412,6 +4412,20 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmIncidencias.aspx.cs">
+      <DependentUpon>frmIncidencias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmIncidencias.aspx.designer.cs">
+      <DependentUpon>frmIncidencias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmNuevaIncidencia.aspx.cs">
+      <DependentUpon>frmNuevaIncidencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmNuevaIncidencia.aspx.designer.cs">
+      <DependentUpon>frmNuevaIncidencia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="frmPartidoPoliticoAlianzaEdit.aspx.cs">
       <DependentUpon>frmPartidoPoliticoAlianzaEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

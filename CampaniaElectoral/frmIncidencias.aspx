@@ -19,7 +19,7 @@
 					</div>
 
                     <div class="row bootstrap-switch-container">
-                        <%--<input type="hidden" id="cmbEdo" value="<%=Datos.IDEstado%>" />--%>
+                       <%-- <input type="hidden" id="cmbEdo" value="<%=Datos.Estado%>" />--%>
                        <%-- <asp:HiddenField ID="cmbEstado" Value="<%=Datos.IDEstado%>" runat="server" />--%>
                        
                       <%--  <div class="col-md-3">
@@ -90,7 +90,7 @@
 	<!-- end: CORE JAVASCRIPTS  -->
 	<script>
 	    jQuery(document).ready(function () {
-	        Maps.init(<%=%>);
+	        Maps.init(<%=Datos.IDEstado%>,'<%=Datos.Estado%>');
 
 	        $("#btnFiltrar").click(function (event) {
 	            console.log("1");
