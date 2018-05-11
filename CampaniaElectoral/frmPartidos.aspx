@@ -94,7 +94,7 @@
 									        <div>
 										        <span class="btn btn-light-grey btn-file"><span class="fileupload-new"><i class="fa fa-picture-o"></i> Seleccione una imagen</span><span class="fileupload-exists"><i class="fa fa-picture-o"></i> Cambiar</span>
 											        <%--<input type="file" class="fileupload" id="imgLogo" name="imgLogo" runat="server"/>--%>
-                                                    <asp:FileUpload CssClass="fileupload" name="imgLogo" accept="image/jpeg" ID="imgLogo" runat="server" />
+                                                    <asp:FileUpload CssClass="fileupload" name="imgLogo" accept="png,jpg,jpeg,bmp" ID="imgLogo" runat="server" />
 										        </span>
 										        <a href="#" class="btn fileupload-exists btn-light-grey" data-dismiss="fileupload">
 											        <i class="fa fa-times"></i> Quitar

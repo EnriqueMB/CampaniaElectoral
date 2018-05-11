@@ -14,6 +14,7 @@ namespace CampaniaElectoral
         public CH_ZonaRiesgo Datos = new CH_ZonaRiesgo();
         protected void Page_Load(object sender, EventArgs e)
         {
+            WN_Usuario u = (WN_Usuario)Session["Usuario"];
             Datos.Conexion = Comun.Conexion;
             CH_ZonaRiesgoNegocio ZRN = new CH_ZonaRiesgoNegocio();
             ZRN.ObtenerCombosZonaDeRiesgo(Datos);

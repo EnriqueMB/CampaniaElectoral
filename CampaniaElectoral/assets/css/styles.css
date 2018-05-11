@@ -7995,6 +7995,7 @@ body.error-full-page {
   background: inherit !important;
 }
 
+/**Inicia Agregados */
 .form-group.has-success button{
     border-color: #3c763d !important;
 }
@@ -8003,3 +8004,8 @@ body.error-full-page {
     border-color: #a94442;
 }
 
+#cph_MasterBody_divPartidoPolitico img.media-object {
+    width: 32px;
+    height: 32px;
+}
+/**Termina Agregados */

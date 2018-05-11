@@ -198,7 +198,18 @@ namespace DllCampElectoral.Negocio
                 throw ex;
             }
         }
-
+        public List<CH_PoligonoJSON> ObtenerSeccionesXPoligonos(CH_Poligono Datos)
+        {
+            try
+            {
+                CH_CatalogosDatos CD = new CH_CatalogosDatos();
+                return CD.ObtenerSeccionesXPoligono(Datos);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         #endregion
     }
 }

@@ -116,7 +116,7 @@
                 </li>
                 <li class="divider"></li>
                 <li>
-                  <a href="page_signin.html">Logout</a>
+                  <a id="btnlogout">Logout</a>
                 </li>
               </ul>
               <!-- / dropdown -->
@@ -277,12 +277,16 @@
 <script src="js/ui-client.js"></script>
 <script src="libs/jquery/jquery.easy-pie-chart/dist/jquery.easypiechart.fill.js"></script>
 <script src="libs/jquery/jquery.sparkline/dist/jquery.sparkline.retina.js"></script>
-
+    <script src="/assets/js/logout.js"></script>
  
 <asp:ContentPlaceHolder ID="ContentPlaceHolder_ScriptDown" runat="server">
 
 
 </asp:ContentPlaceHolder>
-
+    <script>
+			jQuery(document).ready(function() {
+                Logout.init();
+			});
+		</script>
 </body>
 </html>

@@ -3,6 +3,8 @@ using DllCampElectoral.Global;
 using DllCampElectoral.Negocio;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -68,16 +70,33 @@ namespace CampaniaElectoral
                         string txtNomb = Request.Form["ctl00$cph_MasterBody$txtNombre"].ToString();
                         string txtSigl = Request.Form["ctl00$cph_MasterBody$txtSigla"].ToString();
                         string txtColo = Request.Form["ctl00$cph_MasterBody$txtColor"].ToString();
-                        string txtUrlImg =  Band ? imgLogo.PostedFile.FileName: string.Empty;
                         int IDPartido = -1;
+                        string logoPartido = string.Empty;
                         HttpPostedFile bannerImage = imgLogo.PostedFile as HttpPostedFile;
                         try
                         {
                             string AuxID = Request.Form["ctl00$cph_MasterBody$hf"].ToString();
                             int.TryParse(AuxID, out IDPartido);
                             bool NuevoRegistro = !(IDPartido > 0);
-                            this.Guardar(NuevoRegistro, IDPartido, txtNomb, txtSigl, txtColo, txtUrlImg, bannerImage, Band);
+                            if (imgLogo.HasFile)
+                            {
+                                int size = imgLogo.PostedFile.ContentLength;
+                                byte[] ImagenOriginal = new byte[size];
+                                imgLogo.PostedFile.InputStream.Read(ImagenOriginal, 0, size);
+                                Bitmap ImagenOriginalBinaria = new Bitmap(imgLogo.PostedFile.InputStream);
+                                string extension = Path.GetExtension(imgLogo.FileName);
+                                ImageFormat imageFormateExtension = FG_Auxiliar.ObtenerExtensionImageFormat(extension);
+                                if (imageFormateExtension != null)
+                                logoPartido = ZM_ConversionBS.ToBase64String(ImagenOriginalBinaria, imageFormateExtension);
+                            }
+                            else
+                        {
+                            logoPartido = Logo.Attributes["data-src"];
                         }
+
+                        this.Guardar(NuevoRegistro, IDPartido, txtNomb, txtSigl, txtColo, logoPartido, Band);
+                        
+                    }
                         catch (Exception ex)
                         {
                             Response.Redirect("ErrorPage.aspx?msjError=" + ex.Message);
@@ -99,13 +118,10 @@ namespace CampaniaElectoral
                 txtColor.Value = DatosAux.RGBColor;
                 panelColor.Attributes.Remove("data-color");
                 panelColor.Attributes.Add("data-color", DatosAux.RGBColor);
-                string BaseDir = Server.MapPath("");
-                string BaseDirAux = BaseDir + DatosAux.UrlLogo;
-                if (File.Exists(BaseDir + DatosAux.UrlLogo))
-                {
-                    Logo.Attributes.Remove("src");
-                    Logo.Attributes.Add("src", DatosAux.UrlLogo);
-                }
+                Logo.Src = "data:" + DatosAux.ExtensionLogo + ";base64, " + DatosAux.Logo;
+                Logo.Attributes.Add("data-src", DatosAux.Logo);
+                Logo.Attributes.Add("data-imagenserver", DatosAux.CambioImagen.ToString());
+                imgLogo.Attributes.Add("data-imagenserver", DatosAux.CambioImagen.ToString());
                 Response.Cookies.Clear();
             }
             catch (Exception ex)
@@ -113,53 +129,26 @@ namespace CampaniaElectoral
                 throw ex;
             }
         }
-
-        private void Guardar(bool NuevoRegistro, int ID, string Nombre, string Sigla, string Color, string FileName, HttpPostedFile PostedImage, bool BandCambioImagen)
+        private void Guardar(bool NuevoRegistro, int ID, string Nombre, string Sigla, string Color, string logo, bool BandCambioImagen)
         {
             try
             {
-                string BaseDir = Server.MapPath("");
-                string FileExtension = BandCambioImagen ? Path.GetExtension(FileName): string.Empty;
                 CH_PartidoPolitico Datos = new CH_PartidoPolitico
                 {
                     NuevoRegistro = NuevoRegistro,
                     IDPartido = ID,
                     Nombre = Nombre,
                     Siglas = Sigla,
-                    ExtensionLogo = FileExtension,
                     RGBColor = Color,
                     CambioImagen = BandCambioImagen,
-                    UrlLogo = FileName,
                     Conexion = Comun.Conexion,
-                    IDUsuario = User.Identity.Name
+                    IDUsuario = User.Identity.Name,
+                    Logo = logo
                 };
                 CH_CatalogosNegocio CN = new CH_CatalogosNegocio();
                 CN.ACCatalogoPartidos(Datos);
-                if (Datos.Completado)
-                {
-                    if (BandCambioImagen)
-                    {
-                        if (PostedImage != null && PostedImage.ContentLength > 0)
-                        {
-                            try
-                            {
-                                Stream S = PostedImage.InputStream;
-                                System.Drawing.Image Img = new System.Drawing.Bitmap(S);
-                                Img.Save(BaseDir + Datos.UrlLogo);
-                                CN.ImagenSubidaPartidoXID(Datos);
-                            }
-                            catch (Exception)
-                            {
-                            }
-                        }
-                    }
-                    Response.Redirect("frmPartidosGrid.aspx", false);
-                }
-                else
-                {
-                    string ScriptError = DialogMessage.Show(TipoMensaje.Error, "Error al guardar los datos.", "Error", ShowMethod.FadeIn, HideMethod.FadeOut, ToastPosition.TopFullWidth, true);
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "popup", ScriptError, true);
-                }
+
+                Response.Redirect("frmPartidosGrid.aspx?resultado=" + Datos.Completado + "&mensaje=" + Datos.Nombre, false);
             }
             catch (Exception ex)
             {
@@ -176,7 +165,9 @@ namespace CampaniaElectoral
                 hf.Value = "-1";
                 txtNombre.Value = string.Empty;
                 txtSigla.Value = string.Empty;
-                txtColor.Value = string.Empty;                
+                txtColor.Value = string.Empty;
+                Logo.Attributes.Add("data-src", string.Empty);
+                Logo.Attributes.Add("data-imagenserver", "0");
             }
             catch (Exception ex)
             {

@@ -102,7 +102,7 @@ namespace DllCampElectoral.Datos
             try
             {
                 object[] Parametros = { Datos.IDCaptura, Datos.TablaDatos, Datos.IDUsuario, seccion,casilla ,"" };
-                object Result = SqlHelper.ExecuteScalar(Datos.Conexion, CommandType.StoredProcedure, "CH_spCSLDB_AC_CapturaDetalleResultados",
+                object Result = SqlHelper.ExecuteScalar(Datos.Conexion, CommandType.StoredProcedure, "ER_spCSLDB_AC_CapturaDetalleResultados2",
                 new SqlParameter("@IDCaptura", Datos.IDCaptura),
                 new SqlParameter("@TablaVotos", Datos.TablaDatos),
                 new SqlParameter("@IDUsuario", Datos.IDUsuario),
@@ -237,5 +237,59 @@ namespace DllCampElectoral.Datos
             }
         }
 
+        public void ObtenerDatosGraficaConteoPrep(CH_Conteo Datos)
+        {
+            try
+            {
+                DataSet Ds = SqlHelper.ExecuteDataset(Datos.Conexion, "EM_Estadisticos_spCSLDB_get_ConteoPrep");
+                if (Ds != null)
+                {
+                    if (Ds.Tables.Count == 4)
+                    {
+                        DataTableReader Dr = Ds.Tables[0].CreateDataReader();
+                        while (Dr.Read())
+                        {
+                            Datos.CasillaGanada = Dr.GetInt32(Dr.GetOrdinal("CasillaGanada"));
+                            Datos.Completado = true;
+                            break;
+                        }
+                        DataTableReader Drp = Ds.Tables[1].CreateDataReader();
+                        while (Drp.Read())
+                        {
+                            Datos.CasillaPerdida = Drp.GetInt32(Drp.GetOrdinal("CasillaPerdida"));
+                            Datos.Completado = true;
+                            break;
+                        }
+                        DataTableReader Drt = Ds.Tables[2].CreateDataReader();
+                        while (Drt.Read())
+                        {
+                            Datos.TotalCasilla = Drt.GetInt32(Drt.GetOrdinal("TotalCasilla"));
+                            Datos.Completado = true;
+                            break;
+                        }
+                        List<CH_Conteo> Lista = new List<CH_Conteo>();
+                        CH_Conteo Item;
+                        DataTableReader Dr2 = Ds.Tables[3].CreateDataReader();
+                        while (Dr2.Read())
+                        {
+                            Item = new CH_Conteo();
+                            Item.CantidadVoto = Dr2.GetInt32(Dr2.GetOrdinal("CantidadVoto"));
+                            Item.SiglasPartido = Dr2.GetString(Dr2.GetOrdinal("siglas"));
+                            Lista.Add(Item);
+                        }
+                        Datos.ListaConteo = Lista;
+                        Datos.CasillaEmpatada = Datos.TotalCasilla - (Datos.CasillaGanada + Datos.CasillaPerdida);
+                        if (Datos.CasillaEmpatada < 0)
+                        {
+                            Datos.CasillaEmpatada *= -1;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
