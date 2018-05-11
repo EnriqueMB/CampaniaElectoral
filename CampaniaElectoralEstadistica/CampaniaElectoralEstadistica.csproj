@@ -101,6 +101,8 @@
     <Content Include="assets\js\login.js" />
     <Content Include="assets\js\logout.js" />
     <Content Include="assets\js\main.js" />
+    <Content Include="assets\js\mapaVoto.js" />
+    <Content Include="assets\js\mapIncidentes.js" />
     <Content Include="assets\js\ui-notifications.js" />
     <Content Include="assets\jtable.2.4.0\extensions\jquery.jtable.aspnetpagemethods.js" />
     <Content Include="assets\jtable.2.4.0\extensions\jquery.jtable.aspnetpagemethods.min.js" />
