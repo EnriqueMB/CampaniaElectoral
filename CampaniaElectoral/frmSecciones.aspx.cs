@@ -11,8 +11,6 @@ namespace CampaniaElectoral
 {
     public partial class frmSecciones : System.Web.UI.Page
     {
-
-        public List<Secciones> Lista = new List<Secciones>();
         protected void Page_Load(object sender, EventArgs e)
         {
             

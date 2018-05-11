@@ -91,6 +91,7 @@
     <Compile Include="EM_TipoImagenVideo.cs" />
     <Compile Include="ER_Casillas.cs" />
     <Compile Include="ER_Secciones.cs" />
+    <Compile Include="EstadisticosAfiliados.cs" />
     <Compile Include="GM_Calendar.cs" />
     <Compile Include="GM_CalendarJsn.cs" />
     <Compile Include="GM_CarreraPolitica.cs" />
