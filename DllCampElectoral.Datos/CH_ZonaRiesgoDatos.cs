@@ -32,7 +32,7 @@ namespace DllCampElectoral.Datos
                 throw ex;
             }
         }
-
+        
         public void ACRiesgos(CH_ZonaRiesgo Datos)
         {
             try

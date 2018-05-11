@@ -62,7 +62,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <%--<div class="col-md-6">
                             <div class="form-group">
                                 <label class="control-label" for="cmbEstado">
                                     Estado <span class="symbol required"></span>
@@ -75,25 +75,39 @@
                                         } %>
                                 </select>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
+                        </div>--%>
+                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="control-label" for="cmbMunicipio">
                                     Municipio <span class="symbol required"></span>
                                 </label>
                                 <select id="cmbMunicipio" name="cmbMunicipio" class="form-control search-select">
                                     <option value="">&nbsp;</option>
+                                     <%  foreach (var ItemMunicipio in Datos.ListaMunicipio)
+                                        {
+                                            Response.Write("<option value='" + ItemMunicipio.IDEstado + "'> " + ItemMunicipio.Descripcion + "</option>");
+                                        } %>
                                 </select>
                             </div>
 						</div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="control-label" for="cmbPoligono">
                                     Casilla <span class="symbol required"></span>
                                 </label>
                                 <select id="cmbPoligono" name="cmbPoligono" class="form-control search-select">
+                                    <option value="">&nbsp;</option>
+                                </select>
+                            </div>
+						</div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label" for="cmbSeccion">
+                                    Seccion
+                                </label>
+                                <select id="cmbSeccion" name="cmbSeccion" class="form-control search-select">
                                     <option value="">&nbsp;</option>
                                 </select>
                             </div>
@@ -126,10 +140,10 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<div class="col-md-6">
-									<input type="submit" formaction="frmNuevaZonaRiesgo.aspx" class="btn btn-green btn-block" name ="btnGuardar" value="Guardar" />
+									<input type="submit" formaction="frmNuevaIncidencias.aspx" class="btn btn-green btn-block" name ="btnGuardar" value="Guardar" />
 								</div>
 								<div class="col-md-6">
-									<a href="frmZonasRiesgo.aspx" class ="btn btn-red btn-block" name ="btnCancelar" >Cancelar</a>
+									<a href="frmIncidencias.aspx" class ="btn btn-red btn-block" name ="btnCancelar" >Cancelar</a>
 								</div>
 							</div>
 						</div>
@@ -162,31 +176,31 @@
 	        //    Maps.init(1);
 	        //    console.log("Inicializó en blanco");
 	        //}
-	        $("#cmbEstado").change(function () {
-	            if (document.getElementById('hfLatitud').value === '') {
-	                Maps.init(1);
-	            }
-	            $("#cmbEstado option:selected").each(function () {
-	                elegido = $(this).val();
-	                $("#cmbMunicipio option").remove();
-	                $.ajaxSetup({
-	                    async: false
-	                });
+	        //$("#cmbEstado").change(function () {
+	        //    if (document.getElementById('hfLatitud').value === '') {
+	        //        Maps.init(1);
+	        //    }
+	        //    $("#cmbEstado option:selected").each(function () {
+	        //        elegido = $(this).val();
+	        //        $("#cmbMunicipio option").remove();
+	        //        $.ajaxSetup({
+	        //            async: false
+	        //        });
 
-	                $.getJSON('sfrmMunicipios.aspx?estado=' + elegido, function (data) {
-	                    $("#cmbMunicipio").append('<option value="">&nbsp;</option>');
-	                    $.each(data, function (key, value) {
-	                        $("#cmbMunicipio").append('<option value="' + value.IDMunicipio + '">' + value.Descripcion + '</option>');
-	                    });
-	                });
-	                $("#cmbMunicipio").trigger('change');
-	                $("#cmbPoligono").trigger('change.select2');
-	                // Set the global configs back to asynchronous 
-	                $.ajaxSetup({
-	                    async: true
-	                });
-	            })
-	        });
+	        //        $.getJSON('sfrmMunicipios.aspx?estado=' + elegido, function (data) {
+	        //            $("#cmbMunicipio").append('<option value="">&nbsp;</option>');
+	        //            $.each(data, function (key, value) {
+	        //                $("#cmbMunicipio").append('<option value="' + value.IDMunicipio + '">' + value.Descripcion + '</option>');
+	        //            });
+	        //        });
+	        //        $("#cmbMunicipio").trigger('change');
+	        //        $("#cmbPoligono").trigger('change.select2');
+	        //        // Set the global configs back to asynchronous 
+	        //        $.ajaxSetup({
+	        //            async: true
+	        //        });
+	        //    })
+	        //});
 
 	        $("#cmbMunicipio").change(function () {
 	            elegido = $(this).val();
@@ -197,7 +211,7 @@
 	                }
 	            $("#cmbMunicipio option:selected").each(function () {
 	                elegido = $(this).val();
-	                estado = $('#cmbEstado').val();
+	                estado = <%=Datos.IDEstado%>;
 	                $("#cmbPoligono option").remove();
 	                $.ajaxSetup({
 	                    async: false
@@ -216,7 +230,28 @@
 	                });
 	            })
 	        });
-
+	        $("#cmbPoligono").change(function () {
+	            $("#cmbPoligono option:selected").each(function () {
+	                elegido = $(this).val();
+	                
+	                $("#cmbPoligono option").remove();
+	                $.ajaxSetup({
+	                    async: false
+	                });
+	              
+	                $.getJSON('sfrmCmbSeccion.aspx?poligono=' + elegido, function (data) {
+	                    $("#cmbSeccion").append('<option value="">&nbsp;</option>');
+	                    $.each(data, function (key, value) {
+	                        $("#cmbSeccion").append('<option value="' + value.IDPoligono + '">' + value.Descripcion + '</option>');
+	                    });
+	                });
+	                $("#cmbSeccion").trigger('change.select2');
+	                // Set the global configs back to asynchronous 
+	                $.ajaxSetup({
+	                    async: true
+	                });
+	            })
+	        });
 	        $("#cmbPoligono").change(function () {
 	            elegido = $(this).val();
 	            //console.log("Poligono elegido : " + elegido);

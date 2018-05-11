@@ -341,7 +341,27 @@ namespace DllCampElectoral.Datos
                 throw ex;
             }
         }
-
+        public List<CH_PoligonoJSON> ObtenerSeccionesXPoligono(CH_Poligono Datos)
+        {
+            try
+            {
+                List<CH_PoligonoJSON> Lista = new List<CH_PoligonoJSON>();
+                CH_PoligonoJSON Item;
+                SqlDataReader Dr = SqlHelper.ExecuteReader(Datos.Conexion, "EC_spCSLDB_get_ComboSeccion", Datos.IDPoligono);
+                while (Dr.Read())
+                {
+                    Item = new CH_PoligonoJSON();
+                    Item.IDPoligono = Dr.GetString(Dr.GetOrdinal("IDPoligono"));
+                    Item.Descripcion = Dr.GetString(Dr.GetOrdinal("Seccion"));
+                    Lista.Add(Item);
+                }
+                return Lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         #endregion
     }
 }
