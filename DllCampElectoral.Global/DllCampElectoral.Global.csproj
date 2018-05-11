@@ -94,6 +94,7 @@
     <Compile Include="FG_Auxiliar.cs" />
     <Compile Include="FG_CatPartidoPoliticoAlianza.cs" />
     <Compile Include="FG_EstadisticosVotos.cs" />
+    <Compile Include="FG_EstadisticosVotos_MensajeAvanceGeneral.cs" />
     <Compile Include="FG_EstadisticosVotos_MetaXHora.cs" />
     <Compile Include="EstadisticosAfiliados.cs" />
     <Compile Include="GM_Calendar.cs" />

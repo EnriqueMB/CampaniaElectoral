@@ -431,7 +431,6 @@ var FormValidator = function () {
             }
             return valido;
         }, 'Por favor, seleccione un archivo con extensi&oacute;n: png, jpg, jpeg y bmp.');
-
         $.validator.addMethod("validarImg", function (value, element, params) {
             //Bandera que me indica si hay o no imagen en el servidor
             var bandera = document.getElementById(params[0]).value;
@@ -450,7 +449,6 @@ var FormValidator = function () {
             }
 
         }, 'Debe seleccionar una imagen.');
-
         $.validator.addMethod("passwordCSL", function (value, element, params) {
             //Bandera que me indica si hay o no imagen en el servidor
             var password = document.getElementById(params[0]).value;
@@ -471,9 +469,14 @@ var FormValidator = function () {
             else
             {
                 //Caracteres min: 6 y max: 15                                                                                     Mismos passwords=?
-                if ((minCaracteres <= password.length <= maxCaracteres && minCaracteres <= passwordAgain <= maxCaracteres) && (password == passwordAgain))
+                if (((minCaracteres <= password.length) &&  (password.length <= maxCaracteres)) && ((minCaracteres <= passwordAgain.length) && (passwordAgain.length <= maxCaracteres)) && (password == passwordAgain))
                 {
                     valido = true;
+                }
+                else
+                {
+                    //si escribe en el input pero no son validos
+                    valido = false;
                 }
             }
             return valido;
