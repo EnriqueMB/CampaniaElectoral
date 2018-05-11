@@ -48,7 +48,7 @@
                 <%int cont = 0;%>
                <%foreach (var item in ConteoPagina.ListaConteo)
                 {%>
-                    { data: [ [<%=cont %>,<%=item.CantidadVoto %> ] ], label: '<%=item.SiglasPartido %>', bars: { show: true, barWidth: 0.5, fillColor: { colors: [{ opacity: 0.2 }, { opacity: 0.4}] } } },
+                    { data: [ ['<%=cont %>',<%=item.CantidadVoto %> ] ], label: '<%=item.SiglasPartido %>', bars: { show: true, barWidth: 0.5, fillColor: { colors: [{ opacity: 0.2 }, { opacity: 0.4}] } } },
                 <%cont++;%>
                  <%} %>
               ],

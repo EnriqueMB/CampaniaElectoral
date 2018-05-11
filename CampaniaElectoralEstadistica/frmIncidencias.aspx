@@ -7,9 +7,9 @@
         var diag;
         function initialize() {
             mapcode = new google.maps.Geocoder();
-            var lnt = new google.maps.LatLng(-12.043333, -77.028333);
+            var lnt = new google.maps.LatLng(16.6634247,-92.551164);
             var diagChoice = {
-                zoom: 9,
+                zoom: 7,
                 center: lnt,
                 diagId: google.maps.MapTypeId.ROADMAP
             }
