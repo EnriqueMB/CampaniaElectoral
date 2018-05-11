@@ -69,5 +69,31 @@ namespace DllCampElectoral.Datos
                 throw ex;
             }
         }
+
+        public FG_EstadisticosVotos ObtenerGeneralesEstadisticosVotacion(FG_EstadisticosVotos FG)
+        {
+
+            try
+            {
+                SqlDataReader Dr = SqlHelper.ExecuteReader(FG.Conexion, "FG_spCSLBD_EstadisticoVotos_DatosGenerales");
+
+                while (Dr.Read())
+                {
+                    FG.MetaVotosGeneral = Dr.GetInt32(Dr.GetOrdinal("totalMetaVotos"));
+                    FG.TotalVotosRealizados = Dr.GetInt32(Dr.GetOrdinal("totalVotosRealizados"));
+                    FG.PorcentajeAvanceGeneralVotos = Dr.GetDecimal(Dr.GetOrdinal("porcentajeAvanceGeneral"));
+                    FG.sMetasXHora = Dr.GetString(Dr.GetOrdinal("xmlMetasXHora"));
+                    FG.sTop5Colaboradores = Dr.GetString(Dr.GetOrdinal("xmlTop5Colaboradores"));
+                    FG.sMensajAvanceGeneral = Dr.GetString(Dr.GetOrdinal("xlmMensajeAvanceGeneral"));
+                }
+
+                return FG;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }
