@@ -100,26 +100,46 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <table class="table table-striped table-bordered table-hover" id="tblafiliados">
-                        <thead>
-                        <tr>
-                            <th>Nombre Completo</th>
-                            <th>Fecha de Afiliación</th>
-                            <th>Estatus</th>
-                            <th>Sección</th>
-                            <th>Clave de elector</th>
-                            <th>Operador</th>
-                            <th>Opciones</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover" id="tblafiliados">
+                            <thead>
+                            <tr>
+                                <th>Nombre Completo</th>
+                                <th>Fecha de Afiliación</th>
+                                <th>Estatus</th>
+                                <th>Sección</th>
+                                <th>Clave de elector</th>
+                                <th>Operador</th>
+                                <th>Opciones</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     
+ <%--   <!-- PAGE CONTENT WRAPPER -->
+    <div class="message-box animated fadeIn" data-sound="alert" id="mb-remove-row">
+        <div class="mb-container">
+            <div class="mb-middle">
+                <div class="mb-title"><span class="fa fa-times"></span> Eliminar <strong>Registro</strong> ?</div>
+                <div class="mb-content">
+                    <p>¿Seguro que quieres eliminar esta fila?</p>
+                    <p>Presione "sí" si está seguro.</p>
+                </div>
+                <div class="mb-footer">
+                    <div class="pull-right">
+                        <button class="btn btn-success btn-lg mb-control-yes">Si</button>
+                        <button class="btn btn-default btn-lg mb-control-close">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>--%>
      
 </asp:Content>
 

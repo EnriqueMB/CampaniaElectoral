@@ -11,7 +11,7 @@
                 <div class="panel-body">
                     <div class="row">
 						<div class="col-md-12 space20">
-                            <a href="frmNuevaZonaRiesgo.aspx" class="btn btn-green">
+                            <a href="frmNuevaIncidencia.aspx" class="btn btn-green">
                                 Nuevo
                                 <i class="fa fa-plus"></i>
                             </a>
@@ -19,23 +19,6 @@
 					</div>
 
                     <div class="row bootstrap-switch-container">
-                        <%--<input type="hidden" id="cmbEdo" value="<%=Datos.IDEstado%>" />--%>
-                       <%-- <asp:HiddenField ID="cmbEstado" Value="<%=Datos.IDEstado%>" runat="server" />--%>
-                       
-                      <%--  <div class="col-md-3">
-                            <div class="form-group">
-                                <label class="control-label" for="cmbEstado">
-                                    Estado
-                                </label>
-                                <select id="cmbEstado" name="cmbEstado" class="form-control search-select">
-                                    <option value="">&nbsp;</option>
-                                    <%  foreach (var ItemEstado in Datos.ListaEstados)
-                                        {
-                                            Response.Write("<option value='" + ItemEstado.IDEstado + "'> " + ItemEstado.EstadoDesc + "</option>");
-                                        } %>
-                                </select>
-                            </div>
-						</div>--%>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="control-label" for="cmbMunicipio">
@@ -56,6 +39,16 @@
                                     Casilla
                                 </label>
                                 <select id="cmbPoligono" name="cmbPoligono" class="form-control search-select">
+                                    <option value="">&nbsp;</option>
+                                </select>
+                            </div>
+						</div>
+                         <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="cmbSeccion">
+                                    Seccion
+                                </label>
+                                <select id="cmbSeccion" name="cmbSeccion" class="form-control search-select">
                                     <option value="">&nbsp;</option>
                                 </select>
                             </div>
@@ -90,7 +83,7 @@
 	<!-- end: CORE JAVASCRIPTS  -->
 	<script>
 	    jQuery(document).ready(function () {
-	        Maps.init(<%=%>);
+	        Maps.init(<%=Datos.IDEstado%>,'<%=Datos.Estado%>');
 
 	        $("#btnFiltrar").click(function (event) {
 	            console.log("1");
@@ -101,7 +94,7 @@
 	            //{
 	            //}
                 
-	            Maps.init();
+	            Maps.init(<%=Datos.IDEstado%>,'<%=Datos.Estado%>');
 	        });
 
 
@@ -130,7 +123,7 @@
 	        $("#cmbMunicipio").change(function () {
 	            $("#cmbMunicipio option:selected").each(function () {
 	                elegido = $(this).val();
-	                estado = $('#cmbEstado').val();
+	                estado = <%=Datos.IDEstado%>;
 	                $("#cmbPoligono option").remove();
 	                $.ajaxSetup({
 	                    async: false
@@ -143,6 +136,28 @@
 	                    });
 	                });
 	                $("#cmbPoligono").trigger('change.select2');
+	                // Set the global configs back to asynchronous 
+	                $.ajaxSetup({
+	                    async: true
+	                });
+	            })
+	        });
+            $("#cmbPoligono").change(function () {
+                $("#cmbPoligono option:selected").each(function () {
+	                elegido = $(this).val();
+	                
+	                $("#cmbPoligono option").remove();
+	                $.ajaxSetup({
+	                    async: false
+	                });
+	              
+	                $.getJSON('sfrmCmbSeccion.aspx?poligono=' + elegido, function (data) {
+	                    $("#cmbSeccion").append('<option value="">&nbsp;</option>');
+	                    $.each(data, function (key, value) {
+	                        $("#cmbSeccion").append('<option value="' + value.IDPoligono + '">' + value.Descripcion + '</option>');
+	                    });
+	                });
+	                $("#cmbSeccion").trigger('change.select2');
 	                // Set the global configs back to asynchronous 
 	                $.ajaxSetup({
 	                    async: true

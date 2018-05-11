@@ -4342,6 +4342,7 @@
     <Content Include="assets\sass\vendor\_time-picker.scss" />
     <Content Include="Images\FotosBlog\Thumbs.db" />
     <Content Include="sfrmCasillasCmb.aspx" />
+    <Content Include="sfrmCmbSeccion.aspx" />
     <Content Include="sfrmEliminarAfiliadosGrid.aspx" />
     <Content Include="sfrmLogout.aspx" />
     <Content Include="sfrmRetificarAfiliadosGrid.aspx" />
@@ -4412,12 +4413,33 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmIncidencias.aspx.cs">
+      <DependentUpon>frmIncidencias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmIncidencias.aspx.designer.cs">
+      <DependentUpon>frmIncidencias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmNuevaIncidencia.aspx.cs">
+      <DependentUpon>frmNuevaIncidencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmNuevaIncidencia.aspx.designer.cs">
+      <DependentUpon>frmNuevaIncidencia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="frmPartidoPoliticoAlianzaEdit.aspx.cs">
       <DependentUpon>frmPartidoPoliticoAlianzaEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="frmPartidoPoliticoAlianzaEdit.aspx.designer.cs">
       <DependentUpon>frmPartidoPoliticoAlianzaEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="sfrmCmbSeccion.aspx.cs">
+      <DependentUpon>sfrmCmbSeccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sfrmCmbSeccion.aspx.designer.cs">
+      <DependentUpon>sfrmCmbSeccion.aspx</DependentUpon>
     </Compile>
     <Compile Include="TestSearchDataTable.aspx.cs">
       <DependentUpon>TestSearchDataTable.aspx</DependentUpon>

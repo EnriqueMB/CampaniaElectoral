@@ -18,7 +18,7 @@ namespace CampaniaElectoral
               u=  (WN_Usuario)Session["Usuario"];
             Datos.Conexion = Comun.Conexion;
             Datos.IDEstado = u.IDEstado;
-            Datos.Estado = u.IDEstado;
+            Datos.Estado = u.DesEstado;
             CH_ZonaRiesgoNegocio ZRN = new CH_ZonaRiesgoNegocio();
             ZRN.ObtenerCombosZonaDeRiesgo(Datos);
         }
