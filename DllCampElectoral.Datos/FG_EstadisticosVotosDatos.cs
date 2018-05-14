@@ -69,7 +69,6 @@ namespace DllCampElectoral.Datos
                 throw ex;
             }
         }
-
         public FG_EstadisticosVotos ObtenerGeneralesEstadisticosVotacion(FG_EstadisticosVotos FG)
         {
 

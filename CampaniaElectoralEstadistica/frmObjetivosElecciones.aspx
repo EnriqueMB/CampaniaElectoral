@@ -191,7 +191,17 @@
               <h4 class="font-thin m-t-none m-b-none text-muted">TOP 5 REPRESENTANTES DE SECCIÓN</h4>              
             </div>
             <ul class="list-group list-group-lg m-b-none">
-              <li class="list-group-item">
+                <%foreach (var item in listaJefeSeccion)
+                    {%>
+                        <li class="list-group-item">
+                        <a href class="thumb-sm m-r">
+                        <img src="img/a1.jpg" class="r r-2x">
+                        </a>
+                        <span class="pull-right label bg-<%= item.Etiqueta %> inline m-t-sm"><%=item.Porcentaje %>%</span>
+                        <a href><%= item.NombreJefeSeccion %></a>
+                        </li>
+                    <%} %>
+             <%-- <li class="list-group-item">
                 <a href class="thumb-sm m-r">
                   <img src="img/a1.jpg" class="r r-2x">
                 </a>
@@ -225,7 +235,7 @@
                 </a>
                 <span class="pull-right label bg-danger inline m-t-sm">30%</span>
                 <a href>Jose Perez</a>
-              </li>
+              </li>--%>
             </ul>
             
           </div>

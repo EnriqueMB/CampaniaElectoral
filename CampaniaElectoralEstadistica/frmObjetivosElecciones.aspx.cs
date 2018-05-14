@@ -15,6 +15,7 @@ namespace CampaniaElectoralEstadistica
         private FG_EstadisticosVotosNegocio FG_Negocio = new FG_EstadisticosVotosNegocio();
         protected List<FG_EstadisticosVotos_MetaXHora> listaMetasXHora;
         protected List<FG_EstadisticosVotos_MensajeAvanceGeneral> listaMensajeAvanceGeneral;
+        protected List<FG_EstadisticosVotos_JefeSeccion> listaJefeSeccion;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -36,6 +37,7 @@ namespace CampaniaElectoralEstadistica
             CargarGraficaAvanceGeneralVotos();
             CargarMetasXHora();
             CargarMensajeAvanceGeneral();
+            CargarTop5Secciones();
         }
         private void CargarGraficaAvanceGeneralVotos()
         {
@@ -59,6 +61,10 @@ namespace CampaniaElectoralEstadistica
         private void CargarMensajeAvanceGeneral()
         {
             listaMensajeAvanceGeneral = FG.listaMensajeAvanceGeneral();
+        }
+        private void CargarTop5Secciones()
+        {
+            listaJefeSeccion = FG.listaJefeSeccion();
         }
         #endregion
 

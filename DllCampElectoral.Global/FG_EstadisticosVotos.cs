@@ -86,6 +86,40 @@ namespace DllCampElectoral.Global
             return listaMensajeAvanceGeneral;
         }
 
+        public List<FG_EstadisticosVotos_JefeSeccion> listaJefeSeccion()
+        {
+            List<FG_EstadisticosVotos_JefeSeccion> listaJefeSeccion = new List<FG_EstadisticosVotos_JefeSeccion>();
+            FG_EstadisticosVotos_JefeSeccion item;
+
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.LoadXml(sTop5Colaboradores);
+
+            XmlNodeList mensajeAvanceGeneral = xDoc.GetElementsByTagName("colaboradores");
+            XmlNodeList lista = ((XmlElement)mensajeAvanceGeneral[0]).GetElementsByTagName("row");
+
+            foreach (XmlElement nodo in lista)
+            {
+                XmlNodeList nIDColaborador = nodo.GetElementsByTagName("id_colaborador");
+                XmlNodeList nIDSeccion = nodo.GetElementsByTagName("id_seccion");
+                XmlNodeList nNombreJefeSeccion = nodo.GetElementsByTagName("nombreJefeSeccion");
+                XmlNodeList nImagen = nodo.GetElementsByTagName("Imagen");
+                XmlNodeList nPorcentaje = nodo.GetElementsByTagName("porcentaje");
+                XmlNodeList nMensaje = nodo.GetElementsByTagName("mensaje");
+                XmlNodeList nEtiqueta = nodo.GetElementsByTagName("etiqueta");
+                
+                item = new FG_EstadisticosVotos_JefeSeccion();
+                item.IDColaborador = nIDColaborador[0].InnerText;
+                item.IDSeccion = int.Parse(nIDSeccion[0].InnerText);
+                item.NombreJefeSeccion = nNombreJefeSeccion[0].InnerText;
+                item.Imagen = nImagen[0].InnerText;
+                item.Porcentaje = decimal.Parse(nPorcentaje[0].InnerText);
+                item.Mensaje = nMensaje[0].InnerText;
+                item.Etiqueta = nEtiqueta[0].InnerText;
+
+                listaJefeSeccion.Add(item);
+            }
+            return listaJefeSeccion;
+        }
 
         #endregion
 
