@@ -85,19 +85,6 @@
 	    jQuery(document).ready(function () {
 	        Maps.init(<%=Datos.IDEstado%>,'<%=Datos.Estado%>');
 
-	        $("#btnFiltrar").click(function (event) {
-	            console.log("1");
-	            event.preventDefault();
-
-	            //Si no hay nada seleccionado, el mapa se inicializa con los datos de geolocalización
-	            //if (!(selectedEstado.text.trim() === '' && selectedMunicipio.text.trim() === '' && selectedPoligono.text.trim() === ''))
-	            //{
-	            //}
-                
-	            Maps.init(<%=Datos.IDEstado%>,'<%=Datos.Estado%>');
-	        });
-
-
 	        //$("#cmbEstado").change(function () {
 	        //    $("#cmbEstado option:selected").each(function () {
 	        //        elegido = $(this).val();
@@ -134,7 +121,7 @@
 	                    $.each(data, function (key, value) {
 	                        $("#cmbPoligono").append('<option value="' + value.IDSeccion + '">' + value.seccionDesc + '</option>');
 	                    });
-	                });
+                    });
 	                $("#cmbPoligono").trigger('change.select2');
 	                // Set the global configs back to asynchronous 
 	                $.ajaxSetup({
@@ -146,7 +133,7 @@
                 $("#cmbPoligono option:selected").each(function () {
 	                elegido = $(this).val();
 	                
-	                $("#cmbPoligono option").remove();
+	                $("#cmbSeccion option").remove();
 	                $.ajaxSetup({
 	                    async: false
 	                });
@@ -156,7 +143,7 @@
 	                    $.each(data, function (key, value) {
 	                        $("#cmbSeccion").append('<option value="' + value.IDCasilla + '">' + value.DescCasilla + '</option>');
 	                    });
-	                });
+                    });
 	                $("#cmbSeccion").trigger('change.select2');
 	                // Set the global configs back to asynchronous 
 	                $.ajaxSetup({
@@ -165,7 +152,18 @@
 	            })
 	        });
 
+            
+	        $("#btnFiltrar").click(function (event) {
+	            console.log("1");
+	            event.preventDefault();
 
+	            //Si no hay nada seleccionado, el mapa se inicializa con los datos de geolocalización
+	            //if (!(selectedEstado.text.trim() === '' && selectedMunicipio.text.trim() === '' && selectedPoligono.text.trim() === ''))
+	            //{
+	            //}
+                
+	            Maps.init(<%=Datos.IDEstado%>,'<%=Datos.Estado%>');
+	        });
 	    });
 	</script>
 </asp:Content>
