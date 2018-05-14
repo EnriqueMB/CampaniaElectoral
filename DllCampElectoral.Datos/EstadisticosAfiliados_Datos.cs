@@ -20,7 +20,7 @@ namespace DllCampElectoral.Datos
                 DataSet Ds = SqlHelper.ExecuteDataset(Conexion, "INE_spCSLDB_get_EstadisticosAfiliados");
                 if(Ds!= null)
                 {
-                    if(Ds.Tables.Count == 3)
+                    if(Ds.Tables.Count == 4)
                     {
                         DataTableReader Dr = Ds.Tables[0].CreateDataReader();
                         while (Dr.Read())
@@ -56,6 +56,14 @@ namespace DllCampElectoral.Datos
                         Result.Lista = Lista;
 
                         Result.TablaSecciones = Ds.Tables[2];
+
+                        DataTableReader Dr3 = Ds.Tables[3].CreateDataReader();
+                        while(Dr3.Read())
+                        {
+                            Result.SeccionesMayorAvance = !Dr3.IsDBNull(Dr3.GetOrdinal("SeccionesMayorAvance")) ? Dr3.GetString(Dr3.GetOrdinal("SeccionesMayorAvance")) : string.Empty;
+                            Result.SeccionesMenorAvance = !Dr3.IsDBNull(Dr3.GetOrdinal("SeccionesMenorAvance")) ? Dr3.GetString(Dr3.GetOrdinal("SeccionesMenorAvance")) : string.Empty;
+                            break;
+                        }
                     }
                 }
                 

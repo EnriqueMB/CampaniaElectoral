@@ -4,16 +4,18 @@
         var municipio = document.getElementById("cmbMunicipio");
         var poligono = document.getElementById("cmbPoligono");
 
+        var selectedPoligono = poligono.options[poligono.selectedIndex];   
         var selectedMunicipio = municipio.options[municipio.selectedIndex];
-        var selectedPoligono = poligono.options[poligono.selectedIndex];
-        
+        //var selectedPoligono = poligono.options[poligono.selectedIndex];
+        console.log(selectedMunicipio.text);
+        console.log(selectedPoligono.value);
         $.ajaxSetup({ async: false });
 
         var map = new GMaps({
             el: '#map1',
             lat: -12.043333,
             lng: -77.028333,
-            zoom: 8,
+            zoom: 9,
             dragend: function (e) {
             }
         });
@@ -35,13 +37,14 @@
 
         else {
             //Si hay un estado seleccionado, se busca en el mapa el estado y se centra
-            if (selectedMunicipio.text.trim() === '' && selectedPoligono.text.trim() === '') {
+            if (selectedMunicipio.text.trim() === '') {
                 GMaps.geocode({
                     address: estado,
                     callback: function (results, status) {
                         if (status == 'OK') {
                             var latlng = results[0].geometry.location;
                             map.setCenter(latlng.lat(), latlng.lng());
+                          
                         }
                     }
                 });
@@ -50,6 +53,7 @@
             }
             else {
                 //Si hay un estado y un municipio seleccionado, se buscan en el mapa estado y municipio y se centra
+                
                 if (selectedPoligono.text.trim() === '') {
                     console.log("3");
                     GMaps.geocode({
@@ -91,7 +95,6 @@
                 }
             }
         }
-
         //Se obtienen las zonas de riesgo
         $.getJSON('sfrmZonasRiesgoXIDs.aspx?IDEstado=' + id_estado + '&IDMunicipio=' + selectedMunicipio.value
             + '&IDPoligono=' + selectedPoligono.value, function (data) {
@@ -110,7 +113,7 @@
                         infoWindow: {
                             content: '<p>' + value.Titulo + '</p>'
                                     + '<p>' + value.Descripcion + '</p>'
-                                    + '<a clas="fa-external-link" href="frmNuevaZonaRiesgo.aspx?op=2&id=' + value.IDRiesgo + '">Editar</a>'
+                                    + '<a clas="fa-external-link" href="frmNuevaIncidencia.aspx?op=2&id=' + value.IDRiesgo + '">Editar</a>'
                         }
                     });
 

@@ -14,17 +14,15 @@ namespace CampaniaElectoral
     public partial class frmNuevaIncidencia : System.Web.UI.Page
     {
         public CH_ZonaRiesgo Datos = new CH_ZonaRiesgo();
+        public CH_PartidoPolitico DatosGlobales = new CH_PartidoPolitico();
+        WN_Usuario u = new WN_Usuario();
+        CH_ZonaRiesgoNegocio ZRN = new CH_ZonaRiesgoNegocio();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-                CH_ZonaRiesgoNegocio ZRN = new CH_ZonaRiesgoNegocio();
-                Datos.Conexion = Comun.Conexion;
-                WN_Usuario u = new WN_Usuario();
-                u = (WN_Usuario)Session["Usuario"];
-                Datos.IDEstado = u.IDEstado;
-                Datos.Estado = u.DesEstado;
-                ZRN.ObtenerCombosZonaDeRiesgo(Datos);
+                cargarCombos();
                 if (!IsPostBack)
                 {
                     if (Request.QueryString["op"] != null)
@@ -45,14 +43,14 @@ namespace CampaniaElectoral
                                 else
                                 {
                                     //Ocurrió un error
-                                    Response.Redirect("frmZonasRiesgo.aspx?error=" + "Error al cargar los datos&nError=1");
+                                    Response.Redirect("frmIncidencias.aspx?error=" + "Error al cargar los datos&nError=1");
                                 }
                             }
                             else
-                                Response.Redirect("frmZonasRiesgo.aspx");
+                                Response.Redirect("frmIncidencias.aspx");
                         }
                         else
-                            Response.Redirect("frmZonasRiesgo.aspx");
+                            Response.Redirect("frmIncidencias.aspx");
                     }
                     else
                     {
@@ -78,7 +76,7 @@ namespace CampaniaElectoral
                         CultureInfo esMX = new CultureInfo("es-MX");
                         double.TryParse(sLatitud, NumberStyles.Currency, esMX, out Latitud);
                         double.TryParse(sLongitud, NumberStyles.Currency, esMX, out Longitud);
-                        this.Guardar(NuevoRegistro, IDRiesgo, Titulo, Descripcion, IDTipoRiesgo, IDEstado, IDMunicipio, IDPoligono, Latitud, Longitud);
+                        this.Guardar(NuevoRegistro, IDRiesgo, Titulo, Descripcion, IDTipoRiesgo, Datos.IDEstado, IDMunicipio, IDPoligono, Latitud, Longitud);
                     }
                 }
             }
@@ -149,7 +147,7 @@ namespace CampaniaElectoral
                 ZRN.ACRiesgos(DatosAux);
                 if (DatosAux.Completado)
                 {
-                    Response.Redirect("frmZonasRiesgo.aspx", false);
+                    Response.Redirect("frmIncidencias.aspx", false);
                 }
                 else
                 {
@@ -181,7 +179,64 @@ namespace CampaniaElectoral
                 throw ex;
             }
         }
+        private void cargarCombos()
+        {
+            try
+            {
+                
+                Datos.Conexion = Comun.Conexion;
+                u = (WN_Usuario)Session["Usuario"];
+                Datos.IDEstado = u.IDEstado;
+                Datos.Estado = u.DesEstado;
+                ZRN.ObtenerCombosZonaDeRiesgo(Datos);
+                cmbTipoRiesgo.DataSource = Datos.ListaTipoRiesgos;
+                cmbTipoRiesgo.DataTextField = "Descripcion";
+                cmbTipoRiesgo.DataValueField = "IDTipoRiesgo";
+                cmbTipoRiesgo.DataBind();
+                cmbMunicipio.DataSource = Datos.ListaMunicipio;
+                cmbMunicipio.DataTextField = "Descripcion";
+                cmbMunicipio.DataValueField = "IDEstado";
+                cmbMunicipio.DataBind();
+                CH_PartidoPolitico datos = new CH_PartidoPolitico { Conexion = Comun.Conexion };
+                CH_CatalogosNegocio CPPN = new CH_CatalogosNegocio();
+                CPPN.ObtenerComboColaboradoresTipo(datos);
+                DatosGlobales = datos;
+                cmbColaboradores.DataSource = DatosGlobales.DatosAuxColab.ListaColaboradores;
+                
+                cmbColaboradores.DataTextField = "Nombre";
+                cmbColaboradores.DataValueField = "IDColaborador";
+                cmbColaboradores.DataBind();
+                
+            }
+            catch (Exception ex)
+            {
 
+                throw ex;
+            }
+        }
+        protected void cvTRiesgo_ServerValidate(object source, ServerValidateEventArgs args)
+        {
 
+        }
+
+        protected void cvcmbMunicipio_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+
+        }
+
+        protected void cvcmbPoligono_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+
+        }
+
+        protected void cvcmbSeccion_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+
+        }
+
+        protected void cvcmbColaboradores_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+
+        }
     }
 }

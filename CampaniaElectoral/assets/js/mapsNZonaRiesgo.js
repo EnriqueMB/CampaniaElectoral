@@ -1,19 +1,19 @@
 ﻿var Maps = function () {
     "use strict";
-    var runMaps = function () {
+    var runMaps = function (id_estado, estado) {
         
         document.getElementById("hfLatitud").value = '';
         document.getElementById("hfLongitud").value = '';
 
-        var estado = document.getElementById("cmbEstado");
-        var municipio = document.getElementById("cmbMunicipio");
-        var poligono = document.getElementById("cmbPoligono");
-        var selectedEstado = estado.options[estado.selectedIndex];
+        
+        var municipio = document.getElementById("cph_MasterBody_cmbMunicipio");
+        var poligono = document.getElementById("cph_MasterBody_cmbPoligono");
+        
         var selectedMunicipio = municipio.options[municipio.selectedIndex];
         var selectedPoligono = poligono.options[poligono.selectedIndex];
 
         //Si no hay nada seleccionado, el mapa se inicializa con los datos de geolocalización
-        if (selectedEstado.text.trim() === '' && selectedMunicipio.text.trim() === '' && selectedPoligono.text.trim() === '' )
+        if (estado === '' && selectedMunicipio.text.trim() === '' && selectedPoligono.text.trim() === '')
         {
             //console.log("1");
             var map = new GMaps({
@@ -53,7 +53,7 @@
                 });
 
                 GMaps.geocode({
-                    address: selectedEstado.text,
+                    address: estado,
                     callback: function (results, status) {
                         //console.log(status);
                         if (status == 'OK') {
@@ -81,7 +81,7 @@
                     });
                     //console.log(selectedMunicipio.text + ' ' + selectedEstado.text)
                     GMaps.geocode({
-                        address: selectedMunicipio.text + ' ' + selectedEstado.text,
+                        address: selectedMunicipio.text + ' ' + estado,
                         callback: function (results, status) {
                             //console.log(status);
                             if (status == 'OK') {
@@ -145,16 +145,16 @@
         }                
     };
 
-    var runMaps2 = function () {
-        var estado = document.getElementById("cmbEstado");
+    var runMaps2 = function (id_estado, estado) {
+       
         var municipio = document.getElementById("cmbMunicipio");
         var poligono = document.getElementById("cmbPoligono");
-        var selectedEstado = estado.options[estado.selectedIndex];
+
         var selectedMunicipio = municipio.options[municipio.selectedIndex];
         var selectedPoligono = poligono.options[poligono.selectedIndex];
 
         //Si no hay nada seleccionado, el mapa se inicializa con los datos de geolocalización
-        if (selectedEstado.text.trim() === '' && selectedMunicipio.text.trim() === '' && selectedPoligono.text.trim() === '') {
+        if (estado === '' && selectedMunicipio.text.trim() === '' && selectedPoligono.text.trim() === '') {
             //console.log("1");
             var map = new GMaps({
                 el: '#map1',
@@ -191,7 +191,7 @@
                 });
 
                 GMaps.geocode({
-                    address: selectedEstado.text,
+                    address: estado,
                     callback: function (results, status) {
                         //console.log(status);
                         if (status == 'OK') {
@@ -217,7 +217,7 @@
                     });
                     //console.log(selectedMunicipio.text + ' ' + selectedEstado.text)
                     GMaps.geocode({
-                        address: selectedMunicipio.text + ' ' + selectedEstado.text,
+                        address: selectedMunicipio.text + ' ' + estado,
                         callback: function (results, status) {
                             //console.log(status);
                             if (status == 'OK') {
@@ -289,11 +289,11 @@
 
     return {
         //main function to initiate template pages
-        init: function (opcion) {
+        init: function (opcion, id_estado, estado) {
             if (opcion == 1)
-                runMaps();
+                runMaps(id_estado, estado);
             if (opcion == 2)
-                runMaps2();
+                runMaps2(id_estado, estado);
 
         }
     };

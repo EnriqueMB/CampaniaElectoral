@@ -9,7 +9,10 @@
                     <h4 class="panel-title"><span class="text-bold">Incidencias</span></h4>
                 </div>
                 <div class="panel-body">
-
+                     <div class="form-group">
+                        <asp:Label ID="labelMessage" runat="server" Text=""></asp:Label>
+                        <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ValidationGroup="AllValidators" />
+                    </div>
                     <div class="row">
 						<asp:HiddenField ID="hf" runat="server" />
 					</div>
@@ -31,6 +34,7 @@
                                     T&iacute;tulo <span class="symbol required"></span>
                                 </label>
                                 <span class="input-icon">
+                                    <asp:RequiredFieldValidator ID="rfvtxtTitulo" CssClass="text-danger serv" ControlToValidate="txtTitulo" runat="server" Display="Dynamic" ErrorMessage="Por favor, ingrese el titulo" Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="False" SetFocusOnError="True"></asp:RequiredFieldValidator>
 									<input type="text" class="form-control tooltips" runat="server" id="txtTitulo" name="txtTitulo" placeholder="" maxlength="150" data-original-title="Ingrese el t&iacute;tulo del riesgo." data-rel="tooltip"  title="" data-placement="top" />
 									<i class="fa fa-users"></i>
 								</span>
@@ -42,6 +46,7 @@
                                     Descripci&oacute;n <span class="symbol required"></span>
                                 </label>
                                 <span class="input-icon">
+                                    <asp:RequiredFieldValidator ID="rfvtxtDescripcion" CssClass="text-danger serv" ControlToValidate="txtDescripcion" runat="server" Display="Dynamic" ErrorMessage="Por favor, ingrese la descripcion de la incidencia" Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="False" SetFocusOnError="True"></asp:RequiredFieldValidator>
                                     <textarea maxlength="1500" id="txtDescripcion" runat="server" name="txtDescripcion" class="form-control limited"></textarea>
                                 </span>
                             </div>
@@ -53,7 +58,9 @@
                                 <label class="control-label" for="cmbTipoRiesgo">
                                     Tipo de riesgo <span class="symbol required"></span>
                                 </label>
-                                <select id="cmbTipoRiesgo" name="cmbTipoRiesgo" class="form-control search-select">
+                               <%-- <asp:RequiredFieldValidator ID="rfvTRiesgo" CssClass="text-danger serv" ControlToValidate="cmbTipoRiesgo" runat="server" Display="Dynamic" ErrorMessage="Por favor, seleccione un tipo de riesgo." Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="False" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                                <asp:CustomValidator ID="cvTRiesgo" CssClass="text-danger serv" ControlToValidate="cmbTipoRiesgo" OnServerValidate="cvTRiesgo_ServerValidate" runat="server" Display="Dynamic" ErrorMessage="Por favor, seleccione un tipo de riesgo." Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="false" SetFocusOnError="true"></asp:CustomValidator>
+                               --%> <select id="cmbTipoRiesgo" name="cmbTipoRiesgo" class="form-control search-select" runat="server">
                                     <option value="">&nbsp;</option>
                                     <%  foreach (var ItemTR in Datos.ListaTipoRiesgos)
                                         {
@@ -62,30 +69,18 @@
                                 </select>
                             </div>
                         </div>
-                        <%--<div class="col-md-6">
-                            <div class="form-group">
-                                <label class="control-label" for="cmbEstado">
-                                    Estado <span class="symbol required"></span>
-                                </label>
-                                <select id="cmbEstado" name="cmbEstado" class="form-control search-select">
-                                    <option value="">&nbsp;</option>
-                                    <%  foreach (var ItemEstado in Datos.ListaEstados)
-                                        {
-                                            Response.Write("<option value='" + ItemEstado.IDEstado + "'> " + ItemEstado.EstadoDesc + "</option>");
-                                        } %>
-                                </select>
-                            </div>
-                        </div>--%>
                          <div class="col-md-6">
                             <div class="form-group">
                                 <label class="control-label" for="cmbMunicipio">
                                     Municipio <span class="symbol required"></span>
                                 </label>
-                                <select id="cmbMunicipio" name="cmbMunicipio" class="form-control search-select">
-                                    <option value="">&nbsp;</option>
+                                <asp:RequiredFieldValidator ID="rfvcmbMunicipio" CssClass="text-danger serv" ControlToValidate="cmbMunicipio" runat="server" Display="Dynamic" ErrorMessage="Por favor, seleccione un municipio." Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="False" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                                <asp:CustomValidator ID="cvcmbMunicipio" CssClass="text-danger serv" ControlToValidate="cmbTipoRiesgo" OnServerValidate="cvcmbMunicipio_ServerValidate" runat="server" Display="Dynamic" ErrorMessage="Por favor, seleccione un tipo de riesgo." Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="false" SetFocusOnError="true"></asp:CustomValidator>
+                                <select id="cmbMunicipio" name="cmbMunicipio" class="form-control search-select" runat="server">
+                                    <option value="" runat="server">&nbsp;</option>
                                      <%  foreach (var ItemMunicipio in Datos.ListaMunicipio)
                                         {
-                                            Response.Write("<option value='" + ItemMunicipio.IDEstado + "'> " + ItemMunicipio.Descripcion + "</option>");
+                                            Response.Write("<option runat='server' value='" + ItemMunicipio.IDEstado + "'> " + ItemMunicipio.Descripcion + "</option>");
                                         } %>
                                 </select>
                             </div>
@@ -95,9 +90,11 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="control-label" for="cmbPoligono">
-                                    Casilla <span class="symbol required"></span>
+                                    Seccion <span class="symbol required"></span>
                                 </label>
-                                <select id="cmbPoligono" name="cmbPoligono" class="form-control search-select">
+                               <%-- <asp:RequiredFieldValidator ID="rfvcmbPoligono" CssClass="text-danger serv" ControlToValidate="cmbPoligono" runat="server" Display="Dynamic" ErrorMessage="Por favor, seleccione la sección" Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="False" SetFocusOnError="True"></asp:RequiredFieldValidator>--%>
+                                <asp:CustomValidator ID="cvcmbPoligono" CssClass="text-danger serv" ControlToValidate="cmbPoligono" OnServerValidate="cvcmbPoligono_ServerValidate" runat="server" Display="Dynamic" ErrorMessage="Por favor, seleccione la sección" Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="false" SetFocusOnError="true"></asp:CustomValidator>
+                                <select id="cmbPoligono" name="cmbPoligono" class="form-control search-select" runat="server">
                                     <option value="">&nbsp;</option>
                                 </select>
                             </div>
@@ -105,13 +102,39 @@
                           <div class="col-md-6">
                             <div class="form-group">
                                 <label class="control-label" for="cmbSeccion">
-                                    Seccion
+                                    Casilla
                                 </label>
-                                <select id="cmbSeccion" name="cmbSeccion" class="form-control search-select">
+                               <%-- <asp:RequiredFieldValidator ID="rfvcmbSeccion" CssClass="text-danger serv" ControlToValidate="cmbSeccion" runat="server" Display="Dynamic" ErrorMessage="Por favor, seleccione la casilla" Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="False" SetFocusOnError="True"></asp:RequiredFieldValidator>--%>
+                                <asp:CustomValidator ID="cvcmbSeccion" CssClass="text-danger serv" ControlToValidate="cmbSeccion" OnServerValidate="cvcmbSeccion_ServerValidate" runat="server" Display="Dynamic" ErrorMessage="Por favor, seleccione la casilla" Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="false" SetFocusOnError="true"></asp:CustomValidator>
+                                <select id="cmbSeccion" name="cmbSeccion" class="form-control search-select" runat="server">
                                     <option value="">&nbsp;</option>
                                 </select>
                             </div>
 						</div>
+                    </div>
+                    <div class="row">
+                                        <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="cmbColaboradores">
+                                            Colaboradores
+                                        </label>
+                                        <%--<asp:RequiredFieldValidator ID="rfvcmbColaboradores" CssClass="text-danger serv" ControlToValidate="cmbColaboradores" runat="server" Display="Dynamic" ErrorMessage="Por favor, seleccione al colaborador" Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="False" SetFocusOnError="True"></asp:RequiredFieldValidator>--%>
+                                <asp:CustomValidator ID="cvcmbColaboradores" CssClass="text-danger serv" ControlToValidate="cmbColaboradores" OnServerValidate="cvcmbColaboradores_ServerValidate" runat="server" Display="Dynamic" ErrorMessage="Por favor, seleccione al colaborador" Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="false" SetFocusOnError="true"></asp:CustomValidator>
+                                        <select id="cmbColaboradores" name="cmbColaboradores" class="form-control search-select" required runat="server">
+                                                  <option value="">&nbsp;</option>
+                                                <% foreach (var TipoUser in DatosGlobales.DatosAuxColab.ListaUsers)
+                                                    {
+                                                        Response.Write("<optgroup label='" + TipoUser.Descripcion + "'>");
+
+                                                        foreach(var ItemColab in DatosGlobales.DatosAuxColab.ListaColaboradores.Where(x => x.IDTipoUsuario == TipoUser.IDTUsuario ))
+                                                        {
+                                                                Response.Write("<option value='" + ItemColab.IDColaborador + "'>" + ItemColab.Nombre+ "</option>");
+                                                        }
+                                                        Response.Write("</optgroup>");
+                                                    } %>
+                                        </select>
+                                    </div>
+                                     </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
@@ -140,7 +163,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<div class="col-md-6">
-									<input type="submit" formaction="frmNuevaIncidencias.aspx" class="btn btn-green btn-block" name ="btnGuardar" value="Guardar" />
+									<input type="submit" formaction="frmNuevaIncidencia.aspx" class="btn btn-green btn-block" name ="btnGuardar" value="Guardar" />
 								</div>
 								<div class="col-md-6">
 									<a href="frmIncidencias.aspx" class ="btn btn-red btn-block" name ="btnCancelar" >Cancelar</a>
@@ -201,67 +224,70 @@
 	        //        });
 	        //    })
 	        //});
-
+          
+	        $("#cph_MasterBody_cmbMunicipio").change(function () {
+	            $("#cph_MasterBody_cmbMunicipio option:selected").each(function () {
+	                elegido = $(this).val();
+	                estado = <%=Datos.IDEstado%>;
+	                $("#cph_MasterBody_cmbPoligono option").remove();
+	                $.ajaxSetup({
+	                    async: false
+	                });
+	                console.log("estado: " + estado + ", municipio: " + elegido);
+	                $.getJSON('sfrmSeccionesCmb.aspx?municipio=' + elegido, function (data) {
+	                    $("#cph_MasterBody_cmbPoligono").append('<option value="">&nbsp;</option>');
+	                    $.each(data, function (key, value) {
+	                        $("#cph_MasterBody_cmbPoligono").append('<option value="' + value.IDSeccion + '">' + value.seccionDesc + '</option>');
+	                    });
+	                });
+	                $("#cph_MasterBody_cmbPoligono").trigger('change.select2');
+	                // Set the global configs back to asynchronous 
+	                $.ajaxSetup({
+	                    async: true
+	                });
+	            })
+	        });
+          
 	        $("#cmbMunicipio").change(function () {
 	            elegido = $(this).val();
 	            //console.log("Municipio elegido : " + elegido);
-	            if (!(elegido === ''))
+	            if (!(elegido === '')){
 	                if (document.getElementById('hfLatitud').value === '') {
-	                    Maps.init(1);
-	                }
-	            $("#cmbMunicipio option:selected").each(function () {
-	                elegido = $(this).val();
-	                estado = <%=Datos.IDEstado%>;
-	                $("#cmbPoligono option").remove();
-	                $.ajaxSetup({
-	                    async: false
-	                });
-	                //console.log("estado: " + estado + ", municipio: " + elegido);
-	                $.getJSON('sfrmPoligonos.aspx?estado=' + estado + '&municipio=' + elegido, function (data) {
-	                    $("#cmbPoligono").append('<option value="">&nbsp;</option>');
-	                    $.each(data, function (key, value) {
-	                        $("#cmbPoligono").append('<option value="' + value.IDPoligono + '">' + value.Descripcion + '</option>');
-	                    });
-	                });
-	                $("#cmbPoligono").trigger('change.select2');
-	                // Set the global configs back to asynchronous 
-	                $.ajaxSetup({
-	                    async: true
-	                });
-	            })
-	        });
-	        $("#cmbPoligono").change(function () {
-	            $("#cmbPoligono option:selected").each(function () {
-	                elegido = $(this).val();
+	                    Maps.init(1,<%=Datos.IDEstado%>,'<%=Datos.Estado%>');
+	                }}});
 	                
-	                $("#cmbPoligono option").remove();
-	                $.ajaxSetup({
-	                    async: false
-	                });
-	              
-	                $.getJSON('sfrmCmbSeccion.aspx?poligono=' + elegido, function (data) {
-	                    $("#cmbSeccion").append('<option value="">&nbsp;</option>');
-	                    $.each(data, function (key, value) {
-	                        $("#cmbSeccion").append('<option value="' + value.IDPoligono + '">' + value.Descripcion + '</option>');
+	            $("#cmbPoligono").change(function () {
+	                $("#cmbPoligono option:selected").each(function () {
+	                    elegido = $(this).val();
+	                
+	                    $("#cmbPoligono option").remove();
+	                    $.ajaxSetup({
+	                        async: false
 	                    });
-	                });
-	                $("#cmbSeccion").trigger('change.select2');
-	                // Set the global configs back to asynchronous 
-	                $.ajaxSetup({
-	                    async: true
-	                });
-	            })
+	              
+	                    $.getJSON('sfrmCasillasCmb.aspx?seccion=' + elegido, function (data) {
+	                        $("#cmbSeccion").append('<option value="">&nbsp;</option>');
+	                        $.each(data, function (key, value) {
+	                            $("#cmbSeccion").append('<option value="' + value.IDCasilla + '">' + value.DescCasilla + '</option>');
+	                        });
+	                    });
+	                    $("#cmbSeccion").trigger('change.select2');
+	                    // Set the global configs back to asynchronous 
+	                    $.ajaxSetup({
+	                        async: true
+	                    });
+	                })
+	            });      
+	      
+	            $("#cmbPoligono").change(function () {
+	                elegido = $(this).val();
+	                //console.log("Poligono elegido : " + elegido);
+	                if (!(elegido === '')){
+	                    if (document.getElementById('hfLatitud').value === '') {
+	                        Maps.init(1,<%=Datos.IDEstado%>,'<%=Datos.Estado%>');
+	                    }}});
+	                    
+	           
 	        });
-	        $("#cmbPoligono").change(function () {
-	            elegido = $(this).val();
-	            //console.log("Poligono elegido : " + elegido);
-	            if (!(elegido === ''))
-	                if (document.getElementById('hfLatitud').value === '') {
-	                    Maps.init(1);
-	                }
-	        });
-
-
-	    });
 	</script>
 </asp:Content>

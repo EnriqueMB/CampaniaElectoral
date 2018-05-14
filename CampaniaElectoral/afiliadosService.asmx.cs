@@ -108,7 +108,7 @@ namespace CampaniaElectoral
                 columns.Add(Item.ClaveElector);
                 columns.Add(Item.Operador);
                 string acciones = @"<div class='visible-md visible-lg hidden-sm hidden-xs'>
-                                        <a href='frmSeccionDetalle.aspx?id=" + Item.IDAfiliado + @"' class='btn btn-xs btn-blue tooltips' data-placement='top' data-original-title='Ver'> <i class='fa fa-edit fa fa-white'> </i> </a>
+                                        <a href='" + (!bandDatosComp ? string.Format("frmCompletarAfiliado.aspx?op=2&id={0}", Item.IDAfiliado): string.Format("frmNuevoAfiliado.aspx?op=2&id={0}", Item.IDAfiliado) )+ @"' class='btn btn-xs btn-blue tooltips' data-placement='top' data-original-title='Ver'> <i class='fa fa-edit fa fa-white'> </i> </a>
                                         <a href='/afiliadosService.asmx/Delete' class='btn btn-xs btn-red tooltips deleteRow' data-sku='" + Item.IDAfiliado + @"' data-placement='top' data-original-title='Ver'> <i class='fa fa-times fa fa-white'> </i> </a>
 									</div>
 									<div class='visible-xs visible-sm hidden-md hidden-lg'>
@@ -118,7 +118,7 @@ namespace CampaniaElectoral
 											</a>
 											<ul role = 'menu' class='dropdown-menu pull-right dropdown-dark'>
 												<li>														
-                                                    <a href='frmSeccionDetalle.aspx?id=" + Item.IDAfiliado + @"' role='menuitem' tabindex='-1' class='tooltips' data-placement='top' data-original-title='Ver'><i class='fa fa-edit'></i>Ver</a>
+                                                    <a href='" + (!bandDatosComp ? string.Format("frmCompletarAfiliado.aspx?op=2&id={0}", Item.IDAfiliado) : string.Format("frmNuevoAfiliado.aspx?op=2&id={0}", Item.IDAfiliado)) + @"' role='menuitem' tabindex='-1' class='tooltips' data-placement='top' data-original-title='Ver'><i class='fa fa-edit'></i>Ver</a>
 												</li>
                                                 <li>
                                                     <a href='/afiliadosService.asmx/Delete' role='menuitem' tabindex='-1' class='tooltips deleteRow' data-placement='top' data-sku='" + Item.IDAfiliado + @"' data-original-title='Ver'><i class='fa fa-times'></i>Eliminar</a>

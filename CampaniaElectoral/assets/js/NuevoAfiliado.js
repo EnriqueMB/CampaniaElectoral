@@ -67,12 +67,15 @@
                     required: true
                 },
                 ctl00$cph_MasterBody$txtCelular: {
+                    required: true,
                     number: true
                 },
                 ctl00$cph_MasterBody$txtNumeroExt: {
+                    required: true,
                     number: true
                 },
                 ctl00$cph_MasterBody$txtNumeroInt: {
+                    required: true,
                     number: true
                 },
                 ctl00$cph_MasterBody$cmbSeccion: {
@@ -104,9 +107,21 @@
                 ctl00$cph_MasterBody$txtClavElector: "Por favor, ingrese la clave de elector",
                 ctl00$cph_MasterBody$txtCorreoElectronico: "Por favor, ingrese el correo electr&oacute;nico",
                 ctl00$cph_MasterBody$cmbGenero: "Por favor, seleciones un g&eacute;nero",
-                ctl00$cph_MasterBody$txtCelular: "Por favor, ingrese un n&uacute;mero valido",
-                ctl00$cph_MasterBody$txtNumeroExt: "Por favor, ingrese un n&uacute;mero exterior valido",
-                ctl00$cph_MasterBody$txtNumeroInt: "Por favor, ingrese un n&uacute;mero interior valido",
+                ctl00$cph_MasterBody$txtCelular:
+                    {
+                        required: "Por favor, ingrese un n&uacute;mero valido",
+                        number: "Por favor, ingrese un n&uacute;mero valido"
+                    },
+                ctl00$cph_MasterBody$txtNumeroExt:
+                    {
+                        required: "Por favor, ingrese un n&uacute;mero exterior valido",
+                        number: "Por favor, ingrese un n&uacute;mero exterior valido"
+                    },
+                ctl00$cph_MasterBody$txtNumeroInt:
+                    {
+                        required: "Por favor, ingrese un n&uacute;mero interior valido",
+                        number: "Por favor, ingrese un n&uacute;mero interior valido"
+                    },
                 ctl00$cph_MasterBody$cmbSeccion: {
                     required: "Por favor, seleccione una secci&oacute;n.",
                     min: "Por favor, seleccione una secci&oacute;n."

@@ -36,7 +36,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="control-label" for="cmbPoligono">
-                                    Casilla
+                                    Seccion
                                 </label>
                                 <select id="cmbPoligono" name="cmbPoligono" class="form-control search-select">
                                     <option value="">&nbsp;</option>
@@ -46,7 +46,7 @@
                          <div class="col-md-3">
                             <div class="form-group">
                                 <label class="control-label" for="cmbSeccion">
-                                    Seccion
+                                    Casilla
                                 </label>
                                 <select id="cmbSeccion" name="cmbSeccion" class="form-control search-select">
                                     <option value="">&nbsp;</option>
@@ -85,19 +85,6 @@
 	    jQuery(document).ready(function () {
 	        Maps.init(<%=Datos.IDEstado%>,'<%=Datos.Estado%>');
 
-	        $("#btnFiltrar").click(function (event) {
-	            console.log("1");
-	            event.preventDefault();
-
-	            //Si no hay nada seleccionado, el mapa se inicializa con los datos de geolocalización
-	            //if (!(selectedEstado.text.trim() === '' && selectedMunicipio.text.trim() === '' && selectedPoligono.text.trim() === ''))
-	            //{
-	            //}
-                
-	            Maps.init(<%=Datos.IDEstado%>,'<%=Datos.Estado%>');
-	        });
-
-
 	        //$("#cmbEstado").change(function () {
 	        //    $("#cmbEstado option:selected").each(function () {
 	        //        elegido = $(this).val();
@@ -129,12 +116,12 @@
 	                    async: false
 	                });
 	                console.log("estado: " + estado + ", municipio: " + elegido);
-	                $.getJSON('sfrmPoligonos.aspx?estado=' + estado + '&municipio=' + elegido, function (data) {
+	                $.getJSON('sfrmSeccionesCmb.aspx?municipio=' + elegido, function (data) {
 	                    $("#cmbPoligono").append('<option value="">&nbsp;</option>');
 	                    $.each(data, function (key, value) {
-	                        $("#cmbPoligono").append('<option value="' + value.IDPoligono + '">' + value.Descripcion + '</option>');
+	                        $("#cmbPoligono").append('<option value="' + value.IDSeccion + '">' + value.seccionDesc + '</option>');
 	                    });
-	                });
+                    });
 	                $("#cmbPoligono").trigger('change.select2');
 	                // Set the global configs back to asynchronous 
 	                $.ajaxSetup({
@@ -146,17 +133,17 @@
                 $("#cmbPoligono option:selected").each(function () {
 	                elegido = $(this).val();
 	                
-	                $("#cmbPoligono option").remove();
+	                $("#cmbSeccion option").remove();
 	                $.ajaxSetup({
 	                    async: false
 	                });
 	              
-	                $.getJSON('sfrmCmbSeccion.aspx?poligono=' + elegido, function (data) {
+	                $.getJSON('sfrmCasillasCmb.aspx?seccion=' + elegido, function (data) {
 	                    $("#cmbSeccion").append('<option value="">&nbsp;</option>');
 	                    $.each(data, function (key, value) {
-	                        $("#cmbSeccion").append('<option value="' + value.IDPoligono + '">' + value.Descripcion + '</option>');
+	                        $("#cmbSeccion").append('<option value="' + value.IDCasilla + '">' + value.DescCasilla + '</option>');
 	                    });
-	                });
+                    });
 	                $("#cmbSeccion").trigger('change.select2');
 	                // Set the global configs back to asynchronous 
 	                $.ajaxSetup({
@@ -165,7 +152,18 @@
 	            })
 	        });
 
+            
+	        $("#btnFiltrar").click(function (event) {
+	            console.log("1");
+	            event.preventDefault();
 
+	            //Si no hay nada seleccionado, el mapa se inicializa con los datos de geolocalización
+	            //if (!(selectedEstado.text.trim() === '' && selectedMunicipio.text.trim() === '' && selectedPoligono.text.trim() === ''))
+	            //{
+	            //}
+                
+	            Maps.init(<%=Datos.IDEstado%>,'<%=Datos.Estado%>');
+	        });
 	    });
 	</script>
 </asp:Content>

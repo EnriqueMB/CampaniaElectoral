@@ -192,6 +192,23 @@ namespace DllCampElectoral.Global
             set { _RecordFilter = value; }
         }
 
+        private string _SeccionesMayorAvance;
+
+        public string SeccionesMayorAvance
+        {
+            get { return _SeccionesMayorAvance; }
+            set { _SeccionesMayorAvance = value; }
+        }
+
+        private string _SeccionesMenorAvance;
+
+        public string SeccionesMenorAvance
+        {
+            get { return _SeccionesMenorAvance; }
+            set { _SeccionesMenorAvance = value; }
+        }
+
+
 
         private string _Conexion;
 
