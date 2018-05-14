@@ -317,7 +317,7 @@
                                     <input type="submit" formaction="frmCompletarAfiliado.aspx" class="btn btn-green btn-block" name="btnGuardar" value="Guardar" />
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="frmCompletarAfiliadosGrid.aspx" class="btn btn-red btn-block" name="btnCancelar">Cancelar</a>
+                                    <a href="frmAfiliados.aspx?op=2" class="btn btn-red btn-block" name="btnCancelar">Cancelar</a>
                                 </div>
                             </div>
                         </div>
