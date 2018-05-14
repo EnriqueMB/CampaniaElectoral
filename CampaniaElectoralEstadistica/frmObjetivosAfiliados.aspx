@@ -92,7 +92,7 @@
         </div>
         <div class="panel-body text-center">
             <h4><small>Sección o Secciones con menor avance:</small></h4>
-          <small class="text-muted block">(1100) (2123) (1233)</small>
+          <small class="text-muted block"><%=Datos.SeccionesMenorAvance %></small>
           <div class="inline">
             <div ui-jq="easyPieChart"  ui-options="{
                       percent: <%=Datos.PorcentajeAvanceSeccion %>,
@@ -111,7 +111,9 @@
             </div>
           </div>
         </div>
-        <div class="panel-footer"><small>Sección con mayor avance: (2341)</small></div>
+        <div class="panel-footer text-center">
+            <h4><small>Sección o Secciones con mayor avance:</small></h4>
+            <small class="text-muted block"><%=Datos.SeccionesMayorAvance %></small></div>
       </div>
     </div>
    

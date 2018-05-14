@@ -66,7 +66,7 @@
                     arrayJson[n] = new google.maps.LatLng(array2d[n][0], array2d[n][1]);
                 }
 
-                //console.log(arrayJson);
+                console.log(arrayJson);
                 var casilla = new google.maps.Polygon({
                     paths: arrayJson,
                     strokeColor: '#BBD8E9',
