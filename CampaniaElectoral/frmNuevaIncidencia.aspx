@@ -140,7 +140,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<div class="col-md-6">
-									<input type="submit" formaction="frmNuevaIncidencias.aspx" class="btn btn-green btn-block" name ="btnGuardar" value="Guardar" />
+									<input type="submit" formaction="frmNuevaIncidencia.aspx" class="btn btn-green btn-block" name ="btnGuardar" value="Guardar" />
 								</div>
 								<div class="col-md-6">
 									<a href="frmIncidencias.aspx" class ="btn btn-red btn-block" name ="btnCancelar" >Cancelar</a>
@@ -201,14 +201,8 @@
 	        //        });
 	        //    })
 	        //});
-
+          
 	        $("#cmbMunicipio").change(function () {
-	            elegido = $(this).val();
-	            //console.log("Municipio elegido : " + elegido);
-	            if (!(elegido === ''))
-	                if (document.getElementById('hfLatitud').value === '') {
-	                    Maps.init(1);
-	                }
 	            $("#cmbMunicipio option:selected").each(function () {
 	                elegido = $(this).val();
 	                estado = <%=Datos.IDEstado%>;
@@ -216,11 +210,11 @@
 	                $.ajaxSetup({
 	                    async: false
 	                });
-	                //console.log("estado: " + estado + ", municipio: " + elegido);
-	                $.getJSON('sfrmPoligonos.aspx?estado=' + estado + '&municipio=' + elegido, function (data) {
+	                console.log("estado: " + estado + ", municipio: " + elegido);
+	                $.getJSON('sfrmSeccionesCmb.aspx?municipio=' + elegido, function (data) {
 	                    $("#cmbPoligono").append('<option value="">&nbsp;</option>');
 	                    $.each(data, function (key, value) {
-	                        $("#cmbPoligono").append('<option value="' + value.IDPoligono + '">' + value.Descripcion + '</option>');
+	                        $("#cmbPoligono").append('<option value="' + value.IDSeccion + '">' + value.seccionDesc + '</option>');
 	                    });
 	                });
 	                $("#cmbPoligono").trigger('change.select2');
@@ -230,38 +224,44 @@
 	                });
 	            })
 	        });
-	        $("#cmbPoligono").change(function () {
-	            $("#cmbPoligono option:selected").each(function () {
-	                elegido = $(this).val();
-	                
-	                $("#cmbPoligono option").remove();
-	                $.ajaxSetup({
-	                    async: false
-	                });
-	              
-	                $.getJSON('sfrmCmbSeccion.aspx?poligono=' + elegido, function (data) {
-	                    $("#cmbSeccion").append('<option value="">&nbsp;</option>');
-	                    $.each(data, function (key, value) {
-	                        $("#cmbSeccion").append('<option value="' + value.IDPoligono + '">' + value.Descripcion + '</option>');
-	                    });
-	                });
-	                $("#cmbSeccion").trigger('change.select2');
-	                // Set the global configs back to asynchronous 
-	                $.ajaxSetup({
-	                    async: true
-	                });
-	            })
-	        });
-	        $("#cmbPoligono").change(function () {
+          
+	        $("#cmbMunicipio").change(function () {
 	            elegido = $(this).val();
-	            //console.log("Poligono elegido : " + elegido);
+	            //console.log("Municipio elegido : " + elegido);
 	            if (!(elegido === ''))
 	                if (document.getElementById('hfLatitud').value === '') {
-	                    Maps.init(1);
+	                    Maps.init(1,<%=Datos.IDEstado%>,'<%=Datos.Estado%>');
 	                }
-	        });
-
-
-	    });
-	</script>
+	            $("#cmbPoligono").change(function () {
+	                $("#cmbPoligono option:selected").each(function () {
+	                    elegido = $(this).val();
+	                
+	                    $("#cmbPoligono option").remove();
+	                    $.ajaxSetup({
+	                        async: false
+	                    });
+	              
+	                    $.getJSON('sfrmCasillasCmb.aspx?seccion=' + elegido, function (data) {
+	                        $("#cmbSeccion").append('<option value="">&nbsp;</option>');
+	                        $.each(data, function (key, value) {
+	                            $("#cmbSeccion").append('<option value="' + value.IDCasilla + '">' + value.DescCasilla + '</option>');
+	                        });
+	                    });
+	                    $("#cmbSeccion").trigger('change.select2');
+	                    // Set the global configs back to asynchronous 
+	                    $.ajaxSetup({
+	                        async: true
+	                    });
+	                })
+	            });      
+	      
+	            $("#cmbPoligono").change(function () {
+	                elegido = $(this).val();
+	                //console.log("Poligono elegido : " + elegido);
+	                if (!(elegido === ''))
+	                    if (document.getElementById('hfLatitud').value === '') {
+	                        Maps.init(1,<%=Datos.IDEstado%>,'<%=Datos.Estado%>');
+	                    }
+	            });
+	        })});</script>
 </asp:Content>
