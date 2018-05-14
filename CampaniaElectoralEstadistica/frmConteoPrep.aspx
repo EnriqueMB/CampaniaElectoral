@@ -16,7 +16,7 @@
                               <i class="fa fa-caret-down text-warning m-r-sm"></i>
                           </div>--%>
                       </a>
-                  </div>
+                      </div>
                   <div class="col-xs-6">
                       <a href class="block panel padder-v bg-dark item">
                           <span class="text-white font-thin h1 block"><%=ConteoPagina.CasillaEmpatada%></span>
