@@ -55,7 +55,7 @@
                                            <%= item.casilla%>
                                         </td>
                                         <td>
-                                            <%= item.tipoRiesgo%>
+                                            <%= item.encargado%>
                                         </td>
                                         <td>
                                             <%= item.domicilio%>
