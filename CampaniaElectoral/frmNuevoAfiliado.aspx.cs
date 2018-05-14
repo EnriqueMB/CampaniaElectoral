@@ -49,77 +49,24 @@ namespace CampaniaElectoral
                                 else
                                 {
                                     //Ocurrió un error 
-                                    Response.Redirect("frmAfiliadosGrid.aspx?error=" + "Error al cargar los datos&nError=1");
+                                    Response.Redirect("frmAfiliados.aspx?error=" + "Error al cargar los datos&nError=1");
                                 }
                             }
                             else
                             {
-                                Response.Redirect("frmAfiliadosGrid.aspx");
+                                Response.Redirect("frmAfiliados.aspx?error=" + "Error al cargar los datos&nError=1");
                             }
                         }
                         else
-                            Response.Redirect("frmAfiliadosGrid.aspx");
+                            Response.Redirect("frmAfiliados.aspx?error=" + "Error al cargar los datos&nError=1");
                     }
                     else
 
-                        Response.Redirect("frmAfiliadosGrid.aspx");
+                        Response.Redirect("frmAfiliados.aspx?error=" + "Error al cargar los datos&nError=1");
                 }
                 else
                 {
                     this.IniciarDatos();
-                }
-            }
-            else
-            {
-                Page.Validate();
-                if (Page.IsValid)
-                {
-
-                    if (Request.Form.Count == 22)
-                    {
-                        int cp = 0, genero = 0;
-                        DateTime fecAfiliacion;
-                        string operador = Request.Form["ctl00$cph_MasterBody$cmbOperador"].ToString();
-                        string nombre = Request.Form["ctl00$cph_MasterBody$txtNombreAfiliado"].ToString();
-                        string apepat = Request.Form["ctl00$cph_MasterBody$txtApePatAfiliado"].ToString();
-                        string apemat = Request.Form["ctl00$cph_MasterBody$txtApeMatAfiliado"].ToString();
-                        DateTime.TryParseExact(Request.Form["ctl00$cph_MasterBody$txtFechaAfiliacion"], "dd/MM/yyyy", CultureInfo.CurrentCulture, System.Globalization.DateTimeStyles.None, out fecAfiliacion);
-                        //int estado = Convert.ToInt32(Request.Form["txtEstadoAfil"]);
-                        //int municipio = Convert.ToInt32(Request.Form["MunicpioAfil"]);
-                        int estado = 7;
-                        int municipio = Convert.ToInt32(Request.Form["ctl00$cph_MasterBody$cmbMunicipio"].ToString());
-                        //string id_poligono = Request.Form["cmbSeccion"].ToString();
-                        //string seccion = Request.Form["cmbSeccion"].ToString();
-                        int seccion = Convert.ToInt32(Request.Form["ctl00$cph_MasterBody$cmbSeccion"].ToString());
-                        string direccion = Request.Form["ctl00$cph_MasterBody$txtDireccion"].ToString();
-                        string numExt = Request.Form["ctl00$cph_MasterBody$txtNumeroExt"].ToString();
-                        string numInt = Request.Form["ctl00$cph_MasterBody$txtNumeroInt"].ToString();
-                        string colonia = Request.Form["ctl00$cph_MasterBody$txtColonia"].ToString();
-                        int.TryParse(Request.Form["ctl00$cph_MasterBody$txtCodigoP"].ToString(), out cp);
-                        string clvElector = Request.Form["ctl00$cph_MasterBody$txtClavElector"].ToString();
-                        string correo = Request.Form["ctl00$cph_MasterBody$txtCorreoElectronico"].ToString();
-                        string celular = Request.Form["ctl00$cph_MasterBody$txtCelular"].ToString();
-                        int.TryParse(Request.Form["ctl00$cph_MasterBody$cmbGenero"].ToString(), out genero);
-                        string observaciones = Request.Form["ctl00$cph_MasterBody$txtObservaciones"].ToString();
-                        try
-                        {
-                            string AuxID = Request.Form["ctl00$cph_MasterBody$hf"].ToString();
-                            //IDColaborador = AuxID;
-                            bool NuevoRegistro = AuxID == "";
-                            this.Guardar(NuevoRegistro, AuxID, operador, nombre, apepat, apemat, fecAfiliacion,
-                                estado, municipio, seccion, direccion, numExt, numInt, colonia, cp, clvElector, correo, celular, genero, observaciones);
-                        }
-                        catch (Exception ex)
-                        {
-                            Response.Redirect("ErrorPage.aspx?msjError=" + ex.Message);
-                        }
-
-                    }
-                }
-                else
-                {
-                    string x = Page.Validators.Count.ToString();
-                    //Response.Redirect("frmNuevoAfiliado.aspx");
                 }
             }
         }
@@ -304,6 +251,54 @@ namespace CampaniaElectoral
         protected void cvGenero_ServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = (Convert.ToInt32(args.Value) >= 0);
+        }
+
+        protected void buttonSubmit_Click(object sender, EventArgs e)
+        {
+            if (Page.IsValid)
+            {
+
+                if (Request.Form.Count == 22)
+                {
+                    int cp = 0, genero = 0;
+                    DateTime fecAfiliacion;
+                    string operador = Request.Form["ctl00$cph_MasterBody$cmbOperador"].ToString();
+                    string nombre = Request.Form["ctl00$cph_MasterBody$txtNombreAfiliado"].ToString();
+                    string apepat = Request.Form["ctl00$cph_MasterBody$txtApePatAfiliado"].ToString();
+                    string apemat = Request.Form["ctl00$cph_MasterBody$txtApeMatAfiliado"].ToString();
+                    DateTime.TryParseExact(Request.Form["ctl00$cph_MasterBody$txtFechaAfiliacion"], "dd/MM/yyyy", CultureInfo.CurrentCulture, System.Globalization.DateTimeStyles.None, out fecAfiliacion);
+                    //int estado = Convert.ToInt32(Request.Form["txtEstadoAfil"]);
+                    //int municipio = Convert.ToInt32(Request.Form["MunicpioAfil"]);
+                    int estado = 7;
+                    int municipio = Convert.ToInt32(Request.Form["ctl00$cph_MasterBody$cmbMunicipio"].ToString());
+                    //string id_poligono = Request.Form["cmbSeccion"].ToString();
+                    //string seccion = Request.Form["cmbSeccion"].ToString();
+                    int seccion = Convert.ToInt32(Request.Form["ctl00$cph_MasterBody$cmbSeccion"].ToString());
+                    string direccion = Request.Form["ctl00$cph_MasterBody$txtDireccion"].ToString();
+                    string numExt = Request.Form["ctl00$cph_MasterBody$txtNumeroExt"].ToString();
+                    string numInt = Request.Form["ctl00$cph_MasterBody$txtNumeroInt"].ToString();
+                    string colonia = Request.Form["ctl00$cph_MasterBody$txtColonia"].ToString();
+                    int.TryParse(Request.Form["ctl00$cph_MasterBody$txtCodigoP"].ToString(), out cp);
+                    string clvElector = Request.Form["ctl00$cph_MasterBody$txtClavElector"].ToString();
+                    string correo = Request.Form["ctl00$cph_MasterBody$txtCorreoElectronico"].ToString();
+                    string celular = Request.Form["ctl00$cph_MasterBody$txtCelular"].ToString();
+                    int.TryParse(Request.Form["ctl00$cph_MasterBody$cmbGenero"].ToString(), out genero);
+                    string observaciones = Request.Form["ctl00$cph_MasterBody$txtObservaciones"].ToString();
+                    try
+                    {
+                        string AuxID = Request.Form["ctl00$cph_MasterBody$hf"].ToString();
+                        //IDColaborador = AuxID;
+                        bool NuevoRegistro = AuxID == "";
+                        this.Guardar(NuevoRegistro, AuxID, operador, nombre, apepat, apemat, fecAfiliacion,
+                            estado, municipio, seccion, direccion, numExt, numInt, colonia, cp, clvElector, correo, celular, genero, observaciones);
+                    }
+                    catch (Exception ex)
+                    {
+                        Response.Redirect("ErrorPage.aspx?msjError=" + ex.Message);
+                    }
+
+                }
+            }
         }
     }
 }
