@@ -8,20 +8,22 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Lista de representantes con <%=Texto%>
-                </div>
-                <div>
-                    <table class="datatable" id="sample_1" >
-                        <thead>
-                          <tr>
-                            <th></th>
-                            <th data-breakpoints="xs">Sección</th>
-                            <th>Encargado</th>
-                            <th data-breakpoints="xs">Avance</th>
-                          </tr>
-                        </thead>
-                        <tbody>                            
-                        </tbody>
-                    </table>
+                </div>       
+                <div class="panel-body">
+					<div class="table-responsive">
+						<table class="table table-striped table-bordered table-hover table-full-width" id="sample_1">
+                            <thead>
+                              <tr>
+                                <th></th>
+                                <th data-breakpoints="xs">Sección</th>
+                                <th>Encargado</th>
+                                <th data-breakpoints="xs">Avance</th>
+                              </tr>
+                            </thead>
+                            <tbody>                            
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

@@ -860,6 +860,7 @@
     <Content Include="js\app.min.js" />
     <Content Include="js\app.src.js" />
     <Content Include="js\EstadisticosAfiliados.js" />
+    <Content Include="js\EstadisticosAfiliadosRespaldo.js" />
     <Content Include="js\representantes.js" />
     <Content Include="js\ui-client.js" />
     <Content Include="js\ui-jp.config.js" />
@@ -1061,6 +1062,7 @@
     <Content Include="libs\jquery\footable\css\fonts\footable.eot" />
     <Content Include="libs\jquery\footable\css\fonts\footable.ttf" />
     <Content Include="libs\jquery\footable\css\fonts\footable.woff" />
+    <Content Include="sfrmEstadisticosAfiliados.aspx" />
     <Content Include="sfrmLogout.aspx" />
     <Content Include="sfrmObtenerPoligono.aspx" />
     <Content Include="siteEstadisticos.Master" />
@@ -1148,6 +1150,23 @@
     <Content Include="assets\plugins\sweetalert\LICENSE" />
     <Content Include="assets\plugins\sweetalert\package.json" />
     <Content Include="assets\plugins\sweetalert\README.md" />
+    <Content Include="assets\SeccionesKML\1603.kml" />
+    <Content Include="assets\SeccionesKML\1604.kml" />
+    <Content Include="assets\SeccionesKML\1605.kml" />
+    <Content Include="assets\SeccionesKML\1607.kml" />
+    <Content Include="assets\SeccionesKML\1608.kml" />
+    <Content Include="assets\SeccionesKML\1609.kml" />
+    <Content Include="assets\SeccionesKML\1610.kml" />
+    <Content Include="assets\SeccionesKML\1611.kml" />
+    <Content Include="assets\SeccionesKML\1612.kml" />
+    <Content Include="assets\SeccionesKML\1613.kml" />
+    <Content Include="assets\SeccionesKML\1614.kml" />
+    <Content Include="assets\SeccionesKML\1615.kml" />
+    <Content Include="assets\SeccionesKML\1616.kml" />
+    <Content Include="assets\SeccionesKML\1617.kml" />
+    <Content Include="assets\SeccionesKML\1618.kml" />
+    <Content Include="assets\SeccionesKML\1619.kml" />
+    <Content Include="assets\SeccionesKML\1620.kml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1233,6 +1252,13 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sfrmEstadisticosAfiliados.aspx.cs">
+      <DependentUpon>sfrmEstadisticosAfiliados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sfrmEstadisticosAfiliados.aspx.designer.cs">
+      <DependentUpon>sfrmEstadisticosAfiliados.aspx</DependentUpon>
+    </Compile>
     <Compile Include="sfrmObtenerPoligono.aspx.cs">
       <DependentUpon>sfrmObtenerPoligono.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
