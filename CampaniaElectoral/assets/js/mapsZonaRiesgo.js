@@ -110,7 +110,7 @@
                         infoWindow: {
                             content: '<p>' + value.Titulo + '</p>'
                                     + '<p>' + value.Descripcion + '</p>'
-                                    + '<a clas="fa-external-link" href="frmNuevaZonaRiesgo.aspx?op=2&id=' + value.IDRiesgo + '">Editar</a>'
+                                    + '<a clas="fa-external-link" href="frmNuevaIncidencia.aspx?op=2&id=' + value.IDRiesgo + '">Editar</a>'
                         }
                     });
 

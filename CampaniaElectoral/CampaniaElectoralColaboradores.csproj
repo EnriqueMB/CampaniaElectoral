@@ -25,6 +25,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -263,6 +264,7 @@
     <Content Include="assets\js\mapsResultado.js" />
     <Content Include="assets\js\mapsSeccion.js" />
     <Content Include="assets\js\mapsZonaRiesgo.js" />
+    <Content Include="assets\js\NuevoAfiliado.js" />
     <Content Include="assets\js\pages-calendar.js" />
     <Content Include="assets\js\pages-gallery.js" />
     <Content Include="assets\js\pages-timeline.js" />

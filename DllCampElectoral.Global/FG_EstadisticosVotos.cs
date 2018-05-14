@@ -88,5 +88,23 @@ namespace DllCampElectoral.Global
 
 
         #endregion
+
+
+
+//        select count(id_afiliado) as votosXSeccion
+//,ca.seccion
+//,csc.MetaVotosXSeccion
+//from[dbo].[tbl_CatSeccionesCamp] as csc
+//join tbl_catafiliado ca on ca.seccion = csc.id_seccion
+//where
+//ca.activo = 1
+//and ca.validacionVoto = 1
+//and ca.validacionDatos = 1
+//and ca.ratificacion = 1
+//group by
+//ca.seccion
+//csc.MetaVotosXSeccion
+
+
     }
 }

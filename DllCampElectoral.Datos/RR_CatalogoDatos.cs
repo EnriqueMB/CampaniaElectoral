@@ -1218,7 +1218,7 @@ namespace DllCampElectoral.Datos
                     Datos.Direccion = !Dr.IsDBNull(Dr.GetOrdinal("direccion")) ? Dr.GetString(Dr.GetOrdinal("direccion")) : string.Empty;//Dr.GetString(Dr.GetOrdinal("direccion"));
                     Datos.NumeroExt = !Dr.IsDBNull(Dr.GetOrdinal("numeroExt")) ? Dr.GetString(Dr.GetOrdinal("numeroExt")) : string.Empty;//Dr.GetString(Dr.GetOrdinal("numeroExt"));
                     Datos.NumeroInt = !Dr.IsDBNull(Dr.GetOrdinal("numeroInt")) ? Dr.GetString(Dr.GetOrdinal("numeroInt")) : string.Empty;//Dr.GetString(Dr.GetOrdinal("numeroInt"));
-                    Datos.Seccion = !Dr.IsDBNull(Dr.GetOrdinal("seccion")) ? Dr.GetString(Dr.GetOrdinal("seccion")) : string.Empty;//Dr.GetString(Dr.GetOrdinal("seccion"));
+                    Datos.Seccion = !Dr.IsDBNull(Dr.GetOrdinal("seccion")) ? Dr.GetInt32(Dr.GetOrdinal("seccion")) : 0;//Dr.GetString(Dr.GetOrdinal("seccion"));
                     Datos.Colonia = !Dr.IsDBNull(Dr.GetOrdinal("colonia")) ? Dr.GetString(Dr.GetOrdinal("colonia")) : string.Empty;//Dr.GetString(Dr.GetOrdinal("colonia"));
                     Datos.CodigoPostal = !Dr.IsDBNull(Dr.GetOrdinal("codigoPostal")) ? Dr.GetInt32(Dr.GetOrdinal("codigoPostal")) : 0;//Dr.GetInt32(Dr.GetOrdinal("codigoPostal"));
                     Datos.ClaveElector = !Dr.IsDBNull(Dr.GetOrdinal("claveElector")) ? Dr.GetString(Dr.GetOrdinal("claveElector")) : string.Empty;//Dr.GetString(Dr.GetOrdinal("claveElector"));
@@ -1226,8 +1226,48 @@ namespace DllCampElectoral.Datos
                     Datos.Celular = !Dr.IsDBNull(Dr.GetOrdinal("celular")) ? Dr.GetString(Dr.GetOrdinal("celular")) : string.Empty; //Dr.GetString(Dr.GetOrdinal("celular"));
                     Datos.Genero = !Dr.IsDBNull(Dr.GetOrdinal("genero")) ? Dr.GetInt32(Dr.GetOrdinal("genero")) : 0;//Dr.GetInt32(Dr.GetOrdinal("genero"));
                     Datos.Observaciones = !Dr.IsDBNull(Dr.GetOrdinal("observaciones")) ? Dr.GetString(Dr.GetOrdinal("observaciones")) : string.Empty;//Dr.GetString(Dr.GetOrdinal("observaciones"));
-                    Datos.IDPoligono = !Dr.IsDBNull(Dr.GetOrdinal("id_poligono")) ? Dr.GetString(Dr.GetOrdinal("id_poligono")) : string.Empty;//Dr.GetString(Dr.GetOrdinal("id_poligono"));
+                    //Datos.IDPoligono = !Dr.IsDBNull(Dr.GetOrdinal("id_poligono")) ? Dr.GetString(Dr.GetOrdinal("id_poligono")) : string.Empty;//Dr.GetString(Dr.GetOrdinal("id_poligono"));
+                    Datos.IDColaborador = !Dr.IsDBNull(Dr.GetOrdinal("id_colaboradorasignado")) ? Dr.GetString(Dr.GetOrdinal("id_colaboradorasignado")) : string.Empty;//Dr.GetString(Dr.GetOrdinal("id_colaborador"));
+                    Datos.Completado = true;
+                    break;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void ObtenerDetalleAfiliadOCompletarXID(RR_Afiliados Datos)
+        {
+            try
+            {
+                object[] Parametros = { Datos.IDAfiliado };
+                SqlDataReader Dr = SqlHelper.ExecuteReader(Datos.Conexion, "RR_spCSLDB_get_AfiliadosCompletarDetalle", Parametros);
+                while (Dr.Read())
+                {
+                    Datos.IDAfiliado = !Dr.IsDBNull(Dr.GetOrdinal("id_afiliado")) ? Dr.GetString(Dr.GetOrdinal("id_afiliado")) : string.Empty;//Dr.GetString(Dr.GetOrdinal("id_afiliado"));
+                    Datos.Nombre = !Dr.IsDBNull(Dr.GetOrdinal("nombre")) ? Dr.GetString(Dr.GetOrdinal("nombre")) : string.Empty;//Dr.GetString(Dr.GetOrdinal("nombre"));
+                    Datos.ApePat = !Dr.IsDBNull(Dr.GetOrdinal("apePat")) ? Dr.GetString(Dr.GetOrdinal("apePat")) : string.Empty;//Dr.GetString(Dr.GetOrdinal("apePat"));
+                    Datos.ApeMat = !Dr.IsDBNull(Dr.GetOrdinal("apeMat")) ? Dr.GetString(Dr.GetOrdinal("apeMat")) : string.Empty;//Dr.GetString(Dr.GetOrdinal("apeMat"));
+                    Datos.FechaAfiliacion = !Dr.IsDBNull(Dr.GetOrdinal("fechaAfiliacion")) ? Dr.GetDateTime(Dr.GetOrdinal("fechaAfiliacion")) : DateTime.Now;//Dr.GetDateTime(Dr.GetOrdinal("fechaAfiliacion"));
+                    Datos.Estado = !Dr.IsDBNull(Dr.GetOrdinal("estado")) ? Dr.GetInt32(Dr.GetOrdinal("estado")) : 0;//Dr.GetInt32(Dr.GetOrdinal("estado"));
+                    Datos.Municipio = !Dr.IsDBNull(Dr.GetOrdinal("municipio")) ? Dr.GetInt32(Dr.GetOrdinal("municipio")) : 0;//Dr.GetInt32(Dr.GetOrdinal("municipio"));
+                    Datos.Direccion = !Dr.IsDBNull(Dr.GetOrdinal("direccion")) ? Dr.GetString(Dr.GetOrdinal("direccion")) : string.Empty;//Dr.GetString(Dr.GetOrdinal("direccion"));
+                    Datos.NumeroExt = !Dr.IsDBNull(Dr.GetOrdinal("numeroExt")) ? Dr.GetString(Dr.GetOrdinal("numeroExt")) : string.Empty;//Dr.GetString(Dr.GetOrdinal("numeroExt"));
+                    Datos.NumeroInt = !Dr.IsDBNull(Dr.GetOrdinal("numeroInt")) ? Dr.GetString(Dr.GetOrdinal("numeroInt")) : string.Empty;//Dr.GetString(Dr.GetOrdinal("numeroInt"));
+                    Datos.Seccion = !Dr.IsDBNull(Dr.GetOrdinal("seccion")) ? Dr.GetInt32(Dr.GetOrdinal("seccion")) : 0;//Dr.GetString(Dr.GetOrdinal("seccion"));
+                    Datos.Colonia = !Dr.IsDBNull(Dr.GetOrdinal("colonia")) ? Dr.GetString(Dr.GetOrdinal("colonia")) : string.Empty;//Dr.GetString(Dr.GetOrdinal("colonia"));
+                    Datos.CodigoPostal = !Dr.IsDBNull(Dr.GetOrdinal("codigoPostal")) ? Dr.GetInt32(Dr.GetOrdinal("codigoPostal")) : 0;//Dr.GetInt32(Dr.GetOrdinal("codigoPostal"));
+                    Datos.ClaveElector = !Dr.IsDBNull(Dr.GetOrdinal("claveElector")) ? Dr.GetString(Dr.GetOrdinal("claveElector")) : string.Empty;//Dr.GetString(Dr.GetOrdinal("claveElector"));
+                    Datos.CorreoElect = !Dr.IsDBNull(Dr.GetOrdinal("correoElec")) ? Dr.GetString(Dr.GetOrdinal("correoElec")) : string.Empty;//Dr.GetString(Dr.GetOrdinal("correoElec"));
+                    Datos.Celular = !Dr.IsDBNull(Dr.GetOrdinal("celular")) ? Dr.GetString(Dr.GetOrdinal("celular")) : string.Empty; //Dr.GetString(Dr.GetOrdinal("celular"));
+                    Datos.Genero = !Dr.IsDBNull(Dr.GetOrdinal("genero")) ? Dr.GetInt32(Dr.GetOrdinal("genero")) : 0;//Dr.GetInt32(Dr.GetOrdinal("genero"));
+                    Datos.Observaciones = !Dr.IsDBNull(Dr.GetOrdinal("observaciones")) ? Dr.GetString(Dr.GetOrdinal("observaciones")) : string.Empty;//Dr.GetString(Dr.GetOrdinal("observaciones"));
+                    //Datos.IDPoligono = !Dr.IsDBNull(Dr.GetOrdinal("id_poligono")) ? Dr.GetString(Dr.GetOrdinal("id_poligono")) : string.Empty;//Dr.GetString(Dr.GetOrdinal("id_poligono"));
                     Datos.IDColaborador = !Dr.IsDBNull(Dr.GetOrdinal("id_colaborador")) ? Dr.GetString(Dr.GetOrdinal("id_colaborador")) : string.Empty;//Dr.GetString(Dr.GetOrdinal("id_colaborador"));
+                    Datos.CredencialFrente = !Dr.IsDBNull(Dr.GetOrdinal("textoCredencialFrente")) ? Dr.GetString(Dr.GetOrdinal("textoCredencialFrente")) : string.Empty;
+                    Datos.CredencialPosterior = !Dr.IsDBNull(Dr.GetOrdinal("textCredencialPosterior")) ? Dr.GetString(Dr.GetOrdinal("textCredencialPosterior")) : string.Empty;
                     Datos.Completado = true;
                     break;
                 }
@@ -1299,6 +1339,30 @@ namespace DllCampElectoral.Datos
                 throw ex;
             }
         }
+
+        public List<CH_Municipio> ObtenerComboMunicipio(CH_Municipio Datos)
+        {
+            try
+            {
+                List<CH_Municipio> Lista = new List<CH_Municipio>();
+                CH_Municipio Item;
+                SqlDataReader Dr = SqlHelper.ExecuteReader(Datos.Conexion, "CH_spCSLDB_get_CombosMunicipio",Datos.IDEstado);
+                while (Dr.Read())
+                {
+                    Item = new CH_Municipio();
+                    Item.IDMunicipio = Dr.GetInt32(Dr.GetOrdinal(("IDMunicipio")));
+                    Item.MunicipioDesc = Dr.GetString(Dr.GetOrdinal("Descripcion"));
+                    Lista.Add(Item);
+                }
+                return Lista;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
 
         public List<RR_Afiliados> ObtenerBusquedaAfiliado(RR_Afiliados Datos)
         {

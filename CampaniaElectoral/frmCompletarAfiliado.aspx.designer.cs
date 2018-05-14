@@ -22,6 +22,33 @@ namespace CampaniaElectoral {
         protected global::System.Web.UI.WebControls.HiddenField hf;
         
         /// <summary>
+        /// Control labelMessage.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labelMessage;
+        
+        /// <summary>
+        /// Control ValidationSummary1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+        
+        /// <summary>
+        /// Control rfvClavElector.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvClavElector;
+        
+        /// <summary>
         /// Control txtClavElector.
         /// </summary>
         /// <remarks>
@@ -29,6 +56,15 @@ namespace CampaniaElectoral {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtClavElector;
+        
+        /// <summary>
+        /// Control rfvNombreAfiliado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNombreAfiliado;
         
         /// <summary>
         /// Control txtNombreAfiliado.
@@ -40,6 +76,15 @@ namespace CampaniaElectoral {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtNombreAfiliado;
         
         /// <summary>
+        /// Control rfvApePatAfiliado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvApePatAfiliado;
+        
+        /// <summary>
         /// Control txtApePatAfiliado.
         /// </summary>
         /// <remarks>
@@ -47,6 +92,15 @@ namespace CampaniaElectoral {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtApePatAfiliado;
+        
+        /// <summary>
+        /// Control rfvApeMatAfiliado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvApeMatAfiliado;
         
         /// <summary>
         /// Control txtApeMatAfiliado.
@@ -58,6 +112,15 @@ namespace CampaniaElectoral {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtApeMatAfiliado;
         
         /// <summary>
+        /// Control rfvFechaAfiliacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFechaAfiliacion;
+        
+        /// <summary>
         /// Control txtFechaAfiliacion.
         /// </summary>
         /// <remarks>
@@ -67,31 +130,76 @@ namespace CampaniaElectoral {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtFechaAfiliacion;
         
         /// <summary>
-        /// Control id_poligono.
+        /// Control rfvMunicipio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField id_poligono;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvMunicipio;
         
         /// <summary>
-        /// Control txtPoligono.
+        /// Control cvMunicipio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtPoligono;
+        protected global::System.Web.UI.WebControls.CustomValidator cvMunicipio;
         
         /// <summary>
-        /// Control txtSeccion.
+        /// Control cmbMunicipio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtSeccion;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect cmbMunicipio;
+        
+        /// <summary>
+        /// Control cvSeccion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvSeccion;
+        
+        /// <summary>
+        /// Control cmbSeccion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect cmbSeccion;
+        
+        /// <summary>
+        /// Control cvOperador.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvOperador;
+        
+        /// <summary>
+        /// Control cmbOperador.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect cmbOperador;
+        
+        /// <summary>
+        /// Control rfvDireccion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDireccion;
         
         /// <summary>
         /// Control txtDireccion.
@@ -103,6 +211,15 @@ namespace CampaniaElectoral {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtDireccion;
         
         /// <summary>
+        /// Control rfvColonia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvColonia;
+        
+        /// <summary>
         /// Control txtColonia.
         /// </summary>
         /// <remarks>
@@ -110,6 +227,15 @@ namespace CampaniaElectoral {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtColonia;
+        
+        /// <summary>
+        /// Control rfvNumeroExt.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNumeroExt;
         
         /// <summary>
         /// Control txtNumeroExt.
@@ -121,6 +247,15 @@ namespace CampaniaElectoral {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtNumeroExt;
         
         /// <summary>
+        /// Control rfvNumeroInt.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNumeroInt;
+        
+        /// <summary>
         /// Control txtNumeroInt.
         /// </summary>
         /// <remarks>
@@ -128,6 +263,24 @@ namespace CampaniaElectoral {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtNumeroInt;
+        
+        /// <summary>
+        /// Control rfvCodigoP.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCodigoP;
+        
+        /// <summary>
+        /// Control cvCodigoP.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvCodigoP;
         
         /// <summary>
         /// Control txtCodigoP.
@@ -139,6 +292,24 @@ namespace CampaniaElectoral {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtCodigoP;
         
         /// <summary>
+        /// Control rfvCorreoElectronico.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCorreoElectronico;
+        
+        /// <summary>
+        /// Control revCorreoElectronico.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revCorreoElectronico;
+        
+        /// <summary>
         /// Control txtCorreoElectronico.
         /// </summary>
         /// <remarks>
@@ -146,6 +317,15 @@ namespace CampaniaElectoral {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtCorreoElectronico;
+        
+        /// <summary>
+        /// Control rfvCelular.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCelular;
         
         /// <summary>
         /// Control txtCelular.
@@ -157,6 +337,33 @@ namespace CampaniaElectoral {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtCelular;
         
         /// <summary>
+        /// Control rfvGenero.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvGenero;
+        
+        /// <summary>
+        /// Control cvGenero.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvGenero;
+        
+        /// <summary>
+        /// Control cmbGenero.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect cmbGenero;
+        
+        /// <summary>
         /// Control txtObservaciones.
         /// </summary>
         /// <remarks>
@@ -164,5 +371,23 @@ namespace CampaniaElectoral {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtObservaciones;
+        
+        /// <summary>
+        /// Control imgPosterior.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage imgPosterior;
+        
+        /// <summary>
+        /// Control imgFrente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage imgFrente;
     }
 }
