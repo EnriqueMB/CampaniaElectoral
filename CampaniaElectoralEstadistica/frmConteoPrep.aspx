@@ -16,7 +16,7 @@
                               <i class="fa fa-caret-down text-warning m-r-sm"></i>
                           </div>--%>
                       </a>
-                  </div>
+                      </div>
                   <div class="col-xs-6">
                       <a href class="block panel padder-v bg-dark item">
                           <span class="text-white font-thin h1 block"><%=ConteoPagina.CasillaEmpatada%></span>
@@ -51,7 +51,7 @@
                     { data: [ [<%=cont %>,<%=item.CantidadVoto.ToString("0") %> ] ], label: '<%=item.SiglasPartido %>', bars: { show: true, barWidth: 0.5, fillColor: { colors: [{ opacity: 0.2 }, { opacity: 0.4}] } } },
                 <%cont++;%>
                  <%} %>
-                 { data: [ [<%=cont %>,0 ] ], label: '', bars: { display:false, show: false, barWidth: 0.5, fillColor: { colors: [{ opacity: 0.2 }, { opacity: 0.4}] } } }
+                 { data: [ [<%=cont %>,0 ] ], label: '', display:false, bars: { show: true, barWidth: 0.5, fillColor: { colors: [{ opacity: 0.2 }, { opacity: 0.4}] } } }
               ],
               {                
                 colors: [ '#23b7e5','#27c24c','#ff001d','#0c0c0c','#06ef02','#662e2e','#0438f4','#ff00f6','#ffffff'],

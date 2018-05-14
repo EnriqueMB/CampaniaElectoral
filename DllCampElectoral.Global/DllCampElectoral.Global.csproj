@@ -90,6 +90,7 @@
     <Compile Include="EM_TipoEventoCampania.cs" />
     <Compile Include="EM_TipoImagenVideo.cs" />
     <Compile Include="ER_Casillas.cs" />
+    <Compile Include="ER_Incidencias.cs" />
     <Compile Include="ER_Secciones.cs" />
     <Compile Include="FG_Auxiliar.cs" />
     <Compile Include="FG_CatPartidoPoliticoAlianza.cs" />

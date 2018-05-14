@@ -1,36 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/siteEstadisticos.Master" AutoEventWireup="true" CodeBehind="frmIncidencias.aspx.cs" Inherits="CampaniaElectoralEstadistica.frmIncidencias" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_ScriptUp" runat="server">
 
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&key=AIzaSyDkNWPPOyEHJLxnjlm0q_JqtTZ-rn3VRZ0" type="text/javascript"></script>  
-    <script>  
-        var mapcode;
-        var diag;
-        function initialize() {
-            mapcode = new google.maps.Geocoder();
-            var lnt = new google.maps.LatLng(16.6634247,-92.551164);
-            var diagChoice = {
-                zoom: 7,
-                center: lnt,
-                diagId: google.maps.MapTypeId.ROADMAP
-            }
-            diag = new google.maps.Map(document.getElementById('map'), diagChoice);
-        }
-        function getmap() {
-            var completeaddress = document.getElementById('txt_location').value;
-            mapcode.geocode({ 'address': completeaddress }, function (results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    diag.setCenter(results[0].geometry.location);
-                    var hint = new google.maps.Marker({
-                        diag: diag,
-                        position: results[0].geometry.location
-                    });
-                } else {
-                    alert('Location Not Tracked. ' + status);
-                }
-            });
-        }
-        google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
+   
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_Main" runat="server">
 
@@ -40,7 +11,7 @@
             </div> 
         </div>
     </div> 
-
+    <textarea id="puntos-riesgos" style="display:none"><%=Datos.Riesgos %></textarea>
     <div class="row">
         <div class="wrapper-md">
             <div class="panel panel-default">
@@ -60,77 +31,39 @@
                                     }}'>
                         <thead>
                           <tr>
-                            <th data-breakpoints="xs">Sección</th>
+                            <th data-breakpoints="xs">Incidente</th>
+                              <th data-breakpoints="xs">Tipo Riesgo</th>
                             <th>Casilla</th>
                             <th>Encargado</th>
-                            <th data-breakpoints="xs">Tipo Reporte</th>
-                            <th data-breakpoints="xs">Ver Detalle</th>
+                            <th data-breakpoints="xs">Dirección</th>
+                            
                           </tr>
                         </thead>
                         <tbody>          
-                            <tr data-expanded="true">
-                                <td>12</td>
-                                <td>Centro</td>
-                                <td>Jose Perez</td>
-                                <td>Pandillerismo</td>
-                                <td><button class="btn m-b-xs w-xs btn-primary">Ver</button></td>          
+                            
+                              <%  foreach (var item in Datos.listaIncidencias)
+                                        {
+                                    %>
+                                    <tr>
+                                        <td>
+                                          <%= item.titulo%>
+                                        </td>
+                                         <td>
+                                          <%= item.tipoRiesgo%>
+                                        </td>
+                                        <td>
+                                           <%= item.casilla%>
+                                        </td>
+                                        <td>
+                                            <%= item.encargado%>
+                                        </td>
+                                        <td>
+                                            <%= item.domicilio%>
+                                        </td>
+                                       
                             </tr>
-                                <tr data-expanded="true">
-                                <td>13</td>
-                                <td>Centro</td>
-                                <td>Jose Perez</td>
-                                <td>Pandillerismo</td>
-                                <td><button class="btn m-b-xs w-xs btn-primary">Ver</button></td>          
-                            </tr>
-                            <tr data-expanded="true">
-                                <td>1112</td>
-                                <td>Centro</td>
-                                <td>Jose Perez</td>
-                                <td>Pandillerismo</td>
-                                <td><button class="btn m-b-xs w-xs btn-primary">Ver</button></td>
-                            </tr>
-                            <tr data-expanded="true">
-                                <td>1112</td>
-                                <td>Centro</td>
-                                <td>Jose Perez</td>
-                                <td>Pandillerismo</td>
-                                <td><button class="btn m-b-xs w-xs btn-primary">Ver</button></td>
-                            </tr>
-                            <tr data-expanded="true">
-                                <td>1112</td>
-                                <td>Centro</td>
-                                <td>Jose Perez</td>
-                                <td>Pandillerismo</td>
-                                <td><button class="btn m-b-xs w-xs btn-primary">Ver</button></td>
-                            </tr>
-                            <tr data-expanded="true">
-                                <td>1112</td>
-                                <td>Centro</td>
-                                <td>Jose Perez</td>
-                                <td>Pandillerismo</td>
-                                <td><button class="btn m-b-xs w-xs btn-primary">Ver</button></td>
-                            </tr>
-                            <tr data-expanded="true">
-                                <td>1112</td>
-                                <td>Centro</td>
-                                <td>Jose Perez</td>
-                                <td>Pandillerismo</td>
-                                <td><button class="btn m-b-xs w-xs btn-primary">Ver</button></td>
-                            </tr>
-                            <tr data-expanded="true">
-                                <td>1112</td>
-                                <td>Centro</td>
-                                <td>Jose Perez</td>
-                                <td>Pandillerismo</td>
-                                <td><a href="#" class="btn m-b-xs w-xs btn-primary">Ver</a></td>
-                            </tr>
-                            <tr data-expanded="true">
-                                <td>1112</td>
-                                <td>Centro</td>
-                                <td>Jose Perez</td>
-                                <td>Pandillerismo</td>
-                                <td><button class="btn m-b-xs w-xs btn-primary">Ver</button></td>
-                            </tr>
+                                    <% } %>
+                            
                         </tbody>
                     </table>
                 </div>
@@ -140,4 +73,12 @@
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder_ScriptDown" runat="server">
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&key=AIzaSyDkNWPPOyEHJLxnjlm0q_JqtTZ-rn3VRZ0" type="text/javascript"></script>  
+    <script src="assets/js/mapIncidentes.js"></script>
+     <script> jQuery(document).ready(function () {
+    
+     
+     Maps.init();
+ });</script>
+   
 </asp:Content>

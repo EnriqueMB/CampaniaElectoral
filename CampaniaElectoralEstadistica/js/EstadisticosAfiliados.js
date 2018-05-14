@@ -13,12 +13,14 @@
         });
 
         function mapToLatLng(source, index, array) {
-            return new google.maps.LatLng(source[0], source[1])
+            return new google.maps.LatLng(source[0], source[1])   
         }
+
         function toLatLng(array) {
+
             return array.map(mapToLatLng);
         }
-        
+
         function obtenerColor(avance)
         {
             var color = "#f05050";
@@ -34,79 +36,80 @@
             return color;
         }
 
-        for(var i = 0; i< secciones.length; i++)
-        {            
-            //console.log(secciones[i].id_seccion);
-            //$.ajaxSetup({ async: false });
-            var jqxhr = $.ajax('sfrmObtenerPoligono.aspx?id=' + secciones[i].id_seccion)
-              .done(function (data) {
-                  try {
-                      //console.log(paths);
-                      
-                      var arrayResult = JSON.parse(data);
-                      var color = obtenerColor(arrayResult[1]);
-                      //console.log(arrayResult[1]);
-                      var hasHole = false;
-                      var paths = arrayResult[0];
-                      if (paths.length > 0) {
-                          var array2d = JSON.parse(paths);
-                          if (array2d.length > 0) {
-                              if (array2d[0].length > 0) {
-                                  if (Array.isArray(array2d[0][0])) {
-                                      if (array2d[0][0].length > 0) {
-                                          hasHole = true;
-                                      }
-                                  }
-                              }
-                          }
+        function CargarMapa() {
+            //console.log(secciones.length);
+            for (var i = 0; i < secciones.length; i++) {
+                //console.log(i);
+                //console.log(secciones[i].id_seccion);
+                //$.ajaxSetup({ async: false });
+                //var jqxhr = $.ajax('sfrmObtenerPoligono.aspx?id=' + secciones[i].id_seccion)
+                //  .done(function (data) {
+                try {
+                    //var arrayResult = JSON.parse(secciones[i].poligono);
+                    var color = obtenerColor(secciones[i].avance);
+                    var hasHole = false;
+                    var paths = secciones[i].poligono;
+                    if (paths.length > 0) {
+                        var array2d = JSON.parse(paths);
+                        if (array2d.length > 0) {
+                            if (array2d[0].length > 0) {
+                                if (Array.isArray(array2d[0][0])) {
+                                    if (array2d[0][0].length > 0) {
+                                        hasHole = true;
+                                    }
+                                }
+                            }
+                        }
+                        if (!hasHole) {
+                            var arrayJson = toLatLng(array2d);
+                            var casilla = new google.maps.Polygon({
+                                paths: arrayJson,
+                                strokeColor: color,
+                                strokeOpacity: 1,
+                                strokeWeight: 2,
+                                fillColor: color,
+                                fillOpacity: 0.6
+                            });
+                            casilla.setMap(map);                            
+                        }
+                        else {
+                            var arrayJson = new Array(array2d.length);
+                            for (var n = 0; n < array2d.length; n++) {
+                                arrayJson[n] = toLatLng(array2d[n]);
+                            }
+                            var casilla = new google.maps.Polygon({
+                                paths: arrayJson,
+                                strokeColor: color,
+                                strokeOpacity: 1,
+                                strokeWeight: 2,
+                                fillColor: color,
+                                fillOpacity: 0.6
+                            });
+                            casilla.setMap(map);
+                        }
+                    }
+                } catch (err) {
+                    console.log("Error" + err);
+                }
 
-                          if (!hasHole) {
-                              arrayJson = toLatLng(array2d);
-                              var casilla = new google.maps.Polygon({
-                                  paths: arrayJson,
-                                  strokeColor: color,
-                                  strokeOpacity: 1,
-                                  strokeWeight: 2,
-                                  fillColor: color,
-                                  fillOpacity: 0.6
-                              });
-                              casilla.setMap(map);
-                          }
-                          else {
-                              var arrayJson = new Array(array2d.length);
-                              for (var n = 0; n < array2d.length; n++) {
-                                  arrayJson[n] = toLatLng(array2d[n]);
-                              }
+                //})
+                //.fail(function (jqXHR, textStatus) {
+                //    console.log("Error: " + textStatus);
+                //});
 
-                              var casilla = new google.maps.Polygon({
-                                  paths: arrayJson,
-                                  strokeColor: color,
-                                  strokeOpacity: 1,
-                                  strokeWeight: 2,
-                                  fillColor: color,
-                                  fillOpacity: 0.6
-                              });
-                              casilla.setMap(map);
-                          }
-                          console.log("Dibujado");
-                      }
-                  }catch(err)
-                  {
-                      console.log("Error" + err);
-                  }
-                  
-              })
-              .fail(function (jqXHR, textStatus) {
-                  console.log("Error: " + textStatus);
-              });
-          
-            //$.ajaxSetup({ async: true });
+                //$.ajaxSetup({ async: true });
+            }
         }
+
+        CargarMapa();
     };
+
+    
     return {
         //main function to initiate template pages
-        init: function (secciones) {
+        init: function (secciones) {            
             runMaps(secciones);
+            //runMaps2();
         }
     };
 }();
