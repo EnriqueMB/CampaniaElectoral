@@ -14,28 +14,37 @@ namespace CampaniaElectoralEstadistica
         private FG_EstadisticosVotos FG = new FG_EstadisticosVotos();
         private FG_EstadisticosVotosNegocio FG_Negocio = new FG_EstadisticosVotosNegocio();
         protected List<FG_EstadisticosVotos_MetaXHora> listaMetasXHora;
+        protected List<FG_EstadisticosVotos_MensajeAvanceGeneral> listaMensajeAvanceGeneral;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             FG.Conexion = Comun.Conexion;
-            CargarMetaVotosGeneral();
-            CargarTotalVotosRealizados();
-            CargarTotalVotosFaltantes();
-            CargarGraficaAvanceGeneralVotos();
-            CargarMetasXHora();
+            ObtenerGeneralesEstadisticosVotacion();
         }
 
         #region Métodos
-        private void CargarMetasXHora()
+
+        private void ObtenerGeneralesEstadisticosVotacion()
         {
-            listaMetasXHora = FG_Negocio.ObtenerListaMetasXHora(FG);
+            FG = FG_Negocio.ObtenerGeneralesEstadisticosVotacion(FG);
+            CargarDatos();
+        }
+
+        private void CargarDatos()
+        {
+            lblMetaGeneral.Text = FG.MetaVotosGeneral.ToString();
+            lblTotalVotosRealizados.Text = FG.TotalVotosRealizados.ToString();
+            lblTotalVotosFaltantes.Text = FG.ObtenerTotalVotosFaltantes().ToString();
+            CargarGraficaAvanceGeneralVotos();
+            CargarMetasXHora();
+            CargarMensajeAvanceGeneral();
         }
         private void CargarGraficaAvanceGeneralVotos()
         {
-            lblPorcentajeAvanceGeneralVotos.Text = FG.CalcularPorcentajeAvanceGeneralVotos().ToString();
+            lblPorcentajeAvanceGeneralVotos.Text = FG.PorcentajeAvanceGeneralVotos.ToString();
             divAvanceGeneralVotos.Attributes["ui-options"] =
                 "{" +
-                    "percent: " + FG.CalcularPorcentajeAvanceGeneralVotos() + "," +
+                    "percent: " + FG.PorcentajeAvanceGeneralVotos.ToString().Replace(',','.') + "," +
                     "lineWidth: 10," +
                     "trackColor: '#e8eff0'," +
                     "barColor: '#27c24c'," +
@@ -45,21 +54,22 @@ namespace CampaniaElectoralEstadistica
                     "animate: 1000" +
                 "}";
         }
-        private void CargarMetaVotosGeneral()
+        private void CargarMetasXHora()
         {
-            FG.MetaVotosGeneral = FG_Negocio.ObtenerMetaGeneral(FG);
-            lblMetaGeneral.Text = FG.MetaVotosGeneral.ToString();
+            listaMetasXHora = FG.listaMetasXHora();
         }
-        private void CargarTotalVotosRealizados()
+        private void CargarMensajeAvanceGeneral()
         {
-            FG.TotalVotosRealizados = FG_Negocio.ObtenerTotalVotosRealiazados(FG);
-            lblTotalVotosRealizados.Text = FG.TotalVotosRealizados.ToString();
+            listaMensajeAvanceGeneral = FG.listaMensajeAvanceGeneral();
         }
-        private void CargarTotalVotosFaltantes()
-        {
-            lblTotalVotosFaltantes.Text = FG.ObtenerTotalVotosFaltantes().ToString();
-        }
+
+
+
         #endregion
 
+        protected void Timer1_Tick(object sender, EventArgs e)
+        {
+            CargarDatos();
+        }
     }
 }

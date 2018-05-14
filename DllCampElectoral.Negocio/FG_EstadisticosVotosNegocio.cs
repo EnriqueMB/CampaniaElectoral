@@ -48,5 +48,17 @@ namespace DllCampElectoral.Negocio
                 throw ex;
             }
         }
+        public FG_EstadisticosVotos ObtenerGeneralesEstadisticosVotacion(FG_EstadisticosVotos FG)
+        {
+            try
+            {
+                FG_Datos = new FG_EstadisticosVotosDatos();
+                return FG_Datos.ObtenerGeneralesEstadisticosVotacion(FG);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

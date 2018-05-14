@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/siteEstadisticos.Master" AutoEventWireup="true" CodeBehind="frmIncidencias.aspx.cs" Inherits="CampaniaElectoralEstadistica.frmIncidencias" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_ScriptUp" runat="server">
 
-    
+   
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_Main" runat="server">
 
@@ -61,7 +61,7 @@
                                             <%= item.domicilio%>
                                         </td>
                                        
-                                    </tr>
+                            </tr>
                                     <% } %>
                             
                         </tbody>

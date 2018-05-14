@@ -1,4 +1,4 @@
-/*!
+d/*!
  * Bootstrap v3.3.4 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
@@ -1099,6 +1099,8 @@ textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+    /*height: 527px;
+    width: 514px;*/
 }
 a {
   color: #337ab7;

@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
   <link rel="stylesheet" href="libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
   <link rel="stylesheet" href="libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="assets/plugins/DataTables/media/css/DT_bootstrap.css">
+  <link rel="stylesheet" href="assets/plugins/DataTables/media/css/jquery.dataTables.min.css">
+
 
   <link rel="stylesheet" href="css/font.css" type="text/css" />
   <link rel="stylesheet" href="css/app.css" type="text/css" />
@@ -18,7 +21,7 @@
     <asp:ContentPlaceHolder ID="ContentPlaceHolder_ScriptUp" runat="server">
 
 
-    </asp:ContentPlaceHolder>
+</asp:ContentPlaceHolder>
 
     
 
@@ -112,7 +115,7 @@
                 </li>
                 <li class="divider"></li>
                 <li>
-                  <a id="btnlogout">Logout</a>
+                   <a id="btnlogout">Logout</a>
                 </li>
               </ul>
               <!-- / dropdown -->
@@ -273,16 +276,16 @@
 <script src="js/ui-client.js"></script>
 <script src="libs/jquery/jquery.easy-pie-chart/dist/jquery.easypiechart.fill.js"></script>
 <script src="libs/jquery/jquery.sparkline/dist/jquery.sparkline.retina.js"></script>
-    <script src="/assets/js/logout.js"></script>
+ <script src="/assets/js/logout.js"></script>
  
 <asp:ContentPlaceHolder ID="ContentPlaceHolder_ScriptDown" runat="server">
 
 
 </asp:ContentPlaceHolder>
-    <script>
-			jQuery(document).ready(function() {
+<script>
+      jQuery(document).ready(function() {
                 Logout.init();
-			});
-		</script>
+      });
+    </script>
 </body>
 </html>

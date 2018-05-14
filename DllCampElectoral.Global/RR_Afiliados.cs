@@ -229,9 +229,9 @@ namespace DllCampElectoral.Global
             get { return _CredencialPosterior; }
             set { _CredencialPosterior = value; }
         }
-        private string _Seccion;
+        private int _Seccion;
 
-        public string Seccion
+        public int Seccion
         {
             get { return _Seccion; }
             set { _Seccion = value; }

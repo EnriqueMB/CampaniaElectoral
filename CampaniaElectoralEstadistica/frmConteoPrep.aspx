@@ -51,6 +51,7 @@
                     { data: [ [<%=cont %>,<%=item.CantidadVoto.ToString("0") %> ] ], label: '<%=item.SiglasPartido %>', bars: { show: true, barWidth: 0.5, fillColor: { colors: [{ opacity: 0.2 }, { opacity: 0.4}] } } },
                 <%cont++;%>
                  <%} %>
+                 { data: [ [<%=cont %>,0 ] ], label: '', bars: { display:false, show: false, barWidth: 0.5, fillColor: { colors: [{ opacity: 0.2 }, { opacity: 0.4}] } } }
               ],
               {                
                 colors: [ '#23b7e5','#27c24c','#ff001d','#0c0c0c','#06ef02','#662e2e','#0438f4','#ff00f6','#ffffff'],

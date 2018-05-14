@@ -75,6 +75,7 @@
     <Compile Include="EM_PreguntasRespuestaDatos.cs" />
     <Compile Include="ER_IncidenciasDatos.cs" />
     <Compile Include="ER_SeccionesDatos.cs" />
+    <Compile Include="EstadisticosAfiliados_Datos.cs" />
     <Compile Include="FG_CatPartidoPoliticoAlianzaDatos.cs" />
     <Compile Include="FG_EstadisticosVotosDatos.cs" />
     <Compile Include="GM_CalendarDatos.cs" />

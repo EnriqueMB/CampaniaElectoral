@@ -99,7 +99,7 @@ namespace DllCampElectoral.Negocio
             return CD.ObtenerComboTipoUsuario(Datos);
 
         }
-
+        
         #endregion
     }
 }

@@ -17,32 +17,7 @@
 									<th>Acciones</th>
 								</tr>
 							</thead>
-							<tbody>                  
-                                <% foreach (var Item in Lista)
-                                    { %>
-								<tr>
-									<td><%=Item.IDSeccion %></td>
-									<td><%=Item.TipoSeccion %></td>
-                                    <td>
-                                        <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                            <%Response.Write("<a href='frmSeccionDetalle.aspx?id=" + Item.IDSeccion + "' class='btn btn-xs btn-blue tooltips' data-placement='top' data-original-title='Ver'> <i class='fa fa-edit'> </i> </a>"); %>
-									    </div>
-
-										<div class="visible-xs visible-sm hidden-md hidden-lg">
-											<div class="btn-group">
-												<a class="btn btn-green dropdown-toggle btn-sm" data-toggle="dropdown" href="#">
-													<i class="fa fa-cog"></i> <span class="caret"></span>
-												</a>
-												<ul role="menu" class="dropdown-menu pull-right dropdown-dark">
-													<li>														
-                                                        <%Response.Write("<a href='frmSeccionDetalle.aspx?id=" + Item.IDSeccion + "' role='menuitem' tabindex='-1' class='tooltips' data-placement='top' data-original-title='Ver'><i class='fa fa-edit'></i>Ver</a>"); %>
-													</li>
-												</ul>
-											</div>
-										</div>
-                                    </td>
-								</tr>
-                                <% } %>
+							<tbody>
 							</tbody>
 						</table>
 					</div>

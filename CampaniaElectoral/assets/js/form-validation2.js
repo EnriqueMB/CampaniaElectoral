@@ -431,7 +431,6 @@ var FormValidator = function () {
             }
             return valido;
         }, 'Por favor, seleccione un archivo con extensi&oacute;n: png, jpg, jpeg y bmp.');
-
         $.validator.addMethod("validarImg", function (value, element, params) {
             //Bandera que me indica si hay o no imagen en el servidor
             var bandera = document.getElementById(params[0]).value;
@@ -450,7 +449,6 @@ var FormValidator = function () {
             }
 
         }, 'Debe seleccionar una imagen.');
-
         $.validator.addMethod("passwordCSL", function (value, element, params) {
             //Bandera que me indica si hay o no imagen en el servidor
             var password = document.getElementById(params[0]).value;
@@ -471,9 +469,14 @@ var FormValidator = function () {
             else
             {
                 //Caracteres min: 6 y max: 15                                                                                     Mismos passwords=?
-                if ((minCaracteres <= password.length <= maxCaracteres && minCaracteres <= passwordAgain <= maxCaracteres) && (password == passwordAgain))
+                if (((minCaracteres <= password.length) &&  (password.length <= maxCaracteres)) && ((minCaracteres <= passwordAgain.length) && (passwordAgain.length <= maxCaracteres)) && (password == passwordAgain))
                 {
                     valido = true;
+                }
+                else
+                {
+                    //si escribe en el input pero no son validos
+                    valido = false;
                 }
             }
             return valido;
@@ -2112,8 +2115,9 @@ var FormValidator = function () {
                 cmbEstado: {
                     required: true
                 },
-                cmbMunicipio: {
-                    required: true
+                ctl00$cph_MasterBody$cmbMunicipio: {
+                    required: true,
+                    min: 1
                 },
                 ctl00$cph_MasterBody$txtDireccion: {
                     minlength: 2,
@@ -2134,7 +2138,7 @@ var FormValidator = function () {
                 ctl00$cph_MasterBody$txtCorreoElectronico: {
                     required: true
                 },
-                txtGenero: {
+                ctl00$cph_MasterBody$cmbGenero: {
                     required: true
                 },
                 ctl00$cph_MasterBody$txtCelular: {
@@ -2146,13 +2150,12 @@ var FormValidator = function () {
                 ctl00$cph_MasterBody$txtNumeroInt: {
                     number: true
                 },
-                cmbSeccion: {
+                ctl00$cph_MasterBody$cmbSeccion: {
                     required: true,
                     min: 1 
                 },
-                cmbOperador: {
+                ctl00$cph_MasterBody$cmbOperador: {
                     required: true,
-                    min: 1
                 }
             },
             messages: {
@@ -2160,8 +2163,11 @@ var FormValidator = function () {
                 ctl00$cph_MasterBody$txtApePatAfiliado: "Por favor, ingrese el apellido paterno del afiliado.",
                 ctl00$cph_MasterBody$txtApeMatAfiliado: "ingrese el apellido materno del afiliado.",
                 ctl00$cph_MasterBody$txtFechaAfiliacion: "Por favor, selecciones un fecha de afiliaci&oacute;n.",
-                cmbEstado: "Por favor, selecciones un estado.",
-                cmbMunicipio: "Por favor, selecciones un municipio.",
+                ctl00$cph_MasterBody$cmbEstado: "Por favor, selecciones un estado.",
+                ctl00$cph_MasterBody$cmbMunicipio: {
+                    required: "Por favor, selecciones un municipio.",  
+                    min: "Por favor, selecciones un municipio."
+                },
                 ctl00$cph_MasterBody$txtDireccion: "Por favor, ingrese la direcci&oacute;n del afiliado.",
                 ctl00$cph_MasterBody$txtColonia: "Por favor, ingrese la colonia del afiliado.",
                 ctl00$cph_MasterBody$txtCodigoP:
@@ -2172,15 +2178,15 @@ var FormValidator = function () {
                     },
                 ctl00$cph_MasterBody$txtClavElector: "Por favor, ingrese la clave de elector",
                 ctl00$cph_MasterBody$txtCorreoElectronico: "Por favor, ingrese el correo electr&oacute;nico",
-                txtGenero: "Por favor, seleciones un g&eacute;nero",
+                ctl00$cph_MasterBody$cmbGenero: "Por favor, seleciones un g&eacute;nero",
                 ctl00$cph_MasterBody$txtCelular: "Por favor, ingrese un n&uacute;mero valido",
                 ctl00$cph_MasterBody$txtNumeroExt: "Por favor, ingrese un n&uacute;mero exterior valido",
                 ctl00$cph_MasterBody$txtNumeroInt: "Por favor, ingrese un n&uacute;mero interior valido",
-                cmbSeccion: {
+                ctl00$cph_MasterBody$cmbSeccion: {
                     required: "Por favor, seleccione una secci&oacute;n.",
                     min: "Por favor, seleccione una secci&oacute;n."
                 },
-                cmbOperador: {
+                ctl00$cph_MasterBody$cmbOperador: {
                     required: "Por favor, seleccione un operador.",
                     min: "Por favor, seleccione un operador."
                 }
