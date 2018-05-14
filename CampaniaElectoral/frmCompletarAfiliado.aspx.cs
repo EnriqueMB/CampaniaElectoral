@@ -271,7 +271,7 @@ namespace CampaniaElectoral
             if (Page.IsValid)
             {
 
-                if (Request.Form.Count == 22)
+                if (Request.Form.Count == 24)
                 {
                     int cp = 0, genero = 0;
                     DateTime fecAfiliacion;

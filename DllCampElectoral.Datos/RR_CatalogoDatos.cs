@@ -1265,7 +1265,7 @@ namespace DllCampElectoral.Datos
                     Datos.Genero = !Dr.IsDBNull(Dr.GetOrdinal("genero")) ? Dr.GetInt32(Dr.GetOrdinal("genero")) : 0;//Dr.GetInt32(Dr.GetOrdinal("genero"));
                     Datos.Observaciones = !Dr.IsDBNull(Dr.GetOrdinal("observaciones")) ? Dr.GetString(Dr.GetOrdinal("observaciones")) : string.Empty;//Dr.GetString(Dr.GetOrdinal("observaciones"));
                     //Datos.IDPoligono = !Dr.IsDBNull(Dr.GetOrdinal("id_poligono")) ? Dr.GetString(Dr.GetOrdinal("id_poligono")) : string.Empty;//Dr.GetString(Dr.GetOrdinal("id_poligono"));
-                    Datos.IDColaborador = !Dr.IsDBNull(Dr.GetOrdinal("id_colaborador")) ? Dr.GetString(Dr.GetOrdinal("id_colaborador")) : string.Empty;//Dr.GetString(Dr.GetOrdinal("id_colaborador"));
+                    //Datos.IDColaborador = !Dr.IsDBNull(Dr.GetOrdinal("id_colaborador")) ? Dr.GetString(Dr.GetOrdinal("id_colaborador")) : string.Empty;//Dr.GetString(Dr.GetOrdinal("id_colaborador"));
                     Datos.CredencialFrente = !Dr.IsDBNull(Dr.GetOrdinal("textoCredencialFrente")) ? Dr.GetString(Dr.GetOrdinal("textoCredencialFrente")) : string.Empty;
                     Datos.CredencialPosterior = !Dr.IsDBNull(Dr.GetOrdinal("textCredencialPosterior")) ? Dr.GetString(Dr.GetOrdinal("textCredencialPosterior")) : string.Empty;
                     Datos.Completado = true;

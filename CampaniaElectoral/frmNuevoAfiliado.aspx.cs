@@ -147,7 +147,7 @@ namespace CampaniaElectoral
                 {
                     string ScriptError = DialogMessage.Show(TipoMensaje.Success, "Los datos se guardaron correctamente", "Información", ShowMethod.FadeIn, HideMethod.FadeOut, ToastPosition.TopFullWidth, true);
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "popup", ScriptError, true);
-                    Response.Redirect("frmAfiliadosGrid.aspx?op=1", false);
+                    Response.Redirect("frmAfiliados.aspx?op=1", false);
                 }
                 else
                 {
@@ -258,7 +258,7 @@ namespace CampaniaElectoral
             if (Page.IsValid)
             {
 
-                if (Request.Form.Count == 22)
+                if (Request.Form.Count == 24)
                 {
                     int cp = 0, genero = 0;
                     DateTime fecAfiliacion;
