@@ -45,14 +45,14 @@ namespace CampaniaElectoral
                                 else
                                 {
                                     //Ocurrió un error
-                                    Response.Redirect("frmZonasRiesgo.aspx?error=" + "Error al cargar los datos&nError=1");
+                                    Response.Redirect("frmIncidencias.aspx?error=" + "Error al cargar los datos&nError=1");
                                 }
                             }
                             else
-                                Response.Redirect("frmZonasRiesgo.aspx");
+                                Response.Redirect("frmIncidencias.aspx");
                         }
                         else
-                            Response.Redirect("frmZonasRiesgo.aspx");
+                            Response.Redirect("frmIncidencias.aspx");
                     }
                     else
                     {
@@ -78,7 +78,7 @@ namespace CampaniaElectoral
                         CultureInfo esMX = new CultureInfo("es-MX");
                         double.TryParse(sLatitud, NumberStyles.Currency, esMX, out Latitud);
                         double.TryParse(sLongitud, NumberStyles.Currency, esMX, out Longitud);
-                        this.Guardar(NuevoRegistro, IDRiesgo, Titulo, Descripcion, IDTipoRiesgo, IDEstado, IDMunicipio, IDPoligono, Latitud, Longitud);
+                        this.Guardar(NuevoRegistro, IDRiesgo, Titulo, Descripcion, IDTipoRiesgo, Datos.IDEstado, IDMunicipio, IDPoligono, Latitud, Longitud);
                     }
                 }
             }
@@ -149,7 +149,7 @@ namespace CampaniaElectoral
                 ZRN.ACRiesgos(DatosAux);
                 if (DatosAux.Completado)
                 {
-                    Response.Redirect("frmZonasRiesgo.aspx", false);
+                    Response.Redirect("frmIncidencias.aspx", false);
                 }
                 else
                 {
