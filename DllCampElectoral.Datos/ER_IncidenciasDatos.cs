@@ -43,6 +43,7 @@ namespace DllCampElectoral.Datos
                             Item.casilla = Dr2.GetString(Dr2.GetOrdinal("casilla"));
                             Item.domicilio = Dr2.GetString(Dr2.GetOrdinal("domicilio"));
                                 Item.referencia = Dr2.GetString(Dr2.GetOrdinal("referencia"));
+                            Item.encargado = Dr2.GetString(Dr2.GetOrdinal("encargado"));
                          
                                 
                                 Lista.Add(Item);

@@ -125,5 +125,6 @@ namespace DllCampElectoral.Global
         public string casilla { get; set; }
         public string domicilio { get; set; }
         public string referencia { get; set; }
+        public string encargado { get; set; }
     }
 }
