@@ -32,10 +32,10 @@ namespace CampaniaElectoral
 
             ER_Secciones DatosSecciones = new ER_Secciones();
             DatosSecciones.Conexion = Comun.Conexion;
-            DatosSecciones.opcion = 7;
+            
                 CH_PoligonoNegocio CPN = new CH_PoligonoNegocio();
                 poligonos = CPN.ObtenerComboPoligonos(Datos);
-
+            DatosSecciones.opcion = 15;
             ER_SeccionesNegocio ESN = new ER_SeccionesNegocio();
             municipios=ESN.ObtenerComboMunicipios(DatosSecciones);
 
