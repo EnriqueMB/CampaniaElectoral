@@ -6,8 +6,8 @@
         document.getElementById("hfLongitud").value = '';
 
         
-        var municipio = document.getElementById("cmbMunicipio");
-        var poligono = document.getElementById("cmbPoligono");
+        var municipio = document.getElementById("cph_MasterBody_cmbMunicipio");
+        var poligono = document.getElementById("cph_MasterBody_cmbPoligono");
         
         var selectedMunicipio = municipio.options[municipio.selectedIndex];
         var selectedPoligono = poligono.options[poligono.selectedIndex];

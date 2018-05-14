@@ -314,7 +314,8 @@
                         <div class="col-md-12">
                             <div class="form-group pull-right">
                                 <div class="col-md-6">
-                                    <input type="submit" formaction="frmCompletarAfiliado.aspx" class="btn btn-green btn-block" name="btnGuardar" value="Guardar" />
+                                    <asp:Button ID="buttonSubmit" OnClick="buttonSubmit_Click" CssClass="btn btn-green btn-block" runat="server" Text="Guardar" ValidationGroup="AllValidators" />
+                                    <%--<input type="submit" formaction="frmCompletarAfiliado.aspx" class="btn btn-green btn-block" name="btnGuardar" value="Guardar" />--%>
                                 </div>
                                 <div class="col-md-6">
                                     <a href="frmAfiliados.aspx?op=2" class="btn btn-red btn-block" name="btnCancelar">Cancelar</a>
