@@ -47,7 +47,7 @@
                                 </label>
                                 <span class="input-icon">
                                     <asp:RequiredFieldValidator ID="rfvtxtDescripcion" CssClass="text-danger serv" ControlToValidate="txtDescripcion" runat="server" Display="Dynamic" ErrorMessage="Por favor, ingrese la descripcion de la incidencia" Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="False" SetFocusOnError="True"></asp:RequiredFieldValidator>
-                                    <textarea maxlength="1500" id="txtDescripcion" runat="server" name="txtDescripcion" class="form-control limited"></textarea>
+                                    <textarea maxlength="1500" id="txtDescripcion" runat="server" name="txtDescripcion" data-original-title="Ingrese la descripc&oacute;n del riesgo." class="form-control limited"></textarea>
                                 </span>
                             </div>
                         </div>
@@ -102,7 +102,7 @@
                           <div class="col-md-6">
                             <div class="form-group">
                                 <label class="control-label" for="cmbSeccion">
-                                    Casilla
+                                    Casilla <span class="symbol required"></span>
                                 </label>
                                <%-- <asp:RequiredFieldValidator ID="rfvcmbSeccion" CssClass="text-danger serv" ControlToValidate="cmbSeccion" runat="server" Display="Dynamic" ErrorMessage="Por favor, seleccione la casilla" Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="False" SetFocusOnError="True"></asp:RequiredFieldValidator>--%>
                                 <asp:CustomValidator ID="cvcmbSeccion" CssClass="text-danger serv" ControlToValidate="cmbSeccion" OnServerValidate="cvcmbSeccion_ServerValidate" runat="server" Display="Dynamic" ErrorMessage="Por favor, seleccione la casilla" Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="false" SetFocusOnError="true"></asp:CustomValidator>
@@ -116,13 +116,13 @@
                                         <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label" for="cmbColaboradores">
-                                            Colaboradores
+                                            Colaboradores <span class="symbol required"></span>
                                         </label>
                                         <%--<asp:RequiredFieldValidator ID="rfvcmbColaboradores" CssClass="text-danger serv" ControlToValidate="cmbColaboradores" runat="server" Display="Dynamic" ErrorMessage="Por favor, seleccione al colaborador" Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="False" SetFocusOnError="True"></asp:RequiredFieldValidator>--%>
                                 <asp:CustomValidator ID="cvcmbColaboradores" CssClass="text-danger serv" ControlToValidate="cmbColaboradores" OnServerValidate="cvcmbColaboradores_ServerValidate" runat="server" Display="Dynamic" ErrorMessage="Por favor, seleccione al colaborador" Text="* Requerido" ValidationGroup="AllValidators" EnableClientScript="false" SetFocusOnError="true"></asp:CustomValidator>
                                         <select id="cmbColaboradores" name="cmbColaboradores" class="form-control search-select" required runat="server">
                                                   <option value="">&nbsp;</option>
-                                                <% foreach (var TipoUser in DatosGlobales.DatosAuxColab.ListaUsers)
+                                                <%--<% foreach (var TipoUser in DatosGlobales.DatosAuxColab.ListaUsers)
                                                     {
                                                         Response.Write("<optgroup label='" + TipoUser.Descripcion + "'>");
 
@@ -131,7 +131,7 @@
                                                                 Response.Write("<option value='" + ItemColab.IDColaborador + "'>" + ItemColab.Nombre+ "</option>");
                                                         }
                                                         Response.Write("</optgroup>");
-                                                    } %>
+                                                    } %>--%>
                                         </select>
                                     </div>
                                      </div>
@@ -142,8 +142,8 @@
                                 <label class="control-label" for="map1">
                                     Seleccione un punto dentro del pol&iacute;gono <span class="symbol required"></span>
                                 </label>
-                                <input type="hidden" value="" id="hfLatitud" name="hfLatitud" />
-                                <input type="hidden" value="" id="hfLongitud" name="hfLongitud" />
+                              <input type="hidden" value="" id="hfLatitud" name="hfLatitud"/>
+                                <input type="hidden" value="" id="hfLongitud" name="hfLongitud"/>
                                 <div class="map" id="map1">
                                 </div>
                             </div>
@@ -163,7 +163,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<div class="col-md-6">
-									<input type="submit" formaction="frmNuevaIncidencia.aspx" class="btn btn-green btn-block" name ="btnGuardar" value="Guardar" />
+									<asp:Button ID="buttonSubmit" OnClick="buttonSubmit_Click" CssClass="btn btn-green btn-block" runat="server" Text="Guardar" ValidationGroup="AllValidators" />
 								</div>
 								<div class="col-md-6">
 									<a href="frmIncidencias.aspx" class ="btn btn-red btn-block" name ="btnCancelar" >Cancelar</a>
@@ -191,10 +191,11 @@
 	<!-- start: CORE JAVASCRIPTS  -->
 	<script src="assets/js/main.js"></script>
     <script src="assets/js/mapsNZonaRiesgo.js"></script>
+    <script src="assets/js/NuevaIncidencia.js"></script>
 	<!-- end: CORE JAVASCRIPTS  -->
 	<script>
 	    jQuery(document).ready(function () {
-	        FormValidator.init(35);
+	        NuevaIncidencia.init();
 	        //if (document.getElementById('hfLatitud').value === '') {
 	        //    Maps.init(1);
 	        //    console.log("Inicializó en blanco");
@@ -229,7 +230,7 @@
 	            $("#cph_MasterBody_cmbMunicipio option:selected").each(function () {
 	                elegido = $(this).val();
 	                estado = <%=Datos.IDEstado%>;
-	                $("#cph_MasterBody_cmbPoligono option").remove();
+	                //$("#cph_MasterBody_cmbPoligono option").remove();
 	                $.ajaxSetup({
 	                    async: false
 	                });
@@ -248,7 +249,7 @@
 	            })
 	        });
           
-	        $("#cmbMunicipio").change(function () {
+	        $("#cph_MasterBody_cmbMunicipio").change(function () {
 	            elegido = $(this).val();
 	            //console.log("Municipio elegido : " + elegido);
 	            if (!(elegido === '')){
@@ -256,22 +257,22 @@
 	                    Maps.init(1,<%=Datos.IDEstado%>,'<%=Datos.Estado%>');
 	                }}});
 	                
-	            $("#cmbPoligono").change(function () {
-	                $("#cmbPoligono option:selected").each(function () {
+	        $("#cph_MasterBody_cmbPoligono").change(function () {
+	            $("#cph_MasterBody_cmbPoligono option:selected").each(function () {
 	                    elegido = $(this).val();
 	                
-	                    $("#cmbPoligono option").remove();
+	                    //$("#cph_MasterBody_cmbPoligono option").remove();
 	                    $.ajaxSetup({
 	                        async: false
 	                    });
 	              
 	                    $.getJSON('sfrmCasillasCmb.aspx?seccion=' + elegido, function (data) {
-	                        $("#cmbSeccion").append('<option value="">&nbsp;</option>');
+	                        $("#cph_MasterBody_cmbSeccion").append('<option value="">&nbsp;</option>');
 	                        $.each(data, function (key, value) {
-	                            $("#cmbSeccion").append('<option value="' + value.IDCasilla + '">' + value.DescCasilla + '</option>');
+	                            $("#cph_MasterBody_cmbSeccion").append('<option value="' + value.IDCasilla + '">' + value.DescCasilla + '</option>');
 	                        });
 	                    });
-	                    $("#cmbSeccion").trigger('change.select2');
+	                    $("#cph_MasterBody_cmbSeccion").trigger('change.select2');
 	                    // Set the global configs back to asynchronous 
 	                    $.ajaxSetup({
 	                        async: true
@@ -279,13 +280,20 @@
 	                })
 	            });      
 	      
-	            $("#cmbPoligono").change(function () {
+	        $("#cph_MasterBody_cmbPoligono").change(function () {
 	                elegido = $(this).val();
 	                //console.log("Poligono elegido : " + elegido);
 	                if (!(elegido === '')){
 	                    if (document.getElementById('hfLatitud').value === '') {
 	                        Maps.init(1,<%=Datos.IDEstado%>,'<%=Datos.Estado%>');
 	                    }}});
+	        $("#cph_MasterBody_cmbSeccion").change(function () {
+	            elegido = $(this).val();
+	            //console.log("Municipio elegido : " + elegido);
+	            if (!(elegido === '')){
+	                if (document.getElementById('hfLatitud').value === '') {
+	                    Maps.init(1,<%=Datos.IDEstado%>,'<%=Datos.Estado%>');
+	                }}});
 	                    
 	           
 	        });

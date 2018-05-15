@@ -57,28 +57,7 @@ namespace CampaniaElectoral
                         this.IniciarDatos();
                     }
                 }
-                else
-                {
-                    if (Request.Form.Count > 0)
-                    {
-                        bool NuevoRegistro = string.IsNullOrEmpty(hf.Value);
-                        string IDRiesgo = string.IsNullOrEmpty(hf.Value) ? string.Empty : hf.Value.ToString();
-                        string Titulo = string.IsNullOrEmpty(Request.Form["ctl00$cph_MasterBody$txtTitulo"]) ? string.Empty : Request.Form["ctl00$cph_MasterBody$txtTitulo"];
-                        string Descripcion = string.IsNullOrEmpty(Request.Form["ctl00$cph_MasterBody$txtDescripcion"]) ? string.Empty : Request.Form["ctl00$cph_MasterBody$txtDescripcion"];
-                        int IDEstado = 0, IDMunicipio = 0, IDTipoRiesgo = 0;
-                        int.TryParse(Request.Form["cmbEstado"], out IDEstado);
-                        int.TryParse(Request.Form["cmbMunicipio"], out IDMunicipio);
-                        int.TryParse(Request.Form["cmbTipoRiesgo"], out IDTipoRiesgo);
-                        string IDPoligono = string.IsNullOrEmpty(Request.Form["cmbPoligono"]) ? string.Empty : Request.Form["cmbPoligono"];
-                        string sLatitud = Request.Form["hfLatitud"].ToString();
-                        string sLongitud = Request.Form["hfLongitud"].ToString();
-                        double Latitud = 0, Longitud = 0;
-                        CultureInfo esMX = new CultureInfo("es-MX");
-                        double.TryParse(sLatitud, NumberStyles.Currency, esMX, out Latitud);
-                        double.TryParse(sLongitud, NumberStyles.Currency, esMX, out Longitud);
-                        this.Guardar(NuevoRegistro, IDRiesgo, Titulo, Descripcion, IDTipoRiesgo, Datos.IDEstado, IDMunicipio, IDPoligono, Latitud, Longitud);
-                    }
-                }
+
             }
             catch (Exception)
             {
@@ -123,8 +102,8 @@ namespace CampaniaElectoral
 
 
         private void Guardar(bool _Nuevoregistro, string _IDRiesgo, string _Titulo, string _Descripcion,
-                                int _IDTipoRiesgo, int _IDEstado, int _IDMunicipio, string _IDPoligono,
-                                double _Latitud, double _Longitud)
+                                int _IDTipoRiesgo, int _IDEstado, int _IDMunicipio, int _IDSeccion, int _IDCasilla,
+                                double _Latitud, double _Longitud, string _IDColaborador)
         {
             try
             {
@@ -137,9 +116,11 @@ namespace CampaniaElectoral
                     IDTipoRiesgo = _IDTipoRiesgo,
                     IDEstado = _IDEstado,
                     IDMunicipio = _IDMunicipio,
-                    IDPoligono = _IDPoligono,
+                    IDSeccion = _IDSeccion,
+                    IDCasilla=_IDCasilla,
                     Latitud = _Latitud,
                     Longitud = _Longitud,
+                    IDColaborador=_IDColaborador,
                     IDUsuario = Comun.IDUsuario,
                     Conexion = Comun.Conexion
                 };
@@ -183,7 +164,7 @@ namespace CampaniaElectoral
         {
             try
             {
-                
+
                 Datos.Conexion = Comun.Conexion;
                 u = (WN_Usuario)Session["Usuario"];
                 Datos.IDEstado = u.IDEstado;
@@ -202,11 +183,11 @@ namespace CampaniaElectoral
                 CPPN.ObtenerComboColaboradoresTipo(datos);
                 DatosGlobales = datos;
                 cmbColaboradores.DataSource = DatosGlobales.DatosAuxColab.ListaColaboradores;
-                
+
                 cmbColaboradores.DataTextField = "Nombre";
                 cmbColaboradores.DataValueField = "IDColaborador";
                 cmbColaboradores.DataBind();
-                
+
             }
             catch (Exception ex)
             {
@@ -216,27 +197,56 @@ namespace CampaniaElectoral
         }
         protected void cvTRiesgo_ServerValidate(object source, ServerValidateEventArgs args)
         {
-
+            args.IsValid = (Convert.ToInt32(args.Value) >= 0);
         }
 
         protected void cvcmbMunicipio_ServerValidate(object source, ServerValidateEventArgs args)
         {
-
+            args.IsValid = (Convert.ToInt32(args.Value) >= 0);
         }
 
         protected void cvcmbPoligono_ServerValidate(object source, ServerValidateEventArgs args)
         {
-
+            args.IsValid = (Convert.ToInt32(args.Value) >= 0);
         }
 
         protected void cvcmbSeccion_ServerValidate(object source, ServerValidateEventArgs args)
         {
-
+            args.IsValid = (Convert.ToInt32(args.Value) >= 0);
         }
 
         protected void cvcmbColaboradores_ServerValidate(object source, ServerValidateEventArgs args)
         {
+            args.IsValid = (args.Value.Length >= 5);
+        }
 
+        protected void buttonSubmit_Click(object sender, EventArgs e)
+        {
+            if (Page.IsValid)
+            {
+
+                if (Request.Form.Count > 0)
+                {
+                    bool NuevoRegistro = string.IsNullOrEmpty(hf.Value);
+                    string IDRiesgo = string.IsNullOrEmpty(hf.Value) ? string.Empty : hf.Value.ToString();
+                    string Titulo = string.IsNullOrEmpty(Request.Form["ctl00$cph_MasterBody$txtTitulo"]) ? string.Empty : Request.Form["ctl00$cph_MasterBody$txtTitulo"];
+                    string IDColaborador = string.IsNullOrEmpty(Request.Form["ctl00$cph_MasterBody$cmbColaboradores"]) ? string.Empty : Request.Form["ctl00$cph_MasterBody$cmbColaboradores"];
+                    string Descripcion = string.IsNullOrEmpty(Request.Form["ctl00$cph_MasterBody$txtDescripcion"]) ? string.Empty : Request.Form["ctl00$cph_MasterBody$txtDescripcion"];
+                    int IDEstado = Datos.IDEstado, IDMunicipio = 0, IDTipoRiesgo = 0,IDSeccion=0,IDCasilla=0;
+                    //int.TryParse(Request.Form["cmbEstado"], out IDEstado);
+                    int.TryParse(Request.Form["ctl00$cph_MasterBody$cmbMunicipio"], out IDMunicipio);
+                    int.TryParse(Request.Form["ctl00$cph_MasterBody$cmbTipoRiesgo"], out IDTipoRiesgo);
+                    int.TryParse(Request.Form["ctl00$cph_MasterBody$cmbPoligono"], out IDSeccion);
+                    int.TryParse(Request.Form["ctl00$cph_MasterBody$cmbSeccion"], out IDCasilla);
+                    string sLatitud = Request.Form["hfLatitud"].ToString();
+                    string sLongitud = Request.Form["hfLongitud"].ToString();
+                    double Latitud = 0, Longitud = 0;
+                    CultureInfo esMX = new CultureInfo("es-MX");
+                    double.TryParse(sLatitud, NumberStyles.Currency, esMX, out Latitud);
+                    double.TryParse(sLongitud, NumberStyles.Currency, esMX, out Longitud);
+                    this.Guardar(NuevoRegistro, IDRiesgo, Titulo, Descripcion, IDTipoRiesgo, Datos.IDEstado, IDMunicipio, IDSeccion,IDCasilla, Latitud, Longitud,IDColaborador);
+                }
+            }
         }
     }
 }

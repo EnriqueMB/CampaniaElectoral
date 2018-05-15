@@ -38,8 +38,8 @@ namespace DllCampElectoral.Datos
             try
             {
                 object[] Parametros = { Datos.NuevoRegistro, Datos.IDZonaRiesgo, Datos.Titulo, Datos.Descripcion,
-                                        Datos.IDTipoRiesgo, Datos.IDEstado, Datos.IDMunicipio, Datos.IDPoligono,
-                                        Datos.Latitud, Datos.Longitud, Datos.IDUsuario };
+                                        Datos.IDTipoRiesgo, Datos.IDEstado, Datos.IDMunicipio, Datos.IDSeccion,Datos.IDCasilla,
+                                        Datos.Latitud, Datos.Longitud, Datos.IDUsuario,Datos.IDColaborador };
                 object Result = SqlHelper.ExecuteScalar(Datos.Conexion, "CH_spCSLDB_AC_Riesgos", Parametros);
                 if (Result != null)
                 {

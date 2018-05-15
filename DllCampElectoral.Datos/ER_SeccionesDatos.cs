@@ -59,6 +59,28 @@ namespace DllCampElectoral.Global
                 throw ex;
             }
         }
+        public void ObtenerDetalleCasillaXID(CH_ZonaRiesgo Datos)
+        {
+            try
+            {
+                object[] Parametros = { Datos.IDCasilla };
+                SqlDataReader Dr = SqlHelper.ExecuteReader(Datos.Conexion, "CH_spCSLDB_get_CasillaUbicacion", Parametros);
+                while (Dr.Read())
+                {double lat=0,longi= 0;
+                    Datos.IDCasilla = Dr.GetInt32(Dr.GetOrdinal("id_casilla"));
+                    double.TryParse(Dr.GetString(Dr.GetOrdinal("Latitud")), out lat);
+                    double.TryParse(Dr.GetString(Dr.GetOrdinal("Longitud")), out longi);
+                    Datos.Latitud = lat;
+                    Datos.Longitud = longi;
+                    Datos.Completado = true;
+                    break;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public List<EM_Munucipios> ObtenerComboMunicipios(ER_Secciones Datos)
         {
             try

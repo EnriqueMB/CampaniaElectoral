@@ -78,6 +78,21 @@ namespace DllCampElectoral.Global
             get { return _IDMunicipio; }
             set { _IDMunicipio = value; }
         }
+        private int _IDSeccion;
+
+        public int IDSeccion
+        {
+            get { return _IDSeccion; }
+            set { _IDSeccion = value; }
+        }
+        private int _IDCasilla;
+
+        public int IDCasilla
+        {
+            get { return _IDCasilla; }
+            set { _IDCasilla = value; }
+        }
+
 
         private string _IDPoligono;
 
@@ -86,7 +101,13 @@ namespace DllCampElectoral.Global
             get { return _IDPoligono; }
             set { _IDPoligono = value; }
         }
+        private string _IDColaborador;
 
+        public string IDColaborador
+        {
+            get { return _IDColaborador; }
+            set { _IDColaborador = value; }
+        }
         private double _Latitud;
 
         public double Latitud

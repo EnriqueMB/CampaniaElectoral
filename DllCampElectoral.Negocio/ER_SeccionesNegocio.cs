@@ -33,6 +33,19 @@ namespace DllCampElectoral.Negocio
                 throw ex;
             }
         }
+        public void ObtenerUbicacionCasilla(CH_ZonaRiesgo Datos)
+        {
+            try
+            {
+                ER_SeccionesDatos CD = new ER_SeccionesDatos();
+                 CD.ObtenerDetalleCasillaXID(Datos);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         public List<EM_Munucipios> ObtenerComboMunicipios(ER_Secciones Datos) {
             try
             {

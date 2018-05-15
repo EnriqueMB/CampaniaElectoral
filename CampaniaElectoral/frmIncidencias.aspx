@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true"  MasterPageFile="~/Site.Master" CodeBehind="frmIncidencias.aspx.cs" Inherits="CampaniaElectoral.frmIncidencias" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cph_MasterBody" runat="server">
-
     <div class="row">
         <div class="col-sm-12">
             <div class="panel panel-white">

@@ -7,7 +7,7 @@
 
         
         var municipio = document.getElementById("cph_MasterBody_cmbMunicipio");
-        var poligono = document.getElementById("cph_MasterBody_cmbPoligono");
+        var poligono = document.getElementById("cph_MasterBody_cmbSeccion");
         
         var selectedMunicipio = municipio.options[municipio.selectedIndex];
         var selectedPoligono = poligono.options[poligono.selectedIndex];
@@ -97,7 +97,7 @@
                     //console.log("4");
                     $.ajaxSetup({ async: false });
                     var myLatlng;
-                    $.getJSON('sfrmDetallePoligono.aspx?IDPoligono=' + selectedPoligono.value, function (data) {
+                    $.getJSON('sfrmDetalleCasilla.aspx?IDCasilla=' + selectedPoligono.value, function (data) {
                         //console.log(data);
                         myLatlng = {lat: data.Latitud, lng: data.Longitud};
                     });
@@ -107,38 +107,46 @@
                         lat: myLatlng.lat,
                         lng: myLatlng.lng,
                         zoom: 15,
+
                         dragend: function (e) {
+                           
                         }
                     });
-                    
-                    $.getJSON('sfrmPuntosPoligono.aspx?id=' + selectedPoligono.value, function (data)
-                    {
-                        var path = [data.length];
-                        $.each(data, function (key, value) {
-                            var ArrayNew = [value.lat, value.lng];
-                            path[key] = ArrayNew;});
-                        var CustomPol = map.drawPolygon({
-                            paths: path, // pre-defined polygon shape
-                            strokeColor: '#BBD8E9',
-                            strokeOpacity: 1,
-                            strokeWeight: 2,
-                            fillColor: '#BBD8E9',
-                            fillOpacity: 0.6 });
-                        CustomPol.addListener('click', DibujarPunto);
-                        function DibujarPunto(event) 
-                        {
-                            map.removeMarkers();
-                            var index = map.markers.length;
-                            var lat = event.latLng.lat();
-                            var lng = event.latLng.lng();
-                            document.getElementById("hfLatitud").value = lat;
-                            document.getElementById("hfLongitud").value = lng;
-                            map.addMarker({
-                                lat: lat,
-                                lng: lng
-                            });
-                        }
+                    map.addMarker({
+                        lat: myLatlng.lat,
+                        lng: myLatlng.lng,
+                        draggable: true
                     });
+                    document.getElementById("hfLatitud").value = myLatlng.lat;
+                    document.getElementById("hfLongitud").value = myLatlng.lng;
+                    //$.getJSON('sfrmDetalleCala.aspx?IDCasilla=' + selectedPoligono.value, function (data)
+                    //{
+                    //    var path = [data.length];
+                    //    $.each(data, function (key, value) {
+                    //        var ArrayNew = [value.lat, value.lng];
+                    //        path[key] = ArrayNew;});
+                    //    var CustomPol = map.drawPolygon({
+                    //        paths: path, // pre-defined polygon shape
+                    //        strokeColor: '#BBD8E9',
+                    //        strokeOpacity: 1,
+                    //        strokeWeight: 2,
+                    //        fillColor: '#BBD8E9',
+                    //        fillOpacity: 0.6 });
+                    //    CustomPol.addListener('click', DibujarPunto);
+                    //    function DibujarPunto(event) 
+                    //    {
+                    //        map.removeMarkers();
+                    //        var index = map.markers.length;
+                    //        var lat = event.latLng.lat();
+                    //        var lng = event.latLng.lng();
+                    //        document.getElementById("hfLatitud").value = lat;
+                    //        document.getElementById("hfLongitud").value = lng;
+                    //        map.addMarker({
+                    //            lat: lat,
+                    //            lng: lng
+                    //        });
+                    //    }
+                    //});
                     $.ajaxSetup({ async: true });
                 }
             }
