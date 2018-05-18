@@ -10,5 +10,7 @@ namespace DllCampElectoral.Global
     {
         public double Latitud { get; set; }
         public double Longitud { get; set; }
+        public string Titulo { get; set; }
+        public string Descripcion { get; set; }
     }
 }

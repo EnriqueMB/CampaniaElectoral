@@ -1,8 +1,8 @@
 ﻿var Maps = function () {
     "use strict";
-    var runMaps = function (id_estado, estado){
+    var runMaps = function (id_estado, estado) {
         var municipio = document.getElementById("cmbMunicipio");
-        var poligono = document.getElementById("cmbPoligono");
+        var poligono = document.getElementById("cmbSeccion");
 
         var selectedPoligono = poligono.options[poligono.selectedIndex];   
         var selectedMunicipio = municipio.options[municipio.selectedIndex];
@@ -70,28 +70,34 @@
                 else {
                     $.ajaxSetup({ async: false });
                     var myLatlng;
-                    $.getJSON('sfrmDetallePoligono.aspx?IDPoligono=' + selectedPoligono.value, function (data) {
-                        //console.log(data);
-                        myLatlng = { lat: data.Latitud, lng: data.Longitud };
-                    });
-                    map.setCenter(myLatlng.lat, myLatlng.lng);
-                    $.getJSON('sfrmPuntosPoligono.aspx?id=' + selectedPoligono.value, function (data) {
-                        var path = [data.length];
-                        $.each(data, function (key, value) {
-                            var ArrayNew = [value.lat, value.lng];
-                            path[key] = ArrayNew;
-                        });
-                        var CustomPol = map.drawPolygon({
-                            paths: path, // pre-defined polygon shape
-                            strokeColor: '#BBD8E9',
-                            strokeOpacity: 1,
-                            strokeWeight: 2,
-                            fillColor: '#BBD8E9',
-                            fillOpacity: 0.6
-                        });
+                    
+                    $.getJSON('sfrmDetalleCasilla.aspx?IDCasilla=' + selectedPoligono.value, function (data) {
+                        console.log(data);
+                        myLatlng = { lat: data.Latitud, lng: data.Longitud,tit:data.Titulo,desc:data.Descripcion };
                         
                     });
-                    $.ajaxSetup({ async: true });
+                    //console.log(myLatlng);
+                    var map = new GMaps({
+                        el: '#map1',
+                        lat: myLatlng.lat,
+                        lng: myLatlng.lng,
+                        zoom: 15,
+
+                        dragend: function (e) {
+
+                        }
+                    });
+                    map.addMarker({
+                        lat: myLatlng.lat,
+                        lng: myLatlng.lng,
+                        title:myLatlng.tit,
+                        infoWindow: {
+                            content: '<p>' + myLatlng.tit + '</p>'
+                                    + '<p>' + myLatlng.desc + '</p>'
+                                    
+                        }
+                    });
+                   
                 }
             }
         }

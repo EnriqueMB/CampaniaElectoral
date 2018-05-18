@@ -25,7 +25,7 @@ namespace CampaniaElectoral
                 ER_SeccionesNegocio CN = new ER_SeccionesNegocio();
                 CN.ObtenerUbicacionCasilla(Datos);
 
-                CH_PoligonoDetalleJSON DatosAux = new CH_PoligonoDetalleJSON { Latitud = Datos.Latitud, Longitud = Datos.Longitud };
+                CH_PoligonoDetalleJSON DatosAux = new CH_PoligonoDetalleJSON { Latitud = Datos.Latitud, Longitud = Datos.Longitud,Titulo=Datos.Titulo,Descripcion=Datos.Descripcion };
 
                 var json = JsonConvert.SerializeObject(DatosAux);
                 Response.Clear();

@@ -128,6 +128,13 @@
 	                });
 	            })
 	        });
+             $("#cmbMunicipio").change(function () {
+	            elegido = $(this).val();
+	            //console.log("Municipio elegido : " + elegido);
+	            if (!(elegido === '')){
+	               
+	                    Maps.init(<%=Datos.IDEstado%>,'<%=Datos.Estado%>');
+	                }});
             $("#cmbPoligono").change(function () {
                 $("#cmbPoligono option:selected").each(function () {
 	                elegido = $(this).val();
@@ -150,7 +157,20 @@
 	                });
 	            })
 	        });
-
+             $("#cmbPoligono").change(function () {
+	                elegido = $(this).val();
+	                //console.log("Poligono elegido : " + elegido);
+	                if (!(elegido === '')){
+	                    
+	                        Maps.init(<%=Datos.IDEstado%>,'<%=Datos.Estado%>');
+	                    }});
+             $("#cmbSeccion").change(function () {
+	            elegido = $(this).val();
+	            //console.log("Municipio elegido : " + elegido);
+	            if (!(elegido === '')){
+	                
+	                    Maps.init(<%=Datos.IDEstado%>,'<%=Datos.Estado%>');
+	                }});
             
 	        $("#btnFiltrar").click(function (event) {
 	            console.log("1");

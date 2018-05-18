@@ -72,6 +72,8 @@ namespace DllCampElectoral.Global
                     double.TryParse(Dr.GetString(Dr.GetOrdinal("Longitud")), out longi);
                     Datos.Latitud = lat;
                     Datos.Longitud = longi;
+                    Datos.Titulo = Dr.GetString(Dr.GetOrdinal("casilla"));
+                    Datos.Descripcion = Dr.GetString(Dr.GetOrdinal("referencia"));
                     Datos.Completado = true;
                     break;
                 }
